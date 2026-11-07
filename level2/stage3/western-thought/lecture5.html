@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الثورة الفرنسية والرومانسية</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+</style>
+</head>
+<body style="margin:0">
+
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">تاريخ الفكر الغربي الحديث</a><span style="color:var(--muted)">‹</span><span style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">المحاضرة ٥</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل المحاضرات</a><span style="display:flex;gap:14px">
+<a href="lecture4.html" style="color:var(--muted);text-decoration:none">→ المحاضرة السابقة</a>
+<a href="lecture6.html" style="color:var(--muted);text-decoration:none">المحاضرة التالية ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">تاريخ الفكر الغربي الحديث · الشيخ أحمد السيد · المحاضرة الخامسة</div>
+  <h1>نهايات القرن الثامن عشر: الثورة الفرنسية والرومانتيكية</h1>
+  <p class="muted">ملخص مذاكرة: الشجرة المرسومة أولًا، ثم العناصر بالشرح والرسوم، ثم أسئلة مراجعة.</p>
+</header>
+
+<section>
+  <h2>موضعنا من السياق الزمني</h2>
+  <p>انتهينا من منتصف القرن الثامن عشر، ونحن الآن في أواخره، مع لمحة عن بداية القرن التاسع عشر، وعن المحصّلات التي نتجت عن عصر التنوير. خطة المحاضرة تسعة عناصر، لكن الذي شُرح فعلًا هو الخمسة الأولى ولمحة من السادس؛ أما الباقي (لمحة القرن ١٩، عصر نابليون وبداية الاستعمار، هيجل) فأُجّل إلى المحاضرة القادمة مع القرن التاسع عشر، الذي سيأخذ غالبًا محاضرتين.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>العنصر</th><th>العنوان</th><th>الحالة</th></tr></thead>
+      <tbody>
+        <tr><td>١</td><td>الثورات الثلاث في نهايات التنوير، ولمحة عن الثورة الصناعية والعلوم الاجتماعية</td><td>شُرح</td></tr>
+        <tr><td>٢</td><td>الثورة الفرنسية</td><td>شُرح</td></tr>
+        <tr><td>٣</td><td>تداعيات الثورة الفرنسية وآثارها</td><td>شُرح</td></tr>
+        <tr><td>٤</td><td>الثورة الرومانتيكية (الرومانسية)</td><td>شُرح</td></tr>
+        <tr><td>٥</td><td>الثورة الكانطية</td><td>شُرح</td></tr>
+        <tr><td>٦</td><td>محصّل عصر التنوير وآثاره على ما بعده</td><td>نص واحد في الختام</td></tr>
+        <tr><td>٧–٩</td><td>لمحة عن القرن ١٩، عصر نابليون وبداية الاستعمار، هيجل</td><td>مؤجّلة</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>الشجرة الذهنية للمحاضرة <span class="tag">رسم كامل</span></h2>
+  <div class="panel scroll"><svg viewBox="139 0 871 1214" width="100%" style="min-width:860px;display:block" role="img" aria-label="شجرة ذهنية: المحاضرة الخامسة"><path d="M405.5 80.0 C 360.7 80.0, 360.7 35.0, 315.8 35.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M405.5 80.0 C 360.7 80.0, 360.7 65.0, 315.8 65.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M405.5 80.0 C 360.7 80.0, 360.7 95.0, 315.8 95.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M405.5 80.0 C 360.7 80.0, 360.7 125.0, 315.8 125.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M449.2 185.0 C 382.5 185.0, 382.5 155.0, 315.8 155.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M449.2 185.0 C 382.5 185.0, 382.5 185.0, 315.8 185.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M449.2 185.0 C 382.5 185.0, 382.5 215.0, 315.8 215.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M420.1 275.0 C 368.0 275.0, 368.0 245.0, 315.8 245.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M420.1 275.0 C 368.0 275.0, 368.0 275.0, 315.8 275.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M420.1 275.0 C 368.0 275.0, 368.0 305.0, 315.8 305.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M579.4 222.5 C 556.4 222.5, 556.4 80.0, 533.4 80.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M579.4 222.5 C 556.4 222.5, 556.4 185.0, 533.4 185.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M579.4 222.5 C 556.4 222.5, 556.4 275.0, 533.4 275.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M579.4 222.5 C 556.4 222.5, 556.4 335.0, 533.4 335.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M579.4 222.5 C 556.4 222.5, 556.4 365.0, 533.4 365.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M456.5 426.0 C 386.2 426.0, 386.2 411.0, 315.8 411.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M456.5 426.0 C 386.2 426.0, 386.2 441.0, 315.8 441.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M420.1 486.0 C 368.0 486.0, 368.0 471.0, 315.8 471.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M420.1 486.0 C 368.0 486.0, 368.0 501.0, 315.8 501.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M456.5 561.0 C 386.2 561.0, 386.2 531.0, 315.8 531.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M456.5 561.0 C 386.2 561.0, 386.2 561.0, 315.8 561.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M456.5 561.0 C 386.2 561.0, 386.2 591.0, 315.8 591.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M456.5 636.0 C 386.2 636.0, 386.2 621.0, 315.8 621.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M456.5 636.0 C 386.2 636.0, 386.2 651.0, 315.8 651.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M650.0 531.0 C 591.7 531.0, 591.7 426.0, 533.4 426.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M650.0 531.0 C 591.7 531.0, 591.7 486.0, 533.4 486.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M650.0 531.0 C 591.7 531.0, 591.7 561.0, 533.4 561.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M650.0 531.0 C 591.7 531.0, 591.7 636.0, 533.4 636.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M434.6 712.0 C 375.2 712.0, 375.2 697.0, 315.8 697.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M434.6 712.0 C 375.2 712.0, 375.2 727.0, 315.8 727.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M463.8 787.0 C 389.8 787.0, 389.8 757.0, 315.8 757.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M463.8 787.0 C 389.8 787.0, 389.8 787.0, 315.8 787.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M463.8 787.0 C 389.8 787.0, 389.8 817.0, 315.8 817.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M689.2 809.5 C 611.3 809.5, 611.3 712.0, 533.4 712.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M689.2 809.5 C 611.3 809.5, 611.3 787.0, 533.4 787.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M689.2 809.5 C 611.3 809.5, 611.3 847.0, 533.4 847.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M689.2 809.5 C 611.3 809.5, 611.3 877.0, 533.4 877.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M689.2 809.5 C 611.3 809.5, 611.3 907.0, 533.4 907.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M471.0 968.0 C 393.4 968.0, 393.4 953.0, 315.8 953.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M471.0 968.0 C 393.4 968.0, 393.4 983.0, 315.8 983.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M463.8 1028.0 C 389.8 1028.0, 389.8 1013.0, 315.8 1013.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M463.8 1028.0 C 389.8 1028.0, 389.8 1043.0, 315.8 1043.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M427.4 1088.0 C 371.6 1088.0, 371.6 1073.0, 315.8 1073.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M427.4 1088.0 C 371.6 1088.0, 371.6 1103.0, 315.8 1103.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M650.0 1028.0 C 591.7 1028.0, 591.7 968.0, 533.4 968.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M650.0 1028.0 C 591.7 1028.0, 591.7 1028.0, 533.4 1028.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M650.0 1028.0 C 591.7 1028.0, 591.7 1088.0, 533.4 1088.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M665.7 1164.0 C 599.6 1164.0, 599.6 1149.0, 533.4 1149.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M665.7 1164.0 C 599.6 1164.0, 599.6 1179.0, 533.4 1179.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M839.6 693.2 C 816.6 693.2, 816.6 222.5, 793.6 222.5" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M839.6 693.2 C 816.6 693.2, 816.6 531.0, 793.6 531.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M839.6 693.2 C 816.6 693.2, 816.6 809.5, 793.6 809.5" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M839.6 693.2 C 816.6 693.2, 816.6 1028.0, 793.6 1028.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M839.6 693.2 C 816.6 693.2, 816.6 1164.0, 793.6 1164.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><rect x="236.1" y="23.0" width="79.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="276.0" y="39.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الفرنسية</text><rect x="209.2" y="53.0" width="106.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="262.5" y="69.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الرومانتيكية</text><rect x="236.1" y="83.0" width="79.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="276.0" y="99.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الكانطية</text><rect x="222.6" y="113.0" width="93.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="269.2" y="129.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">+ الصناعية</text><rect x="405.5" y="66.0" width="127.9" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="469.5" y="84.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ثورات سترومبرج</text><rect x="195.8" y="143.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="255.8" y="159.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">المذهب التجاري</text><rect x="195.8" y="173.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="255.8" y="189.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الفيزيوقراطيون</text><rect x="236.1" y="203.0" width="79.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="276.0" y="219.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">آدم سميث</text><rect x="449.2" y="171.0" width="84.2" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="491.3" y="189.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الاقتصاد</text><rect x="215.9" y="233.0" width="99.9" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="265.9" y="249.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">روح الشرائع</text><rect x="189.0" y="263.0" width="126.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="252.4" y="279.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">العقد الاجتماعي</text><rect x="222.6" y="293.0" width="93.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="269.2" y="309.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">ثروة الأمم</text><rect x="420.1" y="261.0" width="113.4" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="476.8" y="279.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">كتب القرن ١٨</text><rect x="398.2" y="321.0" width="135.2" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="465.8" y="339.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">التقدم التاريخي</text><rect x="427.4" y="351.0" width="106.1" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="480.4" y="369.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">تشبيه الماء</text><rect x="579.4" y="204.5" width="214.2" height="36" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text direction="rtl" x="686.5" y="227.5" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الثورات الثلاث وما حولها</text><rect x="209.2" y="399.0" width="106.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="262.5" y="415.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">محفزات قديمة</text><rect x="195.8" y="429.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="255.8" y="445.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">محل صار قابلًا</text><rect x="456.5" y="412.0" width="77.0" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="495.0" y="430.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الأسباب</text><rect x="189.0" y="459.0" width="126.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="252.4" y="475.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">إعداد أيديولوجي</text><rect x="215.9" y="489.0" width="99.9" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="265.9" y="505.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">هدم العقبات</text><rect x="420.1" y="472.0" width="113.4" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="476.8" y="490.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">دور الفلاسفة</text><rect x="202.5" y="519.0" width="113.4" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="259.2" y="535.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الباستيل ١٧٨٩</text><rect x="195.8" y="549.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="255.8" y="565.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الجمهورية ١٧٩٢</text><rect x="182.3" y="579.0" width="133.5" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="249.1" y="595.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">إعدام الملك ١٧٩٣</text><rect x="456.5" y="547.0" width="77.0" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="495.0" y="565.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الأحداث</text><rect x="242.8" y="609.0" width="73.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="279.3" y="625.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">القومية</text><rect x="148.7" y="639.0" width="167.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="232.3" y="655.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">من الكنيسة إلى الدولة</text><rect x="456.5" y="622.0" width="77.0" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="495.0" y="640.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">النتائج</text><rect x="650.0" y="513.0" width="143.6" height="36" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><text direction="rtl" x="721.8" y="536.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الثورة الفرنسية</text><rect x="249.5" y="685.0" width="66.3" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="282.7" y="701.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الآلية</text><rect x="242.8" y="715.0" width="73.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="279.3" y="731.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">النفعية</text><rect x="434.6" y="698.0" width="98.8" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="484.0" y="716.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ضد التنوير</text><rect x="256.2" y="745.0" width="59.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="286.0" y="761.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الشعر</text><rect x="189.0" y="775.0" width="126.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="252.4" y="791.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">المعيار الجمالي</text><rect x="249.5" y="805.0" width="66.3" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="282.7" y="821.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الغريب</text><rect x="463.8" y="773.0" width="69.7" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="498.6" y="791.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">سماتها</text><rect x="376.4" y="833.0" width="157.0" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="454.9" y="851.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">أقرب للدين أسلوبًا</text><rect x="441.9" y="863.0" width="91.5" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="487.7" y="881.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">١٧٦٠–١٨٤٠</text><rect x="369.1" y="893.0" width="164.3" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="451.3" y="911.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">تقديس المشاعر اليوم</text><rect x="689.2" y="791.5" width="104.4" height="36" rx="8" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/><text direction="rtl" x="741.4" y="814.5" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الرومانسية</text><rect x="195.8" y="941.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="255.8" y="957.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">كونيغسبرغ ١٧٢٤</text><rect x="222.6" y="971.0" width="93.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="269.2" y="987.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">حياة منظمة</text><rect x="471.0" y="954.0" width="62.4" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="502.2" y="972.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">سيرته</text><rect x="209.2" y="1001.0" width="106.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="262.5" y="1017.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">ديكارت + لوك</text><rect x="222.6" y="1031.0" width="93.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="269.2" y="1047.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">حدود العقل</text><rect x="463.8" y="1014.0" width="69.7" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="498.6" y="1032.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">فلسفته</text><rect x="182.3" y="1061.0" width="133.5" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="249.1" y="1077.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الغيب خارج العقل</text><rect x="209.2" y="1091.0" width="106.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="262.5" y="1107.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">«طريق مسدود»</text><rect x="427.4" y="1074.0" width="106.1" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="480.4" y="1092.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">أثره الديني</text><rect x="650.0" y="1010.0" width="143.6" height="36" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text direction="rtl" x="721.8" y="1033.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الثورة الكانطية</text><rect x="361.8" y="1135.0" width="171.6" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="447.6" y="1153.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ورطة البديل الأخلاقي</text><rect x="383.7" y="1165.0" width="149.8" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="458.6" y="1183.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">فونتينيل والمآلات</text><rect x="665.7" y="1146.0" width="127.9" height="36" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><text direction="rtl" x="729.6" y="1169.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">محصّل التنوير</text><rect x="839.6" y="671.2" width="160.4" height="44" rx="22.0" fill="var(--ink)" stroke="none" stroke-width="1"/><text direction="rtl" x="919.8" y="698.6" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">المحاضرة الخامسة</text></svg></div>
+  <p class="muted">على الجوال اسحب الشجرة أفقيًا لرؤيتها كاملة.</p>
+</section>
+
+<section>
+  <h2>العنصر الأول: الثورات في نهايات عصر التنوير</h2>
+  <p>ينطلق المحاضر من نص لسترومبرج في «تاريخ الفكر الأوروبي الحديث»: كانت هناك في نهايات القرن الثامن عشر ثلاث ثورات، ويمكن أن تضاف إليها رابعة.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">ثورات نهاية القرن الثامن عشر (سترومبرج)</h3>
+    <svg viewBox="0 0 860 250" width="100%" style="min-width:680px;display:block" role="img" aria-label="ثلاث ثورات في نهاية القرن الثامن عشر ورابعة تضاف إليها">
+      <rect x="330" y="20" width="200" height="56" rx="28" fill="var(--ink)"/>
+      <text direction="rtl" x="430" y="44" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">نهايات القرن ١٨</text>
+      <text direction="rtl" x="430" y="64" text-anchor="middle" fill="var(--bg)" font-size="12">أواخر عصر التنوير</text>
+      <g stroke="var(--line)" stroke-width="2" fill="none">
+        <path d="M430 78 V100 H745 V130"/><path d="M430 100 H535 V130"/><path d="M430 100 H325 V130"/><path d="M430 100 H115 V130"/>
+      </g>
+      <g text-anchor="middle">
+        <rect x="650" y="130" width="190" height="90" rx="10" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <text direction="rtl" x="745" y="162" fill="var(--ink)" font-size="15" font-weight="600">١. الثورة الفرنسية</text>
+        <text direction="rtl" x="745" y="186" fill="var(--muted)" font-size="12">سياسية اجتماعية</text>
+        <text direction="rtl" x="745" y="204" fill="var(--muted)" font-size="12">١٧٨٩</text>
+        <rect x="440" y="130" width="190" height="90" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="535" y="162" fill="var(--ink)" font-size="15" font-weight="600">٢. الثورة الرومانتيكية</text>
+        <text direction="rtl" x="535" y="186" fill="var(--muted)" font-size="12">ثورة في الأسلوب والمزاج</text>
+        <text direction="rtl" x="535" y="204" fill="var(--muted)" font-size="12">ردة فعل على التنوير</text>
+        <rect x="230" y="130" width="190" height="90" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text direction="rtl" x="325" y="162" fill="var(--ink)" font-size="15" font-weight="600">٣. الثورة الكانطية</text>
+        <text direction="rtl" x="325" y="186" fill="var(--muted)" font-size="12">فلسفية في المعرفة</text>
+        <text direction="rtl" x="325" y="204" fill="var(--muted)" font-size="12">حدود العقل</text>
+        <rect x="20" y="130" width="190" height="90" rx="10" fill="var(--paper)" stroke="var(--muted)" stroke-dasharray="6 4"/>
+        <text direction="rtl" x="115" y="162" fill="var(--ink)" font-size="15" font-weight="600">٤. الثورة الصناعية</text>
+        <text direction="rtl" x="115" y="186" fill="var(--muted)" font-size="12">«ويمكن أن تضاف إليها»</text>
+        <text direction="rtl" x="115" y="204" fill="var(--muted)" font-size="12">لمحة فقط في هذا العنصر</text>
+      </g>
+      <text direction="rtl" x="430" y="244" text-anchor="middle" fill="var(--muted)" font-size="12">الثلاث الأولى أُفردت بعناصر مستقلة، والرابعة أُخذت لمحتها هنا مع العلوم الاجتماعية</text>
+    </svg>
+  </div>
+
+  <h3>لمحة عن الثورة الصناعية في القرن ١٨</h3>
+  <p>قبل ذكر الإنجازات، يجب فهم الجو العام: <b>مركزية الطبيعة</b>. كانت ثقة الإنسان تزداد يومًا بعد يوم بمخرجات العلم الطبيعي والعلم الحديث، فكان طبيعيًا أن يتقدم الجانب الصناعي والإنجازات الصناعية.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">ملامح صناعية في القرن ١٨ (من نصوص سترومبرج)</h3>
+    <svg viewBox="0 0 860 260" width="100%" style="min-width:680px;display:block" role="img" aria-label="خط زمني لملامح الثورة الصناعية في القرن الثامن عشر">
+      <line x1="40" y1="90" x2="820" y2="90" stroke="var(--muted)" stroke-width="2"/>
+      <g text-anchor="middle">
+        <circle cx="720" cy="90" r="8" fill="var(--accent)"/>
+        <text direction="rtl" x="720" y="40" fill="var(--ink)" font-size="13" font-weight="600">منتصف القرن</text>
+        <text direction="rtl" x="720" y="60" fill="var(--muted)" font-size="12">الكهرباء «لعبة شعبية»</text>
+        <text direction="rtl" x="720" y="122" fill="var(--muted)" font-size="11">العلماء والهواة يعرضون</text>
+        <text direction="rtl" x="720" y="138" fill="var(--muted)" font-size="11">«القوة الخفية» على الناس</text>
+        <circle cx="500" cy="90" r="8" fill="var(--accent)"/>
+        <text direction="rtl" x="500" y="40" fill="var(--ink)" font-size="13" font-weight="600">١٧٥٢</text>
+        <text direction="rtl" x="500" y="60" fill="var(--muted)" font-size="12">اكتُشف أن البرق كهرباء</text>
+        <circle cx="270" cy="90" r="8" fill="var(--accent)"/>
+        <text direction="rtl" x="270" y="40" fill="var(--ink)" font-size="13" font-weight="600">نهاية القرن</text>
+        <text direction="rtl" x="270" y="60" fill="var(--muted)" font-size="12">اكتُشف تخزين الكهرباء (الفولت)</text>
+        <text direction="rtl" x="270" y="122" fill="var(--muted)" font-size="11">آلات وقاطرات تجارية بدائية</text>
+        <text direction="rtl" x="270" y="138" fill="var(--muted)" font-size="11">ومناطيد يستمتع بها أهل باريس</text>
+      </g>
+      <rect x="40" y="168" width="780" height="76" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+      <text direction="rtl" x="430" y="194" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">«كان المرء اللماح يستطيع أن يلمح وهي تتشكل في رحم القرن الثامن عشر:</text>
+      <text direction="rtl" x="430" y="218" text-anchor="middle" fill="var(--ink)" font-size="13">السيارة، والسكة الحديدية، والطائرة، والتلغراف، والمصنع الميكانيكي»</text>
+      <text direction="rtl" x="430" y="238" text-anchor="middle" fill="var(--muted)" font-size="11">القرن ١٨ كان زاحفًا نحو الصناعة، لكن النتائج الصناعية الكبرى كانت في القرن التاسع عشر</text>
+    </svg>
+  </div>
+
+  <h3>العلوم الاجتماعية في القرن ١٨</h3>
+  <div class="scroll">
+    <table>
+      <thead><tr><th></th><th>القرن الثامن عشر</th><th>القرن التاسع عشر</th></tr></thead>
+      <tbody>
+        <tr><td><b>حال العلوم</b></td><td>غير متمايزة؛ مقولات وأفكار متفرقة في كلام فلاسفة عامّين (فولتير، مونتسكيو، روسو) اعتُبرت لاحقًا تأسيسًا لها</td><td>متمايزة تمايزًا واضحًا؛ لكل علم قواعده وانفصاله عن غيره</td></tr>
+        <tr><td><b>علم الاجتماع</b></td><td>دراسات وبدايات، لكنه ليس علمًا قويًا متميزًا</td><td>يتميّز علمًا مستقلًا</td></tr>
+        <tr><td><b>الأقوى حضورًا</b></td><td>الاقتصاد والسياسة</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">مراحل الفكر الاقتصادي حتى نهاية القرن ١٨</h3>
+    <svg viewBox="0 0 860 270" width="100%" style="min-width:680px;display:block" role="img" aria-label="ثلاث مراحل اقتصادية: المذهب التجاري ثم الفيزيوقراطيون ثم آدم سميث">
+      <defs><marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="600" y="20" width="240" height="150" rx="12" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+        <text direction="rtl" x="720" y="52" fill="var(--ink)" font-size="15" font-weight="600">١. المذهب التجاري</text>
+        <text direction="rtl" x="720" y="74" fill="var(--muted)" font-size="12">من القرن ١٦</text>
+        <text direction="rtl" x="720" y="102" fill="var(--ink)" font-size="12">وصف أُطلق على كتابات اقتصادية</text>
+        <text direction="rtl" x="720" y="120" fill="var(--ink)" font-size="12">متفرقة من نهاية النهضة إلى بداية التنوير</text>
+        <text direction="rtl" x="720" y="146" fill="var(--muted)" font-size="12">لا نظرية محددة، تنزع للنمط القديم</text>
+        <rect x="310" y="20" width="250" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text direction="rtl" x="435" y="52" fill="var(--ink)" font-size="15" font-weight="600">٢. الفيزيوقراطيون</text>
+        <text direction="rtl" x="435" y="74" fill="var(--muted)" font-size="12">فرنسا</text>
+        <text direction="rtl" x="435" y="102" fill="var(--ink)" font-size="12">أول وأكبر ثورة حقيقية في التنظير</text>
+        <text direction="rtl" x="435" y="120" fill="var(--ink)" font-size="12">الاقتصادي، ومن مؤسسي الليبرالية</text>
+        <text direction="rtl" x="435" y="146" fill="var(--muted)" font-size="12">الأرض والزراعة مصدر الثروة</text>
+        <rect x="20" y="20" width="250" height="150" rx="12" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="145" y="52" fill="var(--ink)" font-size="15" font-weight="600">٣. آدم سميث</text>
+        <text direction="rtl" x="145" y="74" fill="var(--muted)" font-size="12">إنجلترا</text>
+        <text direction="rtl" x="145" y="102" fill="var(--ink)" font-size="12">أعظم المنظّرين الاقتصاديين</text>
+        <text direction="rtl" x="145" y="120" fill="var(--ink)" font-size="12">في القرن، و«ثروة الأمم» كتاب قرنه</text>
+        <text direction="rtl" x="145" y="146" fill="var(--muted)" font-size="12">يُعلي قيمة العمل</text>
+      </g>
+      <g stroke="var(--accent)" stroke-width="2.5" marker-end="url(#c1)">
+        <line x1="598" y1="95" x2="564" y2="95"/><line x1="308" y1="95" x2="274" y2="95"/>
+      </g>
+      <rect x="20" y="196" width="820" height="56" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+      <text direction="rtl" x="430" y="220" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">السمة الجامعة للمرحلة الجديدة: مركزية الحرية</text>
+      <text direction="rtl" x="430" y="240" text-anchor="middle" fill="var(--muted)" font-size="12">حرية التملك، إبعاد الرقابة، إبعاد التدخل، والمنافسة الحرة</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>الفيزيوقراطيون: ما هم؟</strong><span>تيار يؤمن بمبدأ الحرية الاقتصادية ويعظّمه تعظيمًا كبيرًا، ويرى أن الأرض (الزراعة والفلاحة) هي المصدر الأساسي للثروة، ويعادي الصناعة والتجارة لأنه لا يرى أنهما تعودان على المجتمع بفائض مالي؛ فالثروة الحقيقية في الأرض. كانوا يلحّون على تمتع النشاط الاقتصادي بالحرية الكاملة، وأن يرتكز على حق الفرد في الملكية الخاصة في مجتمع يؤمّن المنافسة الحرة، وطالبوا بإسقاط الضرائب عن كل شيء ما عدا الأرض.</span><em>ما الذي رفع مكانتهم؟ الأزمة الاقتصادية الكبرى في فرنسا، وهي من أكبر أسباب الثورة الفرنسية. يقول سترومبرج: لذلك لقيت هجماتهم على النظام القديم ومقترحاتهم الإصلاحية الكاسحة أصداء طيبة عند معظم الناس. وتأثروا بكتابات مونتسكيو، وبمذهب اللذة اليوناني القديم: الخير في جلب المنفعة واللذة، والشر ما يجلب الألم. فكان شعار الاقتصاديين: أن تحصل على أكبر قدر من السعادة بأقل ثمن؛ فهذا هو الكمال في السلوك الاقتصادي.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>لماذا سقط المذهب الفيزيوقراطي؟</strong><span>لم يصمد أمام نظريات آدم سميث ولا أمام الثورة الصناعية؛ لأنه يضع كل ثقله على الأرض والزراعة، فلما انتقل المركز المالي والتجاري إلى الصناعة سقط المذهب المعتمد على الأرض.</span><em>سترومبرج: المذهب الفيزيوقراطي كان بطيء الخطى في دفع الاقتصاد الفرنسي إلى العصر الصناعي، بعكس آدم سميث في بريطانيا. ومع أنهم دخلوا التاريخ مؤسسين للعلوم الاقتصادية الحديثة، فإن القرن الصناعي (التاسع عشر) ألقى بهم في زوايا النسيان. ومن العبارات المنقولة: «جاء عصر الفيزيوقراطيين وآدم سميث فأبطل جميع ما أورده أولئك الكتّاب الأوائل».</em></div></div>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th></th><th>الفيزيوقراطيون</th><th>آدم سميث</th></tr></thead>
+      <tbody>
+        <tr><td><b>البلد</b></td><td>فرنسا</td><td>إنجلترا</td></tr>
+        <tr><td><b>يشتركان في</b></td><td colspan="2">أشياء كثيرة، أهمها تعظيم الحرية الاقتصادية</td></tr>
+        <tr><td><b>مصدر القيمة</b></td><td>الأرض والزراعة</td><td>العمل</td></tr>
+        <tr><td><b>المآل</b></td><td>طواهم القرن الصناعي في النسيان</td><td>«ثروة الأمم» صار كتابًا مدرسيًا مرجعيًا</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">أهم ثلاثة كتب أُلّفت في القرن الثامن عشر</h3>
+    <svg viewBox="0 0 860 250" width="100%" style="min-width:680px;display:block" role="img" aria-label="ثلاثة كتب تدور حول الإنسان والحرية">
+      <g stroke="var(--line)" stroke-width="2">
+        <line x1="430" y1="150" x2="720" y2="70"/><line x1="430" y1="150" x2="430" y2="70"/><line x1="430" y1="150" x2="140" y2="70"/>
+      </g>
+      <g text-anchor="middle">
+        <rect x="610" y="24" width="220" height="70" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="720" y="54" fill="var(--ink)" font-size="14" font-weight="600">«روح الشرائع والقوانين»</text>
+        <text direction="rtl" x="720" y="76" fill="var(--muted)" font-size="12">مونتسكيو</text>
+        <rect x="320" y="24" width="220" height="70" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="430" y="54" fill="var(--ink)" font-size="14" font-weight="600">«العقد الاجتماعي»</text>
+        <text direction="rtl" x="430" y="76" fill="var(--muted)" font-size="12">روسو</text>
+        <rect x="30" y="24" width="220" height="70" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="140" y="54" fill="var(--ink)" font-size="14" font-weight="600">«ثروة الأمم»</text>
+        <text direction="rtl" x="140" y="76" fill="var(--muted)" font-size="12">آدم سميث</text>
+        <rect x="270" y="130" width="320" height="70" rx="35" fill="var(--ink)"/>
+        <text direction="rtl" x="430" y="160" fill="var(--bg)" font-size="15" font-weight="600">جامعها: الحرية + الإنسان</text>
+        <text direction="rtl" x="430" y="182" fill="var(--bg)" font-size="12">كائن حر مستقل له حقوق يسعى لمنفعته</text>
+      </g>
+      <text direction="rtl" x="430" y="232" text-anchor="middle" fill="var(--muted)" font-size="12">في القرون السابقة كانت الجهود التنظيرية المركزية تدور حول الدين أو الفلسفة المحضة</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">٣</div><div><strong>الدراسات التاريخية ومبدأ «التقدم التاريخي»</strong><span>كانت لها حضور في القرن ١٨: كتابات تاريخية عند فولتير وغيره من الفلاسفة، وأهم كتاب أُلّف فيها كما يذكر المحاضر «انهيار الإمبراطورية الرومانية». وأهم نقطة حصلت فيها: بداية الاقتناع بمبدأ <b>التقدم التاريخي</b>.</span><em>معناه: الإنسان يظل يتطور تاريخيًا حتى يصل إلى حالة من الكمال الدنيوي؛ الإنسان اليوم أفضل من القديم، وهو يرقى ليحقق نتائج دنيوية أفضل. بخلاف النظرة القديمة (في السياق الغربي) التي ترى أن أعلى ما يتطور إليه الإنسان أن يحصّل الجنة. ولذلك وصف بعض الدارسين الدراسات التاريخية بأنها نقلت اهتمام تقدم الإنسان من توجهه نحو السماء إلى أن يتقدم نحو الأرض.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:4px">تشبيه المحاضر لتطور الفكر الغربي: قصة الماء</h3>
+    <p class="muted" style="margin-bottom:8px">صورة قال المحاضر إنها لم تنضج عنده تمامًا بعد، لكنها تقرّب المسار.</p>
+    <svg viewBox="0 0 860 290" width="100%" style="min-width:680px;display:block" role="img" aria-label="تشبيه الماء: البحث عنه ثم الأدوات ثم استخراجه ثم الأخاديد ثم الانسداد">
+      <rect x="20" y="150" width="820" height="110" rx="6" fill="var(--gold-soft)" opacity=".7"/>
+      <text direction="rtl" x="830" y="275" text-anchor="end" fill="var(--muted)" font-size="11">الأرض</text>
+      <g text-anchor="middle">
+        <!-- 1 Renaissance -->
+        <text direction="rtl" x="760" y="40" fill="var(--ink)" font-size="14" font-weight="600">النهضة</text>
+        <text direction="rtl" x="760" y="60" fill="var(--muted)" font-size="11">يبحث عن الماء بنفسه</text>
+        <text direction="rtl" x="760" y="76" fill="var(--muted)" font-size="11">بدل الكنيسة، بلا أدوات</text>
+        <circle cx="760" cy="125" r="14" fill="var(--paper)" stroke="var(--muted)" stroke-width="2"/>
+        <text direction="rtl" x="760" y="130" fill="var(--muted)" font-size="13">؟</text>
+        <!-- 2 17th -->
+        <text direction="rtl" x="600" y="40" fill="var(--ink)" font-size="14" font-weight="600">القرن ١٧</text>
+        <text direction="rtl" x="600" y="60" fill="var(--muted)" font-size="11">أخذ الأدوات: نظريات</text>
+        <text direction="rtl" x="600" y="76" fill="var(--muted)" font-size="11">ديكارت ولوك، وبدأ يحفر</text>
+        <line x1="600" y1="100" x2="600" y2="190" stroke="var(--ink)" stroke-width="3"/>
+        <path d="M588 190 L600 210 L612 190 Z" fill="var(--ink)"/>
+        <!-- 3 18th -->
+        <text direction="rtl" x="440" y="40" fill="var(--ink)" font-size="14" font-weight="600">القرن ١٨</text>
+        <text direction="rtl" x="440" y="60" fill="var(--muted)" font-size="11">استخرج الماء</text>
+        <path d="M440 250 L440 150" stroke="var(--accent)" stroke-width="10"/>
+        <path d="M410 140 Q 440 80, 470 140 Z" fill="var(--accent)"/>
+        <!-- 4 19th grooves -->
+        <text direction="rtl" x="270" y="40" fill="var(--ink)" font-size="14" font-weight="600">القرن ١٩</text>
+        <text direction="rtl" x="270" y="60" fill="var(--muted)" font-size="11">حفر الأخاديد: لكل تيار ومذهب</text>
+        <text direction="rtl" x="270" y="76" fill="var(--muted)" font-size="11">وعلم أخدوده (عصر الأيديولوجيات)</text>
+        <g stroke="var(--accent)" stroke-width="5" fill="none">
+          <path d="M350 160 C 320 175, 240 160, 190 200"/>
+          <path d="M350 160 C 320 190, 260 200, 210 235"/>
+          <path d="M350 160 C 330 165, 300 150, 250 170"/>
+        </g>
+        <!-- 5 20th -->
+        <text direction="rtl" x="90" y="40" fill="var(--ink)" font-size="14" font-weight="600">نهاية ١٩ والقرن ٢٠</text>
+        <text direction="rtl" x="90" y="60" fill="var(--muted)" font-size="11">السرقة والانسداد</text>
+        <text direction="rtl" x="90" y="76" fill="var(--muted)" font-size="11">والأزمة الكبرى</text>
+        <rect x="60" y="180" width="60" height="44" rx="4" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <line x1="66" y1="186" x2="114" y2="218" stroke="var(--red)" stroke-width="3"/><line x1="114" y1="186" x2="66" y2="218" stroke="var(--red)" stroke-width="3"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الثاني: الثورة الفرنسية</h2>
+  <p>ليس السياق سياق الإسهاب في حدث واحد؛ فتفاصيل الثورة الفرنسية مشهورة ومراجعها كثيرة. المقصود إشارات سريعة إلى أسبابها ومعناها وتداعياتها.</p>
+  <blockquote>يصفها تودوروف في «روح الأنوار» بأنها: المنعطف الكبير الذي يُعتبر مسؤولًا أكثر من أي منعطف آخر عن تشكّل هويتنا التي نحن فيها الآن.<cite>تعليق المحاضر: مفاهيمها التفصيلية ليست هي التي شكّلت هوية الإنسان المعاصر مباشرة، لكنها بضخامتها وآثارها وقطع الصلة بما هو قديم من أكبر المنعطفات التي شكّلت هوية ما بعدها.</cite></blockquote>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">ماذا فعلت الثورة الفرنسية بالعلاقة بالدين؟</h3>
+    <svg viewBox="0 0 860 200" width="100%" style="min-width:680px;display:block" role="img" aria-label="النهضة والقرن السابع عشر والتنوير أبعدت الإنسان عن الدين، والثورة الفرنسية قطعت ما بقي">
+      <g text-anchor="middle">
+        <rect x="660" y="40" width="180" height="70" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="750" y="70" fill="var(--ink)" font-size="14" font-weight="600">عصر النهضة</text>
+        <text direction="rtl" x="750" y="92" fill="var(--muted)" font-size="12">إبعاد</text>
+        <rect x="465" y="40" width="180" height="70" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="555" y="70" fill="var(--ink)" font-size="14" font-weight="600">القرن ١٧</text>
+        <text direction="rtl" x="555" y="92" fill="var(--muted)" font-size="12">إبعاد</text>
+        <rect x="270" y="40" width="180" height="70" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="360" y="70" fill="var(--ink)" font-size="14" font-weight="600">عصر التنوير</text>
+        <text direction="rtl" x="360" y="92" fill="var(--muted)" font-size="12">إبعاد</text>
+        <rect x="30" y="30" width="220" height="90" rx="10" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <text direction="rtl" x="140" y="64" fill="var(--ink)" font-size="15" font-weight="600">الثورة الفرنسية</text>
+        <text direction="rtl" x="140" y="88" fill="var(--ink)" font-size="12">قطعت كل ما بقي من العلائق</text>
+        <text direction="rtl" x="140" y="106" fill="var(--muted)" font-size="11">سيطرة الكنيسة وحضور الدين اجتماعيًا</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2"><line x1="660" y1="75" x2="645" y2="75"/><line x1="465" y1="75" x2="450" y2="75"/></g>
+      <path d="M270 75 L 254 75" stroke="var(--red)" stroke-width="3"/>
+      <text direction="rtl" x="430" y="160" text-anchor="middle" fill="var(--ink)" font-size="13">ليس معنى ذلك أنه لم يبق دين بعدها؛ بل نتكلم عن السياق العام من سيطرة الكنيسة</text>
+      <text direction="rtl" x="430" y="182" text-anchor="middle" fill="var(--muted)" font-size="12">ومن أسباب اندلاعها أصلًا: السيطرة الدينية المرتبطة بالسيطرة السياسية</text>
+    </svg>
+  </div>
+
+  <div class="note"><strong>جملة سترومبرج التي تستحق التأمل:</strong> ليس هناك من ينكر أن الثورة الفرنسية كانت خلف الباب الذي دخلت منه الحقبة الحديثة من التاريخ، وأنها عكست النظريات الكبرى لفلاسفة القرن الثامن عشر وصوّرت عواطفهم وانفعالاتهم، <b>وأنها في الوقت ذاته وضعت الخاتمة لحقبتهم</b>. أي: لم تضع الخاتمة للسياق الديني القديم فقط، بل لحقبة فلاسفة التنوير أنفسهم. ولذلك يختلف القرن ١٩ عن القرن ١٨ مع أن القرن ١٨ كان عصرًا متفائلًا دنيويًا إنسانيًا ماديًا.</div>
+
+  <h3>أسباب الثورة الفرنسية</h3>
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 330" width="100%" style="min-width:680px;display:block" role="img" aria-label="ستة أسباب للثورة الفرنسية: محفزات قديمة ومحل صار قابلًا">
+      <defs><marker id="c2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--red)"/></marker></defs>
+      <text direction="rtl" x="640" y="24" text-anchor="middle" fill="var(--red)" font-size="14" font-weight="600">محفزات (كان أغلبها موجودًا سابقًا)</text>
+      <g text-anchor="middle" font-size="13">
+        <rect x="660" y="40" width="180" height="40" rx="20" fill="var(--red-soft)" stroke="var(--red)"/><text direction="rtl" x="750" y="65" fill="var(--ink)">١. الأزمة الاقتصادية</text>
+        <rect x="460" y="40" width="180" height="40" rx="20" fill="var(--red-soft)" stroke="var(--red)"/><text direction="rtl" x="550" y="65" fill="var(--ink)">٣. رجال الدين</text>
+        <rect x="660" y="92" width="180" height="40" rx="20" fill="var(--red-soft)" stroke="var(--red)"/><text direction="rtl" x="750" y="117" fill="var(--ink)">٤. الثورة الأمريكية</text>
+        <rect x="460" y="92" width="180" height="40" rx="20" fill="var(--red-soft)" stroke="var(--red)"/><text direction="rtl" x="550" y="117" fill="var(--ink)">٥. الأزمات السياسية</text>
+        <rect x="560" y="144" width="180" height="40" rx="20" fill="var(--red-soft)" stroke="var(--red)"/><text direction="rtl" x="650" y="169" fill="var(--ink)">٦. الطبقية</text>
+      </g>
+      <text direction="rtl" x="200" y="24" text-anchor="middle" fill="var(--accent)" font-size="14" font-weight="600">المحل القابل (الجديد)</text>
+      <rect x="60" y="40" width="280" height="144" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <g text-anchor="middle">
+        <text direction="rtl" x="200" y="74" fill="var(--ink)" font-size="15" font-weight="600">٢. كتابات فلاسفة التنوير</text>
+        <text direction="rtl" x="200" y="100" fill="var(--ink)" font-size="12">تهيئة فكرية امتدت قرنًا كاملًا</text>
+        <text direction="rtl" x="200" y="120" fill="var(--muted)" font-size="12">الدين الربوبي في فرنسا</text>
+        <text direction="rtl" x="200" y="140" fill="var(--muted)" font-size="12">مركزية الإنسان</text>
+        <text direction="rtl" x="200" y="160" fill="var(--muted)" font-size="12">هدم «المعوقات»</text>
+      </g>
+      <path d="M455 112 C 400 112, 380 112, 344 112" stroke="var(--red)" stroke-width="3" marker-end="url(#c2)" fill="none"/>
+      <rect x="230" y="230" width="400" height="70" rx="35" fill="var(--ink)"/>
+      <text direction="rtl" x="430" y="260" text-anchor="middle" fill="var(--bg)" font-size="16" font-weight="600">اندلاع الثورة ١٧٨٩</text>
+      <text direction="rtl" x="430" y="282" text-anchor="middle" fill="var(--bg)" font-size="12">محفز قوي + محل صار قابلًا</text>
+      <path d="M200 186 C 200 215, 230 240, 240 250" stroke="var(--muted)" stroke-width="2" fill="none"/>
+      <path d="M650 186 C 650 215, 630 240, 620 250" stroke="var(--muted)" stroke-width="2" fill="none"/>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">؟</div><div><strong>فكرة «المحل القابل»</strong><span>الطبقية والأسباب السياسية والحروب والأزمات الاقتصادية والملكية المطلقة كانت كلها موجودة سابقًا، فما الذي جعلها الآن قادرة على إحداث ثورة كهذه؟ أهم شيء: <b>التهيئة الفكرية التي حصلت خلال قرن كامل</b>، ولم تكن موجودة من قبل؛ وهي نفسها نتيجة تمهيد فكري سابق (انتشار الدين الطبيعي في فرنسا، ومركزية الإنسان).</span><em>المحفزات تحتاج إلى محل قابل حتى تتحرك. هذا المحل كان معطّلًا سابقًا، غير قابل لأن يتحرك بهذا النمط وهذه القوة، فجعله العامل الفكري في عصر التنوير قابلًا لأن يندلع ويشتعل.</em></div></div>
+    <div class="card"><div class="n">⚖</div><div><strong>هل للفلاسفة دور في الثورة؟</strong><span>بعضهم يقول لا: لأنهم لم يدعوا إلى ثورة، وكانت لهم علاقات جيدة ببعض الملوك، وثقافتهم أرستقراطية، ولم يكن يؤمن بالديمقراطية منهم إلا روسو؛ وكان بعضهم يقول عن الجمهور: «حرام أن نراهن على وضع مصيرنا لرأي ناس غوغاء... أوباش».</span><em>جواب المحاضر: نعم كانوا سببًا لتهيئة الإنسان؛ نقدوا الملكية، لكن نقدهم لم يكن كافيًا لإحداث ثورة مباشرة، ولذلك لم تحدث إلا بعد الأزمة الاقتصادية القوية في ثمانينيات القرن. وطرح ول ديورانت السؤال نفسه في «قصة الحضارة» وأجاب بالمعنى: الفلاسفة وفّروا الإعداد الأيديولوجي للثورة، وكانت أسبابها اقتصادية وسياسية، وعباراتها فلسفية (الإخاء، الحرية، المساواة، الإنسان يولد حرًا). وتيسّر للأسباب الأساسية أن تفعل فعلها بفضل عمل الهدم الذي قام به الفلاسفة لإزالة العقبات: الإيمان بالامتيازات الإقطاعية، والسلطة الكنسية، وحق الملوك الإلهي.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">ما الذي هدمه الفلاسفة قبل الثورة؟ (ديورانت)</h3>
+    <svg viewBox="0 0 860 230" width="100%" style="min-width:680px;display:block" role="img" aria-label="ثلاث عقبات هدمها الفلاسفة فلما جاء المحفز كان الطريق مفتوحًا">
+      <defs><marker id="c3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="690" y="70" width="150" height="70" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="765" y="100" fill="var(--ink)" font-size="14" font-weight="600">المحفز</text>
+        <text direction="rtl" x="765" y="122" fill="var(--muted)" font-size="12">اقتصادي وسياسي</text>
+      </g>
+      <g font-size="13" text-anchor="middle">
+        <rect x="470" y="20" width="44" height="170" rx="6" fill="var(--paper)" stroke="var(--line)" stroke-dasharray="5 4"/>
+        <text direction="rtl" x="492" y="210" fill="var(--muted)" font-size="11">الامتيازات</text>
+        <text direction="rtl" x="492" y="224" fill="var(--muted)" font-size="11">الإقطاعية</text>
+        <rect x="370" y="20" width="44" height="170" rx="6" fill="var(--paper)" stroke="var(--line)" stroke-dasharray="5 4"/>
+        <text direction="rtl" x="392" y="210" fill="var(--muted)" font-size="11">السلطة</text>
+        <text direction="rtl" x="392" y="224" fill="var(--muted)" font-size="11">الكنسية</text>
+        <rect x="270" y="20" width="44" height="170" rx="6" fill="var(--paper)" stroke="var(--line)" stroke-dasharray="5 4"/>
+        <text direction="rtl" x="292" y="210" fill="var(--muted)" font-size="11">حق الملوك</text>
+        <text direction="rtl" x="292" y="224" fill="var(--muted)" font-size="11">الإلهي</text>
+      </g>
+      <path d="M686 105 L 190 105" stroke="var(--gold)" stroke-width="4" marker-end="url(#c3)"/>
+      <rect x="20" y="70" width="166" height="70" rx="10" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+      <text direction="rtl" x="103" y="100" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الثورة</text>
+      <text direction="rtl" x="103" y="122" text-anchor="middle" fill="var(--muted)" font-size="12">الإنسان جاهز</text>
+      <text direction="rtl" x="580" y="50" text-anchor="middle" fill="var(--muted)" font-size="12">عقبات أُزيلت بالهدم الفكري</text>
+    </svg>
+    <p class="muted">وكتب شامفور والثورة تدور رحاها بالمعنى: الكهانة كانت أول معقل للسلطة المطلقة، وقد أطاح به فولتير، ثم انتقلت الشكوكية التي مزّقت اللاهوت القديم شيئًا فشيئًا إلى نقد المؤسسات والشؤون.</p>
+  </div>
+
+  <div class="warn"><strong>ديورانت عن مسؤولية الفلاسفة:</strong> لا سبيل إلى الشك في أن الفلاسفة أثّروا تأثيرًا عميقًا في أيديولوجية الثورة ودرامتها السياسية. إنهم لم يقصدوا إلى العنف أو التقتيل، ولو شهدوا تلك المناظر الدموية لاقشعروا رعبًا، ولربما قالوا بحق إنه قد أُسيء فهمهم على نحو قاس، <b>لكنهم كانوا مسؤولين بقدر ما استخفّوا بأثر الدين والتقاليد في ضبط الغرائز الحيوانية للبشر</b>.<br><br>ومن هنا السؤال الكبير: ما الذي سيضبط السلوك البشري بعد أن أزحنا الدين؟ ولذلك عبارة فولتير: «لو لم يكن الله موجودًا لوجب اختراعه» يقصد بها الأثر الأخلاقي. وقال ديدرو: «ليس عندي من الجرأة أن أضع نظامًا أخلاقيًا بديلًا عن الدين». وحتى القوانين التي نتجت عن الثورة لم تضبط الإنسان، لأنها مفاهيم موغلة في العمومية، يطبقها كل أحد بفهمه وسياقه.</div>
+
+  <h3>نقاط عامة في أحداث الثورة</h3>
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 300" width="100%" style="min-width:680px;display:block" role="img" aria-label="خط زمني لأحداث الثورة الفرنسية من ١٧٨٧ إلى ١٧٩٣">
+      <!-- x(year)= 800 - (y-1787)*120 -->
+      <line x1="60" y1="120" x2="820" y2="120" stroke="var(--muted)" stroke-width="2"/>
+      <g fill="var(--muted)" font-size="12" text-anchor="middle">
+        <text direction="rtl" x="800" y="290">١٧٨٧</text><text direction="rtl" x="680" y="290">١٧٨٨</text><text direction="rtl" x="560" y="290">١٧٨٩</text><text direction="rtl" x="440" y="290">١٧٩٠</text><text direction="rtl" x="320" y="290">١٧٩١</text><text direction="rtl" x="200" y="290">١٧٩٢</text><text direction="rtl" x="80" y="290">١٧٩٣</text>
+      </g>
+      <g stroke="var(--line)"><line x1="800" y1="128" x2="800" y2="272"/><line x1="680" y1="128" x2="680" y2="272"/><line x1="560" y1="128" x2="560" y2="272"/><line x1="440" y1="128" x2="440" y2="272"/><line x1="320" y1="128" x2="320" y2="272"/><line x1="200" y1="128" x2="200" y2="272"/><line x1="80" y1="128" x2="80" y2="272"/></g>
+      <rect x="560" y="104" width="240" height="32" rx="6" fill="var(--gold-soft)" stroke="var(--gold)"/>
+      <text direction="rtl" x="680" y="125" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600">اشتداد الأزمة الاقتصادية (آخر سنتين تقريبًا)</text>
+      <g text-anchor="middle">
+        <circle cx="560" cy="120" r="9" fill="var(--red)"/>
+        <text direction="rtl" x="560" y="40" fill="var(--ink)" font-size="13" font-weight="600">اندلاع الثورة</text>
+        <text direction="rtl" x="560" y="60" fill="var(--muted)" font-size="12">إسقاط سجن الباستيل</text>
+        <text direction="rtl" x="560" y="78" fill="var(--muted)" font-size="11">رمز الظلم ومستودع سلاح وبارود</text>
+        <line x1="560" y1="84" x2="560" y2="110" stroke="var(--red)"/>
+        <circle cx="200" cy="120" r="9" fill="var(--red)"/>
+        <text direction="rtl" x="200" y="40" fill="var(--ink)" font-size="13" font-weight="600">إعلان الجمهورية</text>
+        <text direction="rtl" x="200" y="60" fill="var(--muted)" font-size="12">وإلغاء الملكية وسجن الملك</text>
+        <text direction="rtl" x="200" y="78" fill="var(--muted)" font-size="11">بعد الثورة بثلاث سنوات</text>
+        <line x1="200" y1="84" x2="200" y2="110" stroke="var(--red)"/>
+        <circle cx="80" cy="120" r="9" fill="var(--ink)"/>
+        <text direction="rtl" x="96" y="168" fill="var(--ink)" font-size="13" font-weight="600">إعدام لويس ١٦</text>
+        <text direction="rtl" x="96" y="188" fill="var(--muted)" font-size="12">٢١ يناير</text>
+      </g>
+      <rect x="250" y="210" width="440" height="56" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+      <text direction="rtl" x="470" y="234" text-anchor="middle" fill="var(--ink)" font-size="12">قبلها: اجتماعات على مستوى الأمة لم تُعقد منذ قرنين، ثم عدم رضا بنتائجها</text>
+      <text direction="rtl" x="470" y="254" text-anchor="middle" fill="var(--muted)" font-size="12">بعدها: هيئات تشريعية منتخبة، حكومات متعاقبة ينقلب بعضها على بعض</text>
+    </svg>
+    <p class="muted">في التفريغ وقعت سنتا إعلان الجمهورية وإعدام الملك خطأً «١٨٩٢ و١٨٩٣»، والصحيح ١٧٩٢ و١٧٩٣؛ وهو ما يدل عليه قول المحاضر نفسه «بعد بداية الثورة بثلاث سنوات».</p>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>الجانب الدموي</strong><span>أُعدم ملك فرنسا وزوجته، وأُعدم الآلاف من مناصري الملك بالمقصلة، بل كانوا يدخلون السجون ويقتلون بعض أنصار النظام السابق من رجال الدين وغيرهم. وحصلت فوضى كبيرة، وأُعدم أناس من روّاد الثورة أنفسهم، لأن الحكومات التي استلمت فرنسا بعد الثورة كانت عدة حكومات، ينقلب هذا على هذا. وفرّ مع بداية الثورة أنصار الملكية إلى دول خارج فرنسا، وبدؤوا يفكرون في ثورة مضادة.</span></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">شعارات الثورة وأبرز نتيجتين لها</h3>
+    <svg viewBox="0 0 860 230" width="100%" style="min-width:680px;display:block" role="img" aria-label="شعارات الثورة الفرنسية ونتائجها: القومية وانتقال مركز القوة من الكنيسة إلى الدولة">
+      <defs><marker id="c4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker></defs>
+      <g text-anchor="middle" font-size="13">
+        <rect x="620" y="20" width="220" height="40" rx="20" fill="var(--accent-soft)" stroke="var(--accent)"/><text direction="rtl" x="730" y="45" fill="var(--ink)">سيادة الشعب</text>
+        <rect x="620" y="72" width="220" height="40" rx="20" fill="var(--accent-soft)" stroke="var(--accent)"/><text direction="rtl" x="730" y="97" fill="var(--ink)">حق الشعب في تقرير مصيره</text>
+        <rect x="620" y="124" width="220" height="40" rx="20" fill="var(--accent-soft)" stroke="var(--accent)"/><text direction="rtl" x="730" y="149" fill="var(--ink)">الإخاء، الحرية، المساواة</text>
+        <text direction="rtl" x="730" y="190" fill="var(--muted)" font-size="12">الشعارات</text>
+      </g>
+      <g text-anchor="middle">
+        <rect x="320" y="20" width="240" height="64" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="440" y="48" fill="var(--ink)" font-size="14" font-weight="600">تضخّم فكرة القومية</text>
+        <text direction="rtl" x="440" y="70" fill="var(--muted)" font-size="12">من أكبر آثارها في السياق الغربي</text>
+        <rect x="320" y="104" width="240" height="64" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="440" y="132" fill="var(--ink)" font-size="14" font-weight="600">مركز القوة: الكنيسة ← الدولة</text>
+        <text direction="rtl" x="440" y="154" fill="var(--muted)" font-size="12">إبراهيم الشاهين</text>
+        <rect x="20" y="104" width="250" height="64" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="145" y="132" fill="var(--ink)" font-size="14" font-weight="600">تضخّمت مركزية الدولة</text>
+        <text direction="rtl" x="145" y="154" fill="var(--muted)" font-size="12">وصارت «المعبود» بدل السابق</text>
+      </g>
+      <path d="M616 92 L 564 92" stroke="var(--accent)" stroke-width="3" marker-end="url(#c4)"/>
+      <path d="M318 136 L 274 136" stroke="var(--red)" stroke-width="3" marker-end="url(#c4)"/>
+      <text direction="rtl" x="440" y="212" text-anchor="middle" fill="var(--muted)" font-size="12">مثال على أثر القومية: ثورات الشعوب الأوروبية عام ١٨٤٨ (كتاب د. إبراهيم الشاهين)، وهي لا تقل أهمية عن الفرنسية وإن كانت أقل شهرة</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الثالث: تداعيات الثورة الفرنسية وآثارها</h2>
+  <p>آثار الثورة الفرنسية كثيرة جدًا ومتشعبة، و<b>آثارها غير المباشرة ربما أكبر وأضخم من آثارها المباشرة</b>. والمحاضر مرّ عليها مرورًا سريعًا. ومن آثار عصر التنوير، مع الثورة الفرنسية، الثورة الثانية: الرومانتيكية؛ وروسو يُعتبر من أسبابها من ناحية التحفيز، لكنه ليس المؤسس الفعلي لها.</p>
+  <div class="note"><strong>أهم ما يُخرج به من الثورة الفرنسية:</strong> المحفزات (السياسية والاقتصادية) كانت تقع في الماضي على محل غير قابل، ثم صارت توافق محلًّا قابلًا، فأحدثت هذا الأثر.</div>
+</section>
+
+<section>
+  <h2>العنصر الرابع: الثورة الرومانتيكية (الرومانسية)</h2>
+  <h3>مشكلة التعريف</h3>
+  <p>هناك اتفاق على أن شيئًا ما تغيّر، وأن هذا التغير صار سمة منتشرة متمثلة في مظاهر كثيرة؛ لكن ما الرابط بينها بالضبط حتى تُعتبر حركة متميزة يمكن تعريفها؟ صار هذا إشكالًا، ولذلك قيل:</p>
+  <ul class="clean">
+    <li>تعريف الرومانسية أمر مربك ومحيّر.</li>
+    <li>هذا العجز عن تعريف المذهب الرومانسي هو بمثابة فضيحة القرن.</li>
+    <li>الرومانسية مصطلح مزاج وأسلوب أكثر من أن تكون مصطلحًا لنظرية أو عقيدة أو مذهب، ومن العسير تعريف الأمزجة والأساليب.</li>
+  </ul>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>ضدّ ماذا جاءت الرومانسية؟ أسلوب عصر التنوير</strong><span>لا يقصد المحاضر الأدب فقط، بل الأسلوب: عصر التنوير تميّز بنمط من التفكير العقلي الذي يتمثل في العلوم الطبيعية والاجتماعية، نمط جدّي ميكانيكي آلي. كان عقل الإنسان فيه مستحضرًا بصورة غريبة الكون الذي وصفه نيوتن: معروف منظّم، كل كوكب يسير في مكانه دون أن يصطدم بغيره، بقوانين واضحة محددة مفسّرة.</span><em>مثال: بعض مؤرخي الاقتصاد في القرن ١٨ يذكرون أن القوانين المطلوبة لتنظيم علم الاقتصاد يُراد لها أن تكون كقوانين نيوتن في حركة الكون: أنظمة واضحة وحركات مغلقة. ولذلك نُقدت كثير من نظريات القرن ١٨ بأنها تبسيطية؛ كل شيء واضح، وبقي مترين ونصل لكل شيء. وفي هذا الجو كانوا يحتقرون الخيال والشعر والعاطفة والفضاءات الإنسانية غير المحددة بمعيار يُقاس، فصاروا نفعيين لا جماليين: ما المنفعة التي تتحقق منه بقوالب واضحة (١+١=٢)؟ أما المشاعر والعواطف...</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">عصر التنوير × العصر الرومانسي</h3>
+    <svg viewBox="0 0 860 380" width="100%" style="min-width:680px;display:block" role="img" aria-label="مقارنة بين أسلوب عصر التنوير وأسلوب العصر الرومانسي">
+      <rect x="440" y="16" width="400" height="44" rx="8" fill="var(--accent)"/>
+      <text direction="rtl" x="640" y="44" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">عصر التنوير</text>
+      <rect x="20" y="16" width="400" height="44" rx="8" fill="var(--gold)"/>
+      <text direction="rtl" x="220" y="44" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">العصر الرومانسي</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="440" y="72" width="400" height="40" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="97" fill="var(--ink)">عقل ميكانيكي آلي، الكون آلة نيوتن</text>
+        <rect x="20" y="72" width="400" height="40" rx="6" fill="var(--gold-soft)"/><text direction="rtl" x="220" y="97" fill="var(--ink)">الخيال والعاطفة والروح وسرّ الوجود</text>
+        <rect x="440" y="120" width="400" height="40" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="145" fill="var(--ink)">عصر النثر</text>
+        <rect x="20" y="120" width="400" height="40" rx="6" fill="var(--gold-soft)"/><text direction="rtl" x="220" y="145" fill="var(--ink)">عصر الشعر؛ الشاعر أعظم فنان</text>
+        <rect x="440" y="168" width="400" height="40" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="193" fill="var(--ink)">المعيار النفعي: دودة الأرض مفيدة (داروين)</text>
+        <rect x="20" y="168" width="400" height="40" rx="6" fill="var(--gold-soft)"/><text direction="rtl" x="220" y="193" fill="var(--ink)">المعيار الجمالي: النمر جميل (بليك)</text>
+        <rect x="440" y="216" width="400" height="40" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="241" fill="var(--ink)">يؤثر كل واضح مفهوم كلاسيكي محدد</text>
+        <rect x="20" y="216" width="400" height="40" rx="6" fill="var(--gold-soft)"/><text direction="rtl" x="220" y="241" fill="var(--ink)">يؤثر كل غريب: الأشباح، القصور المتداعية...</text>
+        <rect x="440" y="264" width="400" height="40" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="289" fill="var(--ink)">لوك في الكاتدرائية: يقيس أحجامها</text>
+        <rect x="20" y="264" width="400" height="40" rx="6" fill="var(--gold-soft)"/><text direction="rtl" x="220" y="289" fill="var(--ink)">يبحث عن المعنى والجمال والتاريخ</text>
+      </g>
+      <line x1="430" y1="70" x2="430" y2="306" stroke="var(--line)" stroke-width="2" stroke-dasharray="5 4"/>
+      <text direction="rtl" x="430" y="336" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">نقطة الضعف الرئيسية في التنوير (سترومبرج):</text>
+      <text direction="rtl" x="430" y="360" text-anchor="middle" fill="var(--muted)" font-size="12">إهمال الخيال، والاستقطاب للعالم الخارجي، والافتقار لكل باطن عميق الجمال، وإغفال العواطف الدينية، وتجاهل سرّ الوجود</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">٢</div><div><strong>أيّ الأسلوبين أبعد عن الدين؟</strong><span>سأل المحاضر الطلاب، والجواب: الأول. ليست القضية أنه عقلي، فالدين نفسه عقلي؛ القضية أنه ميكانيكي آلي، مُبعِد للروح والعاطفة والجمال، يسير آليًا لتحقيق المنفعة. أما المسار الذي يحتوي على العاطفة والروح فهو أقرب للدين، وإن اختلف عنه في المقاصد والغايات.</span><em>لذلك: إذا كان الدين قد وُجّهت له ضربات في عصر التنوير، خُتمت بالضربة الأكبر في الثورة الفرنسية كخاتمة وحصاد للتنوير، فإن المذهب الرومانسي أعاد شيئًا من الاعتبار له، أو نشأت في ظرفه وفضائه بعض التيارات الدينية، فاستمرت الحركة الدينية إلى الأمام قليلًا.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">أين ذهب الدين بعد ضرب العقل؟</h3>
+    <svg viewBox="0 0 860 240" width="100%" style="min-width:680px;display:block" role="img" aria-label="بعد أن ضرب هيوم وكانط العقل سقط الدين الربوبي وبقي الفضاء العاطفي الرومانسي">
+      <defs><marker id="c5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="640" y="70" width="200" height="80" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="740" y="100" fill="var(--ink)" font-size="14" font-weight="600">هيوم ثم كانط</text>
+        <text direction="rtl" x="740" y="122" fill="var(--muted)" font-size="12">ضربة قوية لاستعمال العقل</text>
+        <text direction="rtl" x="740" y="138" fill="var(--muted)" font-size="12">في الدين (أواخر ق١٨)</text>
+        <rect x="350" y="20" width="250" height="80" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="475" y="50" fill="var(--ink)" font-size="14" font-weight="600">الفضاء العقلي</text>
+        <text direction="rtl" x="475" y="72" fill="var(--muted)" font-size="12">الدين الربوبي سقط</text>
+        <text direction="rtl" x="475" y="88" fill="var(--muted)" font-size="12">لأنه يستدل بالعقل على الله</text>
+        <rect x="350" y="130" width="250" height="80" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="475" y="160" fill="var(--ink)" font-size="14" font-weight="600">الفضاء العاطفي الشعوري</text>
+        <text direction="rtl" x="475" y="182" fill="var(--muted)" font-size="12">الحدسي، يمكن أن يحتضن الدين</text>
+        <text direction="rtl" x="475" y="198" fill="var(--muted)" font-size="12">روسو، المذهب الرومانسي</text>
+        <rect x="30" y="130" width="250" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="155" y="160" fill="var(--ink)" font-size="14" font-weight="600">استمرار تيارات دينية</text>
+        <text direction="rtl" x="155" y="182" fill="var(--muted)" font-size="12">نشأت في فضاء بعيد</text>
+        <text direction="rtl" x="155" y="198" fill="var(--muted)" font-size="12">عن فضاء التنوير</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" fill="none" marker-end="url(#c5)">
+        <path d="M638 100 C 620 80, 615 65, 604 62"/>
+        <path d="M638 125 C 620 150, 615 165, 604 168"/>
+        <line x1="348" y1="170" x2="284" y2="170"/>
+      </g>
+      <g stroke="var(--red)" stroke-width="3"><line x1="575" y1="30" x2="595" y2="50"/><line x1="595" y1="30" x2="575" y2="50"/></g>
+      <text direction="rtl" x="155" y="60" text-anchor="middle" fill="var(--muted)" font-size="12">ليس الأمر كذلك في حقيقته، فلهذا ردود؛</text>
+      <text direction="rtl" x="155" y="78" text-anchor="middle" fill="var(--muted)" font-size="12">لكنه ما حصل فعلًا في السياق الغربي</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">٣</div><div><strong>ردة فعل مضادة لعصر التنوير</strong><span>كان المذهب الرومانسي بادئ ذي بدء ردة فعل مضادة لعصر التنوير بكل مكوّناته: العقلانية، والمادية، والميكانيكية، والكلاسيكية. وكان يتمثل في أشياء كثيرة، أولها إعادة مكانة الشعر.</span><em>برتراند راسل: كانت الحركة الرومانسية تتميز ككل بالاستعاضة بالمعايير الجمالية عن المعايير النفعية؛ فدودة الأرض مفيدة لكنها ليست جميلة، والنمر جميل لكنه غير مفيد، وقد أطرى داروين دودة الأرض وأطرى بليك النمر. وأضاف أن ذوقهم تغيّر أيضًا: ما أعجب أسلاف روسو في الريف منظر الخصب والمراعي الغنية والحركة الهادئة، أما هم فيؤثرون الغريب؛ ويرى راسل أن مزاج الرومانسيين يُدرس أفضل دراسة في الإنتاج الروائي.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">عمر الرومانسية</h3>
+    <svg viewBox="0 0 860 200" width="100%" style="min-width:680px;display:block" role="img" aria-label="أطول عمر للرومانسية من ١٧٦٠ إلى ١٨٤٠">
+      <!-- x(y)=800-(y-1750)*7 -->
+      <line x1="80" y1="100" x2="800" y2="100" stroke="var(--muted)" stroke-width="2"/>
+      <g fill="var(--muted)" font-size="12" text-anchor="middle">
+        <text direction="rtl" x="800" y="186">١٧٥٠</text><text direction="rtl" x="660" y="186">١٧٧٠</text><text direction="rtl" x="520" y="186">١٧٩٠</text><text direction="rtl" x="380" y="186">١٨١٠</text><text direction="rtl" x="240" y="186">١٨٣٠</text><text direction="rtl" x="100" y="186">١٨٥٠</text>
+      </g>
+      <g stroke="var(--line)"><line x1="800" y1="108" x2="800" y2="170"/><line x1="660" y1="108" x2="660" y2="170"/><line x1="520" y1="108" x2="520" y2="170"/><line x1="380" y1="108" x2="380" y2="170"/><line x1="240" y1="108" x2="240" y2="170"/><line x1="100" y1="108" x2="100" y2="170"/></g>
+      <rect x="170" y="80" width="560" height="40" rx="20" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+      <text direction="rtl" x="450" y="106" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الرومانسية كسمة مميزة للعصر</text>
+      <g text-anchor="middle">
+        <text direction="rtl" x="730" y="50" fill="var(--ink)" font-size="13" font-weight="600">١٧٦٠</text>
+        <text direction="rtl" x="730" y="68" fill="var(--muted)" font-size="11">دخول روسو والبدايات</text>
+        <line x1="730" y1="72" x2="730" y2="80" stroke="var(--gold)" stroke-width="2"/>
+        <line x1="527" y1="122" x2="527" y2="134" stroke="var(--red)" stroke-width="3"/>
+        <text direction="rtl" x="527" y="150" fill="var(--red)" font-size="11">الثورة ١٧٨٩</text>
+        <text direction="rtl" x="170" y="50" fill="var(--ink)" font-size="13" font-weight="600">١٨٤٠</text>
+        <text direction="rtl" x="170" y="68" fill="var(--muted)" font-size="11">بعد الثورة بنحو نصف قرن</text>
+        <line x1="170" y1="72" x2="170" y2="80" stroke="var(--gold)" stroke-width="2"/>
+      </g>
+    </svg>
+    <p class="muted">سترومبرج: «أطول عمر زمني يمكن افتراضه للرومانسية ما بين ١٧٦٠ و١٨٤٠»، وهذا مبالغة في الافتراض الزمني لها. فالرومانسية انتهت كسمة مميزة للعصر، لكن آثارها بقيت. (في التفريغ وقعت «١٩٦٠» والمقصود ١٧٦٠.)</p>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">٤</div><div><strong>نحن اليوم نعيش شيئًا مما عاشه العصر الرومانسي</strong><span>يرى المحاضر أننا نعيش المبالغة في تقديس المشاعر، خاصة مع شبكات التواصل: قياس ردّات الفعل، وتعظيم مبدأ المشاعر والعواطف حتى يصير أحيانًا هو المعيار. حين تتكلم في قضية دينية يقولون: نعم حرام، لكن كيف يصير كذا؟ فتغلب القضية الشعورية. والدين لا ينظر بهذا الاعتبار الجزئي العاطفي من جهتك أنت، لأن المشاعر ليس لها قياس، ولكلٍّ رؤيته وطريقته.</span><em>مثالان من المحاضر: امرأة سألت سؤال اعتراض: لماذا لا يقتل الإسلام المغتصب؟ (على التسليم بكلامها) وهذا من أسباب نفورها؛ وآخرون ينفرون من وجود الإعدام أصلًا؛ فمن ينظر من جهة عاطفته وحدها سيبقى يريد الدين على مقاس شعوره: ﴿وَلَوِ اتَّبَعَ الْحَقُّ أَهْوَاءَهُمْ لَفَسَدَتِ السَّمَاوَاتُ وَالْأَرْضُ وَمَن فِيهِنَّ﴾. وأخرى اعترضت: لماذا أمر الإسلام ببر الوالدين؟ فسألها: إذا كبرتِ وصار عندك أولاد، ألا تحبين أن يكون لديهم باعث يأمرهم بأن يكونوا حولك ويعتنوا بك؟ قالت: لا. والخلاصة: من سمات زمننا اختلاف المعايير بين الناس اختلافًا حادًا جدًا.</em></div></div>
+  </div>
+  <blockquote>منذ الشطر الثاني من القرن الثامن عشر وإلى يومنا هذا تأثر الفن والأدب والفلسفة، بل والسياسة، تأثرًا إيجابيًا أو سلبيًا، بطريقة الشعور التي كانت تميّز بطابعها ما يمكن تسميته، بمعنى واسع، بالحركة الرومانسية.<cite>برتراند راسل، «تاريخ الفلسفة الغربية»</cite></blockquote>
+</section>
+
+<section>
+  <h2>العنصر الخامس: الثورة الكانطية</h2>
+  <p>كانط فيلسوف ألماني عاش في أواخر القرن الثامن عشر وأدرك شيئًا من التاسع عشر. يصفه المحاضر بأنه «مصيبة من المصائب» ومؤثر كبير جدًا، خاصة في باب الإيمان؛ مع أنه لم يكن ملحدًا، لكن فلسفته كانت من أكبر الأسباب التي أدت إلى الإلحاد، أو بالأدق: النقطة في فلسفته المتعلقة بالإيمان.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">لمحات من سيرة كانط</h3>
+    <svg viewBox="0 0 860 250" width="100%" style="min-width:680px;display:block" role="img" aria-label="خط زمني لسيرة كانط">
+      <!-- x(y)=800-(y-1720)*8 -->
+      <line x1="60" y1="110" x2="820" y2="110" stroke="var(--muted)" stroke-width="2"/>
+      <g text-anchor="middle">
+        <circle cx="768" cy="110" r="8" fill="var(--accent)"/>
+        <text direction="rtl" x="768" y="48" fill="var(--ink)" font-size="13" font-weight="600">١٧٢٤</text>
+        <text direction="rtl" x="768" y="66" fill="var(--muted)" font-size="11">وُلد في كونيغسبرغ</text>
+        <text direction="rtl" x="768" y="82" fill="var(--muted)" font-size="11">في بروسيا</text>
+        <text direction="rtl" x="768" y="146" fill="var(--muted)" font-size="11">نشأة متدينة جدًا</text>
+        <text direction="rtl" x="768" y="162" fill="var(--muted)" font-size="11">بتأثير أمه</text>
+        <circle cx="704" cy="110" r="6" fill="var(--muted)"/>
+        <text direction="rtl" x="704" y="196" fill="var(--muted)" font-size="11">في الثانية والعشرين: «رسمت</text>
+        <text direction="rtl" x="704" y="212" fill="var(--muted)" font-size="11">لنفسي الطريق وسأسير عليه»</text>
+        <line x1="704" y1="118" x2="704" y2="184" stroke="var(--line)"/>
+        <circle cx="520" cy="110" r="8" fill="var(--accent)"/>
+        <text direction="rtl" x="520" y="48" fill="var(--ink)" font-size="13" font-weight="600">١٧٥٥</text>
+        <text direction="rtl" x="520" y="66" fill="var(--muted)" font-size="11">بدأ محاضرًا في</text>
+        <text direction="rtl" x="520" y="82" fill="var(--muted)" font-size="11">جامعة مدينته</text>
+        <rect x="400" y="102" width="120" height="16" rx="8" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="460" y="146" fill="var(--muted)" font-size="11">خمس عشرة سنة محاضرًا</text>
+        <circle cx="400" cy="110" r="8" fill="var(--accent)"/>
+        <text direction="rtl" x="380" y="48" fill="var(--ink)" font-size="13" font-weight="600">بعدها</text>
+        <text direction="rtl" x="380" y="66" fill="var(--muted)" font-size="11">عُيّن أستاذًا فيها</text>
+        <circle cx="160" cy="110" r="6" fill="var(--muted)"/>
+        <text direction="rtl" x="160" y="48" fill="var(--ink)" font-size="13" font-weight="600">في السبعين</text>
+        <text direction="rtl" x="160" y="66" fill="var(--muted)" font-size="11">«مقدرة العقل على السيطرة</text>
+        <text direction="rtl" x="160" y="82" fill="var(--muted)" font-size="11">على الشعور بالمرض بقوة العزيمة»</text>
+      </g>
+      <text direction="rtl" x="430" y="240" text-anchor="middle" fill="var(--ink)" font-size="12">لم يخرج من مدينته تقريبًا إلا مرة واحدة، ولم يتزوج قط</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>أثر التدين المبكر (ول ديورانت في «قصة الفلسفة»)</strong><span>انغماسه الشديد في الدين في صباه، تأثرًا بوالدته، أدّى به إلى أمرين: اعتزال الكنيسة في أيام نضجه ورجولته، ثم الشعور عندما تقدّمت به السن بحنين كبير ورغبة شديدة في المحافظة على الأقل على أصول ذلك الإيمان الذي غرسته فيه أمه. يقول المحاضر: هذه النقطة لفتت انتباهي؛ أوغل في فلسفة بعيدة عن الإثبات الإيماني، ثم كان يحنّ إلى ذلك الماضي.</span></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>حياة جادة منظمة، وتردد طويل</strong><span>كان له جدول يومي مرتب، حتى إن جيرانه إذا رأوه يمشي في نزهته اليومية عرفوا أن الساعة الرابعة والنصف. وكان يفكر كثيرًا قبل القرار: فكّر مرتين في الزواج؛ في الأولى أطال التفكير حتى خُطبت المرأة لغيره «أكثر منه شجاعة وجرأة» كما وصفه ديورانت، وفي الثانية أطال حتى انتقلت من مدينته.</span></div></div>
+    <div class="card"><div class="n">٣</div><div><strong>رأيه في التعليم، واعتراض المحاضر عليه</strong><span>رأى أن يوجّه المدرّس عنايته إلى المتوسطين، لا إلى الأغبياء المتأخرين (فلا جدوى من مساعدتهم) ولا إلى العباقرة والنوابغ (فلا يحتاجون مساعدة غيرهم).</span><em>المحاضر يخالفه تمامًا: النوابغ والأذكياء من أكثر الناس حاجة إلى العناية والتوجيه، لأن ذكاءهم أحيانًا يوردهم المهالك. لا يحتاج أن توجهه في كل نقطة، لكن أن ترسم له على الأقل مسارًا عامًا يسير فيه، مع بعض التوجيهات المنهجية.</em></div></div>
+  </div>
+
+  <h3>مدى تأثيره</h3>
+  <ul class="clean">
+    <li><b>راسل:</b> يُعتبر كانط بصفة عامة أعظم الفلاسفة المحدثين، ولا يمكنني أن أنفي أو أوافق على هذا التقدير، لكن من الحماقة إلا أن أقرّ بأهميته العظيمة.</li>
+    <li><b>ول ديورانت:</b> لم يشهد تاريخ الفكر فلسفة بلغت من السيادة والنفوذ في عصر من العصور ما بلغته فلسفة كانط على الأفكار في القرن ١٩، ولا تزال قاعدة لكل فلسفة أخرى حتى يومنا هذا. (والجملة الأخيرة فيها نظر عند المحاضر.)</li>
+    <li><b>قول آخر:</b> بكتاب «نقد العقل المحض» بدأت ثورة فكرية في ألمانيا شبيهة إلى حد مذهل بالثورة المادية في فرنسا.</li>
+    <li><b>تنبيه:</b> الثورة الفرنسية لم تتأثر تأثرًا مباشرًا بكانط، لأن كتبه لم تكن قد بلغت الآفاق في تلك المرحلة.</li>
+  </ul>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">فلسفة كانط: الجمع بين ديكارت ولوك</h3>
+    <svg viewBox="0 0 860 330" width="100%" style="min-width:680px;display:block" role="img" aria-label="كانط يجمع بين المعارف الأولية عند ديكارت والصفحة البيضاء عند لوك">
+      <defs><marker id="c6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="600" y="20" width="240" height="80" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="720" y="50" fill="var(--ink)" font-size="14" font-weight="600">ديكارت (المذهب العقلي)</text>
+        <text direction="rtl" x="720" y="74" fill="var(--muted)" font-size="12">معارف أولية تولد مع الإنسان</text>
+        <rect x="20" y="20" width="240" height="80" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="140" y="50" fill="var(--ink)" font-size="14" font-weight="600">لوك وهيوم (المذهب الحسي)</text>
+        <text direction="rtl" x="140" y="74" fill="var(--muted)" font-size="12">الإنسان يولد صفحة بيضاء</text>
+        <rect x="290" y="130" width="280" height="90" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text direction="rtl" x="430" y="160" fill="var(--ink)" font-size="15" font-weight="600">كانط</text>
+        <text direction="rtl" x="430" y="182" fill="var(--ink)" font-size="12">الحس ليس مستقلًا عن العقل</text>
+        <text direction="rtl" x="430" y="200" fill="var(--ink)" font-size="12">ولا العقل مستقل عن الحس</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" fill="none" marker-end="url(#c6)">
+        <path d="M720 102 C 720 140, 640 170, 574 172"/>
+        <path d="M140 102 C 140 140, 220 170, 286 172"/>
+      </g>
+      <g text-anchor="middle">
+        <rect x="560" y="250" width="280" height="64" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="700" y="276" fill="var(--ink)" font-size="13" font-weight="600">معارف أولية تُرتّب المدخلات الحسية</text>
+        <text direction="rtl" x="700" y="296" fill="var(--muted)" font-size="12">العقل يضعها في قوالب</text>
+        <rect x="20" y="250" width="280" height="64" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="160" y="276" fill="var(--ink)" font-size="13" font-weight="600">المدخلات الحسية ترسم حدود العقل</text>
+        <text direction="rtl" x="160" y="296" fill="var(--muted)" font-size="12">ما لا تصله لا يعمل فيه العقل</text>
+        <text direction="rtl" x="430" y="290" fill="var(--ink)" font-size="16" font-weight="600">+</text>
+      </g>
+      <g stroke="var(--line)" stroke-width="2"><line x1="400" y1="222" x2="300" y2="250"/><line x1="460" y1="222" x2="560" y2="250"/></g>
+    </svg>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">من هنا جاء التأثير الديني الكبير</h3>
+    <svg viewBox="0 0 860 250" width="100%" style="min-width:680px;display:block" role="img" aria-label="العالم الغيبي لا تصله المحسوسات فلا يعمل فيه العقل عند كانط">
+      <rect x="20" y="20" width="820" height="110" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+      <rect x="440" y="36" width="380" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+      <text direction="rtl" x="630" y="66" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">عالم الظواهر (الزمان والمكان)</text>
+      <text direction="rtl" x="630" y="90" text-anchor="middle" fill="var(--muted)" font-size="12">تصله المحسوسات، فيعمل فيه العقل: الفيزياء والرياضيات</text>
+      <rect x="40" y="36" width="380" height="80" rx="10" fill="var(--red-soft)" stroke="var(--red)" stroke-dasharray="6 4"/>
+      <text direction="rtl" x="230" y="66" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">العالم الغيبي (الميتافيزيقا)</text>
+      <text direction="rtl" x="230" y="90" text-anchor="middle" fill="var(--muted)" font-size="12">لا تصله المحسوسات، فلا يعمل فيه العقل</text>
+      <text direction="rtl" x="430" y="166" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">النتيجة كما في كتاب «الله موجود» (دار تكوين، رد فلسفي على كانط):</text>
+      <text direction="rtl" x="430" y="192" text-anchor="middle" fill="var(--muted)" font-size="12">١) المعرفة البشرية محصورة تمامًا في الظواهر الزمكانية، موضوعات العلوم الفيزيائية والرياضية</text>
+      <text direction="rtl" x="430" y="214" text-anchor="middle" fill="var(--muted)" font-size="12">٢) الميتافيزيقا التي تدّعي معرفة المطلق اللامشروط وهمٌ أحدثه العقل</text>
+      <text direction="rtl" x="430" y="238" text-anchor="middle" fill="var(--red)" font-size="12">«اذهبوا لأستاذ الفلسفة وأخبروه أنكم تثبتون وجود الإله، فسيجيب فورًا: منذ كانط نعلم أنه طريق مسدود»</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">!</div><div><strong>إشكال «من خلق الخالق؟»</strong><span>من المحرّضات على قوله أنه وقع في المشكلة التي يقع فيها الملاحدة دائمًا: إذا أدخلنا قضية الخالق في مجال الاستدلال (بعضهم يسميه الخبرة)، فيجب أن يخضع هو أيضًا لهذا المجال، فيُسأل في حقه السؤال نفسه. وهذا السؤال إجابته عندنا واضحة وسهلة والحمد لله؛ ولذلك لا نستغرب أن يؤلف د. سامي عامري كتابًا خاصًا فيه، لأنه سؤال مركزي في السياق الغربي.</span><em>والحمد لله على نعمة الإسلام: الإنسان بالتوازن الإسلامي يستطيع أن يشتغل في الفضاء الغيبي وهو يستند إلى أرضية قوية جدًا، ويشتغل في الفضاء العقلي والحسي، ولا يجد تعارضًا بينها، ولا يفصل بينها الفصل الذي يصل إلى «الفصام النكد». ويُنصح لمن أراد نقدًا تفصيليًا بكتاب «الله موجود»، وليس صعبًا، وله مقدمة للشيخ البشير عصام المراكشي.</em></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر السادس (لمحة): محصّل عصر التنوير وقضية المآلات</h2>
+  <p>نص واحد ختم به المحاضر، من المفترض أن يأتي في العناصر القادمة، لكنه لافت جدًا في قضية المآلات:</p>
+
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 260" width="100%" style="min-width:680px;display:block" role="img" aria-label="ورطة البديل: الفلاسفة رفضوا الأساس اللاهوتي للأخلاق ولم يثقوا ببديل">
+      <defs><marker id="c7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="640" y="20" width="200" height="90" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="740" y="50" fill="var(--ink)" font-size="14" font-weight="600">رفضوا الأسس</text>
+        <text direction="rtl" x="740" y="70" fill="var(--ink)" font-size="14" font-weight="600">اللاهوتية للأخلاق</text>
+        <text direction="rtl" x="740" y="94" fill="var(--muted)" font-size="11">فلاسفة التنوير</text>
+        <rect x="420" y="20" width="200" height="90" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="520" y="50" fill="var(--ink)" font-size="14" font-weight="600">ملتزمون أدبيًا</text>
+        <text direction="rtl" x="520" y="70" fill="var(--muted)" font-size="12">بالعثور على أساس آخر</text>
+        <text direction="rtl" x="520" y="88" fill="var(--muted)" font-size="12">يحمل الناس على السلوك الكريم</text>
+        <rect x="200" y="20" width="200" height="90" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="300" y="50" fill="var(--ink)" font-size="14" font-weight="600">لم يكونوا واثقين</text>
+        <text direction="rtl" x="300" y="70" fill="var(--muted)" font-size="12">من السيطرة على «الحيوان البشري»</text>
+        <text direction="rtl" x="300" y="88" fill="var(--muted)" font-size="12">دون ناموس فوق طبيعي</text>
+        <rect x="20" y="20" width="160" height="90" rx="10" fill="var(--ink)"/>
+        <text direction="rtl" x="100" y="58" fill="var(--bg)" font-size="14" font-weight="600">ورطة البديل</text>
+        <text direction="rtl" x="100" y="80" fill="var(--bg)" font-size="12">والانحلال</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" marker-end="url(#c7)">
+        <line x1="638" y1="65" x2="624" y2="65"/><line x1="418" y1="65" x2="404" y2="65"/><line x1="198" y1="65" x2="184" y2="65"/>
+      </g>
+      <rect x="120" y="150" width="620" height="90" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+      <text direction="rtl" x="430" y="178" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">فونتينيل، كاتب فرنسي، قبل موته سنة ١٧٥٧:</text>
+      <text direction="rtl" x="430" y="202" text-anchor="middle" fill="var(--ink)" font-size="12">تمنى لو مُدّ في أجله ستون سنة أخرى، ليرى النهاية التي تنتهي إليها الخيانة الزوجية المستشرية</text>
+      <text direction="rtl" x="430" y="224" text-anchor="middle" fill="var(--muted)" font-size="12">والخلاعة وتحلل جميع الروابط؛ كأنه قرأ أحداث عصره واستشرف التفكك القادم</text>
+    </svg>
+  </div>
+  <div class="note"><strong>الدرس:</strong> التنبؤ بالمستقبل في قراءة الواقع الأخلاقي، بمحاولة قراءة ما يمكن أن يكون. يقول المحاضر: نحن اليوم نعيش في حقل ألغام، مليء بأشياء متفرقة كثيرة يمكن أن تنفجر في المستقبل وتُحدث آثارًا مخيفة جدًا، والله المستعان.</div>
+  <p class="muted">مؤجّل للمحاضرة القادمة: لمحة عن القرن التاسع عشر، عصر نابليون وبداية الاستعمار، وهيجل.</p>
+</section>
+
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اضغط لرؤية الإجابة</span></h2>
+  <div class="quiz">
+    <details><summary>ما الثورات الثلاث في نهايات القرن ١٨ عند سترومبرج؟ وما الرابعة التي يمكن إضافتها؟</summary><p>الفرنسية، والرومانتيكية، والكانطية. ويمكن أن تضاف إليها الثورة الصناعية.</p></details>
+    <details><summary>ما الجو العام الذي يفسّر التقدم الصناعي في القرن ١٨؟</summary><p>مركزية الطبيعة وازدياد ثقة الإنسان يومًا بعد يوم بمخرجات العلم الطبيعي الحديث. وكان القرن زاحفًا نحو الصناعة، لكن النتائج الصناعية الكبرى جاءت في القرن ١٩.</p></details>
+    <details><summary>ما الفرق بين العلوم الاجتماعية في القرنين ١٨ و١٩؟</summary><p>في ١٨ لم تكن متمايزة، بل أفكار متفرقة عند فلاسفة عامّين اعتُبرت تأسيسًا لها، وأقواها الاقتصاد والسياسة. وفي ١٩ صارت متمايزة لكل علم قواعده واستقلاله.</p></details>
+    <details><summary>اذكر مراحل الفكر الاقتصادي الثلاث.</summary><p>المذهب التجاري (كتابات متفرقة بلا نظرية)، ثم الفيزيوقراطيون في فرنسا (الأرض مصدر الثروة، والحرية الاقتصادية)، ثم آدم سميث في إنجلترا («ثروة الأمم»، وقيمة العمل).</p></details>
+    <details><summary>لماذا سقط المذهب الفيزيوقراطي؟</summary><p>لأنه وضع كل ثقله على الأرض والزراعة، فلما انتقل المركز المالي والتجاري إلى الصناعة، ومع نظريات آدم سميث، سقط وطواه القرن الصناعي في النسيان.</p></details>
+    <details><summary>ما أهم ثلاثة كتب في القرن ١٨؟ وما الجامع بينها؟</summary><p>«روح الشرائع» لمونتسكيو، و«العقد الاجتماعي» لروسو، و«ثروة الأمم» لآدم سميث. يجمعها الحرية والدوران حول الإنسان ككائن حر مستقل له حقوق.</p></details>
+    <details><summary>ما مبدأ «التقدم التاريخي»؟</summary><p>أن الإنسان يظل يتطور تاريخيًا حتى يصل إلى كمال دنيوي، بخلاف النظرة القديمة التي ترى أعلى تطوره تحصيل الجنة؛ فنُقل اهتمام التقدم من السماء إلى الأرض.</p></details>
+    <details><summary>اشرح تشبيه الماء لتطور الفكر الغربي.</summary><p>النهضة: يبحث عن الماء بنفسه بلا أدوات. القرن ١٧: أخذ الأدوات (نظريات ديكارت ولوك) وبدأ يحفر. القرن ١٨: استخرج الماء. القرن ١٩: حفر له أخاديد لكل تيار ومذهب. ثم الانسداد والأزمة.</p></details>
+    <details><summary>ما معنى أن الثورة الفرنسية «وضعت الخاتمة لحقبتهم»؟</summary><p>أنها لم تقطع ما بقي من العلائق بالدين فقط، بل ختمت حقبة فلاسفة التنوير أنفسهم؛ ولذلك اختلف القرن ١٩ عن القرن ١٨.</p></details>
+    <details><summary>عدّد أسباب الثورة الفرنسية، وما فكرة «المحل القابل»؟</summary><p>الأزمة الاقتصادية، وكتابات فلاسفة التنوير، ورجال الدين، والثورة الأمريكية، والأزمات السياسية، والطبقية. وأغلب المحفزات كانت موجودة سابقًا، لكن التهيئة الفكرية خلال قرن جعلت الإنسان محلًّا قابلًا للاشتعال.</p></details>
+    <details><summary>هل للفلاسفة دور في الثورة؟</summary><p>نعم، دور الإعداد الأيديولوجي وهدم العقبات (الامتيازات الإقطاعية، السلطة الكنسية، حق الملوك الإلهي)، لكن نقدهم لم يكن كافيًا لثورة مباشرة. وهم مسؤولون، كما قال ديورانت، بقدر ما استخفّوا بأثر الدين والتقاليد في ضبط الغرائز.</p></details>
+    <details><summary>لماذا أسقط الثوار سجن الباستيل؟</summary><p>إسقاطًا رمزيًا لقلعة الظلم، ولأخذ البارود والسلاح لأنه كان مستودعًا لهما؛ لا لتحرير السجناء، فلم يكن فيه إلا نحو سبعة.</p></details>
+    <details><summary>ما أبرز نتيجتين للثورة في السياق الغربي؟</summary><p>تضخّم فكرة القومية، وانتقال مركز القوة من الكنيسة إلى الدولة حتى تضخمت مركزيتها.</p></details>
+    <details><summary>لماذا يصعب تعريف الرومانسية؟</summary><p>لأنها مصطلح مزاج وأسلوب أكثر من أن تكون نظرية أو عقيدة أو مذهبًا، والأمزجة والأساليب عسيرة التعريف.</p></details>
+    <details><summary>لماذا كان الأسلوب الرومانسي أقرب إلى الدين من أسلوب التنوير؟</summary><p>لأن أسلوب التنوير ميكانيكي آلي نفعي يُبعد الروح والعاطفة والجمال، والمسار العاطفي الروحي أقرب للدين وإن اختلف في المقاصد. وبعد أن ضرب هيوم وكانط العقل في الدين، صار الفضاء العاطفي هو الذي يمكن أن يحتضن الدين.</p></details>
+    <details><summary>ما الذي جمع فيه كانط بين ديكارت ولوك؟ وكيف أثّر ذلك دينيًا؟</summary><p>الإنسان يولد بمعارف أولية ترتّب المدخلات الحسية (ديكارت)، والمدخلات الحسية ترسم حدود عمل العقل (لوك). فالعالم الغيبي الذي لا تصله المحسوسات لا يعمل فيه العقل، ومن هنا قيل: إثبات وجود الله بالعقل طريق مسدود.</p></details>
+    <details><summary>ما «ورطة البديل» التي وقع فيها فلاسفة التنوير؟</summary><p>رفضوا الأسس اللاهوتية للأخلاق، فالتزموا أدبيًا بإيجاد أساس آخر، ولم يكونوا واثقين من ضبط «الحيوان البشري» دون ناموس فوق طبيعي.</p></details>
+  </div>
+</section>
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل المحاضرات</a><span style="display:flex;gap:14px">
+<a href="lecture4.html" style="color:var(--muted);text-decoration:none">→ المحاضرة السابقة</a>
+<a href="lecture6.html" style="color:var(--muted);text-decoration:none">المحاضرة التالية ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>

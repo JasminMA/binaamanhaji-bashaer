@@ -1,0 +1,812 @@
+<title>الحداثة وما بعدها</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+</style>
+
+<div class="wrap" dir="rtl" lang="ar">
+
+<header>
+  <div class="eyebrow">تاريخ الفكر الغربي الحديث · الشيخ أحمد السيد · المحاضرة الثامنة والأخيرة</div>
+  <h1>القرن العشرون: الحداثة وما بعد الحداثة</h1>
+  <p class="muted">ملخص مذاكرة: الشجرة المرسومة أولًا، ثم العناصر بالشرح والرسوم، ثم أسئلة مراجعة.</p>
+</header>
+
+<section>
+  <h2>آخر محطة في الرحلة</h2>
+  <p>كان المفترض أن يأخذ القرن العشرون محاضرتين، لكن «طالت الرحلة على بعض الركاب، فقرر القبطان أن يختصر المسافة قليلًا». فهذه آخر محطة، بعد محاضرتين في النهضة، وواحدة في القرن ١٧، واثنتين في ١٨، واثنتين في ١٩.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">خريطة السلسلة كاملة</h3>
+    <svg viewBox="0 0 860 170" width="100%" style="min-width:700px;display:block" role="img" aria-label="المحاضرات الثماني موزعة على القرون من النهضة إلى القرن العشرين">
+      <line x1="30" y1="70" x2="840" y2="70" stroke="var(--muted)" stroke-width="2"/>
+      <g text-anchor="middle">
+        <rect x="690" y="40" width="150" height="60" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="765" y="66" fill="var(--ink)" font-size="13" font-weight="600">النهضة (ق١٥ وق١٦)</text>
+        <text direction="rtl" x="765" y="86" fill="var(--muted)" font-size="12">المحاضرتان ١ و٢</text>
+        <rect x="550" y="40" width="130" height="60" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="615" y="66" fill="var(--ink)" font-size="13" font-weight="600">القرن ١٧</text>
+        <text direction="rtl" x="615" y="86" fill="var(--muted)" font-size="12">المحاضرة ٣</text>
+        <rect x="380" y="40" width="160" height="60" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="460" y="66" fill="var(--ink)" font-size="13" font-weight="600">القرن ١٨ (التنوير)</text>
+        <text direction="rtl" x="460" y="86" fill="var(--muted)" font-size="12">المحاضرتان ٤ و٥</text>
+        <rect x="210" y="40" width="160" height="60" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="290" y="66" fill="var(--ink)" font-size="13" font-weight="600">القرن ١٩</text>
+        <text direction="rtl" x="290" y="86" fill="var(--muted)" font-size="12">المحاضرتان ٦ و٧</text>
+        <rect x="30" y="40" width="170" height="60" rx="10" fill="var(--ink)"/>
+        <text direction="rtl" x="115" y="66" fill="var(--bg)" font-size="13" font-weight="600">القرن ٢٠</text>
+        <text direction="rtl" x="115" y="86" fill="var(--bg)" font-size="12">المحاضرة ٨ (هذه)</text>
+      </g>
+      <text direction="rtl" x="430" y="134" text-anchor="middle" fill="var(--muted)" font-size="12">«ليست دروس فلسفة، بل عرض لتاريخ الأفكار ونظرة نقدية مجملة من عصر النهضة إلى القرن العشرين»</text>
+      <text direction="rtl" x="430" y="156" text-anchor="middle" fill="var(--muted)" font-size="11">فلا تُحاكَم إلى الدرس الفلسفي الخاص؛ والتفصيل في كل عَلَم يُخرج المادة عن سياقها</text>
+    </svg>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th>العنصر</th><th>العنوان</th></tr></thead>
+      <tbody>
+        <tr><td>١</td><td>الحداثة</td></tr>
+        <tr><td>٢</td><td>ما بعد الحداثة</td></tr>
+        <tr><td>٣</td><td>السياق العلمي التجريبي في القرن العشرين</td></tr>
+        <tr><td>٤</td><td>إطلالة على العلوم الإنسانية والاجتماعية</td></tr>
+        <tr><td>٥</td><td>تأثير الحربين العالميتين</td></tr>
+        <tr><td>٦</td><td>الوجودية</td></tr>
+        <tr><td>٧</td><td>العَلمانية</td></tr>
+        <tr><td>٨</td><td>شخصيات مهمة في القرن العشرين (فرويد، فوكو...)</td></tr>
+        <tr><td>٩</td><td>الليبرالية</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">الترتيب في الصفحة يتبع ترتيب الشرح الفعلي في المحاضرة: الليبرالية جاءت قبل الشخصيات.</p>
+</section>
+
+<section>
+  <h2>الشجرة الذهنية للمحاضرة <span class="tag">رسم كامل</span></h2>
+  <div class="panel scroll"><svg viewBox="145 0 865 1020" width="100%" style="min-width:860px;display:block" role="img" aria-label="شجرة ذهنية: المحاضرة الثامنة"><path d="M443.0 65.0 C 369.1 65.0, 369.1 35.0, 295.1 35.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M443.0 65.0 C 369.1 65.0, 369.1 65.0, 295.1 65.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M443.0 65.0 C 369.1 65.0, 369.1 95.0, 295.1 95.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M712.7 110.0 C 630.9 110.0, 630.9 65.0, 549.1 65.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M712.7 110.0 C 630.9 110.0, 630.9 125.0, 549.1 125.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M712.7 110.0 C 630.9 110.0, 630.9 155.0, 549.1 155.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M443.0 216.0 C 369.1 216.0, 369.1 201.0, 295.1 201.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M443.0 216.0 C 369.1 216.0, 369.1 231.0, 295.1 231.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M428.5 366.0 C 361.8 366.0, 361.8 351.0, 295.1 351.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M428.5 366.0 C 361.8 366.0, 361.8 381.0, 295.1 381.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M657.8 291.0 C 603.5 291.0, 603.5 216.0, 549.1 216.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M657.8 291.0 C 603.5 291.0, 603.5 261.0, 549.1 261.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M657.8 291.0 C 603.5 291.0, 603.5 291.0, 549.1 291.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M657.8 291.0 C 603.5 291.0, 603.5 321.0, 549.1 321.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M657.8 291.0 C 603.5 291.0, 603.5 366.0, 549.1 366.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M486.7 442.0 C 390.9 442.0, 390.9 427.0, 295.1 427.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M486.7 442.0 C 390.9 442.0, 390.9 457.0, 295.1 457.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M472.2 532.0 C 383.6 532.0, 383.6 517.0, 295.1 517.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M472.2 532.0 C 383.6 532.0, 383.6 547.0, 295.1 547.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M665.7 487.0 C 607.4 487.0, 607.4 442.0, 549.1 442.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M665.7 487.0 C 607.4 487.0, 607.4 487.0, 549.1 487.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M665.7 487.0 C 607.4 487.0, 607.4 532.0, 549.1 532.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M704.9 623.0 C 627.0 623.0, 627.0 593.0, 549.1 593.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M704.9 623.0 C 627.0 623.0, 627.0 623.0, 549.1 623.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M704.9 623.0 C 627.0 623.0, 627.0 653.0, 549.1 653.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M450.3 714.0 C 372.7 714.0, 372.7 699.0, 295.1 699.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M450.3 714.0 C 372.7 714.0, 372.7 729.0, 295.1 729.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M450.3 789.0 C 372.7 789.0, 372.7 759.0, 295.1 759.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M450.3 789.0 C 372.7 789.0, 372.7 789.0, 295.1 789.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M450.3 789.0 C 372.7 789.0, 372.7 819.0, 295.1 819.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M595.1 751.5 C 572.1 751.5, 572.1 714.0, 549.1 714.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M595.1 751.5 C 572.1 751.5, 572.1 789.0, 549.1 789.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M486.7 895.0 C 390.9 895.0, 390.9 865.0, 295.1 865.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M486.7 895.0 C 390.9 895.0, 390.9 895.0, 295.1 895.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M486.7 895.0 C 390.9 895.0, 390.9 925.0, 295.1 925.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M634.3 940.0 C 591.7 940.0, 591.7 895.0, 549.1 895.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M634.3 940.0 C 591.7 940.0, 591.7 955.0, 549.1 955.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M634.3 940.0 C 591.7 940.0, 591.7 985.0, 549.1 985.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M839.6 525.0 C 816.6 525.0, 816.6 110.0, 793.6 110.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M839.6 525.0 C 816.6 525.0, 816.6 291.0, 793.6 291.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M839.6 525.0 C 816.6 525.0, 816.6 487.0, 793.6 487.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M839.6 525.0 C 816.6 525.0, 816.6 623.0, 793.6 623.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M839.6 525.0 C 816.6 525.0, 816.6 751.5, 793.6 751.5" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M839.6 525.0 C 816.6 525.0, 816.6 940.0, 793.6 940.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><rect x="175.0" y="23.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="235.1" y="39.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">العقل المؤلَّه</text><rect x="175.0" y="53.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="235.1" y="69.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">مركزية الإنسان</text><rect x="168.3" y="83.0" width="126.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="231.7" y="99.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">التفاؤل والتقدم</text><rect x="443.0" y="51.0" width="106.1" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="496.1" y="69.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">سرديات كبرى</text><rect x="355.7" y="111.0" width="193.4" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="452.4" y="129.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">بدأت ١٥٠٠ ووُعي بها ق١٨</text><rect x="428.5" y="141.0" width="120.6" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="488.8" y="159.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">صعوبة التعريف</text><rect x="712.7" y="92.0" width="80.9" height="36" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text direction="rtl" x="753.2" y="115.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الحداثة</text><rect x="154.9" y="189.0" width="140.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="225.0" y="205.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">لا حقيقة ولا مركز</text><rect x="235.5" y="219.0" width="59.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="265.3" y="235.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">عدمية</text><rect x="443.0" y="202.0" width="106.1" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="496.1" y="220.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ضد السرديات</text><rect x="457.6" y="247.0" width="91.5" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="503.4" y="265.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">التفكيكية</text><rect x="428.5" y="277.0" width="120.6" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="488.8" y="295.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الجذور: نيتشه</text><rect x="399.4" y="307.0" width="149.8" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="474.2" y="325.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ستينيات وسبعينيات</text><rect x="228.8" y="339.0" width="66.3" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="262.0" y="355.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">المروق</text><rect x="228.8" y="369.0" width="66.3" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="262.0" y="385.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الشرود</text><rect x="428.5" y="352.0" width="120.6" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="488.8" y="370.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">طه عبد الرحمن</text><rect x="657.8" y="273.0" width="135.8" height="36" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><text direction="rtl" x="725.7" y="296.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">ما بعد الحداثة</text><rect x="154.9" y="415.0" width="140.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="225.0" y="431.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">أينشتاين والنسبية</text><rect x="175.0" y="445.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="235.1" y="461.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الكم وهايزنبرغ</text><rect x="486.7" y="428.0" width="62.4" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="517.9" y="446.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">العلم</text><rect x="341.1" y="473.0" width="208.0" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="445.1" y="491.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">العلوم الإنسانية والعلمنة</text><rect x="195.2" y="505.0" width="99.9" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="245.2" y="521.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الأولى صفعة</text><rect x="175.0" y="535.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="235.1" y="551.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الثانية انهيار</text><rect x="472.2" y="518.0" width="77.0" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="510.6" y="536.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الحربان</text><rect x="665.7" y="469.0" width="127.9" height="36" rx="8" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/><text direction="rtl" x="729.6" y="492.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">العلم والحروب</text><rect x="399.4" y="579.0" width="149.8" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="474.2" y="597.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الإنسان يصنع نفسه</text><rect x="413.9" y="609.0" width="135.2" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="481.5" y="627.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">مرتبطة بالإلحاد</text><rect x="413.9" y="639.0" width="135.2" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="481.5" y="657.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">انتشرت بعد ١٩٤٥</text><rect x="704.9" y="605.0" width="88.7" height="36" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text direction="rtl" x="749.2" y="628.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الوجودية</text><rect x="215.4" y="687.0" width="79.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="255.2" y="703.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">saeculum</text><rect x="161.6" y="717.0" width="133.5" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="228.4" y="733.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الشاملة والجزئية</text><rect x="450.3" y="700.0" width="98.8" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="499.7" y="718.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">العَلمانية</text><rect x="201.9" y="747.0" width="93.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="248.5" y="763.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الفرد الحر</text><rect x="181.8" y="777.0" width="113.4" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="238.4" y="793.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">ثلاثة مرتكزات</text><rect x="175.0" y="807.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="235.1" y="823.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">ليست هي الحرية</text><rect x="450.3" y="775.0" width="98.8" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="499.7" y="793.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الليبرالية</text><rect x="595.1" y="733.5" width="198.5" height="36" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><text direction="rtl" x="694.4" y="756.5" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">العَلمانية والليبرالية</text><rect x="222.1" y="853.0" width="73.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="258.6" y="869.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">اللاوعي</text><rect x="222.1" y="883.0" width="73.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="258.6" y="899.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الأحلام</text><rect x="235.5" y="913.0" width="59.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="265.3" y="929.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الجنس</text><rect x="486.7" y="881.0" width="62.4" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="517.9" y="899.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">فرويد</text><rect x="399.4" y="941.0" width="149.8" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="474.2" y="959.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">فوكو: موت الإنسان</text><rect x="406.6" y="971.0" width="142.5" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="477.9" y="989.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">المعايير والبديل</text><rect x="634.3" y="922.0" width="159.3" height="36" rx="8" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/><text direction="rtl" x="714.0" y="945.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الشخصيات والخلاصة</text><rect x="839.6" y="503.0" width="160.4" height="44" rx="22.0" fill="var(--ink)" stroke="none" stroke-width="1"/><text direction="rtl" x="919.8" y="530.4" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">المحاضرة الثامنة</text></svg></div>
+  <p class="muted">على الجوال اسحب الشجرة أفقيًا لرؤيتها كاملة.</p>
+</section>
+
+<section>
+  <h2>العنصر الأول: الحداثة</h2>
+  <p>للحداثة جذور وتأسيس في الفكر الغربي منذ عصر النهضة: منذ أن ابتعد الإنسان الغربي عن المصادر القديمة المسيطرة عليه في سياقه الديني، واتجه نحو مناهج بديلة عن الدين، ومناهج جديدة في الفلسفة والعلوم.</p>
+  <blockquote>إن الغد ضروري للغاية لفهم اليوم وإدراك معانيه، وهذا هو السبب كل السبب وراء كتابة التاريخ.<cite>سترومبرج. ويعلّق المحاضر: كثيرًا ما تحدث تغيرات لا يُنتبه إلى طبيعتها وحدودها إلا بعد أن تنقضي؛ فالقرون الوسطى لم تُسمَّ «وسطى» إلا بعد انتهائها. والمفكر الحقيقي هو الذي يفهم «اليوم» قبل أن ينصرم، ليتخذ الإجراءات المناسبة له.</cite></blockquote>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">البداية الزمنية للحداثة والوعي بها (هابرماس وغيره)</h3>
+    <svg viewBox="0 0 860 210" width="100%" style="min-width:700px;display:block" role="img" aria-label="بداية الحداثة نحو ١٥٠٠ والوعي بها في القرن الثامن عشر وتبلورها في التاسع عشر">
+      <!-- x(y)=820-(y-1450)*1.6 -->
+      <line x1="40" y1="100" x2="840" y2="100" stroke="var(--muted)" stroke-width="2"/>
+      <rect x="180" y="92" width="560" height="16" rx="8" fill="var(--accent-soft)" stroke="var(--accent)"/>
+      <g fill="var(--muted)" font-size="11" text-anchor="middle">
+        <text direction="rtl" x="820" y="196">١٤٥٠</text><text direction="rtl" x="660" y="196">١٥٥٠</text><text direction="rtl" x="500" y="196">١٦٥٠</text><text direction="rtl" x="340" y="196">١٧٥٠</text><text direction="rtl" x="180" y="196">١٨٥٠</text>
+      </g>
+      <g stroke="var(--line)"><line x1="820" y1="170" x2="820" y2="180"/><line x1="660" y1="170" x2="660" y2="180"/><line x1="500" y1="170" x2="500" y2="180"/><line x1="340" y1="170" x2="340" y2="180"/><line x1="180" y1="170" x2="180" y2="180"/></g>
+      <g text-anchor="middle">
+        <circle cx="740" cy="100" r="9" fill="var(--gold)"/>
+        <text direction="rtl" x="740" y="40" fill="var(--ink)" font-size="14" font-weight="600">البداية الزمنية</text>
+        <text direction="rtl" x="740" y="60" fill="var(--muted)" font-size="12">قرابة ١٥٠٠، عصر النهضة</text>
+        <rect x="290" y="88" width="130" height="24" rx="12" fill="var(--accent)"/>
+        <text direction="rtl" x="355" y="40" fill="var(--ink)" font-size="14" font-weight="600">الوعي بها</text>
+        <text direction="rtl" x="355" y="60" fill="var(--muted)" font-size="12">القرن ١٨، عصر الأنوار</text>
+        <rect x="100" y="88" width="160" height="24" rx="12" fill="var(--ink)"/>
+        <text direction="rtl" x="180" y="40" fill="var(--ink)" font-size="14" font-weight="600">تكرّست واتضحت</text>
+        <text direction="rtl" x="180" y="60" fill="var(--muted)" font-size="12">القرن ١٩ عند مؤرخين آخرين</text>
+        <text direction="rtl" x="430" y="146" fill="var(--muted)" font-size="12">الحداثة ليست تيارًا ولا مذهبًا: هي سمة تحتوي على «سرديات كبرى»</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>معالمها: «السرديات الكبرى»</strong><span>من جهة الوصف السلبي: الانقطاع عن الموروث. ومن جهة الوصف الإيجابي: العقلانية، ومركزية الإنسان، والتفاؤل والوصول للحقائق، والإيمان بالتقدم. الحداثة تؤمن بالمعنى، وبقيم، وبأشياء تريد أن تحققها، متفائلة؛ وتنطلق في ذلك من أن العقل «مؤلَّه»: الإنسان سيكتشف وسيصل للحقيقة، والحقائق موجودة، ولن يحتاج إلى شيء آخر.</span><em>الطيب بوعزة: «التأليه للعقل هو جوهر الحداثة». ولذلك ديكارت «أبو الفلسفة الحديثة» أو مؤسسها: تبنّى المنهج العقلي.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>تعريفات الحداثيين العرب (النصف الثاني من القرن ٢٠)</strong><span>عبارات مبشّرة كبيرة: الحداثة ضد الاتّباع وضد النقل، فهي الابتداع والعقل؛ وهي «الارتفاع بطريقة التعامل مع التراث إلى مستوى المعاصرة»؛ وهي «التحرر من ثقل التراث وأشكال عطالته وصور العالم القديم، وتحرير الفرد من رقّ التقليد، وتزويده بحق الاختيار».</span><em>ولماذا يصعب تعريفها؟ «لا أقول عجز، بل صعوبة»: لأنها تتقاطع فيها حقيقة تاريخية (نموذج وقع فعلًا في الغرب) مع مفهوم فكري معرفي؛ فأركون مثلًا يمثّلها بأسماء: ديكارت، سبينوزا، شكسبير، لوك، ثم ماركس، نيتشه، فرويد، «وهي مشروع لا يكتمل». وحتى «الفلسفة» لا تجد لها تعريفًا واحدًا متفقًا عليه.</em></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الثاني: ما بعد الحداثة</h2>
+  <p>«ما بعد» تفيد الزمن، لكنها تفيد أيضًا <b>التضاد والمناقضة والمفارقة والتجاوز</b>. ولا يدخل المحاضر في الخلاف: هل هي استمرار للحداثة أم لا. فما بعد الحداثة ضدّ ماذا؟ ضدّ السرديات الكبرى المبشّرة التي حملها التنوير والحداثة.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">الحداثة × ما بعد الحداثة</h3>
+    <svg viewBox="0 0 860 340" width="100%" style="min-width:700px;display:block" role="img" aria-label="مقارنة بين السرديات الكبرى للحداثة ونقضها في ما بعد الحداثة">
+      <rect x="440" y="16" width="400" height="44" rx="8" fill="var(--accent)"/>
+      <text direction="rtl" x="640" y="44" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">الحداثة: سرديات كبرى</text>
+      <rect x="20" y="16" width="400" height="44" rx="8" fill="var(--red)"/>
+      <text direction="rtl" x="220" y="44" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">ما بعد الحداثة: ارتياب وتفكيك</text>
+      <g font-size="13" text-anchor="middle">
+        <rect x="440" y="72" width="400" height="38" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="96" fill="var(--ink)">عقل مركزي قادر على اكتشاف الحقائق</text>
+        <rect x="20" y="72" width="400" height="38" rx="6" fill="var(--red-soft)"/><text direction="rtl" x="220" y="96" fill="var(--ink)">لا حقيقة يصل إليها العقل</text>
+        <rect x="440" y="118" width="400" height="38" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="142" fill="var(--ink)">الإنسان مركز سيد في الكون</text>
+        <rect x="20" y="118" width="400" height="38" rx="6" fill="var(--red-soft)"/><text direction="rtl" x="220" y="142" fill="var(--ink)">لا مركز، والإنسان نفسه يتفكك</text>
+        <rect x="440" y="164" width="400" height="38" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="188" fill="var(--ink)">مطلقات وكليات ومعانٍ</text>
+        <rect x="20" y="164" width="400" height="38" rx="6" fill="var(--red-soft)"/><text direction="rtl" x="220" y="188" fill="var(--ink)">نسبية، لا معنى، عدمية</text>
+        <rect x="440" y="210" width="400" height="38" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="234" fill="var(--ink)">تفاؤل وإيمان بالتقدم</text>
+        <rect x="20" y="210" width="400" height="38" rx="6" fill="var(--red-soft)"/><text direction="rtl" x="220" y="234" fill="var(--ink)">تشاؤم: «لا غاية، ولا فرح، ولا تفاؤل»</text>
+        <rect x="440" y="256" width="400" height="38" rx="6" fill="var(--accent-soft)"/><text direction="rtl" x="640" y="280" fill="var(--ink)">أخلاق بلا دين: «نموذج ممتاز» موعود</text>
+        <rect x="20" y="256" width="400" height="38" rx="6" fill="var(--red-soft)"/><text direction="rtl" x="220" y="280" fill="var(--ink)">لا أخلاق أصلًا: «اضربه في عشرة»</text>
+      </g>
+      <line x1="430" y1="70" x2="430" y2="296" stroke="var(--line)" stroke-width="2" stroke-dasharray="5 4"/>
+      <text direction="rtl" x="430" y="324" text-anchor="middle" fill="var(--muted)" font-size="12">محمد سبيلا: «أسلوب في الفكر يُبدي ارتيابًا بالأفكار الكلاسيكية: الحقيقة، العقل، الهوية، الموضوعية، التقدم، السرديات الكبرى»</text>
+    </svg>
+  </div>
+
+  <h3>نموذج: التفكيكية</h3>
+  <p>مناهج تفسيرية تتعلق بكيفية النظر إلى النصوص (اللغة واللسان)، وُصفت بأنها «ما بعد البنيوية»، وبأنها خطوة الانتقال من الحداثة إلى ما بعد الحداثة.</p>
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 240" width="100%" style="min-width:680px;display:block" role="img" aria-label="التفكيك: من البحث في معنى النص إلى البحث في فهم القارئ فتتعدد المعاني بعدد القراء">
+      <defs><marker id="f1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="660" y="80" width="170" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text direction="rtl" x="745" y="110" fill="var(--ink)" font-size="15" font-weight="600">النص</text>
+        <text direction="rtl" x="745" y="134" fill="var(--muted)" font-size="12">كان: يُبحث عن معناه</text>
+        <g font-size="12">
+          <circle cx="470" cy="50" r="26" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="470" y="54" fill="var(--ink)">قارئ ١</text>
+          <circle cx="470" cy="120" r="26" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="470" y="124" fill="var(--ink)">قارئ ٢</text>
+          <circle cx="470" cy="190" r="26" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="470" y="194" fill="var(--ink)">قارئ ٣</text>
+        </g>
+        <rect x="40" y="70" width="290" height="100" rx="12" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <text direction="rtl" x="185" y="100" fill="var(--ink)" font-size="14" font-weight="600">معانٍ لا نهائية متجددة</text>
+        <text direction="rtl" x="185" y="124" fill="var(--muted)" font-size="12">بعدد القراء، بل تختلف عند القارئ</text>
+        <text direction="rtl" x="185" y="144" fill="var(--muted)" font-size="12">نفسه بحسب أحواله؛ لا قراءة مطابقة</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" fill="none" marker-end="url(#f1)">
+        <path d="M656 110 C 580 90, 540 60, 500 52"/><line x1="656" y1="120" x2="500" y2="120"/><path d="M656 130 C 580 150, 540 180, 500 188"/>
+        <path d="M444 52 C 400 60, 370 90, 334 104"/><line x1="444" y1="120" x2="334" y2="120"/><path d="M444 188 C 400 180, 370 150, 334 136"/>
+      </g>
+      <text direction="rtl" x="430" y="232" text-anchor="middle" fill="var(--muted)" font-size="12">انتقال من البحث في معنى النص إلى البحث في فهم من يفهمه</text>
+    </svg>
+  </div>
+
+  <div class="warn"><strong>تطبيقه على القرآن:</strong> أركون: «النص القرآني نص مفتوح على جميع المعاني ولكل البشر، إنه كون من الآيات والعلامات والرموز». وعلي حرب: «النص القرآني ينفتح على كل معنى، بحيث يمكن أن تتمرأى فيه كل الذوات، وأن تُقرأ فيه مختلف العقائد والشرائع». يقول المحاضر: هذا شيء من العبثية. والمسيري يصف دريدا زعيم التفكيكيين: «ظهر بوجهه الكئيب، وأعلن عالم ما بعد الحداثة، حيث لا يوجد هدف ولا مركز ولا غاية ولا فرح ولا ندم ولا تفاؤل، فكل شيء قابع داخل قصته الصغرى دون مرجعية نهائية، وحيث تخفق اللغة الإنسانية في تحقيق التواصل، وبإخفاقها تختفي القيم والمعايير، ويتفكك الإنسان».</div>
+
+  <h3>متى بدأت ما بعد الحداثة؟</h3>
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 300" width="100%" style="min-width:700px;display:block" role="img" aria-label="جذور ما بعد الحداثة من كانط ونيتشه وفرويد وظهورها الواضح في الستينيات والسبعينيات">
+      <g text-anchor="middle">
+        <text direction="rtl" x="640" y="26" fill="var(--muted)" font-size="13" font-weight="600">الجذور</text>
+        <rect x="700" y="40" width="140" height="70" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="770" y="68" fill="var(--ink)" font-size="14" font-weight="600">كانط</text>
+        <text direction="rtl" x="770" y="90" fill="var(--muted)" font-size="11">ربط العقل بالظواهر</text>
+        <rect x="540" y="40" width="140" height="70" rx="10" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <text direction="rtl" x="610" y="68" fill="var(--ink)" font-size="14" font-weight="600">نيتشه</text>
+        <text direction="rtl" x="610" y="90" fill="var(--muted)" font-size="11">الجذر الأول الأكبر</text>
+        <rect x="380" y="40" width="140" height="70" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="450" y="68" fill="var(--ink)" font-size="14" font-weight="600">فرويد</text>
+        <text direction="rtl" x="450" y="90" fill="var(--muted)" font-size="11">الضربة الثالثة</text>
+        <text direction="rtl" x="200" y="26" fill="var(--muted)" font-size="13" font-weight="600">الظهور الواضح</text>
+        <rect x="200" y="40" width="160" height="70" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="280" y="66" fill="var(--ink)" font-size="13" font-weight="600">١٩٦٩</text>
+        <text direction="rtl" x="280" y="86" fill="var(--muted)" font-size="11">سوزان سونتاج</text>
+        <text direction="rtl" x="280" y="100" fill="var(--muted)" font-size="11">«ضد التفسير»</text>
+        <rect x="20" y="40" width="160" height="70" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="100" y="66" fill="var(--ink)" font-size="13" font-weight="600">كتاب ليوتار</text>
+        <text direction="rtl" x="100" y="86" fill="var(--muted)" font-size="11">«الوضع ما بعد الحداثي»</text>
+        <text direction="rtl" x="100" y="100" fill="var(--muted)" font-size="11">مولدها عند كثيرين</text>
+        <rect x="20" y="126" width="340" height="34" rx="17" fill="var(--ink)"/>
+        <text direction="rtl" x="190" y="148" fill="var(--bg)" font-size="13" font-weight="600">الخلاصة: الستينيات أو السبعينيات من القرن ٢٠</text>
+      </g>
+      <text direction="rtl" x="610" y="186" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">ضربات ثلاث لنرجسية الإنسان (فرويد)</text>
+      <g text-anchor="middle" font-size="12">
+        <rect x="610" y="200" width="230" height="40" rx="8" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="725" y="225" fill="var(--ink)">١. كوبرنيكوس: الأرض ليست المركز</text>
+        <rect x="610" y="246" width="230" height="40" rx="8" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="725" y="271" fill="var(--ink)">٢. داروين: حيوان أرقى</text>
+        <rect x="380" y="246" width="210" height="40" rx="8" fill="var(--red-soft)" stroke="var(--red)"/><text direction="rtl" x="485" y="271" fill="var(--ink)">٣. فرويد: إلى الحضيض</text>
+      </g>
+      <text direction="rtl" x="190" y="214" text-anchor="middle" fill="var(--muted)" font-size="12">قال فرويد ذلك عن نفسه، والمحاضر يرى</text>
+      <text direction="rtl" x="190" y="232" text-anchor="middle" fill="var(--muted)" font-size="12">كلامه «صحيحًا مئة بالمئة»: حطّم ما بقي</text>
+      <text direction="rtl" x="190" y="250" text-anchor="middle" fill="var(--muted)" font-size="12">من مروءة وكرامة واعتبار إنساني</text>
+    </svg>
+    <p class="muted">العنوان العربي لكتاب ليوتار أُضيف للتوضيح؛ المحاضر قال: «تاريخ صدور كتاب ليوتار الذي هو الوضع ما بعد الحداثي» نقلًا عن المسيري.</p>
+  </div>
+
+  <h3>طه عبد الرحمن: «بؤس الدهرانية» وما بعدها</h3>
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 290" width="100%" style="min-width:700px;display:block" role="img" aria-label="الدهرانية مروق من الدين بإنكار آمرية الإله، وما بعد الدهرانية شرود من الأخلاق بإنكار شاهدية الإله">
+      <defs><marker id="f2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--red)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="600" y="30" width="230" height="110" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text direction="rtl" x="715" y="62" fill="var(--ink)" font-size="15" font-weight="600">الدين</text>
+        <text direction="rtl" x="715" y="86" fill="var(--muted)" font-size="12">منبت الأخلاق الأصلي</text>
+        <text direction="rtl" x="715" y="108" fill="var(--muted)" font-size="12">الإله آمِر وشاهِد</text>
+        <rect x="320" y="30" width="230" height="110" rx="12" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="435" y="58" fill="var(--ink)" font-size="15" font-weight="600">الدهرانية = «المروق»</text>
+        <text direction="rtl" x="435" y="82" fill="var(--muted)" font-size="12">خروج الأخلاق من الدين</text>
+        <text direction="rtl" x="435" y="102" fill="var(--muted)" font-size="12">إنكار آمرية الإله إثباتًا</text>
+        <text direction="rtl" x="435" y="120" fill="var(--muted)" font-size="12">لآمرية الإنسان</text>
+        <rect x="30" y="30" width="240" height="110" rx="12" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <text direction="rtl" x="150" y="58" fill="var(--ink)" font-size="15" font-weight="600">ما بعدها = «الشرود»</text>
+        <text direction="rtl" x="150" y="82" fill="var(--muted)" font-size="12">الخروج من الأخلاق كليًا</text>
+        <text direction="rtl" x="150" y="102" fill="var(--muted)" font-size="12">إنكار شاهدية الإله إثباتًا</text>
+        <text direction="rtl" x="150" y="120" fill="var(--muted)" font-size="12">لشاهدية الإنسان</text>
+      </g>
+      <g stroke="var(--red)" stroke-width="3" marker-end="url(#f2)"><line x1="596" y1="85" x2="554" y2="85"/><line x1="316" y1="85" x2="274" y2="85"/></g>
+      <rect x="30" y="166" width="800" height="104" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+      <g font-size="12" text-anchor="middle">
+        <text direction="rtl" x="430" y="190" fill="var(--ink)" font-weight="600">الشاهدية الإلهية: علم وحكم، «مراقبة ومحاكمة»؛ الله شاهد على أفعال عباده وأحوالهم جلّها ودقّها</text>
+        <text direction="rtl" x="430" y="214" fill="var(--muted)">ما بعد الدهرانية أعمّ: تنحية الله واستبعاده تمامًا، كأنه «ليس شاهدًا على أي شيء»</text>
+        <text direction="rtl" x="430" y="240" fill="var(--muted)">صيغها في الكتاب: الإنسان الفائق عند نيتشه، الإنسان السيّد عند باطاي، الإنسان المارد عند دي ساد،</text>
+        <text direction="rtl" x="430" y="258" fill="var(--muted)">ثم نقد «نظرية المتعة» عند فرويد</text>
+      </g>
+    </svg>
+    <p class="muted">يرى المحاضر الكتاب جميلًا متميزًا في نقد هذا الفكر من سياق ما بعد الحداثة، «لا تستطيع أن تستغني عنه»، كما لا تستغني عن كتب المسيري؛ مع أن لطه مصطلحات خاصة يصكّها ويفسّرها، فيحتاج من لم يقرأ له سابقًا أن يتدرج.</p>
+  </div>
+
+  <div class="note"><strong>تنبيه يُستفاد منه:</strong> حالة العدمية واللامعنى اليوم <b>فرصة لإيجاد البديل</b>؛ فإيجاده وقت سيادة العدمية أسهل منه حين يوجد معارض له معنى. وهذه العدمية لم تأت بلا سبب، بل بعد استنفاد التجارب الطويلة في مختلف الأفكار والتيارات؛ فهي من جهة عدمية، ومن جهة أخرى الإنسان يحتاج، ويصعب أن تقنعه بالتجربة نفسها مرة أخرى.</div>
+</section>
+
+<section>
+  <h2>العنصر الثالث: السياق العلمي التجريبي في القرن العشرين</h2>
+  <p>لا يهمنا التقدم التقني والتكنولوجي، بل النظرة الشمولية: مكانة العلم وتأثيره على الأحوال الإنسانية. والثقل الكبير كان في <b>النصف الأول</b> من القرن: نصف التطورات الضخمة جدًا؛ أما النصف الثاني فنصف المنتجات.</p>
+  <blockquote>لربما أن أينشتاين قد قام بدور كوبرنيكوس، ولذلك فإن الحقبة العلمية الجديدة لا تزال تنتظر نيوتن الخاص بها.<cite>سترومبرج</cite></blockquote>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">من يقين نيوتن إلى «كل شيء نسبي»</h3>
+    <svg viewBox="0 0 860 300" width="100%" style="min-width:720px;display:block" role="img" aria-label="من يقين نيوتن إلى تجربة مايكلسون ومورلي ثم النسبية والكم وهايزنبرغ وانتقال النسبية إلى الثقافة">
+      <defs><marker id="f3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="690" y="20" width="150" height="100" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="765" y="48" fill="var(--ink)" font-size="14" font-weight="600">نيوتن</text>
+        <text direction="rtl" x="765" y="70" fill="var(--muted)" font-size="11">سائد قرنين تقريبًا</text>
+        <text direction="rtl" x="765" y="86" fill="var(--muted)" font-size="11">معمّم على باقي العلوم</text>
+        <text direction="rtl" x="765" y="102" fill="var(--muted)" font-size="11">وضوح، آلية، ميكانيكية</text>
+        <rect x="520" y="20" width="150" height="100" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="595" y="48" fill="var(--ink)" font-size="14" font-weight="600">مايكلسون ومورلي</text>
+        <text direction="rtl" x="595" y="70" fill="var(--muted)" font-size="11">١٨٨٧: لا يوجد «أثير»</text>
+        <text direction="rtl" x="595" y="86" fill="var(--muted)" font-size="11">كرّرا التجربة مرارًا</text>
+        <text direction="rtl" x="595" y="102" fill="var(--muted)" font-size="11">صدمة للثقة العمياء</text>
+        <rect x="350" y="20" width="150" height="100" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="425" y="48" fill="var(--ink)" font-size="14" font-weight="600">أينشتاين</text>
+        <text direction="rtl" x="425" y="70" fill="var(--muted)" font-size="11">النسبية</text>
+        <text direction="rtl" x="425" y="86" fill="var(--muted)" font-size="11">«إذا أردت أن تفهم القرن</text>
+        <text direction="rtl" x="425" y="102" fill="var(--muted)" font-size="11">العشرين فعليك بأينشتاين أولًا»</text>
+        <rect x="180" y="20" width="150" height="100" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="255" y="48" fill="var(--ink)" font-size="14" font-weight="600">عالم الذرّة</text>
+        <text direction="rtl" x="255" y="70" fill="var(--muted)" font-size="11">الفيزياء الكمية</text>
+        <text direction="rtl" x="255" y="86" fill="var(--muted)" font-size="11">عالم غريب الأطوار</text>
+        <text direction="rtl" x="255" y="102" fill="var(--muted)" font-size="11">لم يحط به العلماء فهمًا</text>
+        <rect x="20" y="20" width="140" height="100" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="90" y="48" fill="var(--ink)" font-size="14" font-weight="600">هايزنبرغ</text>
+        <text direction="rtl" x="90" y="70" fill="var(--muted)" font-size="11">«اللاحتمية»</text>
+        <text direction="rtl" x="90" y="86" fill="var(--muted)" font-size="11">فقدان الجزم والقطع</text>
+        <text direction="rtl" x="90" y="102" fill="var(--muted)" font-size="11">والمطلقات</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" marker-end="url(#f3)"><line x1="688" y1="70" x2="674" y2="70"/><line x1="518" y1="70" x2="504" y2="70"/><line x1="348" y1="70" x2="334" y2="70"/><line x1="178" y1="70" x2="164" y2="70"/></g>
+      <rect x="20" y="150" width="820" height="130" rx="12" fill="var(--bg)" stroke="var(--line)"/>
+      <g text-anchor="middle">
+        <text direction="rtl" x="430" y="176" fill="var(--ink)" font-size="14" font-weight="600">العلم خرج من نطاقه إلى الثقافة: «غدت كلمة نسبي تلوكها جميع الألسنة»</text>
+        <text direction="rtl" x="430" y="202" fill="var(--muted)" font-size="12">لم يكن تغيرًا علميًا فقط، بل فكري وفلسفي ومنطقي وفي التصور الإنساني؛ فهو يخدم سياق اللامعنى واللامطلقات في القرن ٢٠</text>
+        <text direction="rtl" x="430" y="226" fill="var(--muted)" font-size="12">وإن لم تكن النسبية نفسها بلا معنى؛ فقدان الثقة: «قرنان كاملان يُضرَب شيء أساسي بُني عليه بتجربة»</text>
+        <text direction="rtl" x="430" y="252" fill="var(--ink)" font-size="12">من آثار اللاحتمية عند سترومبرج: اختفاء انتظام الطبيعة، استحالة المعرفة بالعالم الخارجي،</text>
+        <text direction="rtl" x="430" y="270" fill="var(--ink)" font-size="12">تعذّر التفريق بدقة بين الذات والموضوع، وفقدان السببية لمعناها (مع أن هذا ليس متفقًا عليه)</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">الفيزياء تصنع الفلسفة: من الذرّة إلى الفرد الليبرالي</h3>
+    <svg viewBox="0 0 860 220" width="100%" style="min-width:680px;display:block" role="img" aria-label="الرؤية الذرية في الفيزياء انتقلت إلى المجتمع في الليبرالية، ونيوتن انعكس على الاقتصاد والفكر">
+      <defs><marker id="f4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g>
+        <g fill="var(--accent)"><circle cx="720" cy="60" r="10"/><circle cx="760" cy="80" r="10"/><circle cx="700" cy="100" r="10"/><circle cx="745" cy="120" r="10"/><circle cx="790" cy="55" r="10"/><circle cx="800" cy="110" r="10"/></g>
+        <text direction="rtl" x="750" y="160" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الأشياء مكوّنة من ذرّات</text>
+        <text direction="rtl" x="750" y="180" text-anchor="middle" fill="var(--muted)" font-size="11">روبرت بويل (الفيزيائي)</text>
+        <g fill="var(--gold)"><circle cx="120" cy="60" r="12"/><circle cx="160" cy="85" r="12"/><circle cx="100" cy="105" r="12"/><circle cx="150" cy="125" r="12"/><circle cx="195" cy="58" r="12"/><circle cx="200" cy="112" r="12"/></g>
+        <text direction="rtl" x="150" y="160" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">المجتمع مكوّن من أفراد</text>
+        <text direction="rtl" x="150" y="180" text-anchor="middle" fill="var(--muted)" font-size="11">للفرد قيمته حتى يكوّن المجتمع</text>
+      </g>
+      <path d="M660 90 L 250 90" stroke="var(--muted)" stroke-width="3" marker-end="url(#f4)"/>
+      <text direction="rtl" x="455" y="76" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">جون لوك نقلها إلى المجتمع</text>
+      <text direction="rtl" x="455" y="112" text-anchor="middle" fill="var(--muted)" font-size="12">(الطيب بوعزة، «نقد الليبرالية»)</text>
+      <text direction="rtl" x="430" y="208" text-anchor="middle" fill="var(--muted)" font-size="12">وكذلك آدم سميث تأثر بنظرية فيزيائية في الاقتصاد: نيوتن ← الثقة والآلية، والفيزياء الحديثة ← النسبية واللامطلقات</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الرابع: إطلالة على العلوم الإنسانية والاجتماعية</h2>
+  <p>لها جذور قوية في القرن ١٨، وتأسست في القرن ١٩: التاريخ صار مركزيًا مع هيجل ثم الماركسية (وهو ينتمي إلى الفضاء الاجتماعي الإنساني، لا العقلي المحض ولا التجريبي)، والاقتصاد مع آدم سميث، وعلم الاجتماع مع أوغست كونت.</p>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">!</div><div><strong>الخطأ الكبير: فصلها عن سياق نشأتها</strong><span>ليست علومًا مجرّدة تشتغل في فضاء محايد؛ فضاؤها متقاطع مع فضاء الدين: من كان يتكلم عن الإنسان وعلاقته بالآخرين والجيران والناس؟ الدين. والآن تتكلم عنه علوم بمرجعيات مختلفة. وإذا كان الغرب قد رسّخ القطيعة مع الغيبيات والمطلقات في القرن ١٩، فمن الطبيعي جدًا أن تنشأ العلوم في رحمه على القطيعة نفسها.</span><em>علم الاجتماع لن يتخلى عن دراسة الدين، لكنه سيدرسه لا باعتباره وحيًا، بل ظاهرة اجتماعية أو إنسانية؛ وعلم النفس كذلك: شيء اخترعه الإنسان نتيجة تحديات نفسية. فتظهر قواعد كبرى متعارضة تمامًا مع ما تؤمن به؛ ولذلك من الخطأ الدعوة المطلقة لدراسة هذه العلوم دون تصور للسياق التاريخي ومؤهلات تسمح بالتعامل معها.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:4px">العلمنة الشاملة لمجالات الحياة (المسيري، المجلد ٢ ص ١٣٩)</h3>
+    <p class="muted" style="margin-bottom:8px">لا يتكلم عن علمنة العلوم فقط، بل الطعام واللباس والجسد والعمل؛ فمن الخطأ تجزئة المجتمع الغربي والنظر إلى أجزائه بمعزل عن الإطار الثقافي الحاكم.</p>
+    <svg viewBox="0 0 860 330" width="100%" style="min-width:700px;display:block" role="img" aria-label="العلمنة في مركزها تتفرع إلى الاقتصاد والسياسة والفنون والأدب والعمران والسلوك والعمل واللباس والطعام">
+      <circle cx="430" cy="165" r="64" fill="var(--ink)"/>
+      <text direction="rtl" x="430" y="160" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">العلمنة</text>
+      <text direction="rtl" x="430" y="182" text-anchor="middle" fill="var(--bg)" font-size="12">الشاملة</text>
+      <g stroke="var(--line)" stroke-width="2">
+        <line x1="494" y1="150" x2="610" y2="60"/><line x1="494" y1="165" x2="610" y2="165"/><line x1="494" y1="180" x2="610" y2="270"/>
+        <line x1="366" y1="150" x2="250" y2="60"/><line x1="366" y1="165" x2="250" y2="165"/><line x1="366" y1="180" x2="250" y2="270"/>
+        <line x1="430" y1="101" x2="430" y2="50"/><line x1="430" y1="229" x2="430" y2="280"/>
+      </g>
+      <g text-anchor="middle" font-size="12">
+        <rect x="610" y="24" width="230" height="72" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="725" y="48" fill="var(--ink)" font-size="13" font-weight="600">الاقتصاد</text>
+        <text direction="rtl" x="725" y="68" fill="var(--muted)">تحرّر تمامًا من أي أعباء أخلاقية</text>
+        <text direction="rtl" x="725" y="84" fill="var(--muted)">أو مرجعية أو غائية إنسانية</text>
+        <rect x="610" y="129" width="230" height="72" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="725" y="153" fill="var(--ink)" font-size="13" font-weight="600">السياسة</text>
+        <text direction="rtl" x="725" y="173" fill="var(--muted)">الأمة: مجموعة بشر بسمات مادية</text>
+        <text direction="rtl" x="725" y="189" fill="var(--muted)">لا جماعة تؤمن بدين أو قيم</text>
+        <rect x="610" y="234" width="230" height="72" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="725" y="258" fill="var(--ink)" font-size="13" font-weight="600">العمل</text>
+        <text direction="rtl" x="725" y="278" fill="var(--muted)">لم يعد مرتبطًا بحاجات الإنسان</text>
+        <text direction="rtl" x="725" y="294" fill="var(--muted)">بل الإنتاج نهاية في حد ذاته</text>
+        <rect x="20" y="24" width="230" height="72" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="135" y="48" fill="var(--ink)" font-size="13" font-weight="600">الفنون التشكيلية</text>
+        <text direction="rtl" x="135" y="68" fill="var(--muted)">فصل القيم الجمالية عن الإنسانية</text>
+        <text direction="rtl" x="135" y="84" fill="var(--muted)">والأخلاقية: العمل نهاية في ذاته</text>
+        <rect x="20" y="129" width="230" height="72" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="135" y="153" fill="var(--ink)" font-size="13" font-weight="600">اللباس</text>
+        <text direction="rtl" x="135" y="173" fill="var(--muted)">من تغطية الجسد إلى جذب الأنظار</text>
+        <text direction="rtl" x="135" y="189" fill="var(--muted)">إليه، وصولًا إلى «التيشيرت»</text>
+        <rect x="20" y="234" width="230" height="72" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="135" y="258" fill="var(--ink)" font-size="13" font-weight="600">الطعام والجسد</text>
+        <text direction="rtl" x="135" y="278" fill="var(--muted)">قد تتفق أو تختلف مع بعض</text>
+        <text direction="rtl" x="135" y="294" fill="var(--muted)">صوره، لكن السياق لا يُجزّأ</text>
+        <rect x="340" y="14" width="180" height="36" rx="18" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="430" y="37" fill="var(--ink)">الأدب، والعمران والعمارة</text>
+        <rect x="340" y="280" width="180" height="36" rx="18" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="430" y="303" fill="var(--ink)">السلوك الإنساني</text>
+      </g>
+    </svg>
+    <p class="muted">ومن أمثلة الطيب بوعزة: ميكافيلي صاحب «الأمير» عُدّ من رموز الليبرالية السياسية مع أنه يتكلم عن الاستبداد، لأنه فصل السياسة عن الأخلاق. وعرض المحاضر لطلابه صورًا من فن ما بعد الحداثة، فقال أحدهم عن لوحة: «هذه أكياس زبالة مجمّعة!»؛ فهو يتفق مع فكرة ضرب المعايير.</p>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الخامس: تأثير الحربين العالميتين</h2>
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 310" width="100%" style="min-width:700px;display:block" role="img" aria-label="الحرب الأولى صفعة غير كافية والثانية أسقطت التفاؤل والأيديولوجيات فنشأت الوجودية واللامعنى">
+      <defs><marker id="f5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--red)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="610" y="20" width="230" height="110" rx="12" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="725" y="48" fill="var(--ink)" font-size="14" font-weight="600">قبلهما: التفاؤل</text>
+        <text direction="rtl" x="725" y="72" fill="var(--muted)" font-size="12">التنوير «عصر السعادة»</text>
+        <text direction="rtl" x="725" y="92" fill="var(--muted)" font-size="12">والقرن ١٩ «عصر الأيديولوجيات»</text>
+        <text direction="rtl" x="725" y="112" fill="var(--muted)" font-size="11">الشيوعية: نهاية التاريخ والطبقات</text>
+        <rect x="330" y="20" width="250" height="110" rx="12" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="455" y="48" fill="var(--ink)" font-size="14" font-weight="600">الحرب الأولى: صفعة</text>
+        <text direction="rtl" x="455" y="72" fill="var(--muted)" font-size="12">لكنها لم تكن كافية لهدم ما مضى</text>
+        <text direction="rtl" x="455" y="92" fill="var(--muted)" font-size="12">ولا لإسقاط التفاؤل والتطلعات</text>
+        <text direction="rtl" x="455" y="112" fill="var(--muted)" font-size="12">والأيديولوجيات الكبرى</text>
+        <rect x="20" y="20" width="280" height="110" rx="12" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <text direction="rtl" x="160" y="48" fill="var(--ink)" font-size="14" font-weight="600">الحرب الثانية: الانهيار</text>
+        <text direction="rtl" x="160" y="72" fill="var(--muted)" font-size="12">نحو خمسين مليون قتيل</text>
+        <text direction="rtl" x="160" y="92" fill="var(--muted)" font-size="12">أسقطت التفاؤل والطموحات</text>
+        <text direction="rtl" x="160" y="112" fill="var(--muted)" font-size="12">«لم يعد أحد من الشباب يهتم بالسياسة»</text>
+      </g>
+      <g stroke="var(--red)" stroke-width="3" marker-end="url(#f5)"><line x1="606" y1="75" x2="584" y2="75"/><line x1="326" y1="75" x2="304" y2="75"/></g>
+      <path d="M160 132 L 160 166" stroke="var(--red)" stroke-width="3" marker-end="url(#f5)"/>
+      <g text-anchor="middle" font-size="13">
+        <rect x="20" y="170" width="150" height="44" rx="22" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="95" y="197" fill="var(--ink)">الوجودية</text>
+        <rect x="180" y="170" width="150" height="44" rx="22" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="255" y="197" fill="var(--ink)">ما بعد الحداثة</text>
+        <rect x="340" y="170" width="150" height="44" rx="22" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="415" y="197" fill="var(--ink)">العبثية والعدمية</text>
+        <rect x="500" y="170" width="150" height="44" rx="22" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="575" y="197" fill="var(--ink)">الإلحاد</text>
+        <rect x="660" y="170" width="180" height="44" rx="22" fill="var(--paper)" stroke="var(--line)"/><text direction="rtl" x="750" y="197" fill="var(--ink)">السقوط الأخلاقي</text>
+      </g>
+      <rect x="20" y="230" width="820" height="66" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+      <text direction="rtl" x="430" y="256" text-anchor="middle" fill="var(--ink)" font-size="12">نفوس جاهزة لتبنّي اللامعنى والفردية، بعد أن كان هتلر وستالين يرفعان أيديهما أمام الملايين</text>
+      <text direction="rtl" x="430" y="278" text-anchor="middle" fill="var(--muted)" font-size="12">«وهذه الحرب لم تأتِ في البداية، بل بعد كل التجارب التي مرّ بها المجتمع الغربي بالعلم والعقل»</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>شهادات من بعد الحرب</strong><span>سترومبرج: «استيقظ الأوروبيون من كابوس الحرب العالمية الثانية، ووقفوا بين الأطلال والخراب ليتبيّنوا أن ما عاشوه من أهوال لم يكن كابوسًا بل حقيقة... إذا كانت الحرب الأولى قد زعزعت ثقة الأوروبيين واحترامهم لتقاليد الأجداد، فإن الجائحة المرعبة بعد عشرين عامًا قد قضت نهائيًا على كل احترام يمكن أن يكنّه الأوروبيون للقديم» (ص ٦٢١).</span><em>غابرييل مارسيل، «تدهور الحكمة» (١٩٥٦): «كانت نتيجة طبيعية للحرب أن معظم الأوروبيين قد رفضوا التراث الأوروبي رفضًا تامًا، فذلك الخراب المادي لم يكن سوى ظاهرة مأساوية للخراب الذي نزل بالأخلاق». وأخو ماكس فيبر أصدر سنة ١٩٤٦ كتابًا بعنوان «وداعًا للتاريخ الأوروبي».</em></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر السادس: الوجودية</h2>
+  <p>جعلها المحاضر بعد الحرب عمدًا: صحيح أنها تيار له وجود وتنظير قبل الحرب الأولى وبين الحربين (هايدغر سمّى مذهبه «فلسفة الوجود»)، لكن انتشارها كان بعد الحرب الثانية، وأكبر الفضل فيه لسارتر.</p>
+
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 260" width="100%" style="min-width:680px;display:block" role="img" aria-label="الدين يرسم للإنسان خطة سابقة والوجودية تقول الإنسان يرسم طريقه بنفسه">
+      <g text-anchor="middle">
+        <rect x="460" y="20" width="380" height="150" rx="12" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="650" y="50" fill="var(--ink)" font-size="15" font-weight="600">الرؤية السابقة (الدين مثلًا)</text>
+        <text direction="rtl" x="650" y="78" fill="var(--muted)" font-size="12">تولد ولك إله، وقانون ونظام، وجنة ونار،</text>
+        <text direction="rtl" x="650" y="98" fill="var(--muted)" font-size="12">وغاية تنطلق إليها؛ خطة مرسومة سابقًا</text>
+        <text direction="rtl" x="650" y="118" fill="var(--muted)" font-size="12">وأنت تكتشف دلائلها وبراهينها</text>
+        <path d="M520 150 L 600 140 L 680 150 L 760 140" stroke="var(--accent)" stroke-width="3" fill="none" stroke-dasharray="8 5"/>
+        <rect x="20" y="20" width="400" height="150" rx="12" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="220" y="50" fill="var(--ink)" font-size="15" font-weight="600">الوجودية</text>
+        <text direction="rtl" x="220" y="78" fill="var(--muted)" font-size="12">لا خطة سابقة: الإنسان يوجِد خطته ويكتشف نفسه</text>
+        <text direction="rtl" x="220" y="98" fill="var(--muted)" font-size="12">لا يحتاج إلى شيء مسبق يؤثر فيه</text>
+        <text direction="rtl" x="220" y="118" fill="var(--muted)" font-size="12">تعظّم شأن الإنسان، وتلغي المصادر السابقة</text>
+        <path d="M80 150 C 120 120, 160 165, 200 140 S 300 120, 360 150" stroke="var(--red)" stroke-width="3" fill="none"/>
+      </g>
+      <rect x="20" y="190" width="820" height="56" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+      <text direction="rtl" x="430" y="214" text-anchor="middle" fill="var(--ink)" font-size="12">مرتبطة ارتباطًا وثيقًا بالإلحاد، وليست متوائمة تمامًا مع ما بعد الحداثة لأن فيها «مركزية الإنسان»</text>
+      <text direction="rtl" x="430" y="234" text-anchor="middle" fill="var(--muted)" font-size="12">أقرب لأن تكون بديلًا لا لعصر التنوير، بل لعصر الأيديولوجيات الذي جاء بعده</text>
+    </svg>
+  </div>
+
+  <ul class="clean">
+    <li><b>سترومبرج:</b> «الوجودية في أحد معانيها أعلى درجات النيتشوية» (ص ٦٠٨).</li>
+    <li><b>سارتر:</b> «الوجودية محاولة لاستخلاص النتائج من موقف إلحادي ثابت». و«عدم وجود الله معناه عدم وجود القيم المطلقة... وكتب دوستويفسكي: إذا لم يكن الله موجودًا فكل شيء مباح، وهذه نقطة انطلاق الوجودية».</li>
+    <li><b>من تعريفاتها:</b> «إبراز قيمة الوجود الفردي للإنسان»، والمدرسة التي تتخذ من الإنسان موضوعًا لها؛ ولا يكفي تعريف لشرح المذهب، بل يتضح بقراءة نصوصه.</li>
+    <li><b>لماذا انتشرت؟</b> سترومبرج: لا لمواهب منظّريها، بل لقدرتها على استهواء إنسان ما بعد ١٩٤٥: تحرّر من الأوهام والأيديولوجيات، شهد كارثتين مروعتين، لم يعد يرى شيئًا جديرًا بالإيمان إلا الذات، وقد أثارت النازية والشيوعية في نفسه الاشمئزاز (ص ٦٣١). ويقول: القلق الشديد على أصالة الفرد خلال عصر مرّ على تدمير الفردية كان من أسبابها الرئيسية.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>العنصر السابع: العَلمانية</h2>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">عَلمانية لا عِلمانية: من أين جاءت الكلمة؟</h3>
+    <svg viewBox="0 0 860 240" width="100%" style="min-width:700px;display:block" role="img" aria-label="الجذر اللاتيني للعلمانية يعود إلى الزمن والعالم لا إلى العلم">
+      <g text-anchor="middle">
+        <rect x="600" y="30" width="240" height="90" rx="12" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="ltr" x="720" y="62" fill="var(--ink)" font-size="16" font-weight="600">saeculum</text>
+        <text direction="rtl" x="720" y="88" fill="var(--muted)" font-size="12">لاتيني: العصر، الجيل، القرن</text>
+        <text direction="rtl" x="720" y="106" fill="var(--muted)" font-size="12">دنيوي، زمني (نحو ١٠٠ سنة)</text>
+        <rect x="320" y="30" width="240" height="90" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text direction="ltr" x="440" y="62" fill="var(--ink)" font-size="16" font-weight="600">secular · secularism</text>
+        <text direction="rtl" x="440" y="88" fill="var(--muted)" font-size="12">علاقته بالزمن والواقع والعالم</text>
+        <text direction="rtl" x="440" y="106" fill="var(--muted)" font-size="12">لا بالعلم التجريبي</text>
+        <rect x="40" y="30" width="240" height="90" rx="12" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="160" y="62" fill="var(--ink)" font-size="16" font-weight="600">عَلمانية / عالَمانية</text>
+        <text direction="rtl" x="160" y="88" fill="var(--muted)" font-size="12">بالفتح: نسبة إلى العالَم</text>
+        <text direction="rtl" x="160" y="106" fill="var(--muted)" font-size="12">الكسر «عِلمانية» خطأ على الراجح</text>
+        <text direction="rtl" x="580" y="80" fill="var(--muted)" font-size="20">←</text>
+        <text direction="rtl" x="300" y="80" fill="var(--muted)" font-size="20">←</text>
+      </g>
+      <rect x="40" y="146" width="800" height="76" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+      <text direction="rtl" x="440" y="172" text-anchor="middle" fill="var(--ink)" font-size="12">العَلمانية أعم من العلم التجريبي وأكبر: يمكن أن تُعلمَن العلم، ويمكن ألّا تُعلمنه</text>
+      <text direction="rtl" x="440" y="196" text-anchor="middle" fill="var(--muted)" font-size="12">والقول بأنها «عِلمانية» بسبب العلم ضعيف، لأن من المجالات التي تُعلمَن ما هو أصغر من العلم وما ليس علمًا</text>
+    </svg>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">تحوّل دلالة الكلمة عبر التاريخ</h3>
+    <svg viewBox="0 0 860 200" width="100%" style="min-width:700px;display:block" role="img" aria-label="خط زمني: ١٦٤٨ بعد حرب الثلاثين عامًا، ثم القرن الثامن عشر في فرنسا، ثم هوليوك في القرن التاسع عشر، ثم القرن العشرون">
+      <line x1="40" y1="90" x2="840" y2="90" stroke="var(--muted)" stroke-width="2"/>
+      <g text-anchor="middle">
+        <circle cx="760" cy="90" r="9" fill="var(--accent)"/>
+        <text direction="rtl" x="760" y="36" fill="var(--ink)" font-size="14" font-weight="600">١٦٤٨</text>
+        <text direction="rtl" x="760" y="56" fill="var(--muted)" font-size="11">أول استعمال بعد حرب الثلاثين</text>
+        <text direction="rtl" x="760" y="72" fill="var(--muted)" font-size="11">عامًا، مع نشأة الدولة القومية</text>
+        <text direction="rtl" x="760" y="124" fill="var(--muted)" font-size="11">مولد الظاهرة عند كثيرين (المسيري)</text>
+        <circle cx="540" cy="90" r="9" fill="var(--gold)"/>
+        <text direction="rtl" x="540" y="36" fill="var(--ink)" font-size="14" font-weight="600">القرن ١٨، فرنسا</text>
+        <text direction="rtl" x="540" y="56" fill="var(--muted)" font-size="11">«مصادرة غير شرعية للممتلكات الكنسية»</text>
+        <text direction="rtl" x="540" y="72" fill="var(--muted)" font-size="11">عند الكنيسة، و«شرعية» عند الفلاسفة</text>
+        <circle cx="320" cy="90" r="9" fill="var(--red)"/>
+        <text direction="rtl" x="320" y="36" fill="var(--ink)" font-size="14" font-weight="600">جون هوليوك</text>
+        <text direction="rtl" x="320" y="56" fill="var(--muted)" font-size="11">(١٨١٧–١٩٠٦) أول من استعمل</text>
+        <text direction="rtl" x="320" y="72" fill="var(--muted)" font-size="11">المصطلح بهذه الدلالة</text>
+        <circle cx="100" cy="90" r="9" fill="var(--ink)"/>
+        <text direction="rtl" x="100" y="36" fill="var(--ink)" font-size="14" font-weight="600">القرن ٢٠</text>
+        <text direction="rtl" x="100" y="56" fill="var(--muted)" font-size="11">استقرت قريبة من</text>
+        <text direction="rtl" x="100" y="72" fill="var(--muted)" font-size="11">«العَلمانية الشاملة»</text>
+      </g>
+      <text direction="rtl" x="430" y="170" text-anchor="middle" fill="var(--muted)" font-size="12">وأول تمثّلاتها كان في صور جزئية، لا بالمعنى الذي استقر في الواقع الغربي في القرن العشرين</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>تعريفات</strong><span><b>المسيري (الشاملة):</b> «فصل كل القيم الإنسانية والأخلاقية والدينية عن الطبيعة وعن حياة الإنسان في جانبيها العام والخاص، بحيث تُنزع القداسة عن العالم ويتحول إلى مادة استعمالية يمكن توظيفها لصالح الأقوى» (١/٢٢١). <b>اختصارًا:</b> فصل الدين والقيم المتجاوزة عن الحياة. <b>قاموس أكسفورد:</b> «ما ينتمي إلى هذا العالم الآني المرئي، تمييزًا له عن العالم الأزلي الروحي الآتي غير المرئي»؛ و«العقيدة التي تذهب إلى أن الأخلاق لا بد أن تكون لصالح البشر في هذه الحياة الدنيا، واستبعاد كل الاعتبارات المستمدة من الإيمان بالإله أو الحياة الأخرى». <b>سامي عامري:</b> «مبدأ يقوم على إنكار مرجعية الدين أو سلطانه في تنظيم شؤون الناس بعضها أو كلها، انطلاقًا من مرجعية الإنسان لإدراك الحقيقة والمنفعة الكامنتين في هذا العالم» («العلمانية طاعون العصر» ص ٩٩).</span><em>الفكرة: «صندوق دنيوي مغلق»؛ تشتغل فيه بناءً على الحقائق المأخوذة من داخله، ولا تُدخل ما يحكم العالم من خارجه. فتفصل القيمة التي تحدد لك ما الطبيعة: مسخّرة؟ مخلوق من مخلوقات الله؟ ولذلك من الخطأ التام حصرها في «فصل الدين عن الدولة»؛ هذا واحد مما في بطن التعريف العام.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">موقع الأشياء بعضها من بعض</h3>
+    <svg viewBox="0 0 860 300" width="100%" style="min-width:680px;display:block" role="img" aria-label="دوائر متداخلة: العلمانية إطار عام يحوي الليبرالية والرأسمالية والاشتراكية والماركسية، والعلمانية الجزئية جزء منها">
+      <ellipse cx="430" cy="150" rx="410" ry="135" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <text direction="rtl" x="430" y="40" text-anchor="middle" fill="var(--ink)" font-size="15" font-weight="600">العَلمانية: إطار عام (فصل المرجعية القيمية المتجاوزة)</text>
+      <g text-anchor="middle" font-size="13">
+        <ellipse cx="650" cy="140" rx="110" ry="60" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="650" y="134" fill="var(--ink)" font-weight="600">الليبرالية</text>
+        <text direction="rtl" x="650" y="154" fill="var(--muted)" font-size="11">+ الفردية والحرية</text>
+        <ellipse cx="430" cy="150" rx="90" ry="50" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="430" y="148" fill="var(--ink)" font-weight="600">الرأسمالية</text>
+        <ellipse cx="225" cy="140" rx="105" ry="60" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="225" y="134" fill="var(--ink)" font-weight="600">الاشتراكية والماركسية</text>
+        <text direction="rtl" x="225" y="154" fill="var(--muted)" font-size="11">«لا يصح: الماركسي ليبرالي»</text>
+        <rect x="290" y="216" width="280" height="44" rx="22" fill="var(--bg)" stroke="var(--line)"/>
+        <text direction="rtl" x="430" y="243" fill="var(--ink)">«فصل الدين عن الدولة» جزء فقط</text>
+      </g>
+    </svg>
+    <p class="muted">قد تجد علمانية لا تعرف فيها أكثر من فصل الدين عن شؤون الحياة، بلا بديل؛ وقد يكون داخلها أيديولوجيا معينة. والليبرالي قبل أن يكون ليبراليًا (في تصور الأفكار لا في الزمن) يُفترض أن يكون علمانيًا: فصل المرجعية أولًا، ثم دخل في الليبرالية.</p>
+  </div>
+
+  <div class="note"><strong>إنصاف المسيري في «العلمانية الجزئية»:</strong> يُنتقد بأنه لا يرى إشكالًا في فصل الدين عن السياسة، لغلبة الخلفية اليسارية عليه. لكنه، رحمه الله، لما علّق على حديث «أرأيت هذا المنزل... أم هو الرأي والحرب والمكيدة؟» (وإسناده ضعيف) قيّد الكلام: المقصود فصل بعض الإجراءات الفنية التقنية (البيروقراطية، شراء نوع من السلاح...) التي لا يعرفها إلا الفنيون، «فإن أستاذًا في الأدب الإنجليزي ومتخصصًا في اليهودية والصهيونية مثل كاتب هذه السطور يعرف أن هذا أمر لا ناقة له فيه ولا جمل»، بشرط أن تبقى «المرجعية النهائية مرجعية متجاوزة للدنيا وللرؤية النفعية النسبية المادية» (١/١٨–١٩). فرفض مشروعه بسبب خلفيته اليسارية أو بدعوى تبنّيه الفصل خطأ أو اختزال، وقع فيه بعض الأفاضل لعدم تحقيق البحث.</div>
+</section>
+
+<section>
+  <h2>العنصر التاسع: الليبرالية</h2>
+  <p>الليبرالية أخصّ من العلمانية، ولا يصح تعريفها بفصل الدين عن السياسة أو الاقتصاد فقط؛ هذا لا يكشف طبيعتها، فلها محدِّدات وجودية وإضافات على مجرد الفصل: الفردية، والحرية (أصل لفظها التحرر).</p>
+  <blockquote>هي فلسفة اقتصادية وسياسية ترتكز على أولوية الفرد بوصفه كائنًا حرًّا.<cite>الطيب بوعزة، «نقد الليبرالية». وأولوية الفرد وصف زائد على العلمانية، فقد يوجد تيار علماني يقدّم أولوية الجماعة.</cite></blockquote>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">الحريات وثلاثة مرتكزات فلسفية (بوعزة ص ٣٤–٣٥)</h3>
+    <svg viewBox="0 0 860 300" width="100%" style="min-width:700px;display:block" role="img" aria-label="الحريات الفكرية والاقتصادية والسياسية وثلاثة مرتكزات فلسفية لليبرالية">
+      <g text-anchor="middle" font-size="12">
+        <rect x="580" y="16" width="260" height="70" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="710" y="42" fill="var(--ink)" font-size="13" font-weight="600">فكريًا</text>
+        <text direction="rtl" x="710" y="64" fill="var(--muted)">حرية الاعتقاد والتفكير والتعبير</text>
+        <rect x="300" y="16" width="260" height="70" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="430" y="42" fill="var(--ink)" font-size="13" font-weight="600">اقتصاديًا</text>
+        <text direction="rtl" x="430" y="64" fill="var(--muted)">حرية التملك والفعل الاقتصادي</text>
+        <rect x="20" y="16" width="260" height="70" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text direction="rtl" x="150" y="42" fill="var(--ink)" font-size="13" font-weight="600">سياسيًا</text>
+        <text direction="rtl" x="150" y="64" fill="var(--muted)">حرية التجمع والأحزاب واختيار السلطة</text>
+      </g>
+      <rect x="20" y="104" width="820" height="38" rx="19" fill="var(--ink)"/>
+      <text direction="rtl" x="430" y="129" text-anchor="middle" fill="var(--bg)" font-size="14" font-weight="600">تصب فيها نظريات القرن ١٨ السياسية والعقد الاجتماعي، وتقوم على ثلاثة مرتكزات</text>
+      <g text-anchor="middle">
+        <rect x="580" y="160" width="260" height="120" rx="12" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="710" y="190" fill="var(--ink)" font-size="14" font-weight="600">١. الفصل بين</text>
+        <text direction="rtl" x="710" y="210" fill="var(--ink)" font-size="14" font-weight="600">السياسي والأخلاقي</text>
+        <text direction="rtl" x="710" y="238" fill="var(--muted)" font-size="12">ولذلك عُدّ ميكافيلي من رموزها</text>
+        <rect x="300" y="160" width="260" height="120" rx="12" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text direction="rtl" x="430" y="190" fill="var(--ink)" font-size="14" font-weight="600">٢. الرؤية الذرّية</text>
+        <text direction="rtl" x="430" y="210" fill="var(--ink)" font-size="14" font-weight="600">للوجود الاجتماعي</text>
+        <text direction="rtl" x="430" y="238" fill="var(--muted)" font-size="12">الفردانية؛ لوك أخذها من</text>
+        <text direction="rtl" x="430" y="256" fill="var(--muted)" font-size="12">الفيزيائي روبرت بويل</text>
+        <rect x="20" y="160" width="260" height="120" rx="12" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/>
+        <text direction="rtl" x="150" y="190" fill="var(--ink)" font-size="14" font-weight="600">٣. تحرير الفرد «المالِك»</text>
+        <text direction="rtl" x="150" y="210" fill="var(--ink)" font-size="14" font-weight="600">من استبداد السلطة</text>
+        <text direction="rtl" x="150" y="238" fill="var(--muted)" font-size="12">لا الفرد الإنساني بوصفه إنسانًا</text>
+        <text direction="rtl" x="150" y="256" fill="var(--muted)" font-size="12">بل بوصفه مالكًا اقتصاديًا</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>الليبرالية ليست هي الحرية</strong><span>من نصوص بوعزة الجميلة: الليبرالية ابتلعت قيمة كبرى للإنسان (الحرية) وأغلقت عليها، «احتكار لها»، فكأنه لا طريق للحرية إلا الليبرالية. «من صميم نزوعنا نحو مثال الحرية أن نقول اليوم: لا بد من تحرير الإنسان من الليبرالية» (ص ٩). «فنقدنا الليبرالية ليس نقدًا للحرية؛ إذ لا ترادف بينهما، ولا علاقة شمول ولا تضمن ولا تطابق» (ص ٦). و«من يتبنى فكرة الحرية ضمن الليبرالية يقضي على المثال، يحتبسه داخل سياج مذهبي» (ص ١٧).</span></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>السياق التاريخي للنشأة (ص ٢٤–٢٥)</strong><span>النظام الإقطاعي صار عائقًا يعترض حركة القوى البشرية ويعوق انتقالها من الحقل والقرية إلى المصنع والمدينة؛ فلزم تفكيكه بنقض نظام القِنانة وتحرير «القِنّ» (العبد) ليتحول إلى عامل. فالحرية وُلدت بمدلول خاص: تحرير القن لاستغلاله بطريقة جديدة تناسب الثورة الصناعية، لا تحرير الإنسان.</span><em>والدليل: إبادة الهنود الحمر، واستعباد شعوب أفريقيا واستعمارها ونهب مقدراتها، لم تكن صنعة الإقطاع، بل صدرت عن نظام ليبرالي رأسمالي، وكان المسوّغ التشريعي لها صادرًا عن البرلمانات الليبرالية الرافعة لشعار الإخاء والحرية والمساواة. ولفظ «الليبرالية» لم يكن متداولًا حتى نهاية القرن ١٨، ويظهر في نهاية القرن ١٩ دالًّا على رؤية مذهبية لها أساسها الفكري ونظريتها. وهذا كله لا يكفي لمعرفة الليبرالية: تحتاج إلى معرفتها كمفهوم، ونظرياتها الاقتصادية، ونظريات أشخاصها (ميكافيلي، لوك، مونتسكيو، روسو، آدم سميث).</em></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الثامن: شخصيات القرن العشرين</h2>
+  <p>إذا قارنّا شخصيات القرن العشرين بالقرون ١٧–١٩ فهي أقل قيمة بمفارقة كبيرة من ناحية القوة الفكرية والفلسفية (هناك: ديكارت، لوك، سبينوزا، هيوم، كانط، روسو، هيجل، ماركس، نيتشه، كونت)، وإن كان لها تأثير كبير جدًا. ومن اللامعنى في القرن ٢٠ نماذج جديدة من الفلاسفة من الناحية الأخلاقية: فوكو، من أكبر فلاسفته، كان معلنًا لشذوذه ومات بالإيدز؛ وفرويد مات بسرطان الفم لشراهته في التدخين، وله عبارات من نحو «كيف يعيش الناس بدون تدخين!»؛ ونيتشه مات في أول سنة من القرن. ومن الأسماء: سارتر، فرويد (طبيب لا فيلسوف أساسًا، لكن تأثيره الفلسفي كبير)، راسل، هايدغر، فوكو، دريدا.</p>
+
+  <h3>فرويد (١٨٥٦–١٩٣٩)</h3>
+  <p>سترومبرج: «إجماع عام على أن فرويد أحد العقول العظيمة التي بذرت في تربة الفكر بذورًا جديدة، وأنه في مصاف نيوتن وداروين... ويتساوى مع ماركس وداروين باعتباره أحد العباقرة الثلاثة في القرن التاسع عشر» (ص ٤٩٧–٤٩٨).</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">المشروع الأول: اللاوعي والبنية الثلاثية للنفس</h3>
+    <svg viewBox="0 0 860 330" width="100%" style="min-width:700px;display:block" role="img" aria-label="جبل جليد: الأنا العليا والأنا فوق الماء والهو واللاوعي تحت الماء تسعة أعشار">
+      <rect x="20" y="110" width="820" height="210" fill="var(--accent-soft)" opacity=".7"/>
+      <line x1="20" y1="110" x2="840" y2="110" stroke="var(--accent)" stroke-width="2"/>
+      <text direction="rtl" x="26" y="104" text-anchor="end" fill="var(--accent)" font-size="12">سطح الوعي</text>
+      <polygon points="430,20 500,110 360,110" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+      <polygon points="360,110 500,110 600,310 260,310" fill="var(--bg)" stroke="var(--line)" stroke-width="2"/>
+      <g text-anchor="middle">
+        <text direction="rtl" x="430" y="72" fill="var(--ink)" font-size="12" font-weight="600">الوعي</text>
+        <text direction="rtl" x="430" y="92" fill="var(--muted)" font-size="11">عُشر واحد</text>
+        <text direction="rtl" x="430" y="200" fill="var(--ink)" font-size="15" font-weight="600">اللاوعي</text>
+        <text direction="rtl" x="430" y="224" fill="var(--muted)" font-size="12">تسعة أعشار ما يحرّك الإنسان</text>
+      </g>
+      <g font-size="12">
+        <rect x="620" y="20" width="220" height="80" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text direction="rtl" x="730" y="44" text-anchor="middle" fill="var(--ink)" font-weight="600">الأنا العليا</text>
+        <text direction="rtl" x="730" y="64" text-anchor="middle" fill="var(--muted)">الأخلاق والقيم من الوالدين والمجتمع</text>
+        <text direction="rtl" x="730" y="82" text-anchor="middle" fill="var(--muted)">تعاقب بالشعور بالذنب</text>
+        <rect x="620" y="140" width="220" height="80" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="730" y="164" text-anchor="middle" fill="var(--ink)" font-weight="600">الأنا</text>
+        <text direction="rtl" x="730" y="184" text-anchor="middle" fill="var(--muted)">تتخذ القرارات باستراتيجية واقعية</text>
+        <text direction="rtl" x="730" y="202" text-anchor="middle" fill="var(--muted)">ولا تفرّق بين الصواب والخطأ</text>
+        <rect x="20" y="180" width="220" height="80" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="130" y="204" text-anchor="middle" fill="var(--ink)" font-weight="600">الهو</text>
+        <text direction="rtl" x="130" y="224" text-anchor="middle" fill="var(--muted)">الغرائز الكامنة، لا تهدأ حتى تُلبّى</text>
+        <text direction="rtl" x="130" y="242" text-anchor="middle" fill="var(--muted)">وهو الأكثر أصالة في الإنسان</text>
+      </g>
+      <g stroke="var(--muted)" stroke-dasharray="3 3"><line x1="618" y1="60" x2="470" y2="60"/><line x1="618" y1="180" x2="510" y2="150"/><line x1="242" y1="220" x2="320" y2="250"/></g>
+      <text direction="rtl" x="430" y="300" text-anchor="middle" fill="var(--ink)" font-size="12">الإنسان يعيش وسط نزاعات داخلية: الأثر إفقاده جزءًا من الثقة في عقله</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">٢</div><div><strong>المشروع الثاني: تفسير الأحلام</strong><span>تعمّد نشر كتابه سنة ١٩٠٠ بالذات، حتى يكون حديث المئوية الجديدة كإعلان. (أصوله يهودية، وهو ملحد، وفي تخلّيه عن يهوديته نقاش طويل.) رأى الأحلام بوابة لتفسير النفس: العقل اللاواعي ينشر فيها اهتماماته، ووظيفة المحلل النفسي أن يستنطقه من بواباته، وأكبرها الأحلام. «قد يبدو سطحيًا، لكن قيمته كبيرة في السياق».</span><em>ومن الطريف: لم تنفد نُسخه الخمسمئة إلا بعد ثماني سنوات من صدوره. ثم بلغت الفرويدية ذروتها في العشرينيات والثلاثينيات، ولما احتل النازيون النمسا ١٩٣٨ أحرقوا مؤلفاته، فاضطر للفرار إلى لندن وتوفي بعد عام في الثالثة والثمانين. وسترومبرج: كان دوغمائيًا شديد التزمت، عمل على انشقاق حركته وتوزّع أتباعه مدارس شيعًا (ص ٥٠١).</em></div></div>
+    <div class="card"><div class="n">٣</div><div><strong>المشروع الثالث: التفسيرات الجنسية</strong><span>من مركزياته: الجنس ليس شيئًا فرعيًا، بل مع الإنسان منذ ولادته، ويذكر تفاصيل لا يستحيي منها عن الرضيع؛ ويرى أن الدافع الجنسي أقوى دافع، وأن المجتمع يكبته فيدفع الإنسان ثمن ذلك التشوه عاطفيًا، «وجعله مفتاح الحياة».</span><em>سترومبرج: «فرويد في زمننا هذا مسؤول أكثر من أي إنسان آخر عن تحرير الجنس من بعض الكبت وبعض المحرمات... ففي العشرينيات سقط الاحتشام الفكتوري المألوف» (ص ٤٩٩–٥٠٠)، وقد كانت أفلام الكرتون القديمة تصوّر احتشام القرنين ١٨ و١٩. «وقد بدا للبعض أنه غطّى على مساوئ داروين، إذ طمس آخر ملمح من ملامح كرامة الإنسان ومهابته، حينما صوّر الإنسان مخلوقًا تسيّره الرغبات البهيمية، وقرر أن أجمل إبداعاته ومثله العليا إنما هي نتاج شهواته السرية». يقول المحاضر: هذا من الغثاء، لكن يُذكر لأن الإنسان قابل أن ينحط إلى مراحل لا تُتصوّر طالما يستغني عن الله.</em></div></div>
+  </div>
+
+  <h3>دريدا وفوكو: «موت الإنسان»</h3>
+  <div class="panel scroll">
+    <svg viewBox="0 0 860 300" width="100%" style="min-width:720px;display:block" role="img" aria-label="سلسلة التعريف الذاتي للإنسان: داروين جعله حيوانًا وفرويد أنزله إلى الحضيض وموت المرجعيات جعله بلا غاية">
+      <defs><marker id="f6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--red)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="660" y="20" width="180" height="90" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text direction="rtl" x="750" y="48" fill="var(--ink)" font-size="14" font-weight="600">نيتشه: موت الإله</text>
+        <text direction="rtl" x="750" y="72" fill="var(--muted)" font-size="11">موت القيم والمطلقات</text>
+        <text direction="rtl" x="750" y="90" fill="var(--muted)" font-size="11">والمرجعيات والدين</text>
+        <rect x="450" y="20" width="190" height="90" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="545" y="48" fill="var(--ink)" font-size="14" font-weight="600">يستلزم موت قاتله</text>
+        <text direction="rtl" x="545" y="72" fill="var(--muted)" font-size="11">الإنسان: لارتباط القيم العليا</text>
+        <text direction="rtl" x="545" y="90" fill="var(--muted)" font-size="11">بإدراكه لمعناه هو</text>
+        <rect x="240" y="20" width="190" height="90" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text direction="rtl" x="335" y="48" fill="var(--ink)" font-size="14" font-weight="600">فقد تعريفه لنفسه</text>
+        <text direction="rtl" x="335" y="72" fill="var(--muted)" font-size="11">داروين: حيوان أرقى</text>
+        <text direction="rtl" x="335" y="90" fill="var(--muted)" font-size="11">فرويد: يحرّكه الجنس</text>
+        <rect x="20" y="20" width="200" height="90" rx="10" fill="var(--ink)"/>
+        <text direction="rtl" x="120" y="48" fill="var(--bg)" font-size="14" font-weight="600">بلا غائية ولا معنى</text>
+        <text direction="rtl" x="120" y="72" fill="var(--bg)" font-size="11">الوجودية: هو ابن نفسه</text>
+        <text direction="rtl" x="120" y="90" fill="var(--bg)" font-size="11">«فكل شيء مباح»</text>
+      </g>
+      <g stroke="var(--red)" stroke-width="2.5" marker-end="url(#f6)"><line x1="656" y1="65" x2="644" y2="65"/><line x1="446" y1="65" x2="434" y2="65"/><line x1="236" y1="65" x2="224" y2="65"/></g>
+      <rect x="20" y="136" width="820" height="72" rx="10" fill="var(--bg)" stroke="var(--line)"/>
+      <text direction="rtl" x="430" y="162" text-anchor="middle" fill="var(--ink)" font-size="12">فوكو («الكلمات والأشياء»): «الإنسان سوف يندثر مثل وجه من الرمل مرسوم على حد البحر» (ص ٣١٣)</text>
+      <text direction="rtl" x="430" y="186" text-anchor="middle" fill="var(--muted)" font-size="12">«ما يبشّر به فكر نيتشه أكثر من موت الإله... هو نهاية قاتله» (ص ٣١٢)</text>
+      <rect x="20" y="222" width="820" height="66" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+      <text direction="rtl" x="430" y="248" text-anchor="middle" fill="var(--ink)" font-size="12">الآثار اليوم: في السويد لا يُحدَّد المولود ذكرًا ولا أنثى حتى يقرر هو؛ ولم نعد في مرحلة وجود الشذوذ</text>
+      <text direction="rtl" x="430" y="270" text-anchor="middle" fill="var(--ink)" font-size="12">ولا مرحلة شرعنته، بل في مرحلة «محاربة رفضه» (أمريكا في عهد أوباما، وإغلاق حسابات في التطبيقات)</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>ما نريد استخلاصه من السلسلة كلها</h2>
+  <div class="note"><strong>الحقيقة الأهم:</strong> الإنسان لا يمكن أن يستغني عن الله، والنموذج البشري المنحطّ آية من آيات الله ترسّخ هذا المعنى. لم يصل البشر إلى مثل قوة اليوم الآلية واقتحام تفاصيل العلوم، ولم يصلوا إلى مثل انحطاط اليوم؛ فهذا التوازي بين القوة والرقيّ التقني وبين الانحطاط الأخلاقي آية في ذاته، لأنهم قاموا على فلسفة استغنائية: ﴿فَأَيْنَ تَذْهَبُونَ﴾؛ جرّبوا وسلكوا وابتكروا، والنتيجة على المستوى الأخلاقي هكذا.</div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:4px">«لوحة العدّادات»: أخطر شيء هو العبث بالمعايير</h3>
+    <p class="muted" style="margin-bottom:8px">عندنا معيار للأخلاق، وللقيم، وللدين، وللدنيا، وللتقدم. إذا تغيرت لوحة الأدوات عندك، فما تستنكره الآن لن يستنكره صاحب المعايير المتغيرة: «ما معنى أنه صار كذا؟ لماذا تستنكر؟»</p>
+    <svg viewBox="0 0 860 280" width="100%" style="min-width:680px;display:block" role="img" aria-label="أعمدة معايير: في الحالة السليمة الدين والأخلاق والقيم عالية، وفي المقلوبة الدنيا والحرية والفردانية عالية">
+      <line x1="40" y1="220" x2="400" y2="220" stroke="var(--muted)" stroke-width="2"/>
+      <line x1="460" y1="220" x2="820" y2="220" stroke="var(--muted)" stroke-width="2"/>
+      <g>
+        <rect x="70" y="60" width="44" height="160" rx="4" fill="var(--accent)"/>
+        <rect x="140" y="70" width="44" height="150" rx="4" fill="var(--accent)"/>
+        <rect x="210" y="80" width="44" height="140" rx="4" fill="var(--accent)"/>
+        <rect x="280" y="140" width="44" height="80" rx="4" fill="var(--gold)"/>
+        <rect x="350" y="150" width="44" height="70" rx="4" fill="var(--gold)"/>
+        <rect x="490" y="180" width="44" height="40" rx="4" fill="var(--accent)"/>
+        <rect x="560" y="186" width="44" height="34" rx="4" fill="var(--accent)"/>
+        <rect x="630" y="176" width="44" height="44" rx="4" fill="var(--accent)"/>
+        <rect x="700" y="60" width="44" height="160" rx="4" fill="var(--red)"/>
+        <rect x="770" y="70" width="44" height="150" rx="4" fill="var(--red)"/>
+      </g>
+      <g text-anchor="middle" font-size="11" fill="var(--muted)">
+        <text direction="rtl" x="92" y="238">الدين</text><text direction="rtl" x="162" y="238">الأخلاق</text><text direction="rtl" x="232" y="238">القيم</text><text direction="rtl" x="302" y="238">الدنيا</text><text direction="rtl" x="372" y="238">الحرية</text>
+        <text direction="rtl" x="512" y="238">الدين</text><text direction="rtl" x="582" y="238">الأخلاق</text><text direction="rtl" x="652" y="238">القيم</text><text direction="rtl" x="722" y="238">الدنيا</text><text direction="rtl" x="792" y="238">الحرية</text>
+      </g>
+      <text direction="rtl" x="230" y="30" text-anchor="middle" fill="var(--accent)" font-size="14" font-weight="600">لوحة سليمة</text>
+      <text direction="rtl" x="640" y="30" text-anchor="middle" fill="var(--red)" font-size="14" font-weight="600">لوحة عُبث بها</text>
+      <text direction="rtl" x="430" y="268" text-anchor="middle" fill="var(--muted)" font-size="12">الأطوال للتوضيح فقط؛ الفكرة: أي المعايير يُرفع وأيها يُخفض في نفس المسلم</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>إحياء قضية المعايير وتمليك الإنسان إياها</strong><span>خاصة لشباب الجيل الصاعد: أن تكون عنده معايير ذاتية تعينه على تقييم الأشياء، لا نتائج فقط («هذا خطأ، هذا حرام، هذا انحلال»)؛ لأنه إذا جاءت صور جديدة لم يحفظ لها نتائج لن يستطيع تقييمها، أما إذا حُيِّيت عنده المعايير فكل ما يستجد ينظر إليه تابعًا لمعيار.</span><em>ومما يضرب المعايير اليوم سيولة المعرفة في شبكات التواصل وترميز المشاهير: على أي معيار صاروا مشاهير؟ لا يقدّمون شيئًا على المستوى العلمي ولا الأخلاقي، وأعمار بعضهم لا تتجاوز ست عشرة سنة؛ والترند على يوتيوب برامج بلا معنى وسخيفة جدًا.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>البديل</strong><span>قراءة المستقبل خطوة تتطلب دراسة مستقلة؛ لكن مما يُستفاد من حالة ما بعد الحداثة أن العبث يجعل النفوس قابلة للبديل. فلو بقيت تسبّ الحالة الموجودة من هنا إلى الغد، واكتب في نقدها ما شئت من الكتب، لن يفيد كثيرًا إذا لم تصنع البديل؛ «لأن جزءًا من المشكلة أصلًا هو اللامبالاة». يقول المحاضر: صناعة البديل وإيجاده وتمكين الإنسان منه هو أفضل ما يمكن أن يُقدَّم.</span></div></div>
+  </div>
+
+  <p class="muted">وفي ختام السلسلة سُئل: هل علم النفس من ضمن الفلسفة؟ الجواب: هو علم متكامل من العلوم الإنسانية لا دخل له بالفلسفة، لكنه يتقاطع معها، مع إمكانية وجود منطلقات وافتراضات فلسفية مسبقة عند عالم النفس (ما رؤيته للإنسان؟)؛ فهو ليس علمًا فلسفيًا، لكن فيه شيء فلسفي.</p>
+</section>
+
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اضغط لرؤية الإجابة</span></h2>
+  <div class="quiz">
+    <details><summary>ما معنى قول سترومبرج: «الغد ضروري لفهم اليوم»؟</summary><p>أن التغيرات كثيرًا ما لا يُنتبه إلى طبيعتها وحدودها إلا بعد انقضائها (كالقرون الوسطى لم تُسمَّ إلا بعد انتهائها)؛ والمفكر الحقيقي من يفهم يومه قبل أن ينصرم.</p></details>
+    <details><summary>متى بدأت الحداثة، ومتى كان الوعي بها؟</summary><p>البداية الزمنية قرابة ١٥٠٠ مع عصر النهضة، والوعي بها في القرن ١٨ (التنوير)، ويرى مؤرخون أنها تكرّست واتضحت في القرن ١٩.</p></details>
+    <details><summary>ما «السرديات الكبرى» للحداثة؟</summary><p>العقلانية، ومركزية الإنسان، والتفاؤل والوصول للحقائق، والإيمان بالتقدم والمعنى والقيم؛ وجوهرها تأليه العقل (الطيب بوعزة).</p></details>
+    <details><summary>لماذا يصعب تعريف الحداثة؟</summary><p>لأنها تتقاطع فيها حقيقة تاريخية وقعت في الغرب مع مفهوم فكري معرفي، فيضع بعض المعرّفين أعينهم على النموذج الواقعي (كأركون الذي يمثّلها بأسماء).</p></details>
+    <details><summary>ماذا تفيد «ما بعد» في «ما بعد الحداثة»؟</summary><p>الزمن، والتضاد والمناقضة والتجاوز: هي ضد السرديات الكبرى، فلا حقيقة ولا مركز ولا مطلقات، وتشاؤم وعدمية.</p></details>
+    <details><summary>ما التفكيكية؟ وما خطرها على قراءة القرآن؟</summary><p>منهج يجعل البحث في فهم القارئ لا في معنى النص، فتتعدد المعاني بلا نهاية؛ وطبّقه أركون وعلي حرب فجعلا النص القرآني مفتوحًا على كل معنى وكل عقيدة، وهذا عبث.</p></details>
+    <details><summary>ما جذور ما بعد الحداثة، ومتى ظهرت بوضوح؟</summary><p>الجذر الأكبر نيتشه، وبعضهم يرجعها إلى كانط، ومنها ضربات فرويد الثلاث؛ وظهرت بوضوح في الستينيات والسبعينيات (سونتاج ١٩٦٩، وكتاب ليوتار).</p></details>
+    <details><summary>ما الضربات الثلاث لنرجسية الإنسان عند فرويد؟</summary><p>كوبرنيكوس (الأرض ليست المركز)، وداروين (الإنسان حيوان أرقى)، وفرويد نفسه (يحرّكه اللاوعي والجنس).</p></details>
+    <details><summary>فرّق عند طه عبد الرحمن بين الدهرانية وما بعدها.</summary><p>الدهرانية «مروق»: خروج الأخلاق من الدين بإنكار آمرية الإله. وما بعدها «شرود»: الخروج من الأخلاق كليًا بإنكار شاهدية الإله.</p></details>
+    <details><summary>كيف أثّر العلم في القرن ٢٠ على الثقافة؟</summary><p>تجربة مايكلسون ومورلي ثم نسبية أينشتاين والكم ولاحتمية هايزنبرغ أفقدت الثقة والجزم، وانتقلت «النسبية» من الفضاء العلمي إلى الثقافي، فخدمت سياق اللامعنى واللامطلقات.</p></details>
+    <details><summary>لماذا لا تصح الدعوة المطلقة لدراسة العلوم الإنسانية والاجتماعية؟</summary><p>لأنها وُلدت في رحم القطيعة مع الدين في القرن ١٩، فتدرس الدين ظاهرة اجتماعية أو نفسية لا وحيًا، وفيها قواعد كبرى تعارض ما تؤمن به؛ فتحتاج تصورًا لسياقها ومؤهلات.</p></details>
+    <details><summary>ما الفرق بين أثر الحربين العالميتين؟</summary><p>الأولى صفعة لم تكفِ لإسقاط التفاؤل والأيديولوجيات، والثانية (نحو خمسين مليون قتيل) أسقطتها فتهيأت النفوس للعبثية والعدمية والفردية والوجودية.</p></details>
+    <details><summary>ما الوجودية؟ ولماذا انتشرت بعد ١٩٤٥؟</summary><p>فلسفة متعلقة بالإنسان: لا خطة سابقة له، هو يصنع طريقه بنفسه، مرتبطة بالإلحاد («أعلى درجات النيتشوية»). انتشرت لاستهوائها إنسانًا تحرّر من الأيديولوجيات وشهد كارثتين ولم يعد يرى ما يستحق الإيمان إلا ذاته.</p></details>
+    <details><summary>لماذا هي «عَلمانية» لا «عِلمانية»؟</summary><p>لأن جذرها اللاتيني saeculum يعود إلى الزمن والعالم والجيل، لا إلى العلم التجريبي؛ والعلمانية أعم من العلم.</p></details>
+    <details><summary>لماذا يخطئ من يعرّف العلمانية بفصل الدين عن الدولة فقط؟</summary><p>لأن هذا جزء مما في بطن التعريف الشامل: فصل الدين والقيم المتجاوزة عن الحياة كلها، كصندوق دنيوي مغلق لا يُدخل ما يحكمه من خارجه.</p></details>
+    <details><summary>ما الذي يُنصَف به المسيري في العلمانية الجزئية؟</summary><p>أنه قيّد الفصل بالإجراءات الفنية التقنية بشرط بقاء المرجعية النهائية متجاوزة للدنيا وللرؤية المادية؛ فرفض مشروعه لهذا اختزال.</p></details>
+    <details><summary>ما المرتكزات الفلسفية الثلاثة لليبرالية؟</summary><p>الفصل بين السياسي والأخلاقي، والرؤية الذرية للوجود الاجتماعي (الفردانية، من بويل إلى لوك)، وتحرير الفرد المالك من استبداد السلطة.</p></details>
+    <details><summary>لماذا «الليبرالية ليست هي الحرية»؟</summary><p>لأنها احتكرت قيمة الحرية وأغلقت عليها، ونشأت لتحرير القن ليصير عاملًا يُستغل بطريقة جديدة، وصدرت عنها إبادات واستعباد؛ فنقدها ليس نقدًا للحرية.</p></details>
+    <details><summary>ما مشاريع فرويد الثلاثة؟</summary><p>اللاوعي والبنية الثلاثية (الهو، الأنا، الأنا العليا)، وتفسير الأحلام (١٩٠٠)، والتفسيرات الجنسية التي أسقطت الاحتشام الفكتوري في العشرينيات.</p></details>
+    <details><summary>ما خلاصة السلسلة وما المطلوب؟</summary><p>الإنسان لا يستغني عن الله، والتوازي بين القوة التقنية والانحطاط الأخلاقي آية. والمطلوب: إحياء المعايير وتمليكها الإنسان، وصناعة البديل لا الاكتفاء بالنقد.</p></details>
+  </div>
+</section>
+
+</div>

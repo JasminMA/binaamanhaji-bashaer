@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الثورة العلمية التجريبية</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+</style>
+</head>
+<body style="margin:0">
+
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">تاريخ الفكر الغربي الحديث</a><span style="color:var(--muted)">‹</span><span style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">المحاضرة ٢</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل المحاضرات</a><span style="display:flex;gap:14px">
+<a href="lecture1.html" style="color:var(--muted);text-decoration:none">→ المحاضرة السابقة</a>
+<a href="lecture3.html" style="color:var(--muted);text-decoration:none">المحاضرة التالية ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">تاريخ الفكر الغربي الحديث · الشيخ أحمد السيد · المحاضرة الثانية</div>
+  <h1>عصر النهضة (٢): الثورة العلمية التجريبية ومدخل القرن السابع عشر</h1>
+  <p class="muted">ملخص مذاكرة: الشجرة الكاملة أولًا، ثم شرح كل فرع مع الرسوم، ثم أسئلة مراجعة.</p>
+</header>
+
+<section>
+  <h2>نصيحة المحاضر قبل البدء</h2>
+  <div class="note">
+    <strong>إن كان المجال جديدًا عليك:</strong> ستشعر أن الأسماء متشابهة ومتداخلة (ديكارت، كبلر، سبينوزا، هوبز...)، كمن يقرأ أسانيد الحديث أول مرة. الحل الذي يقترحه المحاضر: اكتب كل شيء، فما يستغلق عليك اليوم سيُفتح لك غدًا. ومع الوقت تتكوّن عندك «كتلة علمية» تجذب المعلومات الجديدة إليها كما تجذب الشمس الكواكب، فتضع كل معلومة في خانتها دون جهد.
+  </div>
+  <p>ويرشّح لبناء القاعدة الأولية كتاب الدكتور سلطان العميري «ظاهرة نقد الدين في الفكر الغربي»؛ لأنه يقسّم القرون ويعطي لكل قرن سماته وأبرز أسمائه وأفكاره، فتدخل بقية الكتب وعندك خانات جاهزة.</p>
+</section>
+
+<section>
+  <h2>الشجرة الذهنية للمحاضرة <span class="tag">رسم كامل</span></h2>
+  <div class="panel scroll"><svg viewBox="-200 0 1210 672" width="100%" style="min-width:860px;display:block" role="img" aria-label="شجرة ذهنية: المحاضرة الثانية: عصر النهضة ٢"><path d="M548.1 95.0 C 482.0 95.0, 482.0 35.0, 415.8 35.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M548.1 95.0 C 482.0 95.0, 482.0 65.0, 415.8 65.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M548.1 95.0 C 482.0 95.0, 482.0 95.0, 415.8 95.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M548.1 95.0 C 482.0 95.0, 482.0 125.0, 415.8 125.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M548.1 95.0 C 482.0 95.0, 482.0 155.0, 415.8 155.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M200.6 246.0 C 119.3 246.0, 119.3 201.0, 38.1 201.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M200.6 246.0 C 119.3 246.0, 119.3 231.0, 38.1 231.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M200.6 246.0 C 119.3 246.0, 119.3 261.0, 38.1 261.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M200.6 246.0 C 119.3 246.0, 119.3 291.0, 38.1 291.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M273.4 396.0 C 155.7 396.0, 155.7 351.0, 38.1 351.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M273.4 396.0 C 155.7 396.0, 155.7 381.0, 38.1 381.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M273.4 396.0 C 155.7 396.0, 155.7 411.0, 38.1 411.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M273.4 396.0 C 155.7 396.0, 155.7 441.0, 38.1 441.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M461.8 321.0 C 438.8 321.0, 438.8 246.0, 415.8 246.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M461.8 321.0 C 438.8 321.0, 438.8 321.0, 415.8 321.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M461.8 321.0 C 438.8 321.0, 438.8 396.0, 415.8 396.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M309.8 502.0 C 173.9 502.0, 173.9 487.0, 38.1 487.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M309.8 502.0 C 173.9 502.0, 173.9 517.0, 38.1 517.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M477.5 569.5 C 446.7 569.5, 446.7 502.0, 415.8 502.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M477.5 569.5 C 446.7 569.5, 446.7 547.0, 415.8 547.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M477.5 569.5 C 446.7 569.5, 446.7 577.0, 415.8 577.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M477.5 569.5 C 446.7 569.5, 446.7 607.0, 415.8 607.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M477.5 569.5 C 446.7 569.5, 446.7 637.0, 415.8 637.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M722.0 332.2 C 699.0 332.2, 699.0 95.0, 676.0 95.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M722.0 332.2 C 699.0 332.2, 699.0 321.0, 676.0 321.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M722.0 332.2 C 699.0 332.2, 699.0 569.5, 676.0 569.5" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><rect x="98.6" y="21.0" width="317.2" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="257.2" y="39.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">الفوائد: الأفكار، التراكم، الوعي باللحظة</text><rect x="178.7" y="51.0" width="237.1" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="297.3" y="69.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">لماذا الغرب مثال؟ انقلاب شامل</text><rect x="207.8" y="81.0" width="208.0" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="311.8" y="99.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">نهاية الوسطى: أربعة أقوال</text><rect x="258.8" y="111.0" width="157.0" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="337.3" y="129.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">سمات النهضة الأربع</text><rect x="222.4" y="141.0" width="193.4" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="319.1" y="159.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ميكافيلي الأبرز فلسفيًا</text><rect x="548.1" y="77.0" width="127.9" height="36" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text direction="rtl" x="612.0" y="100.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">مراجعة ما سبق</text><rect x="-155.9" y="189.0" width="194.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-58.9" y="205.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">غاليليو مؤسس العلم الحديث</text><rect x="-135.8" y="219.0" width="173.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-48.8" y="235.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">حصر المعرفة في التجربة</text><rect x="-155.9" y="249.0" width="194.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-58.9" y="265.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الكون آلة ← كون غير مفهوم</text><rect x="-189.5" y="279.0" width="227.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-75.7" y="295.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">العلماء لم يقصدوا معاداة الدين</text><rect x="200.6" y="232.0" width="215.3" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="308.2" y="250.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">نشأة العلم التجريبي وآثاره</text><rect x="84.1" y="307.0" width="331.8" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="250.0" y="325.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">المصطلح: الثورة العلمية × الثورات في العلم</text><rect x="-135.8" y="339.0" width="173.8" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-48.8" y="355.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">ترجمة العلوم الإسلامية</text><rect x="-108.9" y="369.0" width="147.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-35.4" y="385.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">جذور القرون الوسطى</text><rect x="-122.3" y="399.0" width="160.4" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-42.1" y="415.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">آثار النهضة الجانبية</text><rect x="-82.0" y="429.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-22.0" y="445.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الحروب الدينية</text><rect x="273.4" y="382.0" width="142.5" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="344.6" y="400.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">المؤثرات الأربعة</text><rect x="461.8" y="303.0" width="214.2" height="36" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><text direction="rtl" x="568.9" y="326.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الثورة العلمية التجريبية</text><rect x="-129.0" y="475.0" width="167.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-45.5" y="491.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الفلسفة: ديكارت × لوك</text><rect x="-189.5" y="505.0" width="227.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="-75.7" y="521.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">العلم التجريبي: غاليليو، نيوتن</text><rect x="309.8" y="488.0" width="106.1" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="362.8" y="506.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">قدما أوروبا</text><rect x="149.6" y="533.0" width="266.2" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="282.7" y="551.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ميكافيلي: الأمير ومؤسس لليبرالية؟</text><rect x="156.9" y="563.0" width="259.0" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="286.4" y="581.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">نظرة القرن ١٧ للطبيعة: آلة صمّاء</text><rect x="309.8" y="593.0" width="106.1" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="362.8" y="611.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">رهان باسكال</text><rect x="200.6" y="623.0" width="215.3" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="308.2" y="641.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">رجل الكنيسة وعالِم الطبيعة</text><rect x="477.5" y="551.5" width="198.5" height="36" rx="8" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/><text direction="rtl" x="576.8" y="574.5" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">مدخل القرن ١٧ وما حوله</text><rect x="722.0" y="310.2" width="278.0" height="44" rx="22.0" fill="var(--ink)" stroke="none" stroke-width="1"/><text direction="rtl" x="861.0" y="337.6" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">المحاضرة الثانية: عصر النهضة ٢</text></svg></div>
+  <p class="muted" style="font-size:.85rem">على الجوال اسحب الشجرة أفقيًا لرؤيتها كاملة.</p>
+</section>
+
+<section>
+  <h2>المحور الأول: مراجعة المحاضرة السابقة</h2>
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>الفوائد التي يجب استحضارها</strong><span>خطورة الأفكار (راندال: الأفكار أبقى عناصر الحضارة)، وأن أثرها يظهر بالتراكم الزمني لا بالقفزات الحادة، وضعف الإنسان حال استغنائه عن الله، وأن التغيرات الكبرى نتيجة تكامل مؤثرات متعددة مع الزمن.</span><em>والوعي باللحظة: «عصر النهضة» لم يُسمَّ بهذا إلا في القرن ١٩، و«الثورة العلمية» لم تُسمَّ إلا بعد نحو قرنين. فإن لم ننتبه للتغيرات التي تحدث حولنا، ستمر بنا ثم يأتي من بعدنا ليحللها. والمفكر الحقيقي هو من يعي اللحظة ويسمّي سماتها الكلية في وقتها، وأفضل منه من يمدّها إلى المستقبل.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>لماذا نضرب المثل بالواقع الغربي؟</strong><span>لأن مقدار التغير الذي حصل فيه لا يمكن وصفه: انقلاب تامّ وشامل في السياسة والاقتصاد والاجتماع والدين والقيم والأخلاق والفلسفة، خلال خمسة قرون فقط (من ق١٥ إلى ق٢٠).</span><em>لو كان التغير مجرد تطور علمي يغيّر وجه الحياة المدنية (من الجمل إلى السيارة) لما استحق كل هذه الدراسة. لكنه انقلاب في كل المجالات معًا، ولذلك يُستنبط منه كثير من الدروس والعبر.</em></div></div>
+    <div class="card"><div class="n">٣</div><div><strong>تذكير بأقوال نهاية العصور الوسطى وسمة العصر</strong><span>فتح القسطنطينية ١٤٥٣، أو اكتشاف أمريكا ١٤٩٢، أو الإصلاح الديني (لوثر)، أو نهاية القرن ١٤. والسمة الكبرى للعصور الوسطى: سطوة الكنيسة واستئثارها، لا دينيًا فقط، بل في نشر المعرفة الإنسانية والهيمنة عليها.</span></div></div>
+    <div class="card"><div class="n">٤</div><div><strong>سمات عصر النهضة وشخصياته</strong><span>السمات الأربع: النزعة الإنسانية وإحياء التراث اليوناني، الإصلاح الديني، المكتشفات الجغرافية، بداية الثورة العلمية التجريبية. وبعضهم يضيف: الفصل بين السياسة والأخلاق.</span><em>لم يكن عصر النهضة عصر تأسيس رؤية جديدة على مستوى الفلسفة والتنظير؛ التغير فيه كان عمليًا وثقافيًا وأدبيًا وإنسانيًا. أبرز استثناء فلسفي: ميكافيلي. وهذا العصر كان جسرًا للعصور الحديثة.</em></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>المحور الثاني: الثورة العلمية التجريبية <span class="tag">أهم محاور المحاضرة</span></h2>
+
+  <h3>النقطة الأولى: نشأة العلم التجريبي وآثاره</h3>
+  <p>موضوع نشأة العلم التجريبي ليس موضوعًا تجريبيًا عمليًا فقط، بل تجاوزت آثاره العلم إلى مختلف الآفاق المعرفية البشرية. ومن أعظم آثاره في المجتمع الغربي أنه <b>حصر المعرفة البشرية فيه</b>.</p>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">أ</div><div><strong>كوبرنيكوس طرح فرضية، وغاليليو أسّس المنهج</strong><span>طرح كوبرنيكوس نظرية مركزية الشمس على أنها افتراضات وتحليلات، فأحدث ثورة في المضمون لكنه لم يقم بإجراءات علمية عملية. أما الثورة في <b>كيفية الوصول</b> إلى المعارف الطبيعية فأحدثها غاليليو؛ ولذلك اشتهر في تاريخ العلوم أن مؤسس العلم الحديث هو غاليليو.</span><em>مثال تجربته: هل يسقط جسمان من المكان نفسه بالسرعة نفسها بغض النظر عن كتلتهما؟ الحجر والريشة معروف أيهما يسقط أولًا، لكنه افترض أنهما يصلان معًا إن أُزيلت المؤثرات. حاول الرمي من برج فلم تكفِ المسافة، فصنع أداة اختبار مائلة يدحرج عليها الأجسام، وقاس التسارع والحركة، واستنتج قوانين مهمة. ومع شهرته في الفلك، كان مجاله الأساسي حركة الأجسام.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">تجربة السطح المائل عند غاليليو (توضيح)</h3>
+    <svg viewBox="0 0 700 220" width="100%" style="min-width:520px;display:block" role="img" aria-label="سطح مائل تتدحرج عليه كرة، وتزداد المسافة المقطوعة في كل وحدة زمن">
+      <polygon points="60,190 640,190 640,40" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+      <!-- incline from (640,40) to (60,190); points at t=0..4 distances ∝ t^2 : fractions 0, .0625,.25,.5625,1 -->
+      <g fill="var(--gold)">
+        <circle cx="640" cy="40" r="9"/>
+        <circle cx="603.8" cy="49.4" r="9" opacity=".85"/>
+        <circle cx="495" cy="77.5" r="9" opacity=".7"/>
+        <circle cx="313.8" cy="124.4" r="9" opacity=".55"/>
+        <circle cx="60" cy="190" r="9" opacity=".4"/>
+      </g>
+      <g fill="var(--muted)" font-size="12" text-anchor="middle">
+        <text x="640" y="22">ز=٠</text>
+        <text x="603.8" y="32">ز=١</text>
+        <text x="495" y="60">ز=٢</text>
+        <text x="313.8" y="107">ز=٣</text>
+        <text x="60" y="172">ز=٤</text>
+      </g>
+      <text x="350" y="212" text-anchor="middle" fill="var(--ink)" font-size="13">في كل وحدة زمن متساوية تقطع الكرة مسافة أكبر من سابقتها: الحركة متسارعة</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">ب</div><div><strong>الأثر الأول: الغلو في العلم التجريبي وحصر «العلم» فيه</strong><span>لو كانت آثار المكتشفات أن الإنسان انتقل من ركوب الجمل إلى ركوب السيارة لما استحقت الدراسة إلا من جهة كيف وصل إليها. لكن الذي صار سائدًا في البيئات العلمية والأكاديمية: <b>عدم الثقة في أكثر العلوم البشرية إذا لم تمرّ عبر بوابة التجربة</b>.</span><em>من مظاهر الغلو: أن كلمة «علم» صارت تنصرف تلقائيًا إلى العلم التجريبي. فمن أعطاه هذه القدسية؟ هل العلوم العقلية والإنسانية ليست علمًا؟ والمشكلة الكبرى حين ننتقل إلى الفضاء الإيماني: وجود الله واليوم الآخر لا تمرّ ببوابة التجربة، فتُقصى. وهذا الأمر لم يكن موجودًا في القرنين ١٥ و١٦.</em></div></div>
+    <div class="card"><div class="n">ج</div><div><strong>الأثر الثاني: تغيّر نظرة الإنسان للكون</strong><span>في عصر نيوتن وما بعده بفترة صار يُنظر للكون على أنه آلة ميكانيكية: مادة تسري بعجلة ميكانيكية، كون مفهوم منظم له بداية ونطاق معين، فلا حاجة لإدخال المعاني الإيمانية والغيبية فيه. ثم تطورت المشكلة فصار الكون غير مفهوم: فضاء لا متناه، وربما أكوان كثيرة سبقت هذا الكون.</span><em>وهكذا يضيع الإنسان: الكون الذي يراه ليس مفهومًا ولا مغلقًا ولا مخلوقًا في نظره، ولا يقرأ منه إلا الجزء الذي وصله بالإجراءات العلمية. يقول سترومبرج («تاريخ الفكر الحديث» ص٦٧) بالمعنى: أهم ما أسفرت عنه الثورة العلمية هو التغيير الجذري لمفهوم العالم، من عالم متناه مغلق منتظم في سلسلة من المراتب، إلى كون غير محدود ولا نهائي.</em></div></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-bottom:12px">تطور نظرة الإنسان الغربي للكون</h3>
+    <div class="flow">
+      <div class="step"><small class="muted">العصور الوسطى</small><b>كون صغير مغلق</b><span>كل شيء فيه مفهوم وواضح، ومفسَّر عن طريق الكنيسة</span></div>
+      <div class="arr">←</div>
+      <div class="step" style="background:var(--gold-soft);border-color:var(--gold)"><small class="muted">نيوتن (ق١٧) وما بعده</small><b>آلة ميكانيكية</b><span>منتظم ومفهوم بقوانين علمية، لا حاجة لإدخال الغيب</span></div>
+      <div class="arr">←</div>
+      <div class="step"><small class="muted">لاحقًا (النسبية والكم)</small><b>كون لا متناه غير مفهوم</b><span>ليس كل شيء مفهومًا، وربما أكوان متعددة؛ ضاعت عند الإنسان الحقيقة والمعنى</span></div>
+    </div>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">د</div><div><strong>المفارقة: العلماء لم يقصدوا معاداة الدين</strong><span>علماء القرون ١٥ و١٦ و١٧ لم يكن معروفًا بينهم إحداث العداء بين العلم الطبيعي والدين. غاليليو الذي عادته الكنيسة وصادرت كتبه كان مؤمنًا بالنصرانية وصديقًا للبابا. ونيوتن، أشدهم علمًا وأعلاهم أثرًا، كان مسيحيًا خاشعًا يأخذ اللاهوت مأخذ الجد أكثر من العلم، ويستدل بالنظام الكوني على وجود الخالق. وديكارت لم يكن ملحدًا ولم يتوقع أن فلسفته ستؤدي للإلحاد، ومع ذلك كانت من أكثر النظريات التي أدت إليه.</span><em>هذه هي خطورة تراكم الأفكار: ستيس في «الدين والعقل الحديث» يقول بالمعنى إن نيوتن لو تصوّر أن ما قام به سيقوّض أركان الإيمان لأُصيب بالفزع. مثال معاصر يذكره المحاضر: شباب كثيرون وصلوا للإلحاد بدأت رحلتهم بأفكار تشكك في الثوابت عند عدنان إبراهيم، مع أنه هو نفسه يقاوم الإلحاد؛ فبعد أن تهتز الثوابت لا تستطيع أن تضع بوابات للأفكار، ومع تراكم المؤثرات (شحرور وغيره) وضعف التدين وخيبة الأمل يصل الإنسان إلى الإلحاد.</em></div></div>
+  </div>
+
+  <div class="note"><strong>خلاصة النقطة الأولى:</strong> ضرورة الانتباه للآثار التي تجاوزت بيئة العلم الطبيعي إلى الفلسفة والمعرفة والدين، وعدم دراسة الثورة العلمية كمجرد تاريخ مكتشفات.</div>
+
+  <h3>النقطة الثانية: مصطلح «الثورة العلمية التجريبية»</h3>
+  <ul class="clean">
+    <li>فلاسفة الأنوار في القرن ١٨ هم من أطلقوا هذا الوصف. ومثاله أن نظرية كوبرنيكوس (ق١٦) لم تُعتمد إلا بعد نحو مئة سنة، وتسمى اليوم «الثورة الكوبرنيكية» ولم تكن تسمى كذلك في وقتها.</li>
+    <li>ثم انكمش استعمال المصطلح حتى ثلاثينيات القرن ٢٠، حين أعاد مجموعة من الباحثين إحياءه، فصار متداولًا في تاريخ العلم وفلسفة العلوم.</li>
+  </ul>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>المصطلح</th><th>معناه</th><th>مثال</th></tr></thead>
+      <tbody>
+        <tr><td><b>الثورة العلمية</b></td><td>حدث له نطاق زمني محدد جاء وانتهى</td><td>القرن السابع عشر</td></tr>
+        <tr><td><b>الثورات في العلم</b></td><td>كل تجديد في دائرة العلوم الطبيعية قد يُسمى ثورة، في أي زمن</td><td>ثورة الكوانتم</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>النقطة الثالثة: المؤثرات التي هيّأت للثورة العلمية التجريبية</h3>
+  <p>لماذا بدأت أوروبا تتجه إلى العلم التجريبي؟ يذكر المحاضر أربعة مؤثرات:</p>
+
+  <div class="panel scroll">
+    <svg viewBox="0 0 760 330" width="100%" style="min-width:560px;display:block" role="img" aria-label="أربعة مؤثرات تحيط بالثورة العلمية التجريبية">
+      <g stroke="var(--line)" stroke-width="2">
+        <line x1="380" y1="165" x2="170" y2="70"/><line x1="380" y1="165" x2="590" y2="70"/>
+        <line x1="380" y1="165" x2="170" y2="260"/><line x1="380" y1="165" x2="590" y2="260"/>
+      </g>
+      <ellipse cx="380" cy="165" rx="125" ry="46" fill="var(--ink)"/>
+      <text x="380" y="160" text-anchor="middle" fill="var(--bg)" font-size="16" font-weight="600">الثورة العلمية</text>
+      <text x="380" y="182" text-anchor="middle" fill="var(--bg)" font-size="14">التجريبية</text>
+      <g font-size="14" text-anchor="middle">
+        <rect x="470" y="30" width="240" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text x="590" y="62" fill="var(--ink)" font-weight="600">١. ترجمة العلوم الإسلامية والعربية</text>
+        <text x="590" y="86" fill="var(--muted)" font-size="12">مراغة، الغزالي، الباقلاني</text>
+        <rect x="50" y="30" width="240" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text x="170" y="62" fill="var(--ink)" font-weight="600">٢. جذور القرون الوسطى الغربية</text>
+        <text x="170" y="86" fill="var(--muted)" font-size="12">روجر بيكون، جامعة بادوفا</text>
+        <rect x="470" y="220" width="240" height="80" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text x="590" y="252" fill="var(--ink)" font-weight="600">٣. الآثار الجانبية لعصر النهضة</text>
+        <text x="590" y="276" fill="var(--muted)" font-size="12">إزاحة الكنيسة عن مركز المعرفة</text>
+        <rect x="50" y="220" width="240" height="80" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text x="170" y="252" fill="var(--ink)" font-weight="600">٤. الحروب الدينية</text>
+        <text x="170" y="276" fill="var(--muted)" font-size="12">تعجيل الابتعاد عن الدين</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>الترجمة للعلوم الإسلامية والعربية</strong><span>التأثير ليس بالضرورة تجريبيًا؛ قد يكون في طريقة التفكير، وطريقة التفكير توصل إلى مجالات معينة. أمثلة:</span><em><b>على المستوى العلمي:</b> كتاب «فجر العلم الحديث» لأستاذ أمريكي مشهور، وهو متعصب للعلم الغربي ويرى الغرب أحق بالثورة العلمية، ومع ذلك يقرّ بأن انتقال المعرفة العلمية والفلسفية من الحضارة العربية الإسلامية عبر جهود الترجمة في العصور الوسطى كان له أثر عظيم في التطور الفكري الغربي. ونظرية كوبرنيكوس في مركزية الشمس يرى باحثون أنها كانت عند علماء <b>مدرسة مراغة</b>؛ وأحدهم يقول إن السؤال ليس: هل تعلّمها؟ بل: متى وكيف؟ للتشابه الكبير بين النماذج.<br><br><b>على المستوى الفلسفي:</b> ديكارت (أبو الفلسفة الحديثة) يرى باحثون أنه تأثر بكتاب الغزالي «المنقذ من الضلال»؛ وذكر د. محمود حمدي زقزوق أن في مكتبة ديكارت نسخة لاتينية منه عليها تعليقات ديكارت نفسه. وللدكتور المصري نجيب البهبيتي كتاب «المدخل إلى دراسة التاريخ والأدب العربيين» فيه نحو ١٤٠ صفحة يثبت أن ديكارت أخذ عن الغزالي، لا في منهج الشك فقط بل في أبواب أخرى، وهو من المصادر المهمة في الرد على النزعة الاستشراقية عند طه حسين.<br><br><b>محاضرات د. محمد باسل الطائي</b> (علم الفلك): عند الكلام عن جزئيات عند غاليليو وكوبرنيكوس يقول: هذا ذكره الباقلاني في «التمهيد».</em></div></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-bottom:8px">لماذا أحدث تلسكوب غاليليو مشكلة؟</h3>
+    <div class="flow">
+      <div class="step"><small class="muted">نظر إلى القمر</small><b>القمر يشبه الأرض</b><span>وكان المعتقد أن الأجرام من عنصر مختلف</span></div>
+      <div class="arr">←</div>
+      <div class="step"><small class="muted">نظر إلى المشتري</small><b>أربعة أقمار تدور حوله</b><span>فليس كل شيء يدور حول الأرض</span></div>
+      <div class="arr">←</div>
+      <div class="step" style="background:var(--red-soft);border-color:var(--red)"><small class="muted">النتيجة</small><b>اصطدام بعقيدة الكنيسة</b><span>مركزية الأرض كانت عقيدة تتبناها الكنيسة</span></div>
+    </div>
+    <p style="margin-top:12px">عند المسلمين مثل هذه الاكتشافات لا تسبب مشكلة شرعية. أما عندهم فاكتشاف جديد قد يصادم تصورًا معينًا بشكل مباشر (عقيدة تتبناها الكنيسة) أو غير مباشر (التصور العام عن طبيعة الكون وكيف يجري، كاكتشاف الجاذبية).</p>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">٢</div><div><strong>الجذور العلمية الغربية في العصور الوسطى</strong><span>لم يبدأ كل شيء من الصفر؛ كان في القرون الوسطى بذور علمية، وليست كلها مرتبطة بالكنيسة، بل فيها نوع من الاستقلال.</span><em><b>جامعة بادوفا</b> الإيطالية (تأسست ١٢٢٢م): فيها درس كوبرنيكوس، وفيها ألقى غاليليو محاضراته وأجرى تجاربه، وكانت تدرّس فلسفة ابن رشد. ولماذا إيطاليا؟ لأنها كانت أكثر دول أوروبا استقرارًا وبُعدًا عن الحروب (بينما فرنسا وإنجلترا في حرب المائة عام التي امتدت فعليًا أكثر من مئة سنة)، فكوبرنيكوس ودافنشي وميكافيلي وغاليليو كلهم كانوا في إيطاليا.<br><br>ونقل سترومبرج عن كرومبي أن جهابذة علماء القرنين ١٦ و١٧ اطّلعوا على أسلافهم في العصور الوسطى وانتفعوا بهم، وأن القناعة الشائعة بأن القرون الوسطى لم تسهم في العلوم الحديثة قناعة مغلوطة.</em></div></div>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th>لا تخلط بينهما</th><th>الزمن</th><th>الدور</th></tr></thead>
+      <tbody>
+        <tr><td><b>روجر بيكون</b></td><td>العصور الوسطى (ق١٣–١٤)</td><td>اهتم بالمنهج التجريبي مبكرًا، لكن هذه البوادر انتهت بالفشل</td></tr>
+        <tr><td><b>فرانسيس بيكون</b></td><td>القرن ١٧</td><td>المشهور، مؤسس المنهج التجريبي والمنظّر له</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">٣</div><div><strong>الآثار الجانبية لعصر النهضة</strong><span>عصر النهضة كان عصرًا ثقافيًا أدبيًا إنسانيًا، لا عصرًا تجريبيًا فلسفيًا. لكن من آثاره الجانبية أنه ضرب المصدر الذي كان مسيطرًا على العلوم (الكنيسة)، وأزاح الناس عن مركزيتها، وحرّر الإنسان من سلطتها المعرفية.</span><em>حين تنزاح عن هذا المركز، صرت قادرًا على البحث في فضاء إنساني غير مسيطَر عليه، وهذا ما حدث فعلًا مع التطور. (للتوقيت: الثورة العلمية الحديثة كانت مع نهاية ق١٦ وبداية ق١٧؛ غاليليو توفي في ق١٧، ونيوتن في ق١٨.)</em></div></div>
+    <div class="card"><div class="n">٤</div><div><strong>الحروب الدينية</strong><span>من أسباب تعجيل الانزياح عن مركزية الدين والإله والكنيسة. الإصلاح الديني جاء مبشّرًا بالخلاص والتجديد ورؤية جديدة للدين، فكانت نتيجته الأولى حربًا دينية استمرت ثلاثين عامًا، وهذا يدفع الإنسان بعيدًا عن القضية الدينية.</span><em>يقول سترومبرج بالمعنى: من تصادم حركة الإصلاح الديني والحركة المضادة لها تصادمًا دمويًا عنيفًا، اتجهت أوروبا إلى عصر كبلر وغاليليو اللذين جعلا الكون كله موضوعًا للتساؤل وإعادة النظر، حتى بلغ ذلك ذروته بنيوتن قرابة نهاية القرن.</em></div></div>
+  </div>
+  <p>هذه المؤثرات الأربعة دفعت أوروبا نحو المصدر المعرفي الجديد: العلم التجريبي. وفي الوقت نفسه، حين انزاحت عن مركزية الكنيسة في عصر النهضة، كان المصدر البديل المؤقت هو العلوم اليونانية القديمة.</p>
+</section>
+
+<section>
+  <h2>المحور الثالث: مدخل القرن السابع عشر</h2>
+  <p>في آخر القرن ١٦ وبدايات ١٧ انبثق مساران أساسيان، وعلى أكتافهما تشكلت أوروبا الحديثة: <b>مسار العلم التجريبي</b> و<b>مسار الرؤى والتنظيرات الفلسفية الجديدة</b>. والعلم التجريبي لم ينشأ مستقلًا تمامًا عن الفلسفة.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">أوروبا في القرن ١٧ تسير على قدمين</h3>
+    <svg viewBox="0 0 760 292" width="100%" style="min-width:560px;display:block" role="img" aria-label="أوروبا الحديثة قائمة على عمودين: الفلسفي والتجريبي">
+      <rect x="140" y="20" width="480" height="50" rx="10" fill="var(--ink)"/>
+      <text x="380" y="51" text-anchor="middle" fill="var(--bg)" font-size="16" font-weight="600">أوروبا الحديثة ← عصر التنوير (ق١٨)</text>
+      <rect x="420" y="70" width="200" height="110" fill="var(--accent-soft)" stroke="var(--accent)"/>
+      <text x="520" y="100" text-anchor="middle" fill="var(--ink)" font-size="15" font-weight="600">القدم الفلسفية</text>
+      <text x="520" y="124" text-anchor="middle" fill="var(--muted)" font-size="12">ديكارت · فرانسيس بيكون</text>
+      <text x="520" y="144" text-anchor="middle" fill="var(--muted)" font-size="12">جون لوك · هوبز · سبينوزا</text>
+      <text x="520" y="166" text-anchor="middle" fill="var(--accent)" font-size="11">وفي داخلها تعارض: عقلي × حسّي</text>
+      <rect x="140" y="70" width="200" height="110" fill="var(--gold-soft)" stroke="var(--gold)"/>
+      <text x="240" y="100" text-anchor="middle" fill="var(--ink)" font-size="15" font-weight="600">القدم التجريبية</text>
+      <text x="240" y="128" text-anchor="middle" fill="var(--muted)" font-size="12">غاليليو · إسحاق نيوتن</text>
+      <text x="240" y="150" text-anchor="middle" fill="var(--muted)" font-size="12">(ومعهم كبلر وبراهي)</text>
+      <line x1="100" y1="180" x2="660" y2="180" stroke="var(--muted)" stroke-width="2"/>
+      <text x="660" y="212" text-anchor="end" fill="var(--accent)" font-size="12" font-weight="600">ميزان المسارين عبر القرون:</text>
+      <line x1="100" y1="222" x2="660" y2="222" stroke="var(--line)" stroke-dasharray="4 4"/>
+      <g font-size="12" text-anchor="middle">
+        <text x="600" y="244" fill="var(--ink)" font-weight="600">ق١٧</text>
+        <text x="600" y="262" fill="var(--muted)">المساران متوازيان</text>
+        <text x="380" y="244" fill="var(--ink)" font-weight="600">ق١٨</text>
+        <text x="380" y="262" fill="var(--muted)">ميل إلى الفلسفي (مع بقاء التجريبي قويًا)</text>
+        <text x="160" y="244" fill="var(--ink)" font-weight="600">ق١٩</text>
+        <text x="160" y="262" fill="var(--muted)">ميل إلى التجريبي</text>
+        <text x="160" y="280" fill="var(--muted)">(الثورة الصناعية، نظرية التطور)</text>
+      </g>
+    </svg>
+  </div>
+
+  <h3>التعارض داخل القدم الفلسفية: ديكارت × جون لوك</h3>
+  <div class="scroll">
+    <table>
+      <thead><tr><th></th><th>ديكارت</th><th>جون لوك</th></tr></thead>
+      <tbody>
+        <tr><td><b>كيف يولد الإنسان؟</b></td><td>ومعه المبادئ العقلية الأولية الضرورية (علوم فطرية)</td><td>«صفحة بيضاء» بلا مبادئ عقلية فطرية</td></tr>
+        <tr><td><b>مصدر المعرفة</b></td><td>العقل، فهو يعظّم المنهج العقلي</td><td>التجربة والحواس</td></tr>
+        <tr><td><b>لقبه</b></td><td>أبو المنهج العقلي</td><td>أبو المذهب الحسي</td></tr>
+        <tr><td><b>العلاقة</b></td><td colspan="2">يقولون: جون لوك هدم ديكارت، والفكر الأوروبي بعد ذلك التفت إلى لوك.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>أبرز شخصيات الثورة العلمية</h3>
+  <div class="people">
+    <div class="person"><b>كوبرنيكوس</b><span>مركزية الشمس، كفرضية (ق١٦).</span></div>
+    <div class="person"><b>كبلر</b><span>أثبت أن حركة الكواكب بيضاوية لا دائرية.</span></div>
+    <div class="person"><b>غاليليو</b><span>مؤسس العلم الحديث، التجربة والتلسكوب.</span></div>
+    <div class="person"><b>تيخو براهي</b><span>سجّل ملاحظاته عن السماء نحو عشرين سنة، واستفاد منها من بعده.</span></div>
+    <div class="person"><b>إسحاق نيوتن</b><span>بلغ به انتظام المناهج ذروته قرابة نهاية ق١٧.</span></div>
+    <div class="person"><b>فرانسيس بيكون</b><span>المنظّر الفلسفي للمنهج التجريبي (ق١٧).</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>ميكافيلي: أبرز فيلسوف سياسي في عصر النهضة</h2>
+  <p>عصر النهضة كان إنسانيًا أدبيًا ثقافيًا لا فلسفيًا، والاستثناء ميكافيلي. إذا ذُكر ذُكرت معه عبارة «الغاية تبرر الوسيلة»، والبراغماتية، وترسيخ الاستبداد السياسي، وكتابه «الأمير» من أكثر الكتب تأثيرًا في التاريخ. في «الأمير» يؤكد أن سلطات الأمير مطلقة كبيرة، وأن يُبعَد الجانب الأخلاقي، وأن للأمير أن يقتل ويستبد لمصلحة الحكم والملك وانتظام الدولة.</p>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">؟</div><div><strong>كيف يكون ميكافيلي من مؤسسي الليبرالية؟</strong><span>هذا ما فعله د. الطيب بوعزة في كتابه «نقد الليبرالية»، وطرح السؤال على نفسه. وأجاب من جهتين: (١) لا يتفق أن الليبرالية مذهب حرية مطلقة أصلًا. (٢) ولا يتفق أن دعوة ميكافيلي دعوة للاستبداد، وإن اشتهر ذلك عنه.</span><em>حاجزان يمنعان فهم ميكافيلي: <b>الأول</b> أن الناس قرأوا «الأمير» وحده، ولم يقرأوا كتابه الثاني (المطارحات/الأحاديث عن الكتب العشرة الأولى لتيتوس ليفيوس) الذي يؤيد الحكم المدني الجمهوري. وتفسير التناقض بينهما تاريخي لا نصّي؛ يقول بوعزة إن ميكافيلي كأنه أبى إلا أن تكون تركته المعرفية مثله: متقلبة متناقضة نفعية. <b>الثاني</b> كثرة الشروح والقراءات التي صارت حاجزًا بين القارئ ونص ميكافيلي.</em></div></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-bottom:12px">الجواب المختصر: لماذا عُدّ ميكافيلي مؤسسًا لليبرالية السياسية؟</h3>
+    <div class="flow">
+      <div class="step"><b>فصل السياسة عن الأخلاق</b><span>دعا ونظّر له ميكافيلي</span></div>
+      <div class="arr">←</div>
+      <div class="step"><b>علمنة السلوك السياسي</b><span>تقديم المصلحة والمنفعة على القيم</span></div>
+      <div class="arr">←</div>
+      <div class="step" style="background:var(--accent-soft);border-color:var(--accent)"><b>جوهر الليبرالية السياسية</b><span>والحداثة: قيمة القيم مرهونة بمعيار المنفعة</span></div>
+    </div>
+  </div>
+  <ul class="clean">
+    <li>بوعزة: يمكن أن نصف عالِم السياسة اليوم بأنه «ميكافيلي بامتياز».</li>
+    <li>ويرى أن التحول الذي أكده ميكافيلي في القرن ١٦ كان علامة وإرهاصًا للتحول الكبير الذي أخذ عصر الحداثة يؤسسه: قطيعة مع العصر الوسيط ومفهوماته الدينية المؤسِّسة للفعل السياسي والاجتماعي.</li>
+    <li>يوسف كرم في «تاريخ الفلسفة الحديثة» يصفه بأنه أشهر أشياع الوثنية في عصره.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>القرن السابع عشر: نظرة جديدة للطبيعة</h2>
+  <p>ينقل المحاضر نصًا طويلًا من سترومبرج خلاصته: القرن ١٧ بعلومه وفلسفاته <b>سلخ الإنسان عن الطبيعة</b>، فجعل الطبيعة آلة وجعل الإنسان شيئًا مختلفًا عنها. وهذا الفصل بين الطبيعة والعقل كان جديدًا وثوريًا تمامًا. وينقل عن ألفرد نورث وايتهيد وصفه للطبيعة الجديدة بأنها قضية بليدة غبية: صلبة باردة بلا لون، صامتة بكماء، فاقدة لكل معنى ولكل مظهر من مظاهر الحياة.</p>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>من «كون له غاية» إلى «عالَم قابل للقياس»</strong><span>لم يعد الإنسان يحاول فهم النجوم والحجارة وأقواس قزح على أنها معبّرة عن غاية، أو يربط نفوسها بالنفس البشرية كما كان في العصور الوسطى. صار للعالَم الفيزيائي روابط قابلة للقياس والاكتشاف، وصار الإنسان، إن أدرك قوانينه، قادرًا على تسخيره.</span><em>لكن بعض كبار النقاد أصرّوا على أن النظرة القديمة كانت أكثر إقناعًا من الوجهة النفسية، وأن الجديدة انفصال مشؤوم بين الإنسان والطبيعة قد تنشأ عنه آثار خطيرة.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>رهان باسكال</strong><span>هذه النظرة الآلية للكون هي التي أثارت الرعب في قلب باسكال (من علماء ق١٧) وأعادته إلى أحضان الدين. وهو صاحب «الرهان»: ماذا لو كان الدين حقًا؟</span><em>معناه: أن أُفاجأ بعد الموت بعدم وجود الحقيقة أهون من أن أُفاجأ بوجودها. وهذا ما يسميه المحاضر «تصوّر المآلات». ومع ذلك فإن ردود أفعال أكثر الناس لم تكن كرد فعل باسكال؛ فبعد غاليليو لم يعد بإمكان أحد إعادة الاعتبار للنظرة القديمة.</em></div></div>
+    <div class="card"><div class="n">٣</div><div><strong>الخاتمة العجيبة في نص سترومبرج</strong><span>يقول بالمعنى: من العسير الزعم المطلق بأن النظرة الجديدة (غاليليو وديكارت ونيوتن) هي الصحيحة وأن القديمة خاطئة. فنحن نعرف اليوم أن الكون ليس آلة، وأن الصورة الآلية التي انطبعت في أذهان الناس هي منظومة من تراكيب ذهنية لا تنطبق بالضرورة على حقيقة واقعية، لكنها برهنت على غزارة نفعها كأداة.</span><em>ثم يختم بقول أحدهم: لعلها كانت أوفر الأخطاء ثمرًا، بل أوسع أخطاء التاريخ فائدة. أي: النظرة الآلية قد تكون خطأ في تصور الحقيقة، لكنها دفعت الناس للاكتشاف والوصول إلى حقائق الطبيعة.</em></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>وجه الشبه بين رجل الكنيسة وعالِم الطبيعة</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th></th><th>رجل الكنيسة (قديمًا)</th><th>عالِم الطبيعة المتعصب (لاحقًا)</th></tr></thead>
+      <tbody>
+        <tr><td><b>النظرة للمخالف</b></td><td>من يخرج عن عباءة الكنيسة يُطارَد</td><td>من يتكلم فلسفيًا أو دينيًا خارج العلم التجريبي يُنظر إليه نظرة استعلاء</td></tr>
+        <tr><td><b>الصفة</b></td><td>جامد، منغلق، متسلط</td><td>دوغمائي، متعصب، منغلق بالإغلاق نفسه</td></tr>
+        <tr><td><b>الشعار</b></td><td>لا تفكر خارج الكنيسة</td><td>غير مسموح لك أن تفكر خارج نطاق العلم التجريبي</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn"><strong>الدرس:</strong> العالِم إنسان، وصفة العلم لا تعني أن يكون نزيهًا شريفًا بالضرورة. فكما أن هناك رجال دين يحرّفون الدين لأجل الملوك والسياسة، هناك علماء قد يحرّفون العلم الطبيعي إرضاءً لنظرة سائدة أو لمال أو لجمهور. من يؤمن بهذا تخفّ عنده كثير من الإشكالات المرتبطة بالعلم التجريبي والدين. فلا تجعل التجربة مهيمنة على كل شيء.</div>
+</section>
+
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اضغط لرؤية الإجابة</span></h2>
+  <div class="quiz">
+    <details><summary>لماذا يُعدّ غاليليو لا كوبرنيكوس مؤسس العلم الحديث؟</summary><p>لأن كوبرنيكوس طرح نظريته افتراضات وتحليلات دون إجراءات علمية عملية، أما غاليليو فأحدث ثورة في كيفية الوصول إلى المعرفة الطبيعية بالتجربة والقياس (كتجربة السطح المائل).</p></details>
+    <details><summary>ما أعظم آثار العلم التجريبي في المجتمع الغربي؟</summary><p>حصر المعرفة البشرية فيه، وعدم الثقة في العلوم التي لا تمرّ بالتجربة، وإقصاء الغيبيات (وجود الله، اليوم الآخر). ثم تغيّر النظرة للكون إلى آلة، ثم إلى كون لا متناه غير مفهوم.</p></details>
+    <details><summary>ما المفارقة في موقف علماء الثورة العلمية من الدين؟</summary><p>أنهم لم يقصدوا معاداته: غاليليو مؤمن وصديق للبابا، ونيوتن مسيحي خاشع، وديكارت لم يتوقع أن فلسفته تؤدي للإلحاد. لكن تراكم أفكارهم مع الزمن أدى إلى ذلك.</p></details>
+    <details><summary>ما الفرق بين «الثورة العلمية» و«الثورات في العلم»؟</summary><p>الأولى حدث محدد زمنيًا (القرن ١٧)، والثانية كل تجديد في العلوم الطبيعية في أي زمن، كثورة الكوانتم. والمصطلح أطلقه فلاسفة الأنوار وأُحيي في ثلاثينيات القرن ٢٠.</p></details>
+    <details><summary>ما المؤثرات الأربعة التي هيّأت للثورة العلمية؟</summary><p>ترجمة العلوم الإسلامية والعربية، والجذور العلمية الغربية في العصور الوسطى، والآثار الجانبية لعصر النهضة (إزاحة الكنيسة)، والحروب الدينية.</p></details>
+    <details><summary>اذكر أمثلة على أثر العلوم الإسلامية في الثورة العلمية.</summary><p>مدرسة مراغة ونظرية كوبرنيكوس، وديكارت والغزالي («المنقذ من الضلال» ونسخته اللاتينية بتعليقات ديكارت، وكتاب البهبيتي)، وإشارات د. باسل الطائي إلى الباقلاني في «التمهيد».</p></details>
+    <details><summary>لماذا كانت إيطاليا مركز العلم في تلك الفترة؟ وما أهمية جامعة بادوفا؟</summary><p>لأنها الأكثر استقرارًا وبُعدًا عن الحروب. وجامعة بادوفا (١٢٢٢م) درس فيها كوبرنيكوس وعمل فيها غاليليو وكانت تدرّس فلسفة ابن رشد.</p></details>
+    <details><summary>ما الفرق بين روجر بيكون وفرانسيس بيكون؟</summary><p>روجر في العصور الوسطى (ق١٣–١٤) اهتم بالمنهج التجريبي وانتهت بوادره بالفشل، وفرانسيس في القرن ١٧ وهو المشهور المؤسس للمنهج التجريبي.</p></details>
+    <details><summary>ما «القدمان» اللتان سارت عليهما أوروبا في القرن ١٧؟</summary><p>القدم الفلسفية (ديكارت، بيكون، لوك، هوبز، سبينوزا) والقدم التجريبية (غاليليو، نيوتن). كانتا متوازيتين في ق١٧، ثم مالت أوروبا للفلسفي في ق١٨ وللتجريبي في ق١٩.</p></details>
+    <details><summary>ما الخلاف الأساسي بين ديكارت وجون لوك؟</summary><p>ديكارت: الإنسان يولد ومعه مبادئ عقلية فطرية (المنهج العقلي). لوك: يولد صفحة بيضاء ومعرفته من الحواس والتجربة (المذهب الحسي).</p></details>
+    <details><summary>لماذا عدّ الطيب بوعزة ميكافيلي من مؤسسي الليبرالية؟</summary><p>لأنه دعا ونظّر لفصل السياسة عن الأخلاق وتقديم المصلحة على القيم، وهذا جوهر الليبرالية في جانبها السياسي. ويرى أن فهمه يحتاج قراءة «الأمير» مع كتابه الثاني الذي يؤيد الحكم الجمهوري.</p></details>
+    <details><summary>ما رهان باسكال؟</summary><p>أن الإيمان أحوط: أن يُفاجأ الإنسان بعد الموت بعدم وجود الحقيقة أهون من أن يُفاجأ بوجودها. وقد أعادته النظرة الآلية للكون إلى الدين.</p></details>
+    <details><summary>ما وجه الشبه بين رجل الكنيسة وعالِم الطبيعة المتعصب؟</summary><p>الانغلاق والدوغمائية والاستعلاء على من يفكر خارج إطاره، والدرس أن العالِم إنسان قد يحرّف العلم كما حرّف بعض رجال الدين الدين.</p></details>
+  </div>
+</section>
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل المحاضرات</a><span style="display:flex;gap:14px">
+<a href="lecture1.html" style="color:var(--muted);text-decoration:none">→ المحاضرة السابقة</a>
+<a href="lecture3.html" style="color:var(--muted);text-decoration:none">المحاضرة التالية ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>

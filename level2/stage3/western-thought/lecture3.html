@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>عصر المنهاج</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+</style>
+</head>
+<body style="margin:0">
+
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">تاريخ الفكر الغربي الحديث</a><span style="color:var(--muted)">‹</span><span style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">المحاضرة ٣</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل المحاضرات</a><span style="display:flex;gap:14px">
+<a href="lecture2.html" style="color:var(--muted);text-decoration:none">→ المحاضرة السابقة</a>
+<a href="lecture4.html" style="color:var(--muted);text-decoration:none">المحاضرة التالية ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">تاريخ الفكر الغربي الحديث · الشيخ أحمد السيد · المحاضرة الثالثة</div>
+  <h1>عصر المنهاج: القرن السابع عشر</h1>
+  <p class="muted">ملخص مذاكرة: الشجرة الكاملة أولًا، ثم العناصر السبعة بالشرح والرسوم، ثم أسئلة مراجعة.</p>
+</header>
+
+<section>
+  <h2>الشجرة الذهنية للمحاضرة <span class="tag">سبعة عناصر</span></h2>
+  <div class="panel scroll"><svg viewBox="-76 0 1086 642" width="100%" style="min-width:860px;display:block" role="img" aria-label="شجرة ذهنية: المحاضرة الثالثة: القرن السابع عشر"><path d="M309.2 80.0 C 238.9 80.0, 238.9 35.0, 168.6 35.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M309.2 80.0 C 238.9 80.0, 238.9 65.0, 168.6 65.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M309.2 80.0 C 238.9 80.0, 238.9 95.0, 168.6 95.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M309.2 80.0 C 238.9 80.0, 238.9 125.0, 168.6 125.0" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".8"/><path d="M522.3 132.5 C 479.7 132.5, 479.7 80.0, 437.1 80.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M522.3 132.5 C 479.7 132.5, 479.7 155.0, 437.1 155.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M522.3 132.5 C 479.7 132.5, 479.7 185.0, 437.1 185.0" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M316.5 231.0 C 242.5 231.0, 242.5 231.0, 168.6 231.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M367.4 261.0 C 268.0 261.0, 268.0 261.0, 168.6 261.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M360.2 306.0 C 264.4 306.0, 264.4 291.0, 168.6 291.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M360.2 306.0 C 264.4 306.0, 264.4 321.0, 168.6 321.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M338.3 351.0 C 253.4 351.0, 253.4 351.0, 168.6 351.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M360.2 381.0 C 264.4 381.0, 264.4 381.0, 168.6 381.0" fill="none" stroke="var(--gold)" stroke-width="1.4" opacity=".8"/><path d="M483.1 306.0 C 460.1 306.0, 460.1 231.0, 437.1 231.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M483.1 306.0 C 460.1 306.0, 460.1 261.0, 437.1 261.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M483.1 306.0 C 460.1 306.0, 460.1 306.0, 437.1 306.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M483.1 306.0 C 460.1 306.0, 460.1 351.0, 437.1 351.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M483.1 306.0 C 460.1 306.0, 460.1 381.0, 437.1 381.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M280.1 427.0 C 224.3 427.0, 224.3 427.0, 168.6 427.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M345.6 502.0 C 257.1 502.0, 257.1 457.0, 168.6 457.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M345.6 502.0 C 257.1 502.0, 257.1 487.0, 168.6 487.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M345.6 502.0 C 257.1 502.0, 257.1 517.0, 168.6 517.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M345.6 502.0 C 257.1 502.0, 257.1 547.0, 168.6 547.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M338.3 592.0 C 253.4 592.0, 253.4 577.0, 168.6 577.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M338.3 592.0 C 253.4 592.0, 253.4 607.0, 168.6 607.0" fill="none" stroke="var(--red)" stroke-width="1.4" opacity=".8"/><path d="M498.8 509.5 C 468.0 509.5, 468.0 427.0, 437.1 427.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M498.8 509.5 C 468.0 509.5, 468.0 502.0, 437.1 502.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M498.8 509.5 C 468.0 509.5, 468.0 592.0, 437.1 592.0" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><path d="M688.4 321.0 C 665.4 321.0, 665.4 132.5, 642.4 132.5" fill="none" stroke="var(--accent)" stroke-width="2.2" opacity=".8"/><path d="M688.4 321.0 C 665.4 321.0, 665.4 306.0, 642.4 306.0" fill="none" stroke="var(--gold)" stroke-width="2.2" opacity=".8"/><path d="M688.4 321.0 C 665.4 321.0, 665.4 509.5, 642.4 509.5" fill="none" stroke="var(--red)" stroke-width="2.2" opacity=".8"/><rect x="-65.8" y="23.0" width="234.3" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="51.4" y="39.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">مرحلة وسيطة بين النهضة والتنوير</text><rect x="8.2" y="53.0" width="160.4" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="88.4" y="69.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">أسّس النظريات الكبرى</text><rect x="-45.6" y="83.0" width="214.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="61.5" y="99.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">مركز الثقل: فرنسا ثم إنجلترا</text><rect x="-32.2" y="113.0" width="200.7" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="68.2" y="129.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">كتابان يلخصانه: نيوتن ولوك</text><rect x="309.2" y="66.0" width="127.9" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="373.2" y="84.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">١. إطلالة عامة</text><rect x="214.6" y="141.0" width="222.6" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="325.8" y="159.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">٢. السياقات الأربعة المؤثرة</text><rect x="258.2" y="171.0" width="178.9" height="28" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1"/><text direction="rtl" x="347.7" y="189.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">٧. تأثيره على ما بعده</text><rect x="522.3" y="114.5" width="120.1" height="36" rx="8" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/><text direction="rtl" x="582.4" y="137.5" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">الإطار العام</text><rect x="28.3" y="219.0" width="140.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="98.4" y="235.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">المنهج الاستقرائي</text><rect x="316.5" y="217.0" width="120.6" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="376.8" y="235.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">فرانسيس بيكون</text><rect x="-38.9" y="249.0" width="207.4" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="64.8" y="265.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الثورة العقلية وتأليه العقل</text><rect x="367.4" y="247.0" width="69.7" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="402.3" y="265.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">ديكارت</text><rect x="61.9" y="279.0" width="106.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="115.2" y="295.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">المذهب الحسي</text><rect x="48.5" y="309.0" width="120.1" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="108.5" y="325.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">أبو الليبرالية</text><rect x="360.2" y="292.0" width="77.0" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="398.6" y="310.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">جون لوك</text><rect x="21.6" y="339.0" width="147.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="95.1" y="355.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">المادية والاستبداد</text><rect x="338.3" y="337.0" width="98.8" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="387.7" y="355.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">توماس هوبز</text><rect x="28.3" y="369.0" width="140.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="98.4" y="385.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">نقد الكتاب المقدس</text><rect x="360.2" y="367.0" width="77.0" height="28" rx="8" fill="var(--paper)" stroke="var(--gold)" stroke-width="1"/><text direction="rtl" x="398.6" y="385.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">سبينوزا</text><rect x="483.1" y="288.0" width="159.3" height="36" rx="8" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/><text direction="rtl" x="562.8" y="311.0" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">٣. السياق الفلسفي</text><rect x="21.6" y="415.0" width="147.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="95.1" y="431.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">نيوتن: الكون الآلي</text><rect x="280.1" y="413.0" width="157.0" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="358.6" y="431.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">٤. العلمي التجريبي</text><rect x="-32.2" y="445.0" width="200.7" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="68.2" y="461.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">سيطرة الكنيسة (خاصة فرنسا)</text><rect x="-18.7" y="475.0" width="187.3" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="74.9" y="491.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">بدايات الربوبية والإلحاد</text><rect x="61.9" y="505.0" width="106.6" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="115.2" y="521.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الجدل الديني</text><rect x="-25.4" y="535.0" width="194.0" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="71.6" y="551.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">أربعة مؤثرات في نقد الدين</text><rect x="345.6" y="488.0" width="91.5" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="391.4" y="506.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">٥. الديني</text><rect x="75.4" y="565.0" width="93.2" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="122.0" y="581.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">هوبز × لوك</text><rect x="-32.2" y="595.0" width="200.7" height="24" rx="12.0" fill="var(--bg)" stroke="var(--line)" stroke-width="1"/><text direction="rtl" x="68.2" y="611.3" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="400">الحق الطبيعي × الحق الإلهي</text><rect x="338.3" y="578.0" width="98.8" height="28" rx="8" fill="var(--paper)" stroke="var(--red)" stroke-width="1"/><text direction="rtl" x="387.7" y="596.7" text-anchor="middle" fill="var(--ink)" font-size="13" font-weight="600">٦. السياسي</text><rect x="498.8" y="491.5" width="143.6" height="36" rx="8" fill="var(--red-soft)" stroke="var(--red)" stroke-width="2"/><text direction="rtl" x="570.6" y="514.5" text-anchor="middle" fill="var(--ink)" font-size="14" font-weight="600">السياقات الأخرى</text><rect x="688.4" y="299.0" width="311.6" height="44" rx="22.0" fill="var(--ink)" stroke="none" stroke-width="1"/><text direction="rtl" x="844.2" y="326.4" text-anchor="middle" fill="var(--bg)" font-size="15" font-weight="600">المحاضرة الثالثة: القرن السابع عشر</text></svg></div>
+  <p class="muted" style="font-size:.85rem">على الجوال اسحب الشجرة أفقيًا لرؤيتها كاملة.</p>
+</section>
+
+<section>
+  <h2>العنصر الأول: إطلالة عامة على القرن السابع عشر</h2>
+  <p>المحاضر يذكّر أن الهدف أن يكون تاريخ الفكر الغربي مقدمة لتاريخ الفكر العربي، لأن بينهما علاقة تأثير وتأثر. ثم يسأل: أين يقع القرن ١٧ في الخارطة الفكرية العامة؟</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">القرن ١٧ مرحلة وسيطة تتجاذبها مرحلتان</h3>
+    <svg viewBox="0 0 820 250" width="100%" style="min-width:600px;display:block" role="img" aria-label="القرن السابع عشر بين عصر النهضة وعصر التنوير">
+      <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <g text-anchor="middle">
+        <rect x="560" y="40" width="230" height="130" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text x="675" y="72" fill="var(--ink)" font-size="16" font-weight="600">عصر النهضة</text>
+        <text x="675" y="92" fill="var(--muted)" font-size="12">ق١٥–١٦</text>
+        <text x="675" y="120" fill="var(--ink)" font-size="13">تغيّر عملي وثقافي</text>
+        <text x="675" y="142" fill="var(--muted)" font-size="12">فن، إنسانيون، إحياء يوناني</text>
+        <text x="675" y="160" fill="var(--muted)" font-size="12">بلا نظريات فلسفية كبرى</text>
+
+        <rect x="295" y="25" width="230" height="160" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="410" y="60" fill="var(--ink)" font-size="17" font-weight="600">القرن السابع عشر</text>
+        <text x="410" y="80" fill="var(--muted)" font-size="12">عصر المنهاج</text>
+        <text x="410" y="110" fill="var(--ink)" font-size="13">تأسيس النظريات الكبرى</text>
+        <text x="410" y="132" fill="var(--muted)" font-size="12">لم تنضج آثاره العملية بعد</text>
+        <text x="410" y="152" fill="var(--muted)" font-size="12">لكن روحه أقرب للعصر الحديث</text>
+
+        <rect x="30" y="40" width="230" height="130" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text x="145" y="72" fill="var(--ink)" font-size="16" font-weight="600">عصر التنوير</text>
+        <text x="145" y="92" fill="var(--muted)" font-size="12">ق١٨</text>
+        <text x="145" y="120" fill="var(--ink)" font-size="13">أول تحقق عملي ضخم</text>
+        <text x="145" y="142" fill="var(--muted)" font-size="12">على المستوى الشمولي</text>
+        <text x="145" y="160" fill="var(--muted)" font-size="12">في أوروبا كلها</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#a3)">
+        <line x1="530" y1="105" x2="556" y2="105"/>
+        <line x1="290" y1="105" x2="264" y2="105"/>
+      </g>
+      <text x="410" y="222" text-anchor="middle" fill="var(--muted)" font-size="12">بعض سماته من تأثير النهضة، وبعضها يقترب من تغيرات القرن الثامن عشر</text>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>كيف يختلف عن عصر النهضة؟</strong><span>عصر النهضة لم يكن عصرًا ثوريًا من الناحية الفكرية؛ كان مختلفًا عما قبله في السلوك العملي والثقافة العامة، لا في ضخامة الأفكار. كان اهتمامًا بالثقافات الإنسانية والرسم والفن والثقافة اليونانية وإحياء الأمور الرومانية. هذا التوجه العملي والثقافي من الدين والكنيسة إلى الإنسان وعلومه وفنونه هو الذي مهّد لأن يخرج القرن ١٧ بنظريات فلسفية كبرى وتغييرات فكرية حقيقية.</span><em>عن العقلية: في عصر النهضة كان العقل الأوروبي محكومًا بأدوات العصور الوسطى وأطرها، وإن نأى عنها سلوكيًا. أما القرن ١٧ فيختلف بأنه أقرب في «النَّفَس العام» إلى الروح الحديثة.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>كيف يختلف عن عصر التنوير؟</strong><span>أول نتيجة عملية كبرى بعد ثلاثة قرون من التجهيز، وأول تحقق عملي ضخم على المستوى الشمولي في أوروبا، حصل في القرن ١٨. أما القرن ١٧ فتميّز عما قبله بأنه أُسِّست فيه النظريات الكبرى، واختلف عما بعده بأنه لم تنضج فيه الآثار العملية الكبرى.</span></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">أين انتقل مركز الثقل الفكري في أوروبا؟</h3>
+    <svg viewBox="0 0 820 170" width="100%" style="min-width:600px;display:block" role="img" aria-label="انتقال مركز الثقل الفكري من إيطاليا إلى فرنسا وهولندا ثم إنجلترا">
+      <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker></defs>
+      <g text-anchor="middle">
+        <circle cx="720" cy="70" r="52" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+        <text x="720" y="68" fill="var(--ink)" font-size="15" font-weight="600">إيطاليا</text>
+        <text x="720" y="88" fill="var(--muted)" font-size="11">عصر النهضة</text>
+        <circle cx="510" cy="70" r="62" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="510" y="62" fill="var(--ink)" font-size="15" font-weight="600">فرنسا وهولندا</text>
+        <text x="510" y="82" fill="var(--muted)" font-size="11">معظم ق١٧ حتى ~١٦٨٠</text>
+        <text x="510" y="100" fill="var(--accent)" font-size="11">مركزها: ديكارت</text>
+        <circle cx="290" cy="70" r="62" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="290" y="62" fill="var(--ink)" font-size="15" font-weight="600">إنجلترا</text>
+        <text x="290" y="82" fill="var(--muted)" font-size="11">١٦٨٠–١٧٢٠ بلا منازع</text>
+        <text x="290" y="100" fill="var(--gold)" font-size="11">نيوتن ولوك</text>
+        <circle cx="90" cy="70" r="52" fill="var(--paper)" stroke="var(--line)" stroke-width="2"/>
+        <text x="90" y="64" fill="var(--ink)" font-size="13" font-weight="600">فرنسا ثم ألمانيا</text>
+        <text x="90" y="84" fill="var(--muted)" font-size="11">بعد ١٧٢٠</text>
+      </g>
+      <g stroke="var(--accent)" stroke-width="2" marker-end="url(#a4)">
+        <line x1="666" y1="70" x2="576" y2="70"/>
+        <line x1="446" y1="70" x2="356" y2="70"/>
+        <line x1="226" y1="70" x2="146" y2="70"/>
+      </g>
+      <text x="410" y="160" text-anchor="middle" fill="var(--muted)" font-size="12">القسم الأول من القرن مركزه ديكارت الفرنسي، والقسم الثاني مركزه نيوتن ولوك (تقسيم عام لا دقيق)</text>
+    </svg>
+  </div>
+
+  <h3>كتابان يلخصان ثقافة القرن السابع عشر</h3>
+  <p>يقول راندال إن هناك كتابين، لو أُخذا وحدهما، لبدا كأنهما أُعدّا لتلخيص ثقافة العصر:</p>
+  <div class="people" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+    <div class="person" style="border-color:var(--gold)"><b>«المبادئ الرياضية للفلسفة الطبيعية»</b><span>إسحاق نيوتن · يمثل الجهة العلمية</span></div>
+    <div class="person" style="border-color:var(--accent)"><b>«مقالة في الفهم البشري» (١٦٩٠)</b><span>جون لوك · يمثل الجهة الفلسفية · عمل عليه ١٩ سنة</span></div>
+  </div>
+  <p>ويضيف راندال: كان نيوتن ولوك مصدر إشعاع فكري حين تسلّمت إنجلترا زعامة العالم الفكري نحو أربعين سنة (١٦٨٠–١٧٢٠)، ثم خسرتها أو اقتسمتها مع فرنسا ثم ألمانيا. وبفضلهما دخل العلم الجديد لأول مرة كل حقل من حقول الاهتمام البشري، وسيطر على عقل كل فرد مثقف.</p>
+  <div class="note">نص يوسف كرم بالمعنى: بينما الجامعات والمعاهد الدينية مستمرة على تراث العصر الوسيط، اشتدت حولها الحركة العلمية؛ رجال مستقلون يؤلفون الجمعيات والأكاديميات ويُنشئون المجلات لنشر أبحاثهم ومناقشتها. وآخرون يستحدثون مذاهب فلسفية كانت الأصول التي نُسج عليها الفكر الحديث: في إنجلترا توطّد المذهب الحسي ببيكون وهوبز ولوك، وفي فرنسا برز ديكارت بفلسفة عقلية روحية.</div>
+</section>
+
+<section>
+  <h2>العنصر الثاني: السياقات المؤثرة فكريًا</h2>
+  <p>ما الاتجاهات الموجودة في القرن ١٧ التي تستحق أن تُدرس؟ أربعة سياقات، والمحاضرة كلها عنها:</p>
+  <div class="panel scroll">
+    <svg viewBox="0 0 760 210" width="100%" style="min-width:560px;display:block" role="img" aria-label="أربعة سياقات للقرن السابع عشر">
+      <g stroke="var(--line)" stroke-width="2">
+        <line x1="380" y1="105" x2="140" y2="50"/><line x1="380" y1="105" x2="620" y2="50"/>
+        <line x1="380" y1="105" x2="140" y2="165"/><line x1="380" y1="105" x2="620" y2="165"/>
+      </g>
+      <circle cx="380" cy="105" r="52" fill="var(--ink)"/>
+      <text x="380" y="101" text-anchor="middle" fill="var(--bg)" font-size="14" font-weight="600">القرن</text>
+      <text x="380" y="121" text-anchor="middle" fill="var(--bg)" font-size="14" font-weight="600">السابع عشر</text>
+      <g text-anchor="middle" font-size="14" font-weight="600">
+        <rect x="520" y="22" width="200" height="56" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text x="620" y="47" fill="var(--ink)">١. السياق الفلسفي</text>
+        <text x="620" y="67" fill="var(--muted)" font-size="11" font-weight="400">أهمها وأطولها</text>
+        <rect x="40" y="22" width="200" height="56" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text x="140" y="47" fill="var(--ink)">٢. السياق العلمي التجريبي</text>
+        <text x="140" y="67" fill="var(--muted)" font-size="11" font-weight="400">نيوتن</text>
+        <rect x="520" y="137" width="200" height="56" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text x="620" y="162" fill="var(--ink)">٣. السياق الديني</text>
+        <text x="620" y="182" fill="var(--muted)" font-size="11" font-weight="400">الكنيسة، الربوبية، الجدل</text>
+        <rect x="40" y="137" width="200" height="56" rx="10" fill="var(--paper)" stroke="var(--muted)"/>
+        <text x="140" y="162" fill="var(--ink)">٤. السياق السياسي</text>
+        <text x="140" y="182" fill="var(--muted)" font-size="11" font-weight="400">هوبز ولوك</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الثالث: السياق الفلسفي وأبرز رموزه</h2>
+  <p>القرن ١٧ أُسّست فيه الأصول النظرية الفلسفية التي قام عليها الفكر الحديث. وكل الاتجاهات الغربية المشهورة (الليبرالية، العلمانية، النظريات السياسية) نُظّرت أصولها في هذا القرن. وفي «آلام العقل الغربي» يقول ريتشارد تارناس بالمعنى إن الفلسفة مع الحقبة الحديثة صارت قوة مستقلة تمامًا، وبادرت إلى نقل الولاء من الدين إلى العلم.</p>
+  <div class="note"><strong>دور فلاسفة القرن ١٧ في جملة:</strong> التنظير لنظريات أعانت ورسّخت إزاحة المركزية من الدين إلى العلم الطبيعي.</div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">أعمار رموز القرن ١٧ على خط واحد</h3>
+    <svg viewBox="0 0 860 418" width="100%" style="min-width:640px;display:block" role="img" aria-label="أعمار الفلاسفة والعلماء في القرن السابع عشر">
+      <rect x="250.0" y="18" width="360.0" height="330" fill="var(--gold-soft)"/>
+      <line x1="790.0" y1="18" x2="790.0" y2="348" stroke="var(--line)"/><text x="790.0" y="368" text-anchor="middle" fill="var(--muted)" font-size="12">١٥٥٠</text><line x1="610.0" y1="18" x2="610.0" y2="348" stroke="var(--line)"/><text x="610.0" y="368" text-anchor="middle" fill="var(--muted)" font-size="12">١٦٠٠</text><line x1="430.0" y1="18" x2="430.0" y2="348" stroke="var(--line)"/><text x="430.0" y="368" text-anchor="middle" fill="var(--muted)" font-size="12">١٦٥٠</text><line x1="250.0" y1="18" x2="250.0" y2="348" stroke="var(--line)"/><text x="250.0" y="368" text-anchor="middle" fill="var(--muted)" font-size="12">١٧٠٠</text><line x1="70.0" y1="18" x2="70.0" y2="348" stroke="var(--line)"/><text x="70.0" y="368" text-anchor="middle" fill="var(--muted)" font-size="12">١٧٥٠</text>
+      <rect x="516.4" y="28" width="234.0" height="24" rx="4" fill="var(--accent)"/><text x="633.4" y="45" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">فرانسيس بيكون ١٥٦١–١٦٢٦</text><rect x="458.8" y="60" width="280.8" height="24" rx="4" fill="var(--gold)"/><text x="599.2" y="77" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">غاليليو ١٥٦٤–١٦٤٢</text><rect x="502.0" y="92" width="212.4" height="24" rx="4" fill="var(--gold)"/><text x="608.2" y="109" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">كبلر ١٥٧١–١٦٣٠</text><rect x="325.6" y="124" width="327.6" height="24" rx="4" fill="var(--accent)"/><text x="489.4" y="141" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">هوبز ١٥٨٨–١٦٧٩</text><rect x="430.0" y="156" width="194.4" height="24" rx="4" fill="var(--accent)"/><text x="527.2" y="173" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">ديكارت ١٥٩٦–١٦٥٠</text><rect x="386.8" y="188" width="140.4" height="24" rx="4" fill="var(--muted)"/><text x="457.0" y="205" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">باسكال ١٦٢٣–١٦٦٢</text><rect x="332.8" y="220" width="162.0" height="24" rx="4" fill="var(--accent)"/><text x="413.8" y="237" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">سبينوزا ١٦٣٢–١٦٧٧</text><rect x="235.6" y="252" width="259.2" height="24" rx="4" fill="var(--accent)"/><text x="365.2" y="269" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">جون لوك ١٦٣٢–١٧٠٤</text><rect x="152.8" y="284" width="306.0" height="24" rx="4" fill="var(--gold)"/><text x="305.8" y="301" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">نيوتن ١٦٤٢–١٧٢٧</text><rect x="192.4" y="316" width="252.0" height="24" rx="4" fill="var(--accent)"/><text x="318.4" y="333" text-anchor="middle" fill="var(--bg)" font-size="12" font-weight="600">ليبنتز ١٦٤٦–١٧١٦</text>
+      <g font-size="12">
+        <rect x="560" y="386" width="12" height="12" fill="var(--accent)"/><text x="578" y="396" fill="var(--ink)">فيلسوف</text>
+        <rect x="640" y="386" width="12" height="12" fill="var(--gold)"/><text x="658" y="396" fill="var(--ink)">عالِم طبيعي</text>
+        <rect x="740" y="386" width="12" height="12" fill="var(--gold-soft)" stroke="var(--line)"/><text x="758" y="396" fill="var(--ink)">القرن ١٧</text>
+      </g>
+    </svg>
+  </div>
+  <p class="muted">لاحظ: نيوتن وُلد في السنة التي مات فيها غاليليو، وسبينوزا ولوك وُلدا في العام نفسه، وأغلب الكبار عاشوا داخل القرن نفسه.</p>
+
+  <!-- Bacon -->
+  <h3>١. فرانسيس بيكون</h3>
+  <div class="ben detail">
+    <div class="card"><div class="n">م</div><div><strong>ماذا فعل؟ أحدث ثورة نظرية للمنهج التجريبي</strong><span>توفي ١٦٢٦، فعاش في الثلث الأول من القرن فقط. لم يكن عالِمًا تجريبيًا، بل منظّرًا فلسفيًا للعلم التجريبي. قبله في عصر النهضة كانت هناك نظريات ومحاولات (كوبرنيكوس)، لكن لم يكن هناك التأصيل الفلسفي للعلم التجريبي؛ هذا جاء ببداية القرن ١٧ ومع بيكون.</span><em>حجم التأثير: يقول سترومبرج إنه نجمت عن بيكون «فوضى تجريبية» في إنجلترا، فصرت ترى الصيادلة والبستانيين والسباكين يجرون التجارب في الجمعية العلمية الملكية. ولُقّب بأرسطو العصر الحديث، وأمين سر الطبيعة، والقائد القومي للنهضة العلمية والصناعية، وأبي العلم الاستقرائي، ويعود إليه الفضل الأكبر في تأسيس الجمعية الملكية.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">المنهج الاستقرائي × المنهج الاستنباطي</h3>
+    <svg viewBox="0 0 760 240" width="100%" style="min-width:560px;display:block" role="img" aria-label="الاستقراء من الجزئيات إلى الكلي، والاستنباط من الكلي إلى الجزئيات">
+      <defs><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+      <marker id="a6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <text x="570" y="22" text-anchor="middle" fill="var(--accent)" font-size="15" font-weight="600">الاستقراء (دعا إليه بيكون)</text>
+      <text x="190" y="22" text-anchor="middle" fill="var(--muted)" font-size="15" font-weight="600">الاستنباط (طريقة أرسطو)</text>
+      <!-- induction: particulars bottom to general top -->
+      <g text-anchor="middle" font-size="12">
+        <rect x="470" y="40" width="200" height="40" rx="8" fill="var(--accent)"/>
+        <text x="570" y="65" fill="var(--bg)" font-weight="600">القانون الكلي</text>
+        <rect x="430" y="170" width="80" height="34" rx="6" fill="var(--paper)" stroke="var(--accent)"/><text x="470" y="192" fill="var(--ink)">تجربة ١</text>
+        <rect x="530" y="170" width="80" height="34" rx="6" fill="var(--paper)" stroke="var(--accent)"/><text x="570" y="192" fill="var(--ink)">تجربة ٢</text>
+        <rect x="630" y="170" width="80" height="34" rx="6" fill="var(--paper)" stroke="var(--accent)"/><text x="670" y="192" fill="var(--ink)">تجربة ٣</text>
+      </g>
+      <g stroke="var(--accent)" stroke-width="2" marker-end="url(#a5)">
+        <line x1="470" y1="168" x2="540" y2="84"/><line x1="570" y1="168" x2="570" y2="84"/><line x1="670" y1="168" x2="600" y2="84"/>
+      </g>
+      <text x="570" y="228" text-anchor="middle" fill="var(--ink)" font-size="12">من الجزئيات إلى الكليات</text>
+      <!-- deduction -->
+      <g text-anchor="middle" font-size="12">
+        <rect x="90" y="40" width="200" height="40" rx="8" fill="var(--muted)"/>
+        <text x="190" y="65" fill="var(--bg)" font-weight="600">قاعدة كلية</text>
+        <rect x="50" y="170" width="80" height="34" rx="6" fill="var(--paper)" stroke="var(--muted)"/><text x="90" y="192" fill="var(--ink)">حالة</text>
+        <rect x="150" y="170" width="80" height="34" rx="6" fill="var(--paper)" stroke="var(--muted)"/><text x="190" y="192" fill="var(--ink)">حالة</text>
+        <rect x="250" y="170" width="80" height="34" rx="6" fill="var(--paper)" stroke="var(--muted)"/><text x="290" y="192" fill="var(--ink)">حالة</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" marker-end="url(#a6)">
+        <line x1="160" y1="82" x2="95" y2="166"/><line x1="190" y1="82" x2="190" y2="166"/><line x1="220" y1="82" x2="285" y2="166"/>
+      </g>
+      <text x="190" y="228" text-anchor="middle" fill="var(--ink)" font-size="12">تطبيق الكليات على الجزئيات</text>
+      <line x1="380" y1="30" x2="380" y2="220" stroke="var(--line)" stroke-dasharray="4 4"/>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">!</div><div><strong>المبالغة في الاستقراء ونقدها</strong><span>زاد الاهتمام بالاستقراء والمبالغة فيه في القرن ١٩، حتى صار العلم الذي لا يقوم على الاستقراء يُعدّ علمًا زائفًا. وبالغ برتراند راسل في «النظرة العلمية» فقال بالمعنى إن الصراع بين غاليليو ومحاكم التفتيش لم يكن صراعًا بين الفكر الحر والتعصب ولا بين العلم والدين، بل بين الاستنباط والاستقراء.</span><em>الرد: العلم التجريبي نفسه لا يعتمد الاستقراء وحده. فحين يستقرئ العالم حالات معينة، ثم يفترض أن النتيجة ستستمر في المستقبل، فهذا الافتراض (الاستصحاب) ليس استقرائيًا. ولسلطان العميري في «ظاهرة نقد الدين» رد مختصر حين تكلم عن «النزعة العلموية» التي تغالي في العلم التجريبي وتراه العلم الوحيد المعتمد، ونقد النزعة الاستقرائية من مكوّناتها.</em></div></div>
+    <div class="card"><div class="n">+</div><div><strong>نقده لأرسطو وللإنسانيين</strong><span>اشتهر بيكون بنقد المنطق الأرسطي، واعتُبر نقده من الأشياء التي خلّصت الفكر الأوروبي من العلم النظري المجرد إلى العلم التطبيقي، لأن المنطق الأرسطي عُدّ من معوّقات المعرفة التجريبية. ولم يكتف بمهاجمة اللاهوتيين والكلاميين، بل هاجم الإنسانيين في عصر النهضة لأن اشتغالهم بالأسلوب وحده كان يثير غضبه.</span></div></div>
+  </div>
+
+  <!-- Descartes -->
+  <h3>٢. ديكارت</h3>
+  <div class="ben detail">
+    <div class="card"><div class="n">م</div><div><strong>من هو وأين يقع تأثيره؟</strong><span>أحد أكبر المؤثرين في النصف الأول من القرن ١٧، واشتغل في نظرية المعرفة كما اشتغل جون لوك بعده، وبينهما تعارض. يمثّل <b>الثورة العقلية</b>: الدعوة إلى تمجيد العقل واعتماده، والتأصيل لإمكاناته، وإعادة المعرفة إلى العقل.</span><em>سترومبرج: ديكارت هو المؤسس الحقيقي لعصر العقل (القرن ١٨)، والتفكير الحر في فرنسا جاء بعد مونتين وديكارت.</em></div></div>
+    <div class="card"><div class="n">∑</div><div><strong>أثر الرياضيات في منهجه</strong><span>أبرز ما تميّز به علميًا الرياضيات، وبعض قواعدها تُدرَّس باسمه إلى اليوم. كما أن الرياضيات توصل إلى نتائج يقينية وواضحة، أراد أن يصل العقل إلى نتائج يقينية بمنهج عقلي مثلها. فتبنّى الشك وإلغاء المعارف والتصورات السابقة، لتبدأ المعرفة من الصفر.</span><em>من كلامه بالمعنى: الأمور التي تُحال للرياضيات هي ما يُبحث فيها عن الاتساق والقياس، سواء أكانت أعدادًا أم أشكالًا أم نجومًا أم أصواتًا، فلا بد من علم كلي يفسر الاتساق والقياس، وهو «الرياضيات العامة».</em></div></div>
+    <div class="card"><div class="n">≠</div><div><strong>مبدأ الفصل (الثنائية)</strong><span>عند ديكارت مبدأ فصل كبير: فصل بين العقل والمادة، وبين العلم والدين.</span><em>العلم الطبيعي ميدانه استغلال القوى الطبيعية وأدواته الرياضة والتجربة، والدين يختص بمصائر النفس في العالم الآخر ويعتمد الاعتقاد والتسليم. فلا مضايقة بينهما، ولا سلطان لأحدهما على الآخر.</em></div></div>
+    <div class="card"><div class="n">✝</div><div><strong>أثره السلبي على الدين رغم إيمانه</strong><span>لم يكن ملحدًا ولا ربوبيًا، بل مؤمنًا بالمسيحية. لكن أطروحاته (الشك، الفصل بين العلم والدين) أثرت سلبًا في الدين. وقال باسكال بالمعنى: لا أغفر لديكارت أنه كان يودّ في فلسفته كلها لو استغنى عن الله، لكنه اضطر أن يجعله يحرّك العالم بنقرة، ثم لم يعد يدري ما يصنع به.</span><em>وبول هازار: الفلسفة الديكارتية حملت إلى الدين سندًا قيّمًا في البدء، لكنها حملت في طياتها مبدأ الإلحاد الذي سيظهر مع الوقت. وعن «تأليه العقل» يقول الطيب بوعزة: ديكارت لما وضع العقل مرجعية معرفية قادرة على بلوغ الحقيقة بمفرده، أرسى لأوروبا عقيدة جديدة رُفع فيها العقل إلى مقام المطلق.</em></div></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-bottom:12px">مسيرة «العقل» في الفكر الغربي بعد ديكارت</h3>
+    <div class="flow">
+      <div class="step" style="background:var(--accent-soft);border-color:var(--accent)"><small class="muted">ق١٧</small><b>ديكارت</b><span>تأليه العقل ورفعه إلى المطلق</span></div>
+      <div class="arr">←</div>
+      <div class="step"><small class="muted">ق١٧</small><b>الديكارتيون</b><span>مالبرانش، ليبنتز وغيرهم يدافعون عنه</span></div>
+      <div class="arr">←</div>
+      <div class="step"><small class="muted">ق١٨</small><b>ديفيد هيوم</b><span>شكك في مبدأ السببية فزعزع مكانة العقل</span></div>
+      <div class="arr">←</div>
+      <div class="step"><small class="muted">ق١٨</small><b>كانط</b><span>«نقد العقل المحض»: العقل لا يدل على وجود الله</span></div>
+      <div class="arr">←</div>
+      <div class="step" style="background:var(--red-soft);border-color:var(--red)"><small class="muted">أواخر ق١٩</small><b>سقوط مركزية العقل</b><span>إلغاء العقل أصلًا</span></div>
+    </div>
+    <p style="margin-top:12px">كانط لم يُرد إسقاط العقل؛ أراد وضع حدود لعمله، وأثبت وجود الله بدليل أخلاقي في «نقد العقل العملي» (هناك أناس أفاضل يُعذَّبون في هذه الحياة، فلا بد من دار آخرة فيها مكافأة). لكنه سدّد ضربة قوية لما بقي من التدين، حتى إن بعض المتدينين كانوا يسمّون كلابهم «كانط» حنقًا عليه. والدرس: يأتي أحدهم بضربة طولها عشرة سنتيمترات، فيأتي من بعده فيمدها، ثم ثالث ورابع. هذا هو التراكم.</p>
+  </div>
+
+  <!-- Locke -->
+  <h3>٣. جون لوك</h3>
+  <div class="ben detail">
+    <div class="card"><div class="n">م</div><div><strong>مكانته</strong><span>عاش في النصف الثاني من القرن ١٧ وتوفي في بداية القرن ١٨. يقول بعض المؤرخين إنه يستحق أن يكون في مصاف أرسطو وأفلاطون. اصطُلح على أنه أول من ألّف في نظرية المعرفة، مع أن في هذا تجاوزًا لأن هناك مباحث معرفية في كتب سابقة (كنظرية المعرفة عند ابن حزم وابن تيمية)، لكنه أول من أفرد لها مؤلفًا مستقلًا كاملًا.</span></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">جون لوك اشتغل في حقلين</h3>
+    <svg viewBox="0 0 760 280" width="100%" style="min-width:560px;display:block" role="img" aria-label="حقلا جون لوك: المعرفة والسياسة">
+      <g stroke="var(--line)" stroke-width="2" fill="none">
+        <path d="M380 70 V100 H570 V130"/><path d="M380 100 H190 V130"/>
+        <path d="M570 186 V210"/><path d="M190 186 V210"/>
+      </g>
+      <rect x="290" y="20" width="180" height="50" rx="25" fill="var(--ink)"/>
+      <text x="380" y="51" text-anchor="middle" fill="var(--bg)" font-size="16" font-weight="600">جون لوك</text>
+      <g text-anchor="middle">
+        <rect x="460" y="130" width="220" height="56" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text x="570" y="155" fill="var(--ink)" font-size="14" font-weight="600">حقل المعرفة (الإبستيمولوجيا)</text>
+        <text x="570" y="175" fill="var(--muted)" font-size="12">زعيم المذهب الحسي التجريبي</text>
+        <rect x="80" y="130" width="220" height="56" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text x="190" y="155" fill="var(--ink)" font-size="14" font-weight="600">حقل السياسة</text>
+        <text x="190" y="175" fill="var(--muted)" font-size="12">أبو الليبرالية ومؤسسها</text>
+        <rect x="440" y="210" width="260" height="56" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text x="570" y="234" fill="var(--ink)" font-size="12">أفضى طريقه إلى المذاهب العقلية والشكية</text>
+        <text x="570" y="252" fill="var(--ink)" font-size="12">والجبرية (الحتمية) والمذهب الربوبي</text>
+        <rect x="60" y="210" width="260" height="56" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text x="190" y="234" fill="var(--ink)" font-size="12">الدستور الأمريكي مستمد منه بشكل كبير</text>
+        <text x="190" y="252" fill="var(--ink)" font-size="12">وتأثيره السياسي قائم إلى اليوم</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>زعيم المذهب الحسي</strong><span>يوسف كرم: هو أحد كبار ممثلي النزعة التجريبية الإنجليزية، جاء بعد هوبز وبيكون وكان أعمق منهما في توضيح المذهب الحسي والدفاع عنه، فاستحق أن يُدعى زعيمه في العصر الحديث. (لاحظ الثلاثة في صف واحد: بيكون، هوبز، لوك، وإن كان هوبز ينزع إلى المادية أكثر.)</span><em>كيف نشأ المذهب الربوبي (الذي ينكر الأديان ويعترف بالخالق فقط)؟ ما كان ليظهر في النهضة أو العصور الوسطى؛ بدأ يتمثل نتيجة ديكارت ولوك وغيرهما، ثم تضخم في القرن ١٨ حتى تبنّاه كبار الفلاسفة. فمذهب لوك الحسي من المؤثرات فيه.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>العقلية الحسية تُلغي المعنى</strong><span>سترومبرج: لما زار لوك كاتدرائيات أوروبا لم يبدِ اهتمامًا إلا بمقاييس أحجامها. والكاتدرائيات تُزار عادة لتاريخها وجمالها ودلالاتها الفنية والمعنوية. هذا تحوّل من عقلية المعنى والجمال إلى عقلية القياس.</span><em>ومع ذلك لم يكن لوك ملحدًا ولا ربوبيًا، بل مؤمنًا بالله والنصرانية في الجملة، ويدافع عن «معقولية المسيحية». لكنه جعل المعرفة التجريبية أعلى رتبة من الدينية، ومن عباراته بالمعنى: لا تبقى حاجة أو نفع للوحي طالما أن الله أعطانا وسائل طبيعية أكثر يقينًا نتوصل بها إلى المعرفة.</em></div></div>
+  </div>
+
+  <!-- Hobbes -->
+  <h3>٤. توماس هوبز</h3>
+  <div class="ben detail">
+    <div class="card"><div class="n">م</div><div><strong>أعظم فيلسوف مادي في العصور الحديثة</strong><span>أرجع كل شيء في الوجود إلى المادة، حتى العمليات الذهنية في العقل هي حركات مادية في الدماغ، والمشاعر الوجدانية أشياء مادية. وصاحَب هذا الإيغال المادي حدّة وصرامة في نقد الدين؛ لذلك لم يوصف أحد من كبار فلاسفة القرن ١٧ بأنه ملحد إلا هوبز، وصار في القرون التالية رمزًا للإلحاد.</span><em>هل كان ملحدًا فعلًا؟ مسألة فيها خلاف كبير. ومما يحل الإشكال: كلمة «ملحد» في القرن ١٧ لم تكن تعني بالضرورة إنكار وجود الله، بل التجديف والهرطقة. وكذلك في السياق الإسلامي القديم: «الملاحدة» عند الباقلاني في «إعجاز القرآن» هم الزنادقة الطاعنون في النبوة والقرآن، لا منكرو وجود الخالق؛ ويقرب من منكري الخالق اسم «الدهريين»: ﴿وَمَا يُهْلِكُنَا إِلَّا الدَّهْرُ﴾.</em></div></div>
+  </div>
+
+  <!-- Spinoza -->
+  <h3>٥. سبينوزا</h3>
+  <div class="ben detail">
+    <div class="card"><div class="n">م</div><div><strong>يهودي هولندي، نقد الكتاب المقدس وقال بوحدة الوجود</strong><span>كان في البداية يتبنى ثنائية ديكارت، ثم دمجهما فجعلهما شيئًا واحدًا (وحدة الوجود). حاربه اليهود، وحُوربت كتبه، ووُصف بالإلحاد، لكنه بوضوح ليس ملحدًا. وهو أبرز من نقد الكتاب المقدس في القرن ١٧، وجاء بعده نقد أقوى منه (التيار الهيجلي).</span></div></div>
+  </div>
+  <div class="panel">
+    <h3 style="margin-bottom:12px">نقد سبينوزا للكتاب المقدس من جهتين</h3>
+    <div class="ben">
+      <div class="card"><div class="n">١</div><div><strong>جهة الثبوت (نقد تاريخي)</strong><span>أثبت بعد دراسة طويلة أن الكتب غير ثابتة النسبة: لم يكتب موسى عليه السلام العهد القديم، ولم يكتب عيسى عليه السلام العهد الجديد.</span></div></div>
+      <div class="card"><div class="n">٢</div><div><strong>جهة التفسير (المنهج التاريخي)</strong><span>من مؤسسي التفسير التاريخي للنص: النص لا يُفهم بطبيعة متجاوزة لكل زمان، بل يُقيَّد بسياقه التاريخي، وتنتهي دلالته بانتهاء ظروفه.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الرابع: السياق العلمي التجريبي</h2>
+  <p>يقول سترومبرج إن مذهب لوك تحالف مع مذهب نيوتن على تدعيم المنهج المختبري التجريبي. وعلى خلاف عصر النهضة، بدأ العلم التجريبي يتخلل الأوساط غير التجريبية ويشكل عقلية تعظّم التجربة. وبدأ الاهتمام بالعلوم الاجتماعية، التي كانت لعدم وجود طريقة خاصة بها تقترض من العلم السائد؛ ففي عصر التنوير كانت خاضعة للطريقة الفيزيائية الرياضية (راندال).</p>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">N</div><div><strong>نيوتن أرسى النظرة الآلية للكون</strong><span>الكون يسير ضمن نظام ميكانيكي آلي محكم. وكان نيوتن نفسه مدافعًا عن الإيمان؛ يرى أن الله يتدخل إذا حدثت بعض الشذوذات في هذه الميكانيكا. يقول والتر في «الدين والعقل الحديث» بالمعنى: آخر عالم عظيم أدخل الغيب أو الإله في معالجة قوانين الطبيعة هو نيوتن. ولو بُعث من قبره لأصيب بصدمة مما آلت إليه نظريته.</span><em>كان ناقدًا لبعض عقائد النصرانية المحرفة، وكان ضد التثليث وله كتاب في ذلك. وفي «تكوين العقل الحديث»: أصبح اسم نيوتن رمزًا لما وصل إليه العلم؛ كان نيوتن هو العلم.</em></div></div>
+  </div>
+
+  <div class="panel">
+    <h3 style="margin-bottom:12px">لماذا أحدثت قوانين نيوتن إشكالًا دينيًا؟</h3>
+    <div class="flow">
+      <div class="step"><small class="muted">قبل</small><b>التفسير الكنسي</b><span>كبلر نفسه كان يظن أن ملائكة تمسك الكواكب وتدفعها لتتحرك</span></div>
+      <div class="arr">←</div>
+      <div class="step"><small class="muted">نيوتن</small><b>قانون الجاذبية</b><span>الكواكب تسير بقانون محكم مفهوم</span></div>
+      <div class="arr">←</div>
+      <div class="step" style="background:var(--red-soft);border-color:var(--red)"><small class="muted">الأثر</small><b>زعزعة</b><span>«كنا نعتقد أن الملائكة تدفعها، واكتشفنا أنها قوانين»</span></div>
+    </div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:4px">ضخامة أثر كتاب نيوتن</h3>
+    <p class="muted" style="margin-bottom:8px">عدد الكتب التي ظهرت حول «المبادئ الرياضية» (شروحًا وحواشي) حتى عام ١٧٨٩، أي في أقل من مئة سنة من صدوره:</p>
+    <svg viewBox="0 0 760 230" width="100%" style="min-width:520px;display:block" role="img" aria-label="رسم بياني: ٤٠ بالإنجليزية، ١٧ بالألمانية، ١١ بالفرنسية، ٣ باللاتينية، ١ بالبرتغالية">
+      <!-- bars grow leftward from x=600; scale 12px per book -->
+      <g stroke="var(--line)">
+        <line x1="600" y1="15" x2="600" y2="200"/><line x1="480" y1="15" x2="480" y2="200" stroke-dasharray="3 4"/><line x1="360" y1="15" x2="360" y2="200" stroke-dasharray="3 4"/><line x1="240" y1="15" x2="240" y2="200" stroke-dasharray="3 4"/><line x1="120" y1="15" x2="120" y2="200" stroke-dasharray="3 4"/>
+      </g>
+      <g fill="var(--muted)" font-size="11" text-anchor="middle">
+        <text x="600" y="218">٠</text><text x="480" y="218">١٠</text><text x="360" y="218">٢٠</text><text x="240" y="218">٣٠</text><text x="120" y="218">٤٠</text>
+      </g>
+      <g font-size="13">
+        <rect x="120" y="22" width="480" height="26" rx="3" fill="var(--accent)"/>
+        <text x="612" y="40" fill="var(--ink)">الإنجليزية</text><text x="128" y="40" fill="var(--bg)" font-weight="600">٤٠</text>
+        <rect x="396" y="58" width="204" height="26" rx="3" fill="var(--accent)" opacity=".8"/>
+        <text x="612" y="76" fill="var(--ink)">الألمانية</text><text x="386" y="76" text-anchor="end" fill="var(--ink)" font-weight="600">١٧</text>
+        <rect x="468" y="94" width="132" height="26" rx="3" fill="var(--accent)" opacity=".65"/>
+        <text x="612" y="112" fill="var(--ink)">الفرنسية</text><text x="458" y="112" text-anchor="end" fill="var(--ink)" font-weight="600">١١</text>
+        <rect x="564" y="130" width="36" height="26" rx="3" fill="var(--accent)" opacity=".5"/>
+        <text x="612" y="148" fill="var(--ink)">اللاتينية</text><text x="554" y="148" text-anchor="end" fill="var(--ink)" font-weight="600">٣</text>
+        <rect x="588" y="166" width="12" height="26" rx="3" fill="var(--accent)" opacity=".4"/>
+        <text x="612" y="184" fill="var(--ink)">البرتغالية</text><text x="578" y="184" text-anchor="end" fill="var(--ink)" font-weight="600">١</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر الخامس: السياق الديني</h2>
+
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>سيطرة الكنيسة</strong><span>الكنيسة لم تنتهِ سلطتها في القرن ١٧، وكانت قادرة على المعاقبة والمنع؛ والدليل محاكمة غاليليو، وتلقيب أتباع لوثر بالمحمديين. لكن هناك فرقًا كبيرًا بين القرنين ١٧ و١٨.</span><em>في السياق الإنجليزي بدأت الكنيسة تفقد سيطرتها بطريقة ناعمة تدريجية سياسية. أما في فرنسا فظلت متمسكة متشبثة بقوتها وتسلطها بصورة فجة حادة، رغم كل التغيرات الثقافية والدينية والفكرية، إلى أن جاءت الثورة الفرنسية. ولذلك كانت الثورة الفرنسية حادة جدًا.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>المذهب الربوبي وبدايات الإلحاد</strong><span>بدأ الربوبي يظهر في القرن ١٧ دون رموز كبار مؤثرين. وعلى المستوى الشعبي بدأ يتفشى البعد عن الدين أو الربوبية، وبدأت جذور الإلحاد.</span><em>سترومبرج: اتخذ المذهب الربوبي في فرنسا انعطافًا أشد منه في بريطانيا؛ لأن الإكليروس الفرنسي كان جزءًا من الطبقة الحاكمة ذات الامتيازات، يتمتع بقوة اقتصادية ويحتكر التعليم وله نفوذ سياسي شديد، فكان أشد رجعية. بينما الكنيسة الإنجليزية المعتمدة سياسة الحل الوسط انحنت أمام عواصف الربوبية. وكانت المناظرات الدينية بين ١٧٣٠–١٧٦٠ أشد قسوة في فرنسا، وصار المذهب الربوبي جزءًا من حركة الفلاسفة العظام فيها (فولتير وديدرو).</em></div></div>
+    <div class="card"><div class="n">٣</div><div><strong>الجدل الديني</strong><span>اشتهر القرن ١٧ بانتشار النقاش الديني حتى على المستوى الشعبي، وإن كان في القرن ١٨ أكثر.</span><em>نص من ١٦٨٦: إن هذا العصر يحفل بأحرار الفكر الربوبيين، ويدهش الناس لكثرة عددهم. وفي «قصة الحضارة» لول ديورانت عن ١٦٩٩: قلّ أن تجد الآن شابًا لا يشتهي أن يكون ملحدًا! ثم جاء فلاسفة القرن ١٨ أشد صراحة في مهاجمة الدين من فلاسفة القرن ١٧.</em></div></div>
+  </div>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:4px">صراع المؤثرات على عقل الإنسان الأوروبي</h3>
+    <p class="muted" style="margin-bottom:8px">رسم توضيحي لاتجاه الفكرة كما شرحها المحاضر، وليس قياسًا رقميًا.</p>
+    <svg viewBox="0 0 760 300" width="100%" style="min-width:560px;display:block" role="img" aria-label="المؤثر الديني يتناقص والمؤثر العلمي يتصاعد عبر الزمن">
+      <line x1="60" y1="210" x2="600" y2="210" stroke="var(--muted)" stroke-width="1.5"/>
+      <g fill="var(--muted)" font-size="12" text-anchor="middle">
+        <text x="590" y="232">بداية ق١٧</text><text x="330" y="232">نيوتن</text><text x="70" y="232">ما بعده</text>
+      </g>
+      <path d="M590 50 C 470 60, 400 115, 330 130 S 160 190, 70 195" fill="none" stroke="var(--red)" stroke-width="3"/>
+      <path d="M590 190 C 470 180, 400 135, 330 120 S 160 55, 70 45" fill="none" stroke="var(--accent)" stroke-width="3"/>
+      <circle cx="330" cy="125" r="5" fill="var(--ink)"/>
+      <g font-size="13" font-weight="600">
+        <text x="604" y="55" fill="var(--red)">المؤثر الديني</text>
+        <text x="604" y="195" fill="var(--accent)">المؤثر العلمي</text>
+        <text x="604" y="213" fill="var(--accent)">التجريبي</text>
+      </g>
+      <g font-size="12">
+        <rect x="738" y="252" width="12" height="12" fill="var(--red)"/>
+        <text x="730" y="262" text-anchor="end" fill="var(--ink)">الديني يتناقص: نقد مباشر، حروب دينية، انشقاقات الإصلاح، نظريات تخالفه</text>
+        <rect x="738" y="276" width="12" height="12" fill="var(--accent)"/>
+        <text x="730" y="286" text-anchor="end" fill="var(--ink)">العلمي يتصاعد: منهج يكتشف أشياء جديدة ويفسرها بقوانين متماسكة</text>
+      </g>
+    </svg>
+  </div>
+  <p>الأخطر هو الآثار <b>غير المباشرة</b>: الأشياء الراجعة إلى طبيعة المؤثر في العصر كله. يشبّه المحاضر ذلك بعصرنا: شبكات التواصل وانتقال المعرفة من مصدر مركزي إلى مصدر جديد. من ينظر نظرة كلية يتوقع تغيرات ضخمة في الفهم والتفكير والتدين، لا بسبب «حسابات منحلّة» أو «إباحيات» فقط، فهذه نظرة تجزيئية؛ بل بسبب تغيّر طبيعة المعرفة والمصدر المعرفي نفسه.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">المؤثرات في نقد الدين في القرن ١٧ (عند سلطان العميري)</h3>
+    <svg viewBox="0 0 760 220" width="100%" style="min-width:560px;display:block" role="img" aria-label="أربعة مؤثرات في نقد الدين في القرن السابع عشر">
+      <defs><marker id="a7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--red)"/></marker></defs>
+      <g text-anchor="middle" font-size="13">
+        <rect x="560" y="20" width="180" height="54" rx="8" fill="var(--paper)" stroke="var(--line)"/><text x="650" y="52" fill="var(--ink)" font-weight="600">١. اشتداد المذهب المادي</text>
+        <rect x="370" y="20" width="180" height="54" rx="8" fill="var(--paper)" stroke="var(--line)"/><text x="460" y="52" fill="var(--ink)" font-weight="600">٢. حضور المذهب الشكي</text>
+        <rect x="180" y="20" width="180" height="54" rx="8" fill="var(--paper)" stroke="var(--line)"/><text x="270" y="44" fill="var(--ink)" font-weight="600">٣. اشتداد النقد العالي</text><text x="270" y="62" fill="var(--muted)" font-size="11">للكتاب المقدس</text>
+        <rect x="20" y="20" width="150" height="54" rx="8" fill="var(--paper)" stroke="var(--line)"/><text x="95" y="44" fill="var(--ink)" font-weight="600">٤. تجاوزات الفلاسفة</text><text x="95" y="62" fill="var(--muted)" font-size="11">المؤمنين: لوك، سبينوزا، هوبز</text>
+        <rect x="230" y="150" width="300" height="50" rx="25" fill="var(--red-soft)" stroke="var(--red)"/><text x="380" y="181" fill="var(--ink)" font-weight="600" font-size="15">نقد الدين والبعد عنه</text>
+      </g>
+      <g stroke="var(--red)" stroke-width="2" marker-end="url(#a7)">
+        <line x1="650" y1="76" x2="470" y2="148"/><line x1="460" y1="76" x2="410" y2="146"/><line x1="270" y1="76" x2="350" y2="146"/><line x1="95" y1="76" x2="290" y2="148"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2>العنصر السادس: السياق السياسي ورموزه</h2>
+  <p>المقصود هنا التنظير السياسي لا الواقع السياسي. يقول الطيب بوعزة إن لوك لما بدأ الكتابة السياسية كان أمامه رصيد نظري: في الاتجاه الاستبدادي نص هوبز «التنين» (اللفياثان)، وفي المقابل اتجاه شيوعي (الاتجاه الحارثي، نسبة لحرث الأرض) ينتقد الملكية وينادي بالحرية، ثم الاتجاه الجمهوري في كتابات ميلتون، وفيه البذور الأولى لليبرالية. ونمت فيه قضية <b>الحق الطبيعي في السلطة</b> في مقابل <b>الحق الإلهي</b>؛ أي أن الملك لا يتكلم باسم الله ولا يستمد شرعيته منه.</p>
+
+  <div class="panel scroll">
+    <h3 style="margin-bottom:8px">«حالة الطبيعة» قبل وجود الحكومة: هوبز × لوك</h3>
+    <svg viewBox="0 0 760 330" width="100%" style="min-width:560px;display:block" role="img" aria-label="مقارنة بين تصور هوبز وتصور لوك لحالة الطبيعة ونتيجتها السياسية">
+      <defs><marker id="a8" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker></defs>
+      <text x="570" y="26" text-anchor="middle" fill="var(--red)" font-size="16" font-weight="600">توماس هوبز</text>
+      <text x="190" y="26" text-anchor="middle" fill="var(--accent)" font-size="16" font-weight="600">جون لوك</text>
+      <line x1="380" y1="10" x2="380" y2="320" stroke="var(--line)" stroke-dasharray="4 4"/>
+      <g text-anchor="middle" font-size="13">
+        <rect x="430" y="44" width="280" height="64" rx="10" fill="var(--red-soft)" stroke="var(--red)"/>
+        <text x="570" y="70" fill="var(--ink)" font-weight="600">حالة فوضى وحرب الكل ضد الكل</text>
+        <text x="570" y="92" fill="var(--muted)" font-size="12">اقتتال وضرب وخنق بلا حكومة</text>
+        <rect x="430" y="144" width="280" height="64" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text x="570" y="170" fill="var(--ink)" font-weight="600">يتنازل الشعب عن حريته لحاكم</text>
+        <text x="570" y="192" fill="var(--muted)" font-size="12">ولو كان متسلطًا متجبرًا</text>
+        <rect x="430" y="244" width="280" height="64" rx="10" fill="var(--paper)" stroke="var(--red)"/>
+        <text x="570" y="270" fill="var(--ink)" font-weight="600">إمكان الاستبداد</text>
+        <text x="570" y="292" fill="var(--muted)" font-size="12">الاستبداد أفضل من بقاء الفوضى</text>
+
+        <rect x="50" y="44" width="280" height="64" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text x="190" y="70" fill="var(--ink)" font-weight="600">حالة حرية ومساواة</text>
+        <text x="190" y="92" fill="var(--muted)" font-size="12">نكون طيبين، لكن ستنشأ منازعات</text>
+        <rect x="50" y="144" width="280" height="64" rx="10" fill="var(--paper)" stroke="var(--line)"/>
+        <text x="190" y="170" fill="var(--ink)" font-weight="600">هيئة عليا منتخبة تمثل الشعب</text>
+        <text x="190" y="192" fill="var(--muted)" font-size="12">لكل فرد رأي، والمعتمد رأي الأكثرية</text>
+        <rect x="50" y="244" width="280" height="64" rx="10" fill="var(--paper)" stroke="var(--accent)"/>
+        <text x="190" y="270" fill="var(--ink)" font-weight="600">الليبرالية السياسية</text>
+        <text x="190" y="292" fill="var(--muted)" font-size="12">لا تتدخل الحكومة في الدين والماورائيات</text>
+      </g>
+      <g stroke="var(--muted)" stroke-width="2" marker-end="url(#a8)">
+        <line x1="570" y1="110" x2="570" y2="140"/><line x1="570" y1="210" x2="570" y2="240"/>
+        <line x1="190" y1="110" x2="190" y2="140"/><line x1="190" y1="210" x2="190" y2="240"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="note">
+    <strong>أثر لوك السياسي:</strong> بتعبير مؤرخ النظرية السياسية جان جاك شوفالييه، صار كتاب لوك «مقالتان في الحكم المدني» التوراةَ السياسية للقرن الجديد؛ استلهمته الثورة الأمريكية، وأثّر في الفكر السياسي الأنواري الفرنسي، بل إن الاحتفاء به في هذين السياقين كان أكبر بكثير من احتفاء المجتمع البريطاني نفسه. وظل مرجعًا أساسيًا للفلسفة السياسية الليبرالية.
+  </div>
+</section>
+
+<section>
+  <h2>العنصر السابع: تأثيرات القرن السابع عشر على ما بعده</h2>
+  <div class="panel scroll">
+    <svg viewBox="0 0 760 250" width="100%" style="min-width:560px;display:block" role="img" aria-label="روافد القرن السابع عشر تصب في القرن الثامن عشر">
+      <defs><marker id="a9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker></defs>
+      <g text-anchor="middle" font-size="12">
+        <rect x="610" y="15" width="130" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="675" y="37" fill="var(--ink)">مركزية الإنسان (النهضة)</text>
+        <rect x="610" y="60" width="130" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="675" y="82" fill="var(--ink)">الفلسفات الجديدة</text>
+        <rect x="610" y="105" width="130" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="675" y="127" fill="var(--ink)">العلم التجريبي ونيوتن</text>
+        <rect x="610" y="150" width="130" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="675" y="172" fill="var(--ink)">نقد الكتاب المقدس</text>
+        <rect x="610" y="195" width="130" height="34" rx="6" fill="var(--paper)" stroke="var(--line)"/><text x="675" y="217" fill="var(--ink)">الحروب الدينية والسياسة</text>
+        <rect x="290" y="85" width="190" height="80" rx="12" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <text x="385" y="117" fill="var(--ink)" font-size="14" font-weight="600">إنسان أوروبي تغيّرت</text>
+        <text x="385" y="139" fill="var(--ink)" font-size="14" font-weight="600">نظرته للكون والوجود</text>
+        <text x="385" y="157" fill="var(--muted)">صار يطلب البديل</text>
+        <rect x="20" y="85" width="180" height="80" rx="12" fill="var(--accent)"/>
+        <text x="110" y="117" fill="var(--bg)" font-size="14" font-weight="600">القرن الثامن عشر</text>
+        <text x="110" y="139" fill="var(--bg)" font-size="12">عصر فولتير والتنوير</text>
+      </g>
+      <g stroke="var(--line)" stroke-width="2">
+        <line x1="608" y1="32" x2="482" y2="110"/><line x1="608" y1="77" x2="482" y2="118"/><line x1="608" y1="122" x2="482" y2="125"/><line x1="608" y1="167" x2="482" y2="132"/><line x1="608" y1="212" x2="482" y2="140"/>
+      </g>
+      <line x1="288" y1="125" x2="204" y2="125" stroke="var(--accent)" stroke-width="3" marker-end="url(#a9)"/>
+    </svg>
+  </div>
+  <p>أهم شيء: أن نجمع الصور الجزئية كلها التي كانت في القرن ١٧، ونضم إليها تأثيرات عصر النهضة المتجهة إلى مركزية الإنسان، حتى نرى إنسانًا أوروبيًا اختلفت نظرته للكون والوجود فصار يطلب البديل. فالأساس الذي قام عليه كثير من أفكار القرن ١٨ وما بعده مصدره إما فرانسيس بيكون أو ديكارت أو جون لوك أو سبينوزا أو هوبز.</p>
+  <div class="note">تمهيد للمحاضرة القادمة: سنبدأ أول قرن له اتصال بنا بشكل أو بآخر. ول ديورانت في «قصة الحضارة» سمّى هذا العصر «عصر فولتير» وأعطاه مجلدين؛ فالثورة الفرنسية ما كانت لتقوم لولا فولتير كتنظير، وإن لم يدركها هو.</div>
+</section>
+
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اضغط لرؤية الإجابة</span></h2>
+  <div class="quiz">
+    <details><summary>لماذا يوصف القرن ١٧ بأنه مرحلة وسيطة؟</summary><p>لأنه أُسّست فيه النظريات الفلسفية الكبرى (بخلاف النهضة التي كان تغيرها عمليًا ثقافيًا)، ولم تنضج فيه الآثار العملية الكبرى (بخلاف التنوير). لكن روحه العامة أقرب للعصر الحديث.</p></details>
+    <details><summary>كيف انتقل مركز الثقل الفكري في القرن ١٧؟</summary><p>من إيطاليا (النهضة) إلى فرنسا وهولندا معظم القرن حتى نحو ١٦٨٠ (ديكارت)، ثم إلى إنجلترا بين ١٦٨٠ و١٧٢٠ (نيوتن ولوك)، ثم اقتسمتها فرنسا ثم ألمانيا.</p></details>
+    <details><summary>ما الكتابان اللذان يلخصان القرن ١٧ عند راندال؟</summary><p>«المبادئ الرياضية للفلسفة الطبيعية» لنيوتن، و«مقالة في الفهم البشري» للوك.</p></details>
+    <details><summary>ما دور فلاسفة القرن ١٧ إجمالًا؟</summary><p>التنظير لنظريات أعانت ورسّخت إزاحة المركزية من الدين إلى العلم الطبيعي.</p></details>
+    <details><summary>ما الفرق بين الاستقراء والاستنباط، ومن دعا للاستقراء؟</summary><p>الاستقراء: الوصول من الجزئيات إلى الكليات، ودعا إليه فرانسيس بيكون. الاستنباط: تطبيق الكليات على الجزئيات، وكان شائعًا في فكر أرسطو.</p></details>
+    <details><summary>ما الرد على من يحصر العلم في الاستقراء؟</summary><p>أن العلم التجريبي نفسه لا يقوم على الاستقراء وحده؛ فافتراض استمرار النتيجة في المستقبل (الاستصحاب) ليس استقرائيًا.</p></details>
+    <details><summary>كيف أثّرت الرياضيات في منهج ديكارت؟</summary><p>رأى أن الرياضيات توصل إلى نتائج يقينية واضحة، فأراد منهجًا عقليًا يوصل إلى اليقين مثلها، فتبنّى الشك وإلغاء المعارف السابقة ليبدأ من الصفر.</p></details>
+    <details><summary>اذكر مراحل مسيرة العقل بعد ديكارت.</summary><p>تأليه العقل مع ديكارت، ثم دفاع الديكارتيين (مالبرانش، ليبنتز)، ثم زعزعة هيوم بالتشكيك في السببية، ثم كانط وحدود العقل، ثم سقوط مركزية العقل في أواخر القرن ١٩.</p></details>
+    <details><summary>ما الحقلان اللذان اشتغل فيهما جون لوك؟</summary><p>حقل المعرفة (زعيم المذهب الحسي التجريبي) وحقل السياسة (أبو الليبرالية).</p></details>
+    <details><summary>لماذا وُصف هوبز وحده بالإلحاد في القرن ١٧؟ وهل هو ملحد فعلًا؟</summary><p>لاجتماع المادية المغالية مع النقد الحاد للدين. وفيه خلاف، لأن «ملحد» في القرن ١٧ كانت تعني غالبًا التجديف والهرطقة لا إنكار وجود الله.</p></details>
+    <details><summary>ما جهتا نقد سبينوزا للكتاب المقدس؟</summary><p>جهة الثبوت (الكتب لم يكتبها موسى ولا عيسى عليهما السلام)، وجهة التفسير (المنهج التاريخي: النص محكوم بسياقه الزمني).</p></details>
+    <details><summary>لماذا كانت الثورة الفرنسية حادة جدًا؟</summary><p>لأن الكنيسة في فرنسا ظلت متشبثة بقوتها وتسلطها بصورة فجة، وكان الإكليروس جزءًا من الطبقة الحاكمة، بخلاف إنجلترا التي فقدت فيها الكنيسة سيطرتها تدريجيًا.</p></details>
+    <details><summary>ما المؤثرات الأربعة في نقد الدين في القرن ١٧ عند سلطان العميري؟</summary><p>اشتداد المذهب المادي، وحضور المذهب الشكي، واشتداد النقد العالي للكتاب المقدس، وتجاوزات الفلاسفة المؤمنين (لوك، سبينوزا، وهوبز أشدهم).</p></details>
+    <details><summary>قارن بين هوبز ولوك في حالة الطبيعة ونتيجتها.</summary><p>هوبز: حرب الكل ضد الكل، فيتنازل الشعب لحاكم ولو مستبد. لوك: حالة حرية ومساواة، والحل هيئة منتخبة تمثل الشعب ويُعتمد فيها رأي الأكثرية ولا تتدخل في الدين.</p></details>
+  </div>
+</section>
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل المحاضرات</a><span style="display:flex;gap:14px">
+<a href="lecture2.html" style="color:var(--muted);text-decoration:none">→ المحاضرة السابقة</a>
+<a href="lecture4.html" style="color:var(--muted);text-decoration:none">المحاضرة التالية ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>
