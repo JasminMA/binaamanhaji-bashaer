@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>المنكر والشاذ والمضطرب والمرسل والمسند · شرح نظم المعين</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+
+/* ---- additions for نظم المعين study sheets ---- */
+/* green "summary" callout and violet "question" callout, matching note/warn */
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:6px}
+.ask{background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .warn .cal-t{color:var(--red)} .sum .cal-t{color:var(--accent)}
+.ask .cal-t{color:var(--gold)}
+
+/* verses of the نظم: two hemistichs separated by a dotted gap */
+.verse{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.verse p{font-family:var(--display);font-size:1.08rem;line-height:2;color:var(--ink)}
+.verse .sp{color:var(--gold);padding:0 8px}
+.verse cite{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:6px}
+
+/* diagrams keep a fixed light surface so the fixed SVG palette stays legible in both themes */
+.dia{background:#FFFFFF;border:1px solid #D5DBE3;border-radius:10px;padding:14px 10px 8px;overflow-x:auto}
+.dia .cap{font-family:var(--display);color:#0d3b66;font-size:.98rem;text-align:center;margin-bottom:6px;display:block}
+.dia svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* key term + book title inline marks */
+.kw{color:var(--gold);font-weight:600}
+.bk{color:var(--accent);font-weight:600}
+
+/* definition rows (imam cards / labelled fields) */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;align-items:start}
+.row .lb{font-size:.82rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 10px;text-align:center}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:4px}.row .lb{justify-self:start}}
+.card-h{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.card-h .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1}
+.card-h b{font-family:var(--display);font-size:1.15rem}
+
+.mm.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mm.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.mm.four,.mm.two{grid-template-columns:1fr}}
+
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp,.mcq:has(input) .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body style="margin:0">
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">شرح نظم المعين</a><span style="color:var(--muted)">‹</span><span style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">الدرس ٥</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture4.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture6.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">شرح نظم المُعين · الشيخ أحمد السيد · الدرس الخامس</div>
+  <h1>المنكر والشاذ والمضطرب والمرسل والمسند</h1>
+  <p class="muted">ملخص مذاكرة: الخريطة الذهنية أولًا، ثم تفصيل كل فرع، ثم أسئلة مراجعة في الآخر.</p>
+</header>
+
+<!-- ===== mind map ===== -->
+<section>
+  <h2>الخريطة الذهنية للدرس <span class="tag">ابدأ من هنا</span></h2>
+  <div class="mm">
+    <div class="mm-root">القاعدة: توسيعُ المعاني لا حصرُها</div>
+    <div class="mm-branch">
+      <h3>المنكَر والشاذّ</h3>
+      <ul class="tree">
+        <li><b>المنكر: ستة معانٍ</b>
+          <ul>
+            <li>تفرُّد من ليس أهلًا</li>
+            <li>مخالفة الضعيف للثقة</li>
+            <li>مخالفة الثقة لمن هو أوثق</li>
+            <li>الضعيف المردود</li>
+            <li>استنكار اللفظ أو المعنى</li>
+            <li>مرادفٌ لمحض الخطأ</li>
+          </ul>
+        </li>
+        <li><b>الشاذ: معنيان</b>
+          <ul>
+            <li>التفرّد المستنكَر ولو بلا مخالفة</li>
+            <li>المخالفة</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>المضطرِب</h3>
+      <ul class="tree">
+        <li><b>دلالتان</b>
+          <ul>
+            <li>اختلافٌ يظهر فيه عدم الضبط</li>
+            <li>بمعنى الخطأ ولو بانفراد</li>
+            <li>ولا يُشترط عدم ترجُّح وجه</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>المرسَل والمسنَد</h3>
+      <ul class="tree">
+        <li><b>المرسل</b>
+          <ul>
+            <li>مطلقُ الانقطاع</li>
+            <li>ونقدُ تعريف البيقونية</li>
+          </ul>
+        </li>
+        <li><b>المسند</b>
+          <ul>
+            <li>المتّصل ولو لم يبلغ النبيَّ ﷺ</li>
+            <li>أو المرفوع عكس الموقوف</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== tamhid ===== -->
+<section>
+  <h2>تمهيد: موضع هذا المجلس</h2>
+  <div class="panel">
+    <p>هذا هو المجلس الخامس. وكنّا في المجلس السابق قد <b>قفزنا على بابٍ</b>؛ إذ أخذنا باب التنبيه إلى أهمية الفهم الصحيح لكلام الأوائل، ثم باب التفرّد (لارتباطهما). واليوم نأخذ <b>الباب الوسيط بينهما</b>: فصلٌ في بيان معاني عددٍ من ألفاظ المصطلح المشهورة عند المحدّثين الأوائل. وهو بابٌ مهمّ <b>ليس طويلًا</b>، والمرور عليه سريعٌ <b>بدون أمثلةٍ تفصيلية</b>؛ لأن التفصيل يُطيل المقام.</p>
+  </div>
+</section>
+
+<!-- ===== 1 ===== -->
+<section>
+  <h2>أولًا: القاعدة الحاكمة للفصل كلّه</h2>
+  <div class="verse">
+    <p>وهذه بعضٌ من الألفاظِ <span class="sp">…</span> بيَّنتُ معناها لدى الحفّاظِ</p>
+    <p>لكنَّني لم ألتزِمْ بحصرِي <span class="sp">…</span> جميعَ معنى لفظِهم فلْتَدْرِ</p>
+  </div>
+  <p>أي: وإن كانت هذه الألفاظ تدلّ على معانٍ متعددة، فإنه <b>لم يلتزم أن يذكر جميع المعاني</b> المرتبطة بكل مصطلح، وإن كان سيذكر معانيَ متعددة. وأصلُ ذلك ما قرّره في <b>البيت الحادي والخمسين</b>:</p>
+  <div class="verse">
+    <p>وجملةُ الإشكالِ في التحديدِ <span class="sp">…</span> وحصرِ معنى اللفظِ بالحدودِ</p>
+    <p>لكنَّما طريقةُ الحفّاظِ <span class="sp">…</span> توسيعُ معنى هذه الألفاظِ</p>
+  </div>
+
+  <div class="sum">
+    <span class="cal-t">القاعدة</span>
+    <p>طريقة الحفّاظ المتقدمين في التعامل مع المصطلحات هي <b>عدم تضييق معانيها بحصرها في معنًى واحدٍ وقالبٍ محدَّد</b>، وإنما <b>توسيعُ معانيها وإطلاقاتها</b> على معانٍ متعددة متنوعة. وعلى هذه القاعدة يسير الفصل كلّه.</p>
+  </div>
+
+  <div class="note">
+    <span class="cal-t">المصطلحات المذكورة في هذا الفصل</span>
+    <p>المنكر، ثم الشاذ، ثم المضطرب، ثم المرسل، ثم المسند، ثم الحسن، ثم الغريب. <b>وهذا المجلس انتهى عند «المسند»</b>؛ فختم الشيخ بالمرسل والمسند، والباقي في الدرس التالي.</p>
+  </div>
+</section>
+
+<!-- ===== 2 ===== -->
+<section>
+  <h2>ثانيًا: المنكَر — ستة معانٍ</h2>
+
+  <div class="dia">
+    <span class="cap">معاني «المنكر» في نظم المُعين</span>
+    <svg viewBox="0 0 740 350" width="740" role="img" aria-label="ستة معان للمنكر">
+      <rect x="530" y="140" rx="14" width="190" height="56" fill="#8c2f39"/>
+      <text x="625" y="174" fill="#fff" font-size="18" text-anchor="middle" direction="rtl">المنكَر</text>
+      <path d="M530,168 C460,168 440,38 350,38" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M530,168 C460,168 440,90 350,90" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M530,168 C460,168 440,142 350,142" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M530,168 C460,168 440,194 350,194" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M530,168 C460,168 440,246 350,246" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M530,168 C460,168 440,298 350,298" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <rect x="18" y="20" rx="9" width="332" height="36" fill="#fbeced" stroke="#8c2f39" stroke-width="1.3"/>
+      <text x="184" y="44" fill="#8c2f39" font-size="14.5" text-anchor="middle" direction="rtl">١) تفرُّدُ مَن ليس أهلًا للتفرُّد</text>
+      <rect x="18" y="72" rx="9" width="332" height="36" fill="#fbeced" stroke="#8c2f39" stroke-width="1.3"/>
+      <text x="184" y="96" fill="#8c2f39" font-size="14.5" text-anchor="middle" direction="rtl">٢) مخالفةُ الضعيفِ للثقة</text>
+      <rect x="18" y="124" rx="9" width="332" height="36" fill="#fbeced" stroke="#8c2f39" stroke-width="1.3"/>
+      <text x="184" y="148" fill="#8c2f39" font-size="14.5" text-anchor="middle" direction="rtl">٣) مخالفةُ الثقةِ لمن هو أوثقُ منه</text>
+      <rect x="18" y="176" rx="9" width="332" height="36" fill="#fbeced" stroke="#8c2f39" stroke-width="1.3"/>
+      <text x="184" y="200" fill="#8c2f39" font-size="14.5" text-anchor="middle" direction="rtl">٤) الضعيفُ المردود (كتفرُّد المتروك)</text>
+      <rect x="18" y="228" rx="9" width="332" height="36" fill="#fbeced" stroke="#8c2f39" stroke-width="1.3"/>
+      <text x="184" y="252" fill="#8c2f39" font-size="14.5" text-anchor="middle" direction="rtl">٥) استنكارُ اللفظِ أو المعنى أو الإسناد</text>
+      <rect x="18" y="280" rx="9" width="332" height="36" fill="#fbeced" stroke="#8c2f39" stroke-width="1.3"/>
+      <text x="184" y="304" fill="#8c2f39" font-size="14" text-anchor="middle" direction="rtl">٦) مرادفٌ لمحضِ الخطأ (ترادف الألفاظ)</text>
+    </svg>
+  </div>
+
+  <h3>المعنى الأول: تفرُّد مَن ليس أهلًا للتفرّد</h3>
+  <div class="verse">
+    <p>فالمنكَرُ الراوي الذي تفرَّدا <span class="sp">…</span> ولم يكن أهلًا بما تفرَّدا</p>
+    <p>وبعدُ فصلٌ للتفرُّدِ مِن <span class="sp">…</span> ثقةٍ وغيرِه لتنجُدوا</p>
+  </div>
+  <p>وهذا مبنيٌّ على <b>قانون التفرّد</b> الذي سبق في الدرس الماضي: القرائن الثلاث (في الإسناد، وفي الراوي، وفي المتن)، وأنها <b>تُشبه عمل العدّادات</b>؛ يرتفع مؤشّرٌ وينخفض آخر، فإمّا أن تُقبل رواية الفرد أو لا تُقبل.</p>
+  <div class="panel">
+    <p>فإذا كان الراوي ليس فيه من <b>الأهلية</b> ما يَجبُر نقصَه، وكان في الرواية ما يستوجب ألّا تكون من قبيل الأفراد — <b>سُمّي هذا عند الحفّاظ منكرًا</b>.</p>
+    <p style="margin-top:8px"><b>وهل في إسناده راوٍ ضعيف؟ ليس بالضرورة!</b> فقد يقال عن الحديث إنه منكر، ووجهُ الاستنكار أنه <b>لم تجتمع في الراوي المتفرّد من الصفات ما يؤهّله للتفرّد بمثل هذه الرواية</b>. وذلك لأن <b>التفرّد بابٌ ضيّقٌ عند العلماء وليس محبَّذًا</b>؛ فهم لا يحبّون أحاديث الأفراد، بل ما يتوارد الرواةُ على روايته ويتتابعون على نقله.</p>
+    <p style="margin-top:8px">وهذا المعنى <b>قريبٌ ممّا في «البيقونية»</b>، غير أن البيقوني <b>لم يذكر معنًى آخر</b>.</p>
+  </div>
+
+  <h3>المعنى الثاني: مخالفة الضعيف للثقة</h3>
+  <div class="verse">
+    <p>أو خالفَ الضعيفُ للثقاتِ <span class="sp">…</span> وإن أتى الخلافُ من ثقاتِ</p>
+  </div>
+  <p>وهذا هو <b>المعنى الأشهر</b> للمنكر في المختصرات الحديثية المتأخرة، وهو الذي قرّره ابن حجر في <span class="bk">«نُخبة الفِكَر»</span>: إن كان للحديث طريقان فأكثر، فوقع خلافٌ بينها، وكان في أحد طرفَي الخلاف <b>ضعيفٌ</b> والآخر <b>ثقة</b>، فرواية الضعيف إذا خالف الثقةَ تُسمّى «منكرًا». فلا يُسمّى الحديث منكرًا — عند كثير من المتأخرين — إلا باجتماع <b>صفتين: ضعف الراوي، ومخالفته للثقة</b>.</p>
+  <div class="warn">
+    <span class="cal-t">موضع الإشكال</span>
+    <p>عند التحقيق والنظر في كلام الأوائل تجد أنهم <b>حكموا على أحاديث بأنها منكرة وليس فيها أيٌّ من هذين الشرطين</b>. فهل مخالفةُ الضعيف للثقة تُسمّى منكرًا؟ <b>نعم تُسمّى</b>. لكنّ الإشكال في <b>حصرها</b>؛ أن يُقال: لا يوجد للمنكر معنًى إلا هذا.</p>
+  </div>
+
+  <h3>المعنى الثالث: مخالفة الثقة لمن هو أوثق منه</h3>
+  <p>أي إذا خالف الثقةُ مَن هو أوثقُ منه، فقد يُسمّى ذلك عند بعض الحفّاظ <b>«منكرًا»</b>؛ وإن كان في اصطلاح كثيرٍ من المتأخرين يُسمّى <b>«شاذًّا»</b>. فعندهم: مخالفةُ الضعيف للثقة «منكر»، ومخالفةُ الثقة للثقة «شذوذ».</p>
+
+  <h3>المعنى الرابع: الضعيف المردود</h3>
+  <div class="verse">
+    <p>أو قِسمُ ما رُدَّ من الضعيفِ <span class="sp">…</span> كخطأِ القويِّ والضعيفِ</p>
+  </div>
+  <div class="panel">
+    <p>تذكيرٌ بما سبق: <b>الضعيف قسمان</b>: ضعيفٌ مقبول، وضعيفٌ مردود. و<b>المقبول قسمان</b>: مقبولٌ للاحتجاج، ومقبولٌ للاعتبار — والمقبول للاعتبار هو «الضعيف»، والضعيفُ غيرُ المردود. فـ<b>الضعيف المردود يُسمّى «منكرًا»</b>؛ كأن يتفرّد بالحديث راوٍ <b>متروك</b>.</p>
+  </div>
+
+  <h3>المعنى الخامس: استنكار اللفظ أو المعنى أو الإسناد</h3>
+  <div class="verse">
+    <p>وربَّما قد جاء ما يُستنكَرُ <span class="sp">…</span> معناهُ أو إسنادُهُ قد يُنكَرُ</p>
+  </div>
+  <p>أي: ربما يكون معنى «المنكر» عندهم <b>أوسعَ من ذلك بكثير</b>؛ كأن يُستنكَر لفظُه أو معناه فيقول: منكر. فمصطلح «منكر» عند المحدّثين <b>مصطلحٌ واسع</b> يستعملونه في مواضعَ كثيرة من الرواية.</p>
+
+  <h3>المعنى السادس: مرادفٌ لمحض الخطأ</h3>
+  <div class="verse">
+    <p>وخطأٌ ومنكَرٌ وباطلُ <span class="sp">…</span> ووهمٌ قد رأَوْا واستعملوا</p>
+    <p>في مَحضِ أخطاءٍ من الرواةِ <span class="sp">…</span> من الضِّعافِ أو من الثقاتِ</p>
+    <p>وهذه طريقةُ الحفّاظِ <span class="sp">…</span> قد وسَّعوا ترادفَ الألفاظِ</p>
+  </div>
+  <div class="panel">
+    <h3>المثال التطبيقي</h3>
+    <p style="margin-top:6px">قد يستعمل بعض الحفّاظ مصطلحًا للدلالة على خطأٍ معيّنٍ في الرواية، ويأتي ناقدٌ آخر فيستعمل مصطلحًا آخر <b>للدلالة على نفس الخطأ</b>. فتجد في <b>الحديث الواحد</b>:</p>
+    <div class="scroll" style="margin-top:10px">
+      <table>
+        <thead><tr><th>الناقد</th><th>عبارته</th></tr></thead>
+        <tbody>
+          <tr><td><b>أبو حاتم الرازي</b></td><td>هذا حديثٌ <b>منكر</b></td></tr>
+          <tr><td><b>أبو زُرعة</b></td><td>هذا حديثٌ <b>خطأ</b></td></tr>
+          <tr><td><b>أبو داود</b></td><td>هذا حديثٌ <b>وهم</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:8px">فهل هو خطأ أم وهم أم منكر؟ الجواب: <b>ليس الخلاف في الحكم</b>؛ فالحكم من حيث الردّ واحدٌ يدلّ على الضعف، وإنما عُبِّر عنه بخطأٍ أو وهمٍ فلا بأس.</p>
+  </div>
+</section>
+
+<!-- ===== 3 ===== -->
+<section>
+  <h2>ثالثًا: الشاذّ — معنيان</h2>
+  <h3>المعنى الأول: تفرُّد مَن ليس أهلًا</h3>
+  <div class="verse">
+    <p>والشاذُّ إن تفرَّدَ المقبولُ <span class="sp">…</span> وليس أهلًا فادْرِ ما أقولُ</p>
+  </div>
+  <p>و«المقبول» هنا <b>ليس قسيمَ غير المقبول</b>. والمعنى قريبٌ من المعنى الأول للمنكر؛ أي أن رواية الراوي للحديث الذي يتفرّد به — <b>وخاصةً لو كان متفرّدًا بحكمٍ من الأحكام لم يأتِ به غيرُه</b> — قد يُسمّى عند الحفّاظ شاذًّا، <b>ولو لم يخالِفْ</b>.</p>
+  <div class="sum">
+    <span class="cal-t">مصدرا الشذوذ عند الحفّاظ</span>
+    <ul class="clean">
+      <li><b>التفرّد المستنكَر:</b> التفرّد دون أن يكون له أصلٌ عاضد؛ أي التفرّد بحكمٍ من أصول الشريعة لم يعضده غيرُه في نقله.</li>
+      <li><b>ولم يكن فيه من الصفات المؤهِّلة له</b> بأن يتفرّد بمثل هذا.</li>
+    </ul>
+    <p style="margin-top:8px">ومن هنا قال مَن قال من المتقدمين: <b>«إنما يأتيك الحديثُ الشاذُّ من الرجل الشاذّ»</b> — أي ليس من الكبار.</p>
+  </div>
+
+  <h3>المعنى الثاني: المخالفة</h3>
+  <div class="verse">
+    <p>أو أن يخالفَ واحدٌ ثقاتِ <span class="sp">…</span> وحصرُهُ مَظِنّةُ الشتاتِ</p>
+  </div>
+  <p>أي إذا خالف <b>مقبولٌ</b> مجموعةً من الثقات أو مَن هو أوثقُ منه، فهذا أيضًا يُسمّى شاذًّا. وقوله «وحصرُه مظنّة الشتات» أي: <b>لا تَحصُر الشاذَّ في هذا المعنى</b>، وإن كان هو الأشهر.</p>
+</section>
+
+<!-- ===== 4 ===== -->
+<section>
+  <h2>رابعًا: المضطرِب — دلالتان</h2>
+  <div class="verse">
+    <p>ثمّ الخلافُ إن أتى قد عرَّفوهُ <span class="sp">…</span> يا أخي مضطربا</p>
+    <p>وبعضُ حفّاظِ الحديثِ أطلقا <span class="sp">…</span> مضطربًا على الخطأِ فأطلقا</p>
+    <p>عند اختلالِ النقلِ بالإسنادِ <span class="sp">…</span> حتى ولو رواهُ بانفرادِ</p>
+  </div>
+
+  <div class="dia">
+    <span class="cap">دلالتا «المضطرِب»</span>
+    <svg viewBox="0 0 720 230" width="720" role="img" aria-label="دلالتان للمضطرب">
+      <rect x="500" y="86" rx="14" width="200" height="56" fill="#0d3b66"/>
+      <text x="600" y="120" fill="#fff" font-size="18" text-anchor="middle" direction="rtl">المضطرِب</text>
+      <path d="M500,114 C430,114 410,48 320,48" fill="none" stroke="#9fb4c8" stroke-width="2.5"/>
+      <path d="M500,114 C430,114 410,168 320,168" fill="none" stroke="#9fb4c8" stroke-width="2.5"/>
+      <rect x="20" y="22" rx="10" width="300" height="52" fill="#eaf5f0" stroke="#155f43" stroke-width="1.5"/>
+      <text x="170" y="45" fill="#155f43" font-size="15" text-anchor="middle" direction="rtl">١) اختلافٌ على وجوهٍ يظهر فيه</text>
+      <text x="170" y="66" fill="#155f43" font-size="15" text-anchor="middle" direction="rtl">عدمُ الضبط (الأصل والأكثر)</text>
+      <rect x="20" y="142" rx="10" width="300" height="52" fill="#fbf3e2" stroke="#8a5a00" stroke-width="1.5"/>
+      <text x="170" y="165" fill="#8a5a00" font-size="15" text-anchor="middle" direction="rtl">٢) بمعنى الخطأ ولو بانفراد</text>
+      <text x="170" y="186" fill="#8a5a00" font-size="14" text-anchor="middle" direction="rtl">(استعملها أبو حاتم الرازي)</text>
+    </svg>
+  </div>
+
+  <h3>الدلالة الأولى: الاختلاف الدالّ على عدم الضبط</h3>
+  <p>إذا أتى خلافٌ في حديثٍ معيّنٍ بين رواته على وجوهٍ <b>يظهر فيها عدم الضبط</b>؛ فحين يستشفّ الناقدُ هذا الخلاف يظهر أن الأطراف <b>مشتبكة</b> وتدلّ على عدم ضبطٍ في هذا الحديث بعينه، <b>ولا يكون أحدُ الأوجه راجحًا رجوحًا قويًّا والباقي مرجوحًا بصورةٍ واضحة</b>.</p>
+  <p><b>مثاله:</b> حديثٌ مدارُه على قتادة، يرويه عنه أربعة، كلُّ واحدٍ على وجهٍ غير الثاني، بطريقةٍ تدلّ على غرابةٍ في هذا الاختلاف؛ فيقولون: هذا حديثٌ مضطرب، فيه اختلال، ليس فيه رجحان شيءٍ على شيء.</p>
+
+  <div class="warn">
+    <span class="cal-t">تصحيحُ شرطٍ ذكره بعض المتأخرين</span>
+    <p>قال بعض المتأخرين: إن المضطرب <b>يُشترط فيه ألّا يترجّح وجهٌ</b> من الوجوه؛ فإن ترجّح لم يُسمَّ مضطربًا. <b>وهذا الكلام ليس دقيقًا</b>؛ فحتى لو ترجّح منها وجهٌ فقد يُسمّى مضطربًا إذا ظهر الاضطراب.</p>
+    <p style="margin-top:6px"><b>والدليل:</b> حديثٌ أخرجه الترمذي في الطهارة في الاستجمار، مدارُه على <b>أبي إسحاق السبيعي</b> (أحد الستة الذين تدور عليهم أسانيد الحديث)، ورُوي عنه على <b>أربعة أوجه</b>. قال الترمذي: «هذا حديثٌ فيه اضطراب، وقد سألتُ محمدًا (البخاري) عنه فلم يقضِ فيه بشيء، وسألتُ عبد الله بن عبد الرحمن الدارميَّ عنه فلم يقضِ فيه بشيء» — <b>ثم رجّح واحدًا من الوجوه الأربعة مع أنه قال فيه اضطراب</b>.</p>
+  </div>
+
+  <h3>الدلالة الثانية: بمعنى الخطأ</h3>
+  <p>استعمل بعضُ حفّاظ الحديث كلمة «مضطرب» بمعنى الخطأ — <b>والمقصود بهم هنا أبو حاتم الرازي تحديدًا</b> — فقال عن حديثٍ أخطأ فيه راوٍ: إنه مضطرب، <b>وليس فيه وجوهٌ مختلفة من الرواية</b>. بينما <b>الأكثر في الاستعمال والأصل فيه</b> أن يظهر اختلالٌ وتعدُّدٌ في وجوه الرواية.</p>
+</section>
+
+<!-- ===== 5 ===== -->
+<section>
+  <h2>خامسًا: المرسَل والمسنَد</h2>
+  <div class="verse">
+    <p>ومُرسَلٌ على العمومِ مُنقطِعْ <span class="sp">…</span> لم يحصروهُ بالذي رفعًا قطعْ</p>
+    <p>ومُسنَدٌ مقابلٌ للمُرسَلِ <span class="sp">…</span> وعكسُ وقفٍ أطلقوهُ فاعتلي</p>
+  </div>
+
+  <h3>المرسَل</h3>
+  <p>لفظ «المرسل» من المصطلحات التي <b>كثُر استعمالها</b> عند المحدّثين. والمشهور في تعريفه في «البيقونية»: «ومُرسَلٌ منه الصحابيُّ سقط»، والمشهور أيضًا: <b>ما رفعه التابعيُّ إلى النبي ﷺ</b> — وهذا <b>أدقُّ</b> في التعريف.</p>
+
+  <div class="ask">
+    <span class="cal-t">لماذا كان تعريف «البيقونية» غير دقيق؟</span>
+    <p>لأن قوله «منه الصحابيُّ سقط» <b>يُوهم أننا جزمنا أن الساقط صحابيّ</b>؛ وإذا جزمنا بذلك <b>كان الحديث صحيحًا</b> لأن الصحابة عدول! ولكننا <b>لا نعلم من الذي سقط</b>. فالإشكال أن التابعي يقول: «قال رسول الله ﷺ»؛ فإذا جزمنا أن بين التابعي والنبي ﷺ صحابيًّا لم يكن هناك إشكالٌ كبير، لكن الإشكال أن <b>التابعي قد يروي عن التابعي</b>، فلا ندري: الساقطُ أهو تابعيٌّ أم صحابيّ؟</p>
+  </div>
+
+  <div class="sum">
+    <span class="cal-t">الخلاصة: «المرسل» يُطلق على مطلق الانقطاع</span>
+    <p>فـ«المرسل» في الأساس يُطلق على <b>الانقطاع</b>، ومن جملة الانقطاع ما رفعه التابعيُّ إلى النبي ﷺ؛ غير أن <b>أكثر صور الانقطاع</b> التي يُطلق عليها «مرسل» هي صورة الانقطاع بين التابعي والنبي ﷺ.</p>
+    <p style="margin-top:6px">ولذلك يصحّ أن تقول في <b>المعضل</b>: هذا حديثٌ مرسل، وفي <b>المنقطع</b>: هذا حديثٌ مرسل، وفي المرسل بالاصطلاح العام كذلك.</p>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th>الكتاب</th><th>مضمونه</th></tr></thead>
+      <tbody>
+        <tr><td><b>«المراسيل» لأبي داود</b></td><td>خاصٌّ بصورة الانقطاع بين التابعي والنبي ﷺ: متونٌ يرويها التابعون وأشباهُهم عن النبي ﷺ <b>دون ذكر الصحابي</b>. (مشهورٌ مطبوع)</td></tr>
+        <tr><td><b>«المراسيل» لابن أبي حاتم</b></td><td>في المعنى المطلق العامّ للانقطاع: يذكر فيه منقطعاتٍ سواء كانت بين التابعي والصحابي، أو بين التابعي والنبي ﷺ.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>المسنَد — معنيان</h3>
+  <p>«المسند» مقابلٌ للمرسل، فيصير هو <b>المتّصل</b>؛ ولذلك في «البيقونية»: «والمسنَدُ المتّصلُ الإسنادِ مِن راويهِ حتى المصطفى ولم يَبِنْ» — أي لم ينقطع، لكنه <b>اشترط أن يكون الاتصال إلى النبي ﷺ</b>، وهذه هي الصورة المتفق عليها.</p>
+
+  <div class="dia">
+    <span class="cap">إطلاقا «المسنَد»</span>
+    <svg viewBox="0 0 720 210" width="720" role="img" aria-label="إطلاقان للمسند">
+      <rect x="500" y="76" rx="14" width="200" height="56" fill="#155f43"/>
+      <text x="600" y="110" fill="#fff" font-size="18" text-anchor="middle" direction="rtl">المسنَد</text>
+      <path d="M500,104 C430,104 410,44 320,44" fill="none" stroke="#8fbfa8" stroke-width="2.5"/>
+      <path d="M500,104 C430,104 410,158 320,158" fill="none" stroke="#8fbfa8" stroke-width="2.5"/>
+      <rect x="20" y="18" rx="10" width="300" height="52" fill="#eaf5f0" stroke="#155f43" stroke-width="1.5"/>
+      <text x="170" y="41" fill="#155f43" font-size="15" text-anchor="middle" direction="rtl">١) المتّصل — ولو لم يكن</text>
+      <text x="170" y="62" fill="#155f43" font-size="15" text-anchor="middle" direction="rtl">إلى النبي ﷺ (ضدّ الإرسال)</text>
+      <rect x="20" y="132" rx="10" width="300" height="52" fill="#f1ecf9" stroke="#5b3d8c" stroke-width="1.5"/>
+      <text x="170" y="155" fill="#5b3d8c" font-size="15" text-anchor="middle" direction="rtl">٢) المرفوع — عكسُ الموقوف</text>
+      <text x="170" y="176" fill="#5b3d8c" font-size="14" text-anchor="middle" direction="rtl">(«ولم يُسنِدْه إلا فلان»)</text>
+    </svg>
+  </div>
+
+  <div class="panel">
+    <h3>المعنى الأول: الاتصال ولو لم يكن إلى النبي ﷺ</h3>
+    <p style="margin-top:6px">قال <b>يعقوب بن شَيبة السَّدوسي</b> (أحد الأئمة الحفّاظ): «وإنما استجاز بعضُ أصحابنا أن يُدخلوا حديثَ <b>أبي عُبيدة بن عبد الله بن مسعود عن أبيه</b> في <b>المسنَد</b> لأنه كذا وكذا». وأبو عبيدة <b>لم يُدرك أباه</b> في الرواية (مات وهو صغير)، فروايته عن أبيه <b>منقطعة</b> — ومع ذلك استُعملت كلمة «مسند» في دلالة <b>الاتصال</b> ولو لم يكن إلى النبي ﷺ.</p>
+    <p style="margin-top:8px"><b>وفائدة عابرة:</b> الحديثُ المضطربُ المذكور آنفًا عند الترمذي، رجّح فيه الترمذيُّ <b>رواية أبي عبيدة عن أبيه</b>.</p>
+    <p style="margin-top:8px"><b>فالخلاصة:</b> «المسند» يُطلق على الحديث المتّصل ولو لم يكن إلى النبي ﷺ، وإن كان أشهرُ إطلاقِه على المرفوع إليه ﷺ.</p>
+  </div>
+
+  <div class="panel">
+    <h3>المعنى الثاني: المرفوع (عكس الموقوف)</h3>
+    <p style="margin-top:6px">وهذه الصيغة مستعملةٌ كثيرًا؛ يقال: هذا حديثٌ رواه أصحابُ الزهري عنه عن أنسٍ <b>موقوفًا</b> من كلامه، <b>ولم يُسنِدْه إلا فلان</b> — كمالكٍ ومعمرٍ وابن عيينة رووه موقوفًا، وقال يونس: عن الزهري عن أنسٍ عن النبي ﷺ. فالمقصود بـ«ولم يُسنِدْه إلا يونس»: <b>لم يرفعه إلا يونس</b>.</p>
+    <p style="margin-top:8px">ويُستعمل «ولم يُسنِدْه» أيضًا في <b>ضدّ الإرسال</b>؛ فيقولون: «رواه أصحابُ الزهري مرسلًا ولم يُسنِدْه إلا فلان»، أي <b>لم يروِه متّصلًا إلا فلان</b>.</p>
+    <p class="muted" style="margin-top:8px">وقد يُطلق «المسند» أيضًا على ما فيه انقطاعٌ يسيرٌ خفيف، لكن هذا لا يعنينا الآن.</p>
+  </div>
+</section>
+
+<!-- ===== table ===== -->
+<section>
+  <h2>جدولٌ تلخيصيٌّ جامع <span class="tag">للمراجعة السريعة</span></h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>المصطلح</th><th>معانيه في هذا الفصل</th></tr></thead>
+      <tbody>
+        <tr><td><b>المنكَر</b></td><td>(١) تفرُّد مَن ليس أهلًا، (٢) مخالفة الضعيف للثقة، (٣) مخالفة الثقة لمن هو أوثق، (٤) الضعيف المردود، (٥) استنكار اللفظ أو المعنى أو الإسناد، (٦) مرادفٌ لمحض الخطأ.</td></tr>
+        <tr><td><b>الشاذّ</b></td><td>(١) تفرُّد المقبول وليس أهلًا — ولو لم يخالف، (٢) مخالفة الواحد لجماعة الثقات أو لمن هو أوثق (وحصرُه مظنّة الشتات).</td></tr>
+        <tr><td><b>المضطرِب</b></td><td>(١) اختلافٌ على وجوهٍ يظهر فيه عدم الضبط (ولا يُشترط عدم ترجُّح وجه)، (٢) بمعنى الخطأ ولو بانفراد.</td></tr>
+        <tr><td><b>المرسَل</b></td><td>مطلقُ الانقطاع (يشمل المعضل والمنقطع)، وأكثر صوره: انقطاعُ ما بين التابعي والنبي ﷺ.</td></tr>
+        <tr><td><b>المسنَد</b></td><td>(١) المتّصل ولو لم يكن إلى النبي ﷺ، (٢) المرفوع عكس الموقوف.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== khulasa ===== -->
+<section>
+  <h2>خلاصة الدرس</h2>
+  <div class="sum">
+    <ul class="clean">
+      <li><b>القاعدة الحاكمة:</b> طريقة الحفّاظ توسيعُ معاني الألفاظ لا حصرُها بالحدود؛ وجملةُ الإشكال في التحديد والحصر.</li>
+      <li><b>المنكر:</b> ستة معانٍ؛ ومخالفةُ الضعيف للثقة صحيحةٌ لكنّ <b>حصرَ</b> المنكر فيها هو الخطأ.</li>
+      <li><b>التفرّد بابٌ ضيّق</b> عند العلماء؛ لا يحبّون أحاديث الأفراد، بل ما يتوارد عليه الرواة.</li>
+      <li><b>الشاذّ:</b> مصدرُه التفرّد المستنكَر ولو بلا مخالفة، أو المخالفة؛ «إنما يأتيك الحديث الشاذ من الرجل الشاذ».</li>
+      <li><b>المضطرب:</b> لا يُشترط فيه عدمُ ترجُّح وجهٍ (بدليل صنيع الترمذي)، وقد يُطلق بمعنى الخطأ (أبو حاتم).</li>
+      <li><b>المرسل:</b> مطلقُ الانقطاع؛ وتعريف «البيقونية» غير دقيق لأنه يُوهم الجزم بأن الساقط صحابيّ.</li>
+      <li><b>المسند:</b> المتّصل ولو لم يبلغ النبيَّ ﷺ، أو المرفوعُ عكسَ الموقوف.</li>
+      <li><b>ترادف الألفاظ:</b> «منكر» و«خطأ» و«وهم» و«باطل» قد تُستعمل للدلالة على الخطأ نفسه؛ فالخلاف في العبارة لا في الحكم.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== quiz ===== -->
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اختبر نفسك</span></h2>
+  <form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">ما القاعدة الحاكمة لهذا الفصل كلّه؟</p>
+    <label class="opt"><input type="radio" name="l5q1"><span class="t">أن لكل مصطلحٍ حدًّا واحدًا دقيقًا لا يُعدل عنه، وإنما اختلفت عبارات الحفّاظ عنه.</span></label>
+    <label class="opt"><input type="radio" name="l5q1"><span class="t">أن مصطلحات المتقدمين مخالفةٌ لمصطلحات المتأخرين في المعنى والحكم جميعًا.</span></label>
+    <label class="opt ok"><input type="radio" name="l5q1"><span class="t">أن طريقة الحفّاظ توسيعُ معاني الألفاظ لا حصرُها في تعريفٍ حدّيٍّ واحد؛ «وجملةُ الإشكالِ في التحديدِ وحصرِ معنى اللفظِ بالحدودِ».</span></label>
+    <label class="opt"><input type="radio" name="l5q1"><span class="t">أن المصطلح يُحمل على أشهر معانيه إلا إذا نصّ الناقد على خلافه.</span></label>
+    <p class="exp">وقد صرّح الناظم أنه لم يلتزم حصرَ جميع المعاني: «وهذه بعضٌ من الألفاظِ … بيَّنتُ معناها لدى الحفّاظِ … لكنَّني لم ألتزِمْ بحصرِي … جميعَ معنى لفظِهم فلْتَدْرِ».</p>
+  </div>
+  <div class="mcq">
+    <p class="q">اذكر معاني «المنكر» الستة.</p>
+    <label class="opt ok"><input type="radio" name="l5q2"><span class="t">تفرُّدُ من ليس أهلًا، ومخالفةُ الضعيف للثقة، ومخالفةُ الثقة لمن هو أوثق، والضعيفُ المردود، واستنكارُ اللفظ أو المعنى أو الإسناد، ومرادفٌ لمحض الخطأ.</span></label>
+    <label class="opt"><input type="radio" name="l5q2"><span class="t">التفرّدُ، وعدمُ الاستناد لشهرة، والزيادةُ في الإسناد، والزيادةُ في المتن، والغرابةُ المطلقة، والغرابةُ النسبية.</span></label>
+    <label class="opt"><input type="radio" name="l5q2"><span class="t">مخالفةُ الضعيف للثقة فقط، وهو ما في «نخبة الفكر»، وما سواه فتجوُّزٌ في العبارة.</span></label>
+    <label class="opt"><input type="radio" name="l5q2"><span class="t">الاختلافُ الدالّ على عدم الضبط، والخطأُ ولو بانفراد، والوهمُ، والباطلُ، والشاذُّ، والمعلَّل.</span></label>
+    <p class="exp">الخيارُ الثاني إنما هو إطلاقاتُ «الغريب» ونوعاه، والأخيرُ خلطٌ بين دلالتَي «المضطرِب» وألفاظ الترادف. وأما حصرُ المنكر في مخالفة الضعيف للثقة فهو موضعُ الإشكال نفسه الذي ينبّه عليه الفصل.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">هل يلزم أن يكون في إسناد المنكر راوٍ ضعيف؟</p>
+    <label class="opt"><input type="radio" name="l5q3"><span class="t">نعم؛ فلا يُسمّى الحديث منكرًا إلا باجتماع ضعفِ الراوي ومخالفتِه للثقة.</span></label>
+    <label class="opt"><input type="radio" name="l5q3"><span class="t">نعم؛ لأن المنكر هو الضعيف المردود، والمردودُ لا يكون إلا من ضعيف.</span></label>
+    <label class="opt"><input type="radio" name="l5q3"><span class="t">ليس بالضرورة؛ بل يكفي أن يكون المتن مخالفًا لظاهر القرآن.</span></label>
+    <label class="opt ok"><input type="radio" name="l5q3"><span class="t">ليس بالضرورة؛ فقد يكون وجهُ الاستنكار أنه لم تجتمع في الراوي المتفرّد الصفاتُ المؤهِّلة للتفرّد بمثل هذه الرواية.</span></label>
+    <p class="exp">فالتفرّدُ بابٌ ضيّقٌ عند العلماء وليس محبَّذًا؛ فهم لا يحبّون أحاديث الأفراد، بل ما يتوارد الرواةُ على روايته ويتتابعون على نقله. والخيارُ الأول هو اصطلاحُ كثيرٍ من المتأخرين الذي ينبّه النظمُ على عدم حصر المنكر فيه.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الفرق بين المنكر والشاذ عند كثير من المتأخرين؟</p>
+    <label class="opt"><input type="radio" name="l5q4"><span class="t">مخالفةُ الثقة للثقة «منكر»، ومخالفةُ الضعيف للثقة «شذوذ».</span></label>
+    <label class="opt ok"><input type="radio" name="l5q4"><span class="t">مخالفةُ الضعيف للثقة «منكر»، ومخالفةُ الثقة للثقة «شذوذ».</span></label>
+    <label class="opt"><input type="radio" name="l5q4"><span class="t">المنكرُ في المتن والشاذُّ في الإسناد.</span></label>
+    <label class="opt"><input type="radio" name="l5q4"><span class="t">لا فرق بينهما عند المتأخرين، وإنما الفرقُ عند المتقدمين خاصّةً.</span></label>
+    <p class="exp">وهذا اصطلاحُهم؛ ولذلك يقول بعضهم: «لا تقل منكر، بل قل شاذّ». وعند الشيخ صورٌ عن كبار الحفّاظ المتقدمين يقولون فيها عن أحاديثَ خالف فيها الثقةُ مَن هو أوثقُ منه: «منكر» لا «شاذ».</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما مصدرا الشذوذ عند الحفّاظ؟</p>
+    <label class="opt"><input type="radio" name="l5q5"><span class="t">مخالفةُ الضعيف للثقة، ومخالفةُ الثقة لمن هو أوثق منه.</span></label>
+    <label class="opt"><input type="radio" name="l5q5"><span class="t">الاضطرابُ في الإسناد، والانقطاعُ الخفيّ.</span></label>
+    <label class="opt ok"><input type="radio" name="l5q5"><span class="t">التفرّدُ المستنكَر بلا أصلٍ عاضد ولو بلا مخالفة، وألّا يكون فيه من الصفات ما يؤهّله للتفرّد بمثله.</span></label>
+    <label class="opt"><input type="radio" name="l5q5"><span class="t">التدليسُ، والإكثارُ منه.</span></label>
+    <p class="exp">قال: «والشاذُّ إن تفرَّدَ المقبولُ … وليس أهلًا فادْرِ ما أقولُ» — و«المقبول» هنا ليس قسيمَ غير المقبول. ومن هنا قال من قال من المتقدمين: «إنما يأتيك الحديثُ الشاذُّ من الرجل الشاذّ» — أي ليس من الكبار. وللشاذ معنًى ثانٍ هو المخالفة، وحصرُه فيها «مظنّةُ الشتات».</p>
+  </div>
+  <div class="mcq">
+    <p class="q">هل يُشترط في المضطرب عدم ترجُّح وجه؟</p>
+    <label class="opt"><input type="radio" name="l5q6"><span class="t">نعم؛ فإن ترجّح وجهٌ لم يُسمَّ الحديث مضطربًا، وهو شرطٌ متفق عليه.</span></label>
+    <label class="opt ok"><input type="radio" name="l5q6"><span class="t">لا؛ والدليل صنيعُ الترمذي في حديث أبي إسحاق السبيعي، إذ قال «فيه اضطراب» ثم رجّح أحدَ الوجوه الأربعة.</span></label>
+    <label class="opt"><input type="radio" name="l5q6"><span class="t">نعم؛ ولذلك سأل الترمذيُّ البخاريَّ والدارميَّ فلم يقضِيا فيه بشيء.</span></label>
+    <label class="opt"><input type="radio" name="l5q6"><span class="t">لا؛ لأن المضطرب لا يكون إلا بمعنى الخطأ ولو بانفراد.</span></label>
+    <p class="exp">قال بعض المتأخرين بهذا الشرط، وهذا الكلام ليس دقيقًا. فالترمذيُّ قال في حديث الاستجمار الذي مدارُه على أبي إسحاق: «هذا حديثٌ فيه اضطراب، وقد سألتُ محمدًا عنه فلم يقضِ فيه بشيء، وسألتُ عبد الله بن عبد الرحمن الدارميَّ عنه فلم يقضِ فيه بشيء» — ثم رجّح واحدًا من الوجوه الأربعة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">من استعمل «المضطرب» بمعنى الخطأ؟</p>
+    <label class="opt"><input type="radio" name="l5q7"><span class="t">الترمذيُّ في «العلل الصغير».</span></label>
+    <label class="opt"><input type="radio" name="l5q7"><span class="t">الذهبيُّ في «الموقظة».</span></label>
+    <label class="opt"><input type="radio" name="l5q7"><span class="t">ابنُ حجر في «نخبة الفكر».</span></label>
+    <label class="opt ok"><input type="radio" name="l5q7"><span class="t">أبو حاتم الرازي تحديدًا؛ قال عن حديثٍ أخطأ فيه راوٍ إنه مضطرب وليس فيه وجوهٌ مختلفة من الرواية.</span></label>
+    <p class="exp">وهذه هي الدلالة الثانية للمضطرب؛ بينما الأكثرُ في الاستعمال والأصلُ فيه أن يظهر اختلالٌ وتعدُّدٌ في وجوه الرواية.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا كان تعريف البيقونية للمرسل غير دقيق؟</p>
+    <label class="opt"><input type="radio" name="l5q8"><span class="t">لأنه جعل المرسل مطلقَ الانقطاع، والصواب تخصيصُه بما رفعه التابعي.</span></label>
+    <label class="opt"><input type="radio" name="l5q8"><span class="t">لأنه لم يُفرّق بين المرسل والمعضل والمنقطع في الحكم.</span></label>
+    <label class="opt ok"><input type="radio" name="l5q8"><span class="t">لأنه يُوهم الجزم بأن الساقط صحابيّ، ولو جزمنا بذلك لصحَّ الحديث؛ والحقيقة أننا لا ندري أهو تابعيٌّ أم صحابيّ.</span></label>
+    <label class="opt"><input type="radio" name="l5q8"><span class="t">لأنه اشترط في المرسل أن يكون الساقط ثقةً، وهذا لا يُعلم.</span></label>
+    <p class="exp">قال: «ومُرسَلٌ منه الصحابيُّ سقط»؛ والصحابةُ عدول، فلو جزمنا أن الساقط صحابيٌّ لصحَّ الحديث. والإشكالُ أن التابعي قد يروي عن التابعي فلا ندري من الساقط. ولاحظ أن الخيار الأول عكسُ الصواب: فالنظمُ هو الذي يُطلق المرسل على مطلق الانقطاع.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الفرق بين «المراسيل» لأبي داود ولابن أبي حاتم؟</p>
+    <label class="opt ok"><input type="radio" name="l5q9"><span class="t">الأول خاصٌّ بما يرويه التابعون وأشباهُهم عن النبي ﷺ دون ذكر الصحابي، والثاني في المعنى العام لمطلق الانقطاع.</span></label>
+    <label class="opt"><input type="radio" name="l5q9"><span class="t">الأول في مطلق الانقطاع، والثاني خاصٌّ بانقطاع ما بين التابعي والنبي ﷺ.</span></label>
+    <label class="opt"><input type="radio" name="l5q9"><span class="t">الأول في الرجال الذين لم يسمع بعضهم من بعض، والثاني في المتون المرسلة.</span></label>
+    <label class="opt"><input type="radio" name="l5q9"><span class="t">الأول مطبوعٌ مشهور والثاني مفقود، ولا فرق بينهما في المضمون.</span></label>
+    <p class="exp">فـ«المراسيل» لأبي داود متونٌ يرويها التابعون وأشباهُهم عن النبي ﷺ دون ذكر الصحابي؛ أما «المراسيل» لابن أبي حاتم فيذكر فيه منقطعاتٍ سواء كانت بين التابعي والصحابي أو بين التابعي والنبي ﷺ.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ماذا يعني «ولم يُسنِدْه إلا فلان»؟</p>
+    <label class="opt"><input type="radio" name="l5q10"><span class="t">تعني: لم يروِه بالتحديث الصريح إلا فلان، وما سواه رواه بالعنعنة.</span></label>
+    <label class="opt"><input type="radio" name="l5q10"><span class="t">تعني: لم يُخرِجه في «المسند» إلا فلانٌ من أصحاب المسانيد.</span></label>
+    <label class="opt ok"><input type="radio" name="l5q10"><span class="t">تعني: لم يرفعه إلا فلان (ضدَّ الوقف)، وتُستعمل أيضًا بمعنى: لم يروِه متصلًا إلا فلان (ضدَّ الإرسال).</span></label>
+    <label class="opt"><input type="radio" name="l5q10"><span class="t">تعني: لم يذكر إسنادَه إلا فلان، وأما غيره فذكره بلا إسناد.</span></label>
+    <p class="exp">مثالُه: رواه أصحابُ الزهري عنه عن أنسٍ موقوفًا من كلامه — كمالكٍ ومعمرٍ وابن عيينة — وقال يونس: عن الزهري عن أنسٍ عن النبي ﷺ؛ فالمقصود «لم يرفعه إلا يونس». ويُقال أيضًا: «رواه أصحابُ الزهري مرسلًا ولم يُسنِدْه إلا فلان»، أي لم يروِه متّصلًا إلا فلان.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture4.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture6.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>

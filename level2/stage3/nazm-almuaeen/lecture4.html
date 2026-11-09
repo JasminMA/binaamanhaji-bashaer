@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>فهم كلام الأوائل، والتفرّد والقرائن · شرح نظم المعين</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+
+/* ---- additions for نظم المعين study sheets ---- */
+/* green "summary" callout and violet "question" callout, matching note/warn */
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:6px}
+.ask{background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .warn .cal-t{color:var(--red)} .sum .cal-t{color:var(--accent)}
+.ask .cal-t{color:var(--gold)}
+
+/* verses of the نظم: two hemistichs separated by a dotted gap */
+.verse{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.verse p{font-family:var(--display);font-size:1.08rem;line-height:2;color:var(--ink)}
+.verse .sp{color:var(--gold);padding:0 8px}
+.verse cite{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:6px}
+
+/* diagrams keep a fixed light surface so the fixed SVG palette stays legible in both themes */
+.dia{background:#FFFFFF;border:1px solid #D5DBE3;border-radius:10px;padding:14px 10px 8px;overflow-x:auto}
+.dia .cap{font-family:var(--display);color:#0d3b66;font-size:.98rem;text-align:center;margin-bottom:6px;display:block}
+.dia svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* key term + book title inline marks */
+.kw{color:var(--gold);font-weight:600}
+.bk{color:var(--accent);font-weight:600}
+
+/* definition rows (imam cards / labelled fields) */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;align-items:start}
+.row .lb{font-size:.82rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 10px;text-align:center}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:4px}.row .lb{justify-self:start}}
+.card-h{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.card-h .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1}
+.card-h b{font-family:var(--display);font-size:1.15rem}
+
+.mm.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mm.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.mm.four,.mm.two{grid-template-columns:1fr}}
+
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp,.mcq:has(input) .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body style="margin:0">
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">شرح نظم المعين</a><span style="color:var(--muted)">‹</span><span style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">الدرس ٤</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture3.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture5.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">شرح نظم المُعين · الشيخ أحمد السيد · الدرس الرابع</div>
+  <h1>فهم كلام الأوائل، والتفرّد والقرائن</h1>
+  <p class="muted">ملخص مذاكرة: الخريطة الذهنية أولًا، ثم تفصيل كل فرع، ثم أسئلة مراجعة في الآخر.</p>
+</header>
+
+<!-- ===== mind map ===== -->
+<section>
+  <h2>الخريطة الذهنية للدرس <span class="tag">ابدأ من هنا</span></h2>
+  <div class="mm four">
+    <div class="mm-root">فهم كلام الأوائل، وبابُ التفرّد</div>
+    <div class="mm-branch">
+      <h3>١) مثال «الحسن»</h3>
+      <ul class="tree">
+        <li><b>لا يُحصَر في تعريف</b>
+          <ul>
+            <li>الترمذي: حسنٌ وليس بمتصل</li>
+            <li>البخاري: على ما في صحيحه</li>
+            <li>الشافعي: على صحيحٍ جدًّا</li>
+            <li>ويقابله «صالح» لأبي داود</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>٢) مثال «المنكر»</h3>
+      <ul class="tree">
+        <li><b>ثلاثة إطلاقات</b>
+          <ul>
+            <li>ابن حجر · البيقوني · الذهبي</li>
+            <li>ليست اختلافًا في المعنى</li>
+            <li>بل صورٌ تُعرَف بالاستقراء</li>
+            <li>الجامع: الاستنكار</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>٣) بابُ التفرّد</h3>
+      <ul class="tree">
+        <li><b>أصعب من المخالفة</b>
+          <ul>
+            <li>الفرد لا أصلَ يُقارن به</li>
+            <li>إسنادٌ متصل ورواته ثقات</li>
+            <li>ومع ذلك يُعدّ منكرًا</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>٤) فصل القرائن</h3>
+      <ul class="tree">
+        <li><b>ثلاث دوائر</b>
+          <ul>
+            <li>قرائن المتن</li>
+            <li>قرائن الإسناد</li>
+            <li>قرائن الراوي</li>
+            <li>والأمر نسبيٌّ لا آليّ</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== tamhid ===== -->
+<section>
+  <h2>تمهيد: التنبيه إلى أهمية الفهم الصحيح لكلام الأوائل</h2>
+  <div class="panel">
+    <p>مضمون هذا الفصل: أن <span class="kw">فهم ألفاظ الأوائل ومصطلحاتهم لا بدّ منه</span>، وأن سبيل ذلك الرجوعُ إلى كتبهم وتطبيقاتهم، وأن أقربَ ما يوضّح ذلك <span class="kw">ضربُ الأمثلة</span>.</p>
+    <p style="margin-top:8px">وسببُ التنبيه أن هناك مَن ينازع في جدوى ذلك وأهميته، بل ينازع في وجود <b>فارقٍ حقيقيٍّ أصلًا</b> بين المناهج الحديثية؛ فضرب الشيخ أمثلةً تُبيّن أن الفارق حقيقيّ، وأنه يجب فهم المصطلحات على ضوء <b>التطبيقات المتعددة المتنوعة للحفّاظ</b>.</p>
+  </div>
+</section>
+
+<!-- ===== 1 ===== -->
+<section>
+  <h2>أولًا: المثال الأول — اختلاف معنى «الحديث الحسن»</h2>
+  <p>مضمون النظم هنا: أنك لو <b>حصرتَ</b> معنى «الحسن» فيما يُشترط فيه ما يُشترط في الصحيح إلا الضبط، ثم قرأتَ به كتب المتقدمين، <b>وقعتَ في الحرج</b>.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>المصطلح</th><th>تعريفه السائد</th></tr></thead>
+      <tbody>
+        <tr><td><b>الحديث الصحيح</b></td><td>ما اتصل إسناده برواية العدل <b>التامِّ الضبط</b> عن مثله، من غير شذوذٍ ولا علّة.</td></tr>
+        <tr><td><b>الحديث الحسن</b></td><td>ما اتصل إسناده برواية العدل الذي <b>خفَّ ضبطُه</b> عن مثله، من غير شذوذٍ ولا علّة (والخلاف في الضبط فقط).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>الشواهد على أن «الحسن» عند الأوائل لا ينحصر في هذا</h3>
+  <div class="panel">
+    <ul class="clean">
+      <li><b>الترمذي:</b> يقول في حديثٍ: «هذا حديثٌ حسنٌ <b>وليس إسنادُه بمتّصل</b>» — مع أن أول شروط الحسن بالتعريف السائد هو <b>اتصال الإسناد</b>! فكيف يُجمَع بينهما؟</li>
+      <li><b>البخاري:</b> ليس الأمر خاصًّا بالترمذي؛ فقد قال عن حديثٍ <b>أخرجه هو في صحيحه</b>: «حسن» — فهو صحيحٌ قطعًا، ومع ذلك أطلق عليه «حسن».</li>
+      <li><b>الشافعي:</b> قال عن حديث ابن عمر — أنه رأى النبيَّ ﷺ على بيت حفصة قاضيًا حاجتَه مستقبلَ الشام مستدبرَ القبلة (أخرجه مسلم ٢٦٦) — قال عنه: «حسن»، وهو حديثٌ <b>صحيحٌ جدًّا</b> من إسنادٍ صحيح، فلا يمكن أن يريد بـ«حسن» أنه بالشروط الخمسة إلا شرطَ الضبط.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <span class="cal-t">تعضيدٌ من كلام ابن رجب والإمام أحمد</span>
+    <p>قال ابن رجب في <span class="bk">«شرح العلل»</span>: إنّ <b>الحسن عند الترمذي قريبٌ من مراد أحمد بالضعيف</b>؛ في عبارة أحمد المشهورة:</p>
+    <p style="font-family:var(--display);font-size:1.08rem;text-align:center;margin:8px 0">«ضعيفُ الحديثِ أحبُّ إليَّ من رأي الرجال»</p>
+    <p>فمرادُه بـ«الضعيف» هنا: <b>المقبولُ للاعتبار</b> الذي فيه ضعفٌ يسير. ولا يعني ذلك كلَّ مقبولٍ للاعتبار؛ فالمقبول للاعتبار <b>درجات</b>: منه ما يقترب من المقبول للاحتجاج، ومنه ما ينزل إلى القريب من المردود؛ والمقصود هنا <b>الطبقة المتوسطة أو العالية</b> منه.</p>
+  </div>
+
+  <div class="sum">
+    <span class="cal-t">خلاصة المثال الأول</span>
+    <p>هذا النوع (الضعف اليسير) يقول فيه الترمذي: <b>«حسن»</b>، ويقول فيه أبو داود: <b>«صالح»</b>؛ وبالتالي فـ«صالح» عند أبي داود ليست بمعنى «حسن» عند المتأخرين.</p>
+  </div>
+</section>
+
+<!-- ===== 2 ===== -->
+<section>
+  <h2>ثانيًا: المثال الثاني — اختلاف معنى «الحديث المنكر»</h2>
+  <p>ومضمون النظم: أن تعريف لفظ «المنكر» لم يُحصَر بما في <span class="bk">«نُخبة الفِكَر»</span>. وإليك الإطلاقات الثلاثة:</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>القائل / الكتاب</th><th>الإطلاق</th><th>فردٌ أم متعدد؟</th></tr></thead>
+      <tbody>
+        <tr><td><b>ابن حجر</b><br><span class="muted">(نخبة الفكر)</span></td><td>ما خالف فيه <b>الضعيفُ</b> الثقةَ. فيلزم أن يكون للحديث أكثرُ من طريق: طريقٌ فيه ثقة، وطريقٌ فيه ضعيفٌ خالفه.</td><td><b>متعدد</b> (لأن فيه مخالفة)</td></tr>
+        <tr><td><b>البيقوني</b></td><td>يجعل المنكر هو <b>الفرد</b> الذي تفرّد به راوٍ لا يُحتمل تفرُّده.</td><td><b>فرد</b></td></tr>
+        <tr><td><b>الذهبي</b><br><span class="muted">(الموقظة)</span></td><td>المنكر ما <b>تفرّد به الضعيف</b>، وقد يُعدّ المنكرَ ما تفرّد به <b>الصدوق</b>.</td><td><b>فرد</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn">
+    <span class="cal-t">التعامل الصحيح مع تعدُّد الإطلاقات</span>
+    <p><b>ليس</b> الصواب أن تقول: «اختلفوا في معنى المنكر؛ فمعناه عند ابن حجر كذا، وعند البيقوني كذا، وعند الذهبي كذا» — فهذا تصرّفٌ غير صحيح. بل الصواب أن يُقال: إن مصطلح «المنكر» <b>لا ينزل على صورةٍ واحدةٍ من صور الخطأ</b>، وإنما ينزل على <b>صورٍ متعددة</b> تُعرَف <b>بالاستقراء</b> لأفعال المتقدمين.</p>
+  </div>
+
+  <div class="sum">
+    <span class="cal-t">المعنى الجامع: «استحسان» و«استنكار»</span>
+    <ul class="clean">
+      <li><b>الحسن:</b> لا يوجد له تعريفٌ جامع؛ والمعنى الجامع أن <b>يستحسن الناقدُ معنًى في الرواية</b> — قد يرجع إلى الإسناد، أو المتن، أو الثبوت، أو معنى اللفظ والكلام، أو الغرابة.</li>
+      <li><b>المنكر:</b> كذلك؛ أن <b>يستنكر الناقدُ نوعًا من الخطأ أو الإشكال</b> الواقع في الرواية، فيعبّر بلفظ «منكر» باعتبار أن هناك أمرًا منكَرًا فيها.</li>
+    </ul>
+  </div>
+
+  <div class="dia">
+    <span class="cap">صور إطلاق «المنكر» عند الحفّاظ</span>
+    <svg viewBox="0 0 740 320" width="740" role="img" aria-label="خمس صور لإطلاق المنكر">
+      <rect x="520" y="128" rx="14" width="200" height="56" fill="#8c2f39"/>
+      <text x="620" y="162" fill="#fff" font-size="18" text-anchor="middle" direction="rtl">إطلاق «منكر»</text>
+      <path d="M520,156 C450,156 430,40 340,40" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M520,156 C450,156 430,98 340,98" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M520,156 C450,156 430,156 340,156" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M520,156 C450,156 430,214 340,214" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <path d="M520,156 C450,156 430,272 340,272" fill="none" stroke="#d3aeb3" stroke-width="2.4"/>
+      <rect x="20" y="20" rx="9" width="320" height="40" fill="#fbeced" stroke="#8c2f39" stroke-width="1.4"/>
+      <text x="180" y="46" fill="#8c2f39" font-size="15" text-anchor="middle" direction="rtl">١) مخالفة الضعيف للثقة</text>
+      <rect x="20" y="78" rx="9" width="320" height="40" fill="#fbeced" stroke="#8c2f39" stroke-width="1.4"/>
+      <text x="180" y="104" fill="#8c2f39" font-size="14" text-anchor="middle" direction="rtl">٢) مخالفة الثقة للثقة (وتُسمّى شذوذًا)</text>
+      <rect x="20" y="136" rx="9" width="320" height="40" fill="#fbeced" stroke="#8c2f39" stroke-width="1.4"/>
+      <text x="180" y="162" fill="#8c2f39" font-size="15" text-anchor="middle" direction="rtl">٣) تفرُّد الضعيف</text>
+      <rect x="20" y="194" rx="9" width="320" height="40" fill="#fbeced" stroke="#8c2f39" stroke-width="1.4"/>
+      <text x="180" y="220" fill="#8c2f39" font-size="15" text-anchor="middle" direction="rtl">٤) تفرُّد الصدوق</text>
+      <rect x="20" y="252" rx="9" width="320" height="40" fill="#fbeced" stroke="#8c2f39" stroke-width="1.4"/>
+      <text x="180" y="278" fill="#8c2f39" font-size="15" text-anchor="middle" direction="rtl">٥) تفرُّد الثقة</text>
+    </svg>
+  </div>
+
+  <div class="note">
+    <span class="cal-t">تنبيه على الصورة الثانية</span>
+    <p>يقول بعض المتأخرين: «لا تقل منكر، بل قل شاذّ». وعند الشيخ صورٌ عن كبار الحفّاظ المتقدمين يقولون فيها عن أحاديثَ <b>خالف فيها الثقةُ مَن هو أوثقُ منه</b>: <b>«منكر»</b> لا «شاذ».</p>
+  </div>
+</section>
+
+<!-- ===== 3 ===== -->
+<section>
+  <h2>ثالثًا: بابُ التفرّد</h2>
+  <p>بابُ التفرّد بابٌ عجيب من أبواب المتقدمين. وأيُّهما أسهل في اكتشاف الخطأ: الحديث <b>المتعدّد الطرق</b> أم <b>الفرد</b>؟ المتعدّد أسهل — تجمع الطرق فتُقارن. أما الفرد فصعب؛ لأنه <b>لا أصل تقارنه به</b>.</p>
+  <div class="ask">
+    <span class="cal-t">صورة المشكلة</span>
+    <p>إسنادٌ <b>متّصل</b> بالتحديث الصريح، ورواتُه كلُّهم: ثقة، صدوق، ثقة، صدوق... و<b>لا مخالفة</b> ولا إشكال في المتن ولا في اللفظ ولا في المعنى — ومع ذلك يُعدّ الحديث <b>منكرًا</b>! فكيف عرفوا الخطأ؟ هذا ما يجيب عنه <b>فصل القرائن</b>.</p>
+  </div>
+</section>
+
+<!-- ===== 4 ===== -->
+<section>
+  <h2>رابعًا: فصل القرائن — قانون اكتشاف الخطأ في التفرّد</h2>
+  <p>القرائن التي يُكتشف بها الخطأ في التفرّد ثلاثة أنواع:</p>
+
+  <div class="dia">
+    <span class="cap">دوائر القرائن الثلاث (تتشابك وتنفصل)</span>
+    <svg viewBox="0 0 620 330" width="620" role="img" aria-label="ثلاث دوائر متشابكة للقرائن">
+      <circle cx="235" cy="130" r="105" fill="#155f43" fill-opacity="0.16" stroke="#155f43" stroke-width="2"/>
+      <circle cx="385" cy="130" r="105" fill="#1b5e8c" fill-opacity="0.16" stroke="#1b5e8c" stroke-width="2"/>
+      <circle cx="310" cy="235" r="105" fill="#9a6a00" fill-opacity="0.16" stroke="#9a6a00" stroke-width="2"/>
+      <text x="185" y="92" fill="#155f43" font-size="17" text-anchor="middle" direction="rtl">قرائن المتن</text>
+      <text x="437" y="92" fill="#1b5e8c" font-size="17" text-anchor="middle" direction="rtl">قرائن الإسناد</text>
+      <text x="310" y="300" fill="#9a6a00" font-size="17" text-anchor="middle" direction="rtl">قرائن الراوي</text>
+      <text x="310" y="325" fill="#8c2f39" font-size="14.5" text-anchor="middle" direction="rtl">منطقةُ اشتباكِ الدوائر الثلاث = منكرٌ قطعًا</text>
+    </svg>
+  </div>
+
+  <div class="panel">
+    <ul class="clean">
+      <li>إذا <b>اشتبكت الثلاثة</b> (قرائنُ استنكارٍ في المتن والإسناد والراوي) فالحديث <b>منكرٌ قطعًا</b>.</li>
+      <li>ولا يلزم وجود الثلاثة؛ فقد تكون القرائن في المتن والراوي فقط، أو في المتن فقط — فيقال: «فيه شيء».</li>
+      <li>الأمر <b>نسبيّ لا آليّ</b>: ليس إذا اجتمع اثنان سقط، أو إذا لم يجتمعا قُبِل؛ بل بحسب <b>قوة الروافد</b>؛ فتُغلَّب جهةُ الخطأ أو جهةُ الصواب. وقد <b>تدعو القرائنُ إلى التردّد</b>، بل يتردّد الناقد نفسُه ويغيّر رأيه.</li>
+    </ul>
+  </div>
+
+  <h3>النوع الأول: قرائن عائدة إلى المتن</h3>
+  <ul class="clean">
+    <li><b>مخالفة المتن لما هو أصحّ</b> منه — وهذه هي <b>القرينة الأعلى</b>.</li>
+    <li>أن يكون الحديث <b>أصلًا من الأصول في الأحكام</b> (فيه تأسيسُ حكمٍ) وليس له عاضد — فهذا أصعبُ قبولًا، وهذه <b>القرينة الأدنى</b>.</li>
+  </ul>
+  <div class="sum">
+    <span class="cal-t">قاعدة الموازنات</span>
+    <p>كلما ارتفعت قوة المتن، <b>تطلَّبَ ذلك زيادةَ الصفات في الراوي</b> حتى يُحتمل منه أن يأتي بمثل هذا المتن.</p>
+  </div>
+
+  <div class="panel">
+    <h3>المثال التطبيقي: حديث النضح من المَذْي</h3>
+    <p style="margin-top:6px">رواه <b>محمد بن إسحاق</b> (صدوقٌ جيد لكنه ليس في أعلى درجة) عن سعيد بن عبيد بن السباق عن أبيه عن سهل بن حنيف (عند أبي داود). وهو <b>حكمٌ من الأحكام</b>، فقال الإمام أحمد:</p>
+    <p style="font-family:var(--display);font-size:1.05rem;text-align:center;margin:8px 0;color:var(--gold)">«حكمٌ من الأحكام تفرَّد به محمدُ بن إسحاق، ولا أحكم لمحمد بن إسحاق»</p>
+    <p>وفي روايةٍ أخرى عنه: «يُجزئه النضحُ إن كان ثابتًا»، وفي ثالثة: «لا أعلم شيئًا». فمجموع الروايات الثلاث <b>يدلّ على أنه متردّد</b>. وقال الترمذي: «حديثٌ حسنٌ صحيح، ولا نعرفه إلا من حديث محمد بن إسحاق»، ونقل عن أحمد: «أرجو أن يُجزئه النضح» — وهو دليلٌ على التردّد وميلِه إلى القبول.</p>
+    <p style="margin-top:8px"><b>لماذا لم يُحكم بالنكارة؟</b> لأن القرينة هنا <b>متنيّة أدنى</b> (زيادةُ حكمٍ بلا معارِض، لا مخالفةٌ)، والقرينة الأخرى في الراوي فقط، و<b>لا توجد قرينة إسنادية</b>.</p>
+  </div>
+
+  <h3>النوع الثاني: قرائن عائدة إلى الإسناد</h3>
+  <p>كلما كانت السلسلة <b>معروفةً مشهورة</b> كانت قرينة الاستنكار أقوى. ولذلك: لو كان الإسناد نفسُه — بالمتن نفسه وبالسماع المتصل — هكذا: <b>محمد بن إسحاق عن الزهري عن سعيد بن المسيب عن أبي هريرة</b>، لقال الإمام أحمد: <b>«منكر»</b> قطعًا! لأنه إسنادٌ أقوى وأشهر، وفي حكمٍ من الأحكام، فأين مالكٌ وابن عيينة ومعمرٌ وسائرُ أصحاب الزهري؟! كيف يفوتهم ويجده ابنُ إسحاق؟!</p>
+
+  <div class="note">
+    <span class="cal-t">تأصيلُ الإمام مسلم في مقدمة صحيحه</span>
+    <p>أشار مسلمٌ إلى هذا المعنى: مَن عمَد إلى مثل الزهريِّ في جلالته أو هشام بن عروة — وحديثُهما عند أهل العلم <b>عامٌّ مشترك</b> — <b>فانفرد عنهما بالرواية</b>، فإن ذلك يُعدّ منكرًا.</p>
+  </div>
+
+  <div class="panel">
+    <h3>لماذا لم تكن في إسناد ابن إسحاق قرينةُ استنكار؟</h3>
+    <p style="margin-top:6px">لأن <b>سعيد بن عبيد بن السباق</b> ليس هو الرجل المشهور الذي له التلاميذ الكُثُر الذين جمعوا حديثه وضبطوه ولازموه، حتى يُقال: «لماذا فات بعضَهم؟» — بخلاف الزهريِّ الذي اجتمعت عليه الدنيا. وكذلك لو كان الحديث <b>مرسلًا</b> عن الزهري وتفرّد به ابنُ إسحاق، فالأمر عاديّ (وحكمُه الضعفُ للإرسال)؛ إذ قد يكون مالكٌ سمعه ولم يروِه لأنه لم يهتمّ به.</p>
+    <p style="margin-top:8px">وحتى الكبير جدًّا إذا تفرّد بإسنادٍ من هذا النوع يُتوقَّف فيه؛ ومنه <b>تردُّدُ أحمدَ في زيادة مالكٍ «من المسلمين»</b> في زكاة الفطر، لأن الحديث رواه غيرُه ولم يأتِ بهذه الزيادة.</p>
+  </div>
+
+  <div class="sum">
+    <span class="cal-t">مجملُ قرائن الإسناد</span>
+    <ul class="clean">
+      <li>كلما كان الإسناد من <b>السلاسل الذهبية</b> ازدادت قرينةُ الإنكار.</li>
+      <li>وإذا كان الحديث <b>حكمًا من الأحكام</b> ازدادت قرينةُ الإنكار.</li>
+      <li>وإذا كان المتن <b>مخالفًا لغيره</b> ازدادت قرينةُ الإنكار.</li>
+    </ul>
+  </div>
+
+  <h3>النوع الثالث: قرائن عائدة إلى الراوي</h3>
+  <div class="ben detail">
+    <div class="card"><div class="n">١</div><div><strong>درجة حفظ الراوي</strong><span>إن كان من الحفّاظ الكبار فهذا أدعى للقبول؛ وإن كان وسطًا واضحًا عليه الوهمُ والخطأ فهذا أدعى للإنكار.</span></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>طبقة الراوي الزمنية</strong><span>وهي من أهمّ الأشياء؛ فكلما <b>ابتعد</b> الزمنُ عن عهد النبي ﷺ ازداد إشكالُ التفرّد. فإذا كان المتفرّد في طبقة <b>التابعين</b> فلا تكون النكارة كبيرة؛ أما بعد أن انتشرت الرواية واتّضحت المدارات والمخارج وتميّزت المدارس الحديثية — ثم يأتي «ثقةٌ حافظ» سنة مئةٍ وثمانٍ وتسعين يتفرّد بحديثٍ لم يروِه أحدٌ غيره! فهذا مستنكَرٌ ولو كان ثقة.</span></div></div>
+  </div>
+</section>
+
+<!-- ===== 5 ===== -->
+<section>
+  <h2>خامسًا: تفرّد الراوي تبعًا لطبقته <span class="tag">من «الموقظة» للذهبي</span></h2>
+
+  <div class="dia">
+    <span class="cap">تفرّد الحفّاظ الثقات الأثبات بحسب الطبقة</span>
+    <svg viewBox="0 0 700 300" width="700" role="img" aria-label="سلم التفرد بحسب الطبقة">
+      <rect x="180" y="14" rx="10" width="340" height="44" fill="#155f43"/>
+      <text x="350" y="42" fill="#fff" font-size="16" text-anchor="middle" direction="rtl">تابعيّ ← حديثه صحيح</text>
+      <path d="M350,58 L350,80" stroke="#9fb4c8" stroke-width="2.5"/>
+      <rect x="180" y="80" rx="10" width="340" height="44" fill="#1b5e8c"/>
+      <text x="350" y="108" fill="#fff" font-size="16" text-anchor="middle" direction="rtl">من أتباع التابعين ← صحيحٌ غريب</text>
+      <path d="M350,124 L350,146" stroke="#9fb4c8" stroke-width="2.5"/>
+      <rect x="180" y="146" rx="10" width="340" height="44" fill="#9a6a00"/>
+      <text x="350" y="174" fill="#fff" font-size="16" text-anchor="middle" direction="rtl">من أصحاب الأتباع ← فردٌ غريب</text>
+      <path d="M350,190 L350,212" stroke="#9fb4c8" stroke-width="2.5"/>
+      <rect x="180" y="212" rx="10" width="340" height="56" fill="#8c2f39"/>
+      <text x="350" y="238" fill="#fff" font-size="15.5" text-anchor="middle" direction="rtl">ومَن كان بعدهم؟</text>
+      <text x="350" y="259" fill="#f3d4d7" font-size="14" text-anchor="middle" direction="rtl">«فأين ما ينفرد به؟ ما علمتُه، وقد يوجد»</text>
+    </svg>
+  </div>
+
+  <h3>١) الحفّاظ الثقات الأثبات</h3>
+  <p>وهم أكبرُ طبقةٍ في الرواة من جهة الحفظ (وليسوا من عموم الثقات ولا من الوسط). فالتفرّد منهم يتدرّج كما في الخريطة؛ وكأن الذهبي يقول: «سجِّلْ ملاحظةَ أنه <b>ليس فيه إشكال ولكنه غريب</b>». ثم يشتدّ الأمر: <b>تفرّدُ أصحاب أتباع التابعين نادر</b>؛ فتجد الإمام منهم عنده مئتا ألف حديثٍ ولا يكاد ينفرد بحديثين أو ثلاثة — وهذا من فخامة علم الحديث.</p>
+
+  <h3>٢) الثقة المتوسط (اليَقِظ المتوسط في المعرفة والطلب)</h3>
+  <p>وهو الذي يُطلق عليه «ثقة»، وهم <b>جمهور رجال الصحيحين</b> (ممن ليسوا في طبقة الحفّاظ). وحكمُ تفرّده:</p>
+  <ul class="clean">
+    <li>إذا انفرد بالمتن <b>خُرِّج حديثُه في الصحاح</b>.</li>
+    <li>وقد <b>يتوقّف</b> كثيرٌ من النقّاد في إطلاق الغرابة مع الصحّة في حديث أتباع الثقات.</li>
+    <li>وقد يُسمّي جماعةٌ من الحفّاظ الحديثَ الذي ينفرد به مثلُ <b>هُشيمٍ وحفصِ بن غياث</b> «منكرًا» — وهما ثقتان، وهُشيمٌ شيخُ الإمام أحمد، أي أنهم <b>مِن قبل طبقة مشيخة الأئمة</b>.</li>
+  </ul>
+
+  <h3>٣) تفرّد طبقة «مشيخة الأئمة»</h3>
+  <div class="panel">
+    <p>و«مشيخة الأئمة» تعني: <b>مشيخة أصحاب الكتب الستة</b> (فأحمدُ شيخُ البخاري، وهُشيمٌ شيخُ أحمد؛ فطبقةُ أحمدَ وأمثاله هي طبقة مشيخة الأئمة). فإن كان المنفرد من هذه الطبقة — مثل <b>عثمان بن أبي شيبة</b> و<b>أبي سلمة التبوذكي</b> — <b>أطلقوا النكارة</b> على ما انفرد به وقالوا: هذا منكر.</p>
+  </div>
+
+  <div class="warn">
+    <span class="cal-t">حين تتحوّل النكارة من الحديث إلى الراوي</span>
+    <p>ما سبق في حديثٍ واحد. فإن روى <b>أحاديثَ من الأفراد المنكرة</b> (اثنين وثلاثة وأربعة وخمسة، كلُّها لا تُعرف عند أحدٍ غيره) فحينئذٍ: <b>«غمزوه، ولَيَّنوا حديثه، وتوقّفوا في توثيقه»</b>؛ فتنتقل النكارة من الحديث إلى الراوي نفسِه، فيقال: فلانٌ منكَرُ الحديث.</p>
+    <p style="margin-top:6px"><b>فإن رجع عنها وامتنع منها</b> فهو <b>خيرٌ له وأرجحُ لعدالته</b>، وجوَّز على نفسه الوهم.</p>
+  </div>
+
+  <div class="panel">
+    <h3>مثالٌ على أن تقدُّم الطبقة يُسوّغ التفرّد: «إنما الأعمال بالنيّات»</h3>
+    <p style="margin-top:6px">رواه عن عمر: <b>علقمةُ بن وقاص الليثي</b>، وعنه: <b>محمد بن إبراهيم التيمي</b>، وعنه: <b>يحيى بن سعيد الأنصاري</b>، وعن يحيى: <b>مئتا شخص</b>. فالمتفرّد في أوّله <b>تابعيّ</b>، ويحيى بن سعيد الأنصاري آخرُ واحدٍ تفرّد به، <b>وطبقته الزمنية ليست متأخرة</b> — فتفرّدُه <b>مقبول</b>؛ إذ رواه عنه أئمةٌ كسفيان بن عيينة ومالك وغيرهما.</p>
+  </div>
+</section>
+
+<!-- ===== 6 ===== -->
+<section>
+  <h2>سادسًا: مضمون «فصل التفرّد» في النظم</h2>
+  <ul class="clean">
+    <li>كثُر الكلام في التفرّد، وبيانُ حكمه تابعٌ للطبقة؛ ومَن علِم صنعةَ النقّاد تنوَّعت عنده الأحكامُ في الأفراد.</li>
+    <li><b>الأصل في تفرُّد الثقة القبول</b> لا الإباء؛ لكن قد يُنكَر ما تفرّد به في مواضع: إذا كان مما تتوافر الدواعي على نقله وتظافُرِ الحفّاظ عليه، أو كان في سلسلةٍ مشهورة، أو خالف الحفّاظَ فيما تفرّد به.</li>
+    <li>و<b>القرائن مصابيح</b> فلتُستَقرَ؛ وأقسامُها ثلاثة: في المتن، والإسناد، والراوي.</li>
+  </ul>
+
+  <div class="sum">
+    <span class="cal-t">تفصيل الفصل على القرائن الثلاث</span>
+    <ul class="clean">
+      <li><b>قرائن الراوي:</b> فبعض مَن يروي من الرواة شامخُ الحفظ، فقلّما تفرّدوا بنقله؛ كسعيدٍ وشعبةَ والزهريِّ ومالكٍ ونافعٍ والثوريّ — وهؤلاء <b>فيهم زيادةٌ على مطلق الثقة</b>. أما <b>الثقات</b> فيُخضَع ما تفرّدوا به للقواعد؛ ثم <b>«الشيوخ»</b> وهم طبقةٌ أقلّ (عند الواحد منهم حديثان أو ثلاثة، ليس عنده ذاك التوثيق ولا هو ضعيف).</li>
+      <li><b>قرائن الإسناد:</b> فانظر إلى إسناده: أيُقبَل تفرُّدُه من مثله في هذه السلاسل المشهورة أم لا؟ ويُنظَر في حفظِ الحديث وانضباطِ نقله وعلمِه <b>بشيخه خاصّةً</b>. وكذلك <b>تأخُّرُ التفرّد</b> زمنًا مما يُقوّي النكارة: «فأين عنه بقيّةُ الحفظة؟».</li>
+      <li><b>قرائن المتن:</b> فانظر: هل هو من <b>الأصول</b>؟ وهل هو في العمل مما <b>تعمّ به البلوى</b> فيُحتاج نصُّه؟ أم هو <b>لقصةٍ</b> (كأحداث السيرة) فالأمر فيه سهل؟ وهل <b>خالَف ما هو أصحّ منه</b>؟</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== next ===== -->
+<section>
+  <h2>ما يأتي في الدرس القادم</h2>
+  <div class="note"><p>بيانُ معاني ألفاظ المصطلح، ابتداءً من مصطلح <b>«مشهور»</b>.</p></div>
+</section>
+
+<!-- ===== khulasa ===== -->
+<section>
+  <h2>خلاصة الدرس</h2>
+  <div class="sum">
+    <ul class="clean">
+      <li><b>القاعدة:</b> فهم ألفاظ الأوائل لا بدّ منه، وسبيلُه تطبيقاتُهم لا حصرُ المصطلح في تعريفٍ واحد.</li>
+      <li><b>«الحسن»:</b> أطلقه الترمذي على منقطع، والبخاريُّ على ما في صحيحه، والشافعيُّ على صحيحٍ جدًّا؛ ويقابله «صالح» عند أبي داود.</li>
+      <li><b>«المنكر»:</b> ثلاثة إطلاقات ليست اختلافًا في المعنى، بل المصطلح ينزل على <b>صورٍ متعددة</b> تُعرف بالاستقراء؛ وجامعُه <b>الاستنكار</b> كما أن جامع الحسن <b>الاستحسان</b>.</li>
+      <li><b>التفرّد:</b> أصعبُ من المخالفة؛ لأن الفرد لا أصلَ يُقارن به.</li>
+      <li><b>القرائن ثلاث:</b> المتن، والإسناد، والراوي؛ اجتماعُها = منكرٌ قطعًا، ولا يلزم اجتماعُها، والأمر نسبيٌّ قد يُورث التردّد.</li>
+      <li><b>قاعدة الموازنات:</b> كلما ارتفعت قوةُ المتن أو الإسناد، تطلَّب ذلك زيادةَ الصفات في الراوي المتفرّد.</li>
+      <li><b>الطبقة الزمنية:</b> تفرّدُ المتقدّم مقبول، وكلما تأخّر الزمنُ اشتدّ إشكالُ التفرّد ولو كان الراوي ثقة.</li>
+      <li><b>تكرار الأفراد المنكرة</b> ينقل النكارة من الحديث إلى الراوي؛ ورجوعُه عنها خيرٌ له وأرجحُ لعدالته.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== quiz ===== -->
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اختبر نفسك</span></h2>
+  <form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">ما الشواهد الثلاثة على أن «الحسن» لا ينحصر في التعريف السائد؟</p>
+    <label class="opt"><input type="radio" name="l4q1"><span class="t">سكوتُ أبي داود، وقولُ البخاري «مقارِب»، وقولُ أحمد «الضعيف أحبُّ إليَّ من آراء الرجال».</span></label>
+    <label class="opt ok"><input type="radio" name="l4q1"><span class="t">قولُ الترمذي «حسن وليس إسنادُه بمتصل»، وإطلاقُ البخاري «حسن» على ما أخرجه في صحيحه، وإطلاقُ الشافعي «حسن» على حديث ابن عمر وهو صحيحٌ جدًّا.</span></label>
+    <label class="opt"><input type="radio" name="l4q1"><span class="t">تعريفُ الترمذي للحسن، وقولُ ابن الجوزي «ضعفٌ قريبٌ محتمَل»، وكلامُ ابن رجب في «شرح العلل».</span></label>
+    <label class="opt"><input type="radio" name="l4q1"><span class="t">إطلاقُ ابن حجر في «نخبة الفكر»، وإطلاقُ البيقوني، وإطلاقُ الذهبي في «الموقظة».</span></label>
+    <p class="exp">فأولُ شروط الحسن بالتعريف السائد هو اتصالُ الإسناد، وقد أثبت الترمذيُّ الحسنَ مع نفي الاتصال؛ وما في صحيح البخاري صحيحٌ قطعًا؛ وحديثُ ابن عمر صحيحٌ جدًّا من إسنادٍ صحيح. والخيارُ الأخير إنما هو إطلاقاتُ «المنكر» الثلاثة لا «الحسن».</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الخطأ في قولنا «اختلفوا في معنى المنكر»؟</p>
+    <label class="opt"><input type="radio" name="l4q2"><span class="t">أنهم لم يختلفوا، بل الصواب قولٌ واحدٌ هو ما في «نخبة الفكر».</span></label>
+    <label class="opt"><input type="radio" name="l4q2"><span class="t">أنه خلافٌ لفظيٌّ لا ثمرة له، فالحكم واحدٌ في كل الصور.</span></label>
+    <label class="opt"><input type="radio" name="l4q2"><span class="t">أن الخلاف إنما هو بين المتقدمين والمتأخرين، لا بين ابن حجر والبيقوني والذهبي.</span></label>
+    <label class="opt ok"><input type="radio" name="l4q2"><span class="t">أن المصطلح لا ينزل على صورةٍ واحدة أصلًا، بل على صورٍ متعددة تُعرف بالاستقراء لأفعال المتقدمين؛ فليس اختلافًا بل تنوُّعُ إطلاق.</span></label>
+    <p class="exp">فليس الصواب أن تقول: معناه عند ابن حجر كذا وعند البيقوني كذا وعند الذهبي كذا؛ بل المصطلحُ ينزل على صورٍ متعددةٍ من صور الخطأ، وجامعُها أن يستنكر الناقدُ نوعًا من الخطأ أو الإشكال في الرواية.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما المعنى الجامع للحسن والمنكر؟</p>
+    <label class="opt ok"><input type="radio" name="l4q3"><span class="t">الاستحسانُ في الأول والاستنكارُ في الثاني؛ أي أن الناقد استحسن معنًى أو استنكر نوعًا من الخطأ في الرواية.</span></label>
+    <label class="opt"><input type="radio" name="l4q3"><span class="t">القبولُ في الأول والردُّ في الثاني على كل حال.</span></label>
+    <label class="opt"><input type="radio" name="l4q3"><span class="t">التفرّدُ في الأول والمخالفةُ في الثاني.</span></label>
+    <label class="opt"><input type="radio" name="l4q3"><span class="t">الصحةُ في الأول والضعفُ في الثاني.</span></label>
+    <p class="exp">والمعنى المستحسَن قد يرجع إلى الإسناد، أو المتن، أو الثبوت، أو معنى اللفظ والكلام، أو الغرابة؛ ومن ذلك قولُ ابن عبد البر عن حديث: «هذا حديثٌ حسنٌ جدًّا وليس له إسناد» — أي استحسان المتن مع أنه لا إسناد له.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا كان الفرد أصعب من المتعدد في اكتشاف الخطأ؟</p>
+    <label class="opt"><input type="radio" name="l4q4"><span class="t">لأن الفرد لا يرويه إلا الضعفاء، والضعيفُ يصعب الحكم عليه.</span></label>
+    <label class="opt"><input type="radio" name="l4q4"><span class="t">لأن المتعدد يكون في الأحكام والفردُ يكون في القصص.</span></label>
+    <label class="opt ok"><input type="radio" name="l4q4"><span class="t">لأن المتعدد تُجمع طرقُه فيُقارن بينها، أما الفرد فلا أصلَ تقارنه به.</span></label>
+    <label class="opt"><input type="radio" name="l4q4"><span class="t">لأن الفرد منقطعُ الإسناد في الغالب، فيخفى حال الساقط.</span></label>
+    <p class="exp">ففي المتعدّد تظهر العلّةُ بالمقارنة؛ أما الفرد فقد يكون إسنادُه متّصلًا بالتحديث الصريح ورواتُه كلُّهم ثقاتٌ وصدوقون، ولا مخالفةَ فيه ولا إشكال في المتن — ومع ذلك يُعدّ منكرًا. وجوابُ «كيف عرفوا الخطأ؟» هو فصل القرائن.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما أنواع القرائن الثلاثة؟ ومتى يكون الحديث منكرًا قطعًا؟</p>
+    <label class="opt"><input type="radio" name="l4q5"><span class="t">قرائنُ الوصل والإرسال والوقف؛ وإذا اجتمعت فالحديث منكرٌ قطعًا.</span></label>
+    <label class="opt ok"><input type="radio" name="l4q5"><span class="t">قرائنُ المتن والإسناد والراوي؛ وإذا اشتبكت الثلاثة فالحديث منكرٌ قطعًا.</span></label>
+    <label class="opt"><input type="radio" name="l4q5"><span class="t">قرائنُ الطبقة والحفظ والملازمة؛ وإذا اجتمع منها اثنتان سقط الحديث.</span></label>
+    <label class="opt"><input type="radio" name="l4q5"><span class="t">قرائنُ المتن والإسناد والراوي؛ ولا يكون الحديث منكرًا إلا بوجود الثلاثة معًا.</span></label>
+    <p class="exp">ولا يلزم وجودُ الثلاثة؛ فقد تكون القرائن في المتن والراوي فقط، أو في المتن فقط فيقال: «فيه شيء» — ولذلك كان الخيار الأخير خطأً. والأمرُ نسبيٌّ لا آليّ: بحسب قوة الروافد تُغلَّب جهةُ الخطأ أو جهةُ الصواب، وقد تدعو القرائنُ إلى التردّد.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما قاعدة الموازنات؟</p>
+    <label class="opt"><input type="radio" name="l4q6"><span class="t">كلما ارتفعت رتبةُ الراوي قُبِل تفرُّدُه مهما كان المتن والإسناد.</span></label>
+    <label class="opt"><input type="radio" name="l4q6"><span class="t">كلما تعددت طرقُ الحديث قلّت الحاجة إلى النظر في حال الراوي.</span></label>
+    <label class="opt"><input type="radio" name="l4q6"><span class="t">كلما تأخّرت طبقةُ الراوي زمنًا خفَّ إشكالُ تفرُّده لانتشار الرواية.</span></label>
+    <label class="opt ok"><input type="radio" name="l4q6"><span class="t">كلما ارتفعت قوةُ المتن أو الإسناد تطلَّب ذلك زيادةَ الصفات في الراوي حتى يُحتمل منه التفرّدُ بمثله.</span></label>
+    <p class="exp">ولذلك لو كان إسنادُ حديث النضح هو «محمد بن إسحاق عن الزهري عن سعيد بن المسيب عن أبي هريرة» لقال أحمد: «منكر» قطعًا؛ لأنه إسنادٌ أقوى وأشهر وفي حكمٍ من الأحكام، فأين مالكٌ وابن عيينة ومعمرٌ وسائرُ أصحاب الزهري؟ والخيارُ الثالث عكسُ الصواب: كلما تأخّر الزمنُ ازداد إشكالُ التفرّد.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا لم يُحكم بالنكارة في حديث النضح من المَذْي؟</p>
+    <label class="opt ok"><input type="radio" name="l4q7"><span class="t">لأن القرينة فيه متنيّةٌ أدنى (زيادةُ حكمٍ بلا معارِض لا مخالفة)، والأخرى في الراوي فقط، ولا توجد قرينةٌ إسنادية.</span></label>
+    <label class="opt"><input type="radio" name="l4q7"><span class="t">لأن محمد بن إسحاق ثقةٌ ثبتٌ من أعلى الطبقة فقُبِل تفرُّدُه.</span></label>
+    <label class="opt"><input type="radio" name="l4q7"><span class="t">لأن الترمذي قال فيه «حسنٌ صحيح»، وتصحيحُه مقدَّمٌ على تردّد أحمد.</span></label>
+    <label class="opt"><input type="radio" name="l4q7"><span class="t">لأن الحديث في الفضائل لا في الأحكام، فخفَّ أمرُ التفرّد فيه.</span></label>
+    <p class="exp">قال أحمد: «حكمٌ من الأحكام تفرَّد به محمدُ بن إسحاق، ولا أحكم لمحمد بن إسحاق»، وفي روايةٍ: «يُجزئه النضحُ إن كان ثابتًا»، وفي ثالثة: «لا أعلم شيئًا» — فمجموعُها يدلّ على التردّد. ولم تكن فيه قرينةٌ إسنادية لأن سعيد بن عبيد بن السباق ليس من المشاهير الذين جُمِع حديثُهم وضُبِط.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">متى تنتقل النكارة من الحديث إلى الراوي؟</p>
+    <label class="opt"><input type="radio" name="l4q8"><span class="t">إذا خالف الثقاتَ مرةً واحدةً في حديثٍ من الأحكام.</span></label>
+    <label class="opt"><input type="radio" name="l4q8"><span class="t">إذا تفرّد بحديثٍ في سلسلةٍ مشهورةٍ ولو مرةً واحدة.</span></label>
+    <label class="opt ok"><input type="radio" name="l4q8"><span class="t">إذا أكثر من الأفراد المنكرة؛ فحينئذٍ غمزوه ولَيَّنوا حديثه وتوقّفوا في توثيقه، فيقال: منكَرُ الحديث.</span></label>
+    <label class="opt"><input type="radio" name="l4q8"><span class="t">إذا كان من طبقة مشيخة الأئمة، فتفرُّدُه وحده يوجب تليين حديثه.</span></label>
+    <p class="exp">وما سبق إنما هو في حديثٍ واحد؛ فإن روى أحاديثَ من الأفراد المنكرة — اثنين وثلاثة وأربعة وخمسة، كلُّها لا تُعرف عند أحدٍ غيره — انتقلت النكارة إليه. وإن رجع عنها وامتنع منها فهو خيرٌ له وأرجحُ لعدالته.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا قُبِل التفرّد في حديث «إنما الأعمال بالنيّات»؟</p>
+    <label class="opt"><input type="radio" name="l4q9"><span class="t">لأن الحديث في الفضائل لا في الأحكام، فخفَّ إشكالُ التفرّد.</span></label>
+    <label class="opt ok"><input type="radio" name="l4q9"><span class="t">لأن المتفرّد في أوّله تابعيٌّ، ويحيى بن سعيد الأنصاري طبقته الزمنية ليست متأخرة، ثم رواه عنه نحو مئتي راوٍ.</span></label>
+    <label class="opt"><input type="radio" name="l4q9"><span class="t">لأنه أخرجه البخاري في صحيحه، وما في الصحيح لا يُسأل عن تفرُّده.</span></label>
+    <label class="opt"><input type="radio" name="l4q9"><span class="t">لأن له طرقًا أخرى عن صحابةٍ غير عمر تعضده.</span></label>
+    <p class="exp">رواه عن عمر علقمةُ بن وقاص الليثي، وعنه محمدُ بن إبراهيم التيمي، وعنه يحيى بن سعيد الأنصاري، وعن يحيى مئتا شخص. فطبقةُ المتفرّد الزمنية هي المسوّغ، إذ رواه عن يحيى أئمةٌ كسفيان بن عيينة ومالك وغيرهما.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture3.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture5.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>

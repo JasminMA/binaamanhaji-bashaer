@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>المقدمة: الرجوع إلى علوم المتقدمين · شرح نظم المعين</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+
+/* ---- additions for نظم المعين study sheets ---- */
+/* green "summary" callout and violet "question" callout, matching note/warn */
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:6px}
+.ask{background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .warn .cal-t{color:var(--red)} .sum .cal-t{color:var(--accent)}
+.ask .cal-t{color:var(--gold)}
+
+/* verses of the نظم: two hemistichs separated by a dotted gap */
+.verse{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.verse p{font-family:var(--display);font-size:1.08rem;line-height:2;color:var(--ink)}
+.verse .sp{color:var(--gold);padding:0 8px}
+.verse cite{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:6px}
+
+/* diagrams keep a fixed light surface so the fixed SVG palette stays legible in both themes */
+.dia{background:#FFFFFF;border:1px solid #D5DBE3;border-radius:10px;padding:14px 10px 8px;overflow-x:auto}
+.dia .cap{font-family:var(--display);color:#0d3b66;font-size:.98rem;text-align:center;margin-bottom:6px;display:block}
+.dia svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* key term + book title inline marks */
+.kw{color:var(--gold);font-weight:600}
+.bk{color:var(--accent);font-weight:600}
+
+/* definition rows (imam cards / labelled fields) */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;align-items:start}
+.row .lb{font-size:.82rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 10px;text-align:center}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:4px}.row .lb{justify-self:start}}
+.card-h{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.card-h .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1}
+.card-h b{font-family:var(--display);font-size:1.15rem}
+
+.mm.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mm.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.mm.four,.mm.two{grid-template-columns:1fr}}
+
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp,.mcq:has(input) .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body style="margin:0">
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">شرح نظم المعين</a><span style="color:var(--muted)">‹</span><span style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">الدرس ١</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture2.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">شرح نظم المُعين · الشيخ أحمد السيد · الدرس الأول</div>
+  <h1>المقدمة: الرجوع إلى علوم المتقدمين</h1>
+  <p class="muted">ملخص مذاكرة: الخريطة الذهنية أولًا، ثم تفصيل كل فرع، ثم أسئلة مراجعة في الآخر.</p>
+</header>
+
+<!-- ===== mind map ===== -->
+<section>
+  <h2>الخريطة الذهنية للدرس <span class="tag">ابدأ من هنا</span></h2>
+  <div class="mm four">
+    <div class="mm-root">المقدمة: الرجوع إلى علوم المتقدمين</div>
+
+    <div class="mm-branch">
+      <h3>١) الإشكال</h3>
+      <ul class="tree">
+        <li><b>الاكتفاء بالمختصرات</b>
+          <ul>
+            <li>«تقريب التهذيب» خلاصات مركّزة</li>
+            <li>ترجمةٌ في أربع صفحات تُختصر بكلمة</li>
+            <li>ذهنية القوالب الثابتة</li>
+            <li>النتيجة: تضعيف الصحيح وتصحيح الضعيف</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mm-branch">
+      <h3>٢) أعيان المتقدمين</h3>
+      <ul class="tree">
+        <li><b>تسعة حفّاظ</b>
+          <ul>
+            <li>أحمد · ابن معين · ابن المديني</li>
+            <li>البخاري · الترمذي · مسلم</li>
+            <li>الرازيّان · النسائي</li>
+            <li>لكلٍّ تخصُّصه لا يستوون</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mm-branch">
+      <h3>٣) أحوال كتبهم</h3>
+      <ul class="tree">
+        <li><b>تطبيقٌ لا تنظير</b>
+          <ul>
+            <li>كتب السؤالات</li>
+            <li>كتب العلل</li>
+            <li>كتب الجرح والتعديل</li>
+            <li>لا قواعد مرتَّبة عندهم</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mm-branch">
+      <h3>٤) الكتب الجامعة</h3>
+      <ul class="tree">
+        <li><b>من رتّب علومهم</b>
+          <ul>
+            <li>«الكفاية» للخطيب البغدادي</li>
+            <li>«شرح علل الترمذي» لابن رجب</li>
+            <li>والمعاصرة: استقرائية وشمولية</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== tamhid ===== -->
+<section>
+  <h2>تمهيد: الفكرة المركزية</h2>
+  <div class="panel">
+    <p>تدور المقدمة كلُّها على معنًى مهمٍّ واحد، وهو: <span class="kw">أهمية الرجوع إلى علوم الأئمة المتقدمين</span>، وعدم الاكتفاء بالكتب المتأخرة والمختصرات — مع كل ما فيها من خير.</p>
+    <p style="margin-top:8px">والإشكال الكبير أن كثيرًا من طلاب الحديث لا يمارسون خطوة الرجوع إلى كتب المتقدمين وعلومهم، بل يكتفون بالمختصرات المتأخرة؛ وهذا في مختلف أنواع علوم الحديث، ليس في المصطلح فقط، بل حتى في <span class="kw">الجرح والتعديل</span>.</p>
+  </div>
+</section>
+
+<!-- ===== 1. the problem ===== -->
+<section>
+  <h2>أولًا: الإشكال — الاكتفاء بالمختصرات</h2>
+  <p>إذا أردنا الحكم على حديثٍ ونظرنا في أسانيده: كيف نعرف أن الرواة ثقاتٌ أو غير ثقات؟ نرجع إلى كتب الجرح والتعديل، مثل: <span class="bk">«تقريب التهذيب»</span>، و<span class="bk">«تهذيب التهذيب»</span>، و<span class="bk">«تهذيب الكمال»</span>. وأكثر كتابٍ يرجع إليه الباحثون المعاصرون هو «تقريب التهذيب»، والذي فيه إنما هي خلاصاتٌ مركّزةٌ مختصرةٌ جدًّا — وهذا التركيز أحيانًا يكون سببًا للإشكال.</p>
+
+  <div class="dia">
+    <span class="cap">التسلسل بين الكتب الثلاثة</span>
+    <svg viewBox="0 0 700 150" width="700" role="img" aria-label="تهذيب الكمال ثم تهذيب التهذيب ثم تقريب التهذيب">
+      <rect x="470" y="30" rx="10" width="210" height="60" fill="#eaf5f0" stroke="#155f43" stroke-width="1.6"/>
+      <text x="575" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#155f43" direction="rtl">«تهذيب الكمال»</text>
+      <text x="575" y="77" text-anchor="middle" font-size="12.5" fill="#155f43" direction="rtl">للمِزّي — الأصل الموسَّع</text>
+
+      <rect x="245" y="30" rx="10" width="210" height="60" fill="#e8eef6" stroke="#0d3b66" stroke-width="1.6"/>
+      <text x="350" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#0d3b66" direction="rtl">«تهذيب التهذيب»</text>
+      <text x="350" y="77" text-anchor="middle" font-size="12.5" fill="#0d3b66" direction="rtl">وعاءٌ ناقلٌ لكلام المتقدمين</text>
+
+      <rect x="20" y="30" rx="10" width="210" height="60" fill="#fbf3e2" stroke="#9a6a00" stroke-width="1.6"/>
+      <text x="125" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#9a6a00" direction="rtl">«تقريب التهذيب»</text>
+      <text x="125" y="77" text-anchor="middle" font-size="12.5" fill="#9a6a00" direction="rtl">كلمةٌ واحدة تصف الراوي</text>
+
+      <path d="M470 60 L 460 60" stroke="#9fb4c8" stroke-width="2"/>
+      <path d="M245 60 L 235 60" stroke="#9fb4c8" stroke-width="2"/>
+      <text x="462" y="52" text-anchor="middle" font-size="18" fill="#9fb4c8">‹</text>
+      <text x="238" y="52" text-anchor="middle" font-size="18" fill="#9fb4c8">‹</text>
+      <text x="350" y="120" text-anchor="middle" font-size="13" fill="#5A6576" direction="rtl">كلما اتجهتَ يسارًا زاد الاختصار ونقصت حقيقة حال الراوي</text>
+    </svg>
+  </div>
+
+  <div class="panel">
+    <div class="rows">
+      <div class="row"><span class="lb">تهذيب التهذيب</span><p><b>وعاءٌ ناقلٌ</b> لكلام المتقدمين؛ يقول: «قال البخاري، قال أبو حاتم، قال أبو زرعة، قال الدارقطني، قال عبد الرحمن بن مهدي، قال الإمام أحمد...» دون أن يحكم هو على الراوي بثقةٍ أو ضعف. فتستخلص أنت النتيجة بحسب دراستك الحديثية.</p></div>
+      <div class="row"><span class="lb">تقريب التهذيب</span><p>مختصرٌ لـ«التهذيب»؛ جمع فيه كلّ ترجمة و<b>استخلص النتيجة</b> بكلمةٍ أو كلمتين أو ثلاث تصف حال الراوي (ثقة / صدوق / صدوق يخطئ...).</p></div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <span class="cal-t">تنبيه: موضع الخلل الكبير</span>
+    <p>ترجمة الراوي قد تكون في أربع صفحات، فيختصرها ابن حجر بكلمةٍ واحدة، وهذا الاختصار لا يفي بحقيقة الراوي ولا يبيّنها. ثم إن الذهنية الحديثية المتأخرة — خاصةً في الوقت المعاصر — تميل إلى تقليب القضية على قوالبَ محدَّدة، لكل لفظٍ درجةٌ ثابتة.</p>
+    <p style="margin-top:6px">فيتعامل الطالب بظواهر هذه الألفاظ فيحكم على الأحاديث، فـ<b>يُضعِّف أحاديثَ صحيحة ويُصحِّح أحاديثَ ضعيفة</b>. فالقضية ليست ترفيهًا، بل تؤدي إلى إشكالٍ كبير على مستوى المصطلحات وعلى مستوى الحكم على الحديث.</p>
+  </div>
+
+  <div class="sum">
+    <span class="cal-t">محاور المقدمة الأربعة</span>
+    <ul class="clean">
+      <li>ضرورة الرجوع إلى كلام المتقدمين.</li>
+      <li>ذكر بعض أسماء هؤلاء المتقدمين.</li>
+      <li>ذكر شيء من أحوال كتب المتقدمين.</li>
+      <li>ذكر بعض الكتب التي جمعت كلام المتقدمين.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 2. opening verses ===== -->
+<section>
+  <h2>ثانيًا: فاتحة النظم</h2>
+  <div class="verse">
+    <p>الحمدُ للهِ الذي علَّمَنا <span class="sp">…</span> طريقةَ الأسلافِ مِن أُمَّتِنا</p>
+    <p>في صنعةِ الحديثِ والإسنادِ <span class="sp">…</span> أنعِمْ بها طريقةَ الرَّشادِ</p>
+    <p>هي التي قد أدهشَتْ عقولا <span class="sp">…</span> وحفِظَتْ بإذنِهِ المنقولَة</p>
+    <p>عن النبيِّ لكي تكونَ سُنَّتُهْ <span class="sp">…</span> صافيةً، صلاةُ ربّي غُرَّتُهْ</p>
+    <p>وصلِّ مولانا على الرسولِ وآلِ <span class="sp">…</span> بيتِ عبدِكَ الخليلِ</p>
+  </div>
+  <p>هذا استفتاحٌ فيه المعنى البلاغي: تحمَد اللهَ بمعنًى يدلُّ على المضمون؛ فأنت تحمد الله على أنه علَّمنا <b>طريقة الأسلاف من أُمّتنا</b>، وهذا يدلُّ على مضمون الكتاب، لأن النظم كلَّه دائرٌ على هذه القضية. ففي هذا الجزء الاستفتاحُ والحمدُ لله، والإشارةُ إلى أن تلك الطريقة عظيمة، وهي <span class="kw">طريقة المتقدمين من أئمة الحديث</span>.</p>
+</section>
+
+<!-- ===== 3. the imams ===== -->
+<section>
+  <h2>ثالثًا: أعيان الأئمة المتقدمين</h2>
+  <div class="verse">
+    <p>أعيانُها ابنُ حنبلٍ ويحيى <span class="sp">…</span> وابنُ المدينيِّ لا تَسَلْ كم أحيا</p>
+    <p>كذا البخاريُّ عالمٌ معلِّمُ <span class="sp">…</span> والترمذيُّ بعدَهُ ومسلمُ</p>
+    <p>والرازيّانِ مثلُهم أئمّةٌ <span class="sp">…</span> ثم النسائيُّ منهمُ في القِمّة</p>
+  </div>
+  <p>المذكورون تسعةٌ من الحفّاظ: أحمد بن حنبل، ويحيى بن معين، وعلي بن المديني، والبخاري، والترمذي، ومسلم، والرازيان (أبو حاتم وأبو زرعة)، والنسائي. ومن المهم لطالب الحديث أن يعلم أن <b>لكلٍّ منهم تخصُّصَه الحديثي</b>؛ فمع كونهم جميعًا أئمةً، إلا أنهم يتفاوتون في الاختصاص والتقدُّم في فنٍّ دون آخر.</p>
+
+  <!-- 1 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">١</span><b>الإمام أحمد بن حنبل</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">تخصُّصه</span><p>من أجلِّ من جمع بين أطراف علوم الحديث: العلوم الإسنادية (كالعلل)، والعلوم المتعلقة بفقه السنة، وهو في الوقت نفسه حافظ. حفِظ آثار الصحابة أكثر من أكثر علماء الحديث، ولا يكاد يفوته شيءٌ من فقه الصحابة؛ ولذلك يعتمد عليه كثيرًا — «الخانة التي ليس فيها شيءٌ من الهوى» — فإذا وجد في المسألة قولًا للصحابة مال إليه.</p></div>
+      <div class="row"><span class="lb">في الرجال</span><p>له كلامٌ كثيرٌ في الجرح والتعديل، وأكثره في <b>كتب السؤالات</b>.</p></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="cal-t">فائدة منهجية: ما هي كتب السؤالات؟</span>
+    <p>كثيرٌ من علوم المتقدمين (كأحمد والبخاري وابن المديني) نُقِلت عن طريق تلاميذهم؛ يسألونهم فيدوّنون الأسئلة وأجوبتها ويَنشرون الكتاب. وغالبًا يكون <b>اسم الطالب في عنوان الكتاب</b> مع أن الشيخ هو المُجيب. ومنها المطبوع: «سؤالات أبي داود للإمام أحمد»، و«سؤالات ابن المديني»، و«سؤالات البرقاني للدارقطني»، و«سؤالات البرقاني لأبي زرعة»... وغيرها كثير.</p>
+    <p style="margin-top:6px">وغالبًا لا تبويب فيها، وتجمع أنواع علوم الحديث؛ فتجد في «مسائل أبي داود للإمام أحمد»: «سألتُ أبا عبد الله عن حديث كذا فقال: هو كذا»، «سألته عن أثبت أصحاب الزهري فقال: مالك»، «سألته عن رواية قتادة... والمرسل معلول»، «سألته عن فلان فقال: ضعيف»... وهكذا.</p>
+  </div>
+
+  <div class="ask">
+    <span class="cal-t">مسألة: من أين نأخذ علوم الإمام أحمد؟</span>
+    <ul class="clean">
+      <li><b>في الجرح والتعديل:</b> من الكتب المتأخرة الجامعة، مثل <span class="bk">«تهذيب الكمال»</span> و<span class="bk">«تهذيب التهذيب»</span>؛ فالأخير مصدرٌ أساسيّ لمعرفة أحكام أحمد. (جمعه ابن حجر من «تهذيب الكمال» للمزي ثم زاد عليه: «قلتُ: قال الدارقطني...»).</li>
+      <li><b>في علوم الحديث والعلل تنظيرًا:</b> لا نجد كلامه على معنى المنكر أو الشاذ في «تهذيب التهذيب» — إذ هو خاصٌّ بالرجال — وإنما في <b>كتب السؤالات</b>، وفي الكتب الناقلة مثل <span class="bk">«شرح علل الترمذي»</span> لابن رجب و<span class="bk">«الكفاية»</span> للخطيب البغدادي.</li>
+    </ul>
+    <p style="margin-top:8px"><b>السؤالات أم «تهذيب التهذيب»؟</b> مجموع ما في السؤالات لا يزيد كثيرًا عمّا في «تهذيب التهذيب» في الجرح والتعديل، لكن <b>مَن الذي يستطيع تتبُّع كلام أحمد في كل كتب السؤالات</b> ليخرج بمختلف الروايات؟ فالجامع كفى مؤونة التتبُّع.</p>
+  </div>
+
+  <div class="warn">
+    <span class="cal-t">تنبيه: كتب المصطلح المتأخرة لا تنقل كلام المتقدمين غالبًا</span>
+    <p>كتابٌ مثل «مقدمة ابن الصلاح» مملوءٌ بتحريرات صاحبه نفسه، ولا يُعدُّ مصدرًا لمعرفة كلام أحمد وغيره إلا في اليسير. أما الكتب التي تنقل كلام الأوائل في العلل وعلوم الحديث فمنها: «شرح علل الترمذي» لابن رجب، و«الكفاية» للخطيب البغدادي.</p>
+  </div>
+
+  <!-- 2 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">٢</span><b>الإمام يحيى بن معين</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">تخصُّصه</span><p>أكثر ما تميّز به: <b>علم الجرح والتعديل</b>؛ أما العلل فكلامه فيها ليس بالكثير (بخلاف أحمد، فكلامه في العلل كثير: تعليل الأحاديث والحكم عليها).</p></div>
+      <div class="row"><span class="lb">أثره</span><p>لا تكاد تجد راويًا من رواة الحديث إلا وقد تكلّم فيه ابن معين عدّة مرات. فإذا فتحت «تهذيب التهذيب» وجدت: «قال يحيى بن معين في رواية معاوية بن صالح... وفي رواية ابن محرز... وفي رواية فلان...».</p></div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">٣</span><b>الإمام علي بن المديني</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">تخصُّصه</span><p>أكثر ما تميّز به: <b>علم العلل</b>. وله كتابٌ مطبوع اسمه <span class="bk">«العلل»</span>، وعبارته هي التي أُسِّس عليها كتاب «تسهيل معرفة الأسانيد»: «إذا نظرتَ فإن الإسناد يدور على ستة».</p></div>
+      <div class="row"><span class="lb">مكانته</span><p>قال فيه البخاري: «ما استصغرتُ نفسي أمام أحدٍ إلا أمام علي بن المديني»، وهو شيخ البخاري.</p></div>
+      <div class="row"><span class="lb">صلة السند</span><p>الثلاثة (أحمد، وابن معين، وابن المديني) تلاميذُ ليحيى بن سعيد القطان، والقطان تلميذُ شعبة بن الحجاج.</p></div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">٤</span><b>الإمام البخاري</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">تخصُّصه</span><p>«عالمٌ معلِّمٌ» فخم، <b>طبقةٌ وحده</b> في الصنعة الحديثية (العلل وتعليل الأحاديث)؛ فالكلام هنا ليس عن الحفظ ولا الرواية، فصحيحه يكفيه فيهما. سأله تلميذه مسلمٌ عن العلل، فلمّا كشف علّة حديثٍ قال له من دقّة كشفه: <b>أستاذ الأستاذين</b>.</p></div>
+      <div class="row"><span class="lb">أحكامه</span><p>أما ما أخرجه في «الصحيح» فمعلومٌ أنه صحيحٌ عنده. وأما أحكامه على ما لم يُخرِّجه في صحيحه فنجدها في ثلاثة كتب:</p></div>
+    </div>
+    <ul class="clean" style="margin-top:10px">
+      <li><span class="bk">«التاريخ الكبير»</span>: كتابٌ في الرجال ورواة الحديث، جمع فيه آلاف الرواة، وفيه علل الأحاديث أيضًا.</li>
+      <li><span class="bk">«جامع الترمذي»</span>: يقول فيه: «هذا حديث حسن صحيح»، «حسن صحيح غريب»، وأحيانًا: «سألتُ محمدًا — أي البخاري — عن هذا الحديث فقال: هو صحيح».</li>
+      <li><span class="bk">«العلل الكبير» للترمذي</span>: ينقل فيه الترمذي كثيرًا عن البخاري تصحيحًا وتضعيفًا.</li>
+    </ul>
+  </div>
+
+  <!-- 5 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">٥</span><b>الإمام الترمذي</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">مكانته</span><p>تلميذ البخاري، وأحد أصحاب الكتب الستة. اشتُهر بجانب الرواية، وعُرف بشيءٍ من الصنعة. وهو من <b>أوساط محدّثي المتقدمين</b>؛ ليس في مستوى من قبله (البخاري وأحمد وابن معين)، ولا في مستوى من بعده (مسلم والرازيان والنسائي) — فالنسائي أعلى منه في الصنعة.</p></div>
+      <div class="row"><span class="lb">أين كلامه</span><p>أحكامه على الأحاديث في <span class="bk">«سنن الترمذي»</span> نفسها. وكلامه في علوم الحديث في <span class="bk">«العلل الصغير»</span>، وهو جزءٌ من «الجامع» يقع في آخره بعد آلاف الأحاديث.</p></div>
+      <div class="row"><span class="lb">فائدة</span><p>شرح ابن رجب «سنن الترمذي» كاملًا، ثم لم يبقَ من الشرح إلا شرحه لـ«العلل الصغير» (وريقاتٌ يسيرة)، وهو مطبوع اليوم في مجلدين، ويُعدُّ من أهم ما كُتب في علوم الحديث. والعجيب أنك تجد تلك العلوم كلها في آخر ما وصل إليه ابن رجب رحمه الله.</p></div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">٦</span><b>الإمام مسلم</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">تخصُّصه</span><p>يُعرف كلامه في الأحاديث من حيث <b>التصحيح</b>؛ فما أخرجه في <span class="bk">«صحيح مسلم»</span> فالأصل فيه الصحة (وأحيانًا يُخرِّج في الشواهد، ولهذا تفصيل).</p></div>
+      <div class="row"><span class="lb">مصادر علمه</span><p>في <span class="bk">مقدمة «صحيح مسلم»</span> صنعةٌ حديثية ونقاشٌ في مسألة الشرط واللقاء وعدم اللقاء (بخلاف البخاري الذي يبدأ مباشرةً بالوحي). وله <span class="bk">«التمييز»</span> من أهم كتب علم العلل. ومسلمٌ والترمذي من المتقنين في الكلام عن الرجال.</p></div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">٧</span><b>الإمامان الرازيّان: أبو حاتم وأبو زرعة</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">مكانتهما</span><p>إمامان لهما شأنٌ كبير في علم الحديث، اشتهرا بالكلام في <b>الجرح والتعديل والعلل معًا</b>. ورُزق أبو حاتم بابنه <span class="kw">عبد الرحمن بن أبي حاتم</span> الذي خدم علم والده وشيخه خدمةً كبيرة.</p></div>
+      <div class="row"><span class="lb">أين علمهما</span><p>في ثلاثة كتبٍ لابن أبي حاتم:</p></div>
+    </div>
+    <ul class="clean" style="margin-top:10px">
+      <li><span class="bk">«العلل»</span>: تطبيقاتٌ عمليةٌ في الأحاديث (نحو ألفٍ وثمانمائة مسألة): «سألتُ أبي عن حديثٍ رواه فلان... فقال: هذا خطأ والصواب...».</li>
+      <li><span class="bk">«الجرح والتعديل»</span>: أحكامهما على الرواة، وكلامهما في الوصل والانقطاع.</li>
+      <li><span class="bk">«المراسيل»</span>: كلامهما في المراسيل (فلان لم يسمع من فلان)، وفيه جرحٌ وتعديلٌ لغيرهما أيضًا.</li>
+    </ul>
+    <p class="muted" style="margin-top:8px">و«العلل» لابن أبي حاتم كتابٌ رائعٌ يستحق أن يُدرَّس، وهو أحد كتب أكاديمية الحديث.</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="panel">
+    <div class="card-h"><span class="n">٨</span><b>الإمام النسائي</b></div>
+    <div class="rows">
+      <div class="row"><span class="lb">مكانته</span><p>أحد أصحاب الكتب الستة، وآخرهم وفاةً (سنة ٣٠٣هـ)، إمامٌ كبير. وعلمه <b>تطبيقيٌّ لا نظري</b>؛ فلا يكاد يوجد له كلامٌ في التنظير.</p></div>
+      <div class="row"><span class="lb">أين كلامه</span><p>في سننه؛ فيُخرِّج الحديث ثم يبيّن الاختلاف على الإسناد (كالاختلاف على أبي إسحاق)، ويأتيك بالأسانيد المختلفة في الحديث نفسه. وله <span class="bk">«السنن الكبرى»</span> كتابٌ ضخمٌ مملوءٌ بالتعليل، ومنها انتقى الصغرى <span class="bk">«المجتبى»</span> وهي إحدى الكتب الستة.</p></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="cal-t">أسماء مهمة أخرى (لم يفصِّل فيها لضيق الوقت)</span>
+    <p>أبو داود، والعِجلي، وابن عدي، والدارقطني — وهؤلاء من الأسماء المهمة جدًّا في هذا الباب.</p>
+  </div>
+</section>
+
+<!-- ===== 4. contemporary books ===== -->
+<section>
+  <h2>رابعًا: الكتب المعاصرة الناقلة لكلام المتقدمين</h2>
+  <p>الكتب المعاصرة التي <b>تنقل</b> كلام المتقدمين قسمان (وأما التي لا تنقل فهي الأصل والأكثر):</p>
+  <div class="ben">
+    <div class="card"><div class="n">١</div><div><strong>الاستقرائية التخصصية</strong><span>ترجع إلى مختلف مصادر كلام الإمام (كالسؤالات) فتجمع كلامه في مصطلحٍ واحد أو قضيةٍ واحدة استقراءً.</span><em>مثل «الحديث المنكر عند الإمام أحمد» (مجلدان)، و«الحديث الحسن» (خمسة مجلدات) ومجلده الثالث مصدرٌ لمعرفة «الحسن» عند الترمذي.</em></div></div>
+    <div class="card"><div class="n">٢</div><div><strong>الشمولية</strong><span>شاملةٌ لأبواب علوم الحديث، لكنها لا تعتمد على الاستقراء التام ولا على التخصص، فتنقل بعض عبارات الحفّاظ فتكون مصدرًا جزئيًّا.</span><em>أبرزها «تحرير علوم الحديث» للجُدَيع — من أفضل كتب المعاصرين، وهو مع «مقدمة ابن الصلاح» و«شرح علل الترمذي» من الكتب المقرَّرة في المستوى الثالث بالأكاديمية.</em></div></div>
+  </div>
+</section>
+
+<!-- ===== 5. the collecting books ===== -->
+<section>
+  <h2>خامسًا: الكتب التي جمعت كلام المتقدمين</h2>
+  <div class="verse">
+    <p>وجمَعَ الخطيبُ في الكفايةِ <span class="sp">…</span> كلامَهم فأتقنَ الروايةَ</p>
+    <p>وأحسنَ ابنُ رجبٍ فيما جمَعْ <span class="sp">…</span> مِن قولِهم وحُكمِهم لمّا وقَعْ</p>
+    <p>وصاغَ في كتابِهِ شرحِ العِلَلْ <span class="sp">…</span> للترمذيِّ زُبدةً من الجُمَلْ</p>
+    <p>قد جمعَتْ شتاتَ ما تفرَّقا <span class="sp">…</span> مِن كتبِ الأسلافِ أو تمزَّقا</p>
+    <p>فراجعِ القواعدَ الأصولا <span class="sp">…</span> ثم انتهِجْ أصولَهم سبيلا</p>
+  </div>
+
+  <div class="panel">
+    <h3>١) «الكفاية» للخطيب البغدادي</h3>
+    <p style="margin-top:6px">جمع فيه من كلام الحفّاظ وغيرهم ممن كتب في طريقة المحدّثين. <b>لكنّ كتابه ليس صافيًا</b> في نقل علوم المتقدمين؛ فقد نقل عن المتكلمين في بعض المسائل الحديثية، ولذلك ناقشه ابن رجب في «شرح العلل» وبيّن أنه نقل عن المتكلمين ما لا يُعرف عن أئمة الحديث المتقدمين. لكنه عمومًا كتابٌ جليلٌ مهمٌّ جدًّا.</p>
+  </div>
+  <div class="panel">
+    <h3>٢) «شرح علل الترمذي» لابن رجب</h3>
+    <p style="margin-top:6px">أحسن فيه ابن رجب فيما جمع من أقوال المتقدمين، وصاغ زبدةً من علومهم، وجمع شتاتَ ما تفرّق من كتب الأسلاف. وهو من أهم ما كُتب في علوم الحديث، و<b>مصدرٌ رئيس للكلام النظري للمتقدمين</b>.</p>
+  </div>
+
+  <div class="sum">
+    <span class="cal-t">لماذا نحتاج هذه الكتب الجامعة؟</span>
+    <p>لأن المتقدمين <b>لم يكتبوا قواعد جامعة</b> تُرتّب علومهم؛ فأغلب كتبهم تطبيقاتٌ عملية (سؤالات، علل، جرح وتعديل)، ولا يوجد لأحدهم كتابٌ يجمع مصطلح الحديث كاملًا. فجاء المتأخرون فرتّبوا علومهم لهم؛ ولذلك قال: «فراجعِ القواعدَ الأصولا … ثم انتهِجْ أصولَهم سبيلا».</p>
+  </div>
+</section>
+
+<!-- ===== summary table ===== -->
+<section>
+  <h2>جدولٌ تلخيصيٌّ شامل <span class="tag">للمراجعة السريعة</span></h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>الإمام</th><th>أبرز تخصُّصه</th><th>أين نجد كلامه</th></tr></thead>
+      <tbody>
+        <tr><td><b>أحمد بن حنبل</b></td><td>الجمع بين الإسناد وفقه السنة، وحفظ آثار الصحابة</td><td>كتب السؤالات؛ وفي الرجال: «تهذيب التهذيب» و«تهذيب الكمال»</td></tr>
+        <tr><td><b>يحيى بن معين</b></td><td>الجرح والتعديل (تكلّم في كل راوٍ تقريبًا)</td><td>«تهذيب التهذيب» ونحوه من كتب الرجال، وكتب السؤالات</td></tr>
+        <tr><td><b>علي بن المديني</b></td><td>علم العلل (شيخ البخاري)</td><td>كتاب «العلل» له</td></tr>
+        <tr><td><b>البخاري</b></td><td>الصنعة الحديثية والعلل (طبقةٌ وحده)</td><td>«الصحيح»، و«التاريخ الكبير»، و«جامع الترمذي»، و«العلل الكبير»</td></tr>
+        <tr><td><b>الترمذي</b></td><td>من أوساط المحدّثين؛ روايةٌ وشيءٌ من الصنعة</td><td>«سنن الترمذي»، و«العلل الصغير» في آخر الجامع</td></tr>
+        <tr><td><b>مسلم</b></td><td>التصحيح، والكلام المتقن في الرجال والعلل</td><td>«صحيح مسلم» ومقدمته، وكتاب «التمييز»</td></tr>
+        <tr><td><b>الرازيّان</b></td><td>الجرح والتعديل والعلل معًا</td><td>لابن أبي حاتم: «العلل»، و«الجرح والتعديل»، و«المراسيل»</td></tr>
+        <tr><td><b>النسائي</b></td><td>علمٌ تطبيقيٌّ (التعليل والاختلاف على الأسانيد)</td><td>«السنن الكبرى»، و«المجتبى» (الصغرى)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== khulasa ===== -->
+<section>
+  <h2>خلاصة الدرس</h2>
+  <div class="sum">
+    <ul class="clean">
+      <li><b>القاعدة الكبرى:</b> الرجوع إلى كلام المتقدمين لا الاكتفاء بالمختصرات المتأخرة، في المصطلح والجرح والتعديل جميعًا.</li>
+      <li><b>سبب الإشكال:</b> اختصار «التقريب» حالَ الراوي في كلمة، مع ميل الذهنية المتأخرة للقوالب الثابتة، فيقع تصحيح الضعيف وتضعيف الصحيح.</li>
+      <li><b>محاور المقدمة أربعة:</b> ضرورة الرجوع، أسماء المتقدمين، أحوال كتبهم، الكتب الجامعة لكلامهم.</li>
+      <li><b>لكل إمامٍ تخصُّص:</b> أحمد (الجمع)، ابن معين (الجرح والتعديل)، ابن المديني (العلل)، البخاري (الصنعة)، الترمذي (وسط)، مسلم (التصحيح)، الرازيّان (الجرح والعلل)، النسائي (التطبيق).</li>
+      <li><b>الجامعة لكلامهم:</b> «الكفاية» للخطيب، و«شرح علل الترمذي» لابن رجب؛ لأن المتقدمين لم يكتبوا قواعد مرتَّبة، فرتّبها المتأخرون.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== quiz ===== -->
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اختبر نفسك</span></h2>
+  <form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">ما الفرق بين «تهذيب التهذيب» و«تقريب التهذيب»؟</p>
+    <label class="opt"><input type="radio" name="l1q1"><span class="t">«التقريب» هو الأصل الموسَّع، و«تهذيب التهذيب» مختصرٌ منتزَعٌ منه.</span></label>
+    <label class="opt"><input type="radio" name="l1q1"><span class="t">كلاهما لابن حجر وكلاهما ينقل كلام المتقدمين بلا حكم، والفرق في عدد الرواة فقط.</span></label>
+    <label class="opt ok"><input type="radio" name="l1q1"><span class="t">«تهذيب التهذيب» وعاءٌ ناقلٌ لكلام المتقدمين دون أن يحكم ابن حجر على الراوي، و«التقريب» مختصرٌ له استخلص فيه النتيجة بكلمةٍ أو كلمتين تصف حال الراوي.</span></label>
+    <label class="opt"><input type="radio" name="l1q1"><span class="t">«تهذيب التهذيب» في العلل والأحاديث، و«التقريب» في الرجال.</span></label>
+    <p class="exp">«تهذيب التهذيب» ينقل: «قال البخاري، قال أبو حاتم، قال الدارقطني…» دون أن يحكم هو، فتستخلص النتيجة أنت بحسب دراستك؛ أما «التقريب» فقد اختصر كل ترجمةٍ إلى كلمةٍ أو كلمتين: ثقة / صدوق / صدوق يخطئ.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا كان الاكتفاء بـ«التقريب» سببًا للخطأ؟</p>
+    <label class="opt ok"><input type="radio" name="l1q2"><span class="t">لأن ترجمةً في أربع صفحات تُختصر بكلمةٍ واحدة لا تفي بحقيقة الراوي، ومع ذهنية القوالب الثابتة يقع تضعيفُ الصحيح وتصحيحُ الضعيف.</span></label>
+    <label class="opt"><input type="radio" name="l1q2"><span class="t">لأن ابن حجر لم يكن من أهل الصنعة الحديثية فأحكامه مرجوحة.</span></label>
+    <label class="opt"><input type="radio" name="l1q2"><span class="t">لأنه لم يُطبع طبعةً محققة فكثُر التصحيف في أسماء الرواة.</span></label>
+    <label class="opt"><input type="radio" name="l1q2"><span class="t">لأنه لا يذكر إلا رواة الكتب الستة فتفوته أحكام المتقدمين على غيرهم.</span></label>
+    <p class="exp">الإشكال ليس في الكتاب نفسه بل في الاكتفاء به: الاختصار الشديد لا يبيّن حقيقة الراوي، ثم تأتي الذهنية المتأخرة فتُنزل كل لفظٍ على درجةٍ ثابتة، فينشأ الخطأ على مستوى المصطلح وعلى مستوى الحكم على الحديث.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما محاور المقدمة الأربعة؟</p>
+    <label class="opt"><input type="radio" name="l1q3"><span class="t">الصحيحُ، والحسنُ، والضعيفُ، والمردود.</span></label>
+    <label class="opt"><input type="radio" name="l1q3"><span class="t">المنكرُ، والشاذُّ، والمضطربُ، والمرسل.</span></label>
+    <label class="opt"><input type="radio" name="l1q3"><span class="t">الجرحُ والتعديل، والعللُ، والسؤالاتُ، والمصطلح.</span></label>
+    <label class="opt ok"><input type="radio" name="l1q3"><span class="t">ضرورةُ الرجوع إلى كلام المتقدمين، وأسماءُ بعضهم، وأحوالُ كتبهم، والكتبُ التي جمعت كلامهم.</span></label>
+    <p class="exp">هذه هي المحاور الأربعة كما عدّدها الشيخ في أول المجلس. وأما أقسام الحديث فمحلُّها الفصل التالي في الدرس الثاني، ومعاني المنكر والشاذ والمضطرب فمحلُّها الدرس الخامس.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما كتب السؤالات، ولِمَ سُمّيت بأسماء التلاميذ؟</p>
+    <label class="opt"><input type="radio" name="l1q4"><span class="t">كتبٌ ألّفها الأئمةُ أنفسهم وسمّوها بأسماء أنجب تلاميذهم تكريمًا لهم.</span></label>
+    <label class="opt ok"><input type="radio" name="l1q4"><span class="t">كتبٌ دوّن فيها التلاميذُ أسئلتهم لشيوخهم وأجوبتَها ونشروها، فغلب اسمُ السائل على العنوان مع أن الشيخ هو المُجيب.</span></label>
+    <label class="opt"><input type="radio" name="l1q4"><span class="t">كتبٌ جمع فيها التلاميذُ ما سمعوه من شيوخهم من الأحاديث المسندة فقط، فسُمّيت بأسمائهم لأنهم رووها.</span></label>
+    <label class="opt"><input type="radio" name="l1q4"><span class="t">مسائلُ فقهية سأل فيها التلاميذُ شيوخهم، فلا علاقة لها بالجرح والتعديل ولا بالعلل.</span></label>
+    <p class="exp">مثالها «سؤالات أبي داود للإمام أحمد» و«سؤالات ابن المديني» و«سؤالات البرقاني للدارقطني». وهي غالبًا غير مبوَّبة وتجمع أنواع علوم الحديث: حكمًا على حديث، وسؤالًا عن راوٍ، وسؤالًا عن أثبت أصحاب الزهري.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">بم تميّز ابن معين، وبم تميّز ابن المديني؟</p>
+    <label class="opt"><input type="radio" name="l1q5"><span class="t">ابنُ معين بالعلل، وابنُ المديني بالجرح والتعديل.</span></label>
+    <label class="opt"><input type="radio" name="l1q5"><span class="t">كلاهما بالجرح والتعديل، والفرقُ أن ابن المديني متأخرٌ عنه طبقةً.</span></label>
+    <label class="opt ok"><input type="radio" name="l1q5"><span class="t">ابنُ معين بعلم الجرح والتعديل، وابنُ المديني بعلم العلل وله فيه كتابٌ مطبوع اسمه «العلل».</span></label>
+    <label class="opt"><input type="radio" name="l1q5"><span class="t">ابنُ معين بفقه السنة، وابنُ المديني بالحفظ والرواية.</span></label>
+    <p class="exp">كلامُ ابن معين في العلل ليس بالكثير بخلاف أحمد، ولا تكاد تجد راويًا إلا وقد تكلّم فيه عدّة مرات. وعبارةُ ابن المديني «إذا نظرتَ فإن الإسناد يدور على ستة» هي التي أُسِّس عليها كتاب «تسهيل معرفة الأسانيد»، وهو شيخ البخاري.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">أين نجد أحكام البخاري على ما لم يُخرِّجه في صحيحه؟</p>
+    <label class="opt"><input type="radio" name="l1q6"><span class="t">في «تهذيب التهذيب» و«تهذيب الكمال»، فهما مجمعُ أحكامه.</span></label>
+    <label class="opt ok"><input type="radio" name="l1q6"><span class="t">في «التاريخ الكبير»، و«جامع الترمذي»، و«العلل الكبير» للترمذي.</span></label>
+    <label class="opt"><input type="radio" name="l1q6"><span class="t">في «الأدب المفرد» و«خلق أفعال العباد».</span></label>
+    <label class="opt"><input type="radio" name="l1q6"><span class="t">لا تُعرف له أحكامٌ خارج «الصحيح»؛ فما لم يُخرِّجه فلا حكم له فيه.</span></label>
+    <p class="exp">«التاريخ الكبير» كتابٌ في الرجال وفيه علل الأحاديث أيضًا؛ وفي «جامع الترمذي» يقول الترمذي: «سألتُ محمدًا — أي البخاري — عن هذا الحديث فقال: هو صحيح»؛ وفي «العلل الكبير» ينقل عنه كثيرًا تصحيحًا وتضعيفًا. أما كتب التهذيب فهي للرجال لا للأحكام على الأحاديث.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الكتب الثلاثة لابن أبي حاتم التي فيها علم الرازيَّين؟</p>
+    <label class="opt"><input type="radio" name="l1q7"><span class="t">«العلل»، و«التمييز»، و«الكفاية».</span></label>
+    <label class="opt"><input type="radio" name="l1q7"><span class="t">«الجرح والتعديل»، و«التاريخ الكبير»، و«المجتبى».</span></label>
+    <label class="opt"><input type="radio" name="l1q7"><span class="t">«المراسيل»، و«شرح علل الترمذي»، و«مقدمة ابن الصلاح».</span></label>
+    <label class="opt ok"><input type="radio" name="l1q7"><span class="t">«العلل»، و«الجرح والتعديل»، و«المراسيل».</span></label>
+    <p class="exp">«العلل» تطبيقاتٌ عملية في نحو ألفٍ وثمانمائة مسألة، و«الجرح والتعديل» أحكامُهما على الرواة، و«المراسيل» كلامُهما في عدم السماع. وأما «التمييز» فلمسلم، و«التاريخ الكبير» للبخاري، و«الكفاية» للخطيب، و«شرح العلل» لابن رجب.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا احتجنا كتبًا جامعة مثل «شرح العلل» لابن رجب؟</p>
+    <label class="opt"><input type="radio" name="l1q8"><span class="t">لأن كتب المتقدمين فُقدت كلُّها فلم يبقَ منها إلا ما نقله هؤلاء الجامعون.</span></label>
+    <label class="opt"><input type="radio" name="l1q8"><span class="t">لأن المتقدمين كتبوا قواعدهم بعباراتٍ غامضةٍ تحتاج شرحًا لغويًّا.</span></label>
+    <label class="opt ok"><input type="radio" name="l1q8"><span class="t">لأن المتقدمين لم يكتبوا قواعد مرتَّبةً تجمع علومهم؛ فأغلبُ كتبهم تطبيقاتٌ عملية، فجاء المتأخرون فرتّبوها.</span></label>
+    <label class="opt"><input type="radio" name="l1q8"><span class="t">لأن المتأخرين خالفوا المتقدمين فاحتجنا كتبًا توفّق بين المنهجين.</span></label>
+    <p class="exp">أغلب كتب المتقدمين سؤالاتٌ وعللٌ وجرحٌ وتعديل — أي تطبيقٌ لا تنظير — ولا يوجد لأحدهم كتابٌ يجمع مصطلح الحديث كاملًا. ولذلك قال الناظم: «فراجعِ القواعدَ الأصولا … ثم انتهِجْ أصولَهم سبيلا».</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما مأخذ ابن رجب على «الكفاية» للخطيب؟</p>
+    <label class="opt ok"><input type="radio" name="l1q9"><span class="t">أنه نقل عن المتكلمين في بعض المسائل الحديثية ما لا يُعرف عن أئمة الحديث المتقدمين، فليس صافيًا في نقل علومهم.</span></label>
+    <label class="opt"><input type="radio" name="l1q9"><span class="t">أنه اقتصر على كلام المتأخرين ولم ينقل عن المتقدمين شيئًا.</span></label>
+    <label class="opt"><input type="radio" name="l1q9"><span class="t">أنه رتّب الكتاب على الأبواب فتفرّق فيه كلامُ الإمام الواحد.</span></label>
+    <label class="opt"><input type="radio" name="l1q9"><span class="t">أنه ضعّف أحاديثَ في الصحيحين اعتمادًا على قواعد الأصوليين.</span></label>
+    <p class="exp">ومع هذا المأخذ فهو عمومًا — كما قال الشيخ — كتابٌ جليلٌ مهمٌّ جدًّا، جمع فيه الخطيبُ كلامَ الحفّاظ وغيرِهم ممن كتب في طريقة المحدّثين.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture2.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>
