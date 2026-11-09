@@ -29,6 +29,27 @@ table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
 table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
 table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
 table.tbl td:first-child{font-weight:600;white-space:nowrap}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
 </style>
 </head>
 <body>
@@ -170,6 +191,362 @@ table.tbl td:first-child{font-weight:600;white-space:nowrap}
       </tbody>
     </table>
   </div>
+  <div class="panel scroll"><svg viewBox="0 0 1020 620" width="100%" style="min-width:900px;display:block" role="img" aria-label="لوحة جامعة لمصطلحات المادة ومعانيها المتعددة: الحسن والغريب والمنكر والشاذ والمضطرب والمرسل والمسند">
+<text x="1004" y="26" text-anchor="start" direction="rtl" font-size="13.5" font-family="var(--display)" font-weight="700" fill="var(--muted)">لوحةُ المصطلحات الجامعة: مصطلحٌ واحدٌ ومعانٍ متعددة</text>
+<text x="1004" y="46" text-anchor="start" direction="rtl" font-size="12" fill="var(--muted)">هذه هي الفكرةُ المركزية للمادة كلِّها — «وحصرِ معنى اللفظِ بالحدودِ» هو الإشكال.</text>
+<rect x="876" y="74" width="128" height="54" rx="11" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+<text x="940" y="100" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--accent)">الحسن</text>
+<text x="940" y="118" text-anchor="middle" direction="rtl" font-size="10" fill="var(--muted)">مجلس ٦</text>
+<rect x="585" y="82" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.2"/>
+<text x="723" y="102" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">الغريب</text>
+<path d="M876 101 C868 101 868 97 860 97" fill="none" stroke="var(--accent)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="82" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.2"/>
+<text x="438" y="102" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">ما رُوي من غير وجهٍ وليس ضعفُه قويًّا</text>
+<path d="M876 101 C868 101 868 97 860 97" fill="none" stroke="var(--accent)" stroke-width="1.1" opacity=".3"/>
+<rect x="16" y="82" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.2"/>
+<text x="153" y="102" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">الصحيح</text>
+<path d="M876 101 C868 101 868 97 860 97" fill="none" stroke="var(--accent)" stroke-width="1.1" opacity=".3"/>
+<rect x="876" y="142" width="128" height="54" rx="11" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+<text x="940" y="168" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--accent)">الغريب</text>
+<text x="940" y="186" text-anchor="middle" direction="rtl" font-size="10" fill="var(--muted)">مجلس ٦</text>
+<rect x="585" y="150" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.2"/>
+<text x="723" y="170" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">غرابةٌ مطلقةٌ في أصل السند</text>
+<path d="M876 169 C868 169 868 165 860 165" fill="none" stroke="var(--accent)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="150" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.2"/>
+<text x="438" y="170" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">غرابةٌ نسبيةٌ في بعض الطرق</text>
+<path d="M876 169 C868 169 868 165 860 165" fill="none" stroke="var(--accent)" stroke-width="1.1" opacity=".3"/>
+<rect x="876" y="210" width="128" height="92" rx="11" fill="var(--bg)" stroke="var(--red)" stroke-width="1.5"/>
+<text x="940" y="255" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--red)">المنكَر</text>
+<text x="940" y="273" text-anchor="middle" direction="rtl" font-size="10" fill="var(--muted)">مجلس ٤ و٥</text>
+<rect x="585" y="218" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--red)" stroke-width="1.2"/>
+<text x="723" y="238" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">تفرُّدُ مَن ليس أهلًا</text>
+<path d="M876 256 C868 256 868 233 860 233" fill="none" stroke="var(--red)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="218" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--red)" stroke-width="1.2"/>
+<text x="438" y="238" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">مخالفةُ الضعيف للثقة</text>
+<path d="M876 256 C868 256 868 233 860 233" fill="none" stroke="var(--red)" stroke-width="1.1" opacity=".3"/>
+<rect x="16" y="218" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--red)" stroke-width="1.2"/>
+<text x="153" y="238" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">مخالفةُ الثقة لمن هو أوثق</text>
+<path d="M876 256 C868 256 868 233 860 233" fill="none" stroke="var(--red)" stroke-width="1.1" opacity=".3"/>
+<rect x="585" y="256" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--red)" stroke-width="1.2"/>
+<text x="723" y="276" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">الضعيفُ المردود</text>
+<path d="M876 256 C868 256 868 271 860 271" fill="none" stroke="var(--red)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="256" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--red)" stroke-width="1.2"/>
+<text x="438" y="276" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">استنكارُ اللفظ أو المعنى أو الإسناد</text>
+<path d="M876 256 C868 256 868 271 860 271" fill="none" stroke="var(--red)" stroke-width="1.1" opacity=".3"/>
+<rect x="16" y="256" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--red)" stroke-width="1.2"/>
+<text x="153" y="276" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">مرادفٌ لمحض الخطأ</text>
+<path d="M876 256 C868 256 868 271 860 271" fill="none" stroke="var(--red)" stroke-width="1.1" opacity=".3"/>
+<rect x="876" y="316" width="128" height="54" rx="11" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.5"/>
+<text x="940" y="342" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--gold)">الشاذّ</text>
+<text x="940" y="360" text-anchor="middle" direction="rtl" font-size="10" fill="var(--muted)">مجلس ٥</text>
+<rect x="585" y="324" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/>
+<text x="723" y="344" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">تفرُّدُ مَن ليس أهلًا</text>
+<path d="M876 343 C868 343 868 339 860 339" fill="none" stroke="var(--gold)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="324" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/>
+<text x="438" y="344" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">المخالفة</text>
+<path d="M876 343 C868 343 868 339 860 339" fill="none" stroke="var(--gold)" stroke-width="1.1" opacity=".3"/>
+<rect x="876" y="384" width="128" height="54" rx="11" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.5"/>
+<text x="940" y="410" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--gold)">المضطرِب</text>
+<text x="940" y="428" text-anchor="middle" direction="rtl" font-size="10" fill="var(--muted)">مجلس ٥</text>
+<rect x="585" y="392" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/>
+<text x="723" y="412" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">اختلافٌ يدلُّ على عدم الضبط</text>
+<path d="M876 411 C868 411 868 407 860 407" fill="none" stroke="var(--gold)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="392" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.2"/>
+<text x="438" y="412" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">بمعنى الخطأ (عند أبي حاتم)</text>
+<path d="M876 411 C868 411 868 407 860 407" fill="none" stroke="var(--gold)" stroke-width="1.1" opacity=".3"/>
+<rect x="876" y="452" width="128" height="54" rx="11" fill="var(--bg)" stroke="var(--muted)" stroke-width="1.5"/>
+<text x="940" y="478" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--muted)">المرسَل</text>
+<text x="940" y="496" text-anchor="middle" direction="rtl" font-size="10" fill="var(--muted)">مجلس ٢ و٥</text>
+<rect x="585" y="460" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--muted)" stroke-width="1.2"/>
+<text x="723" y="480" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">مطلقُ الانقطاع في اصطلاح النظم</text>
+<path d="M876 479 C868 479 868 475 860 475" fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="460" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--muted)" stroke-width="1.2"/>
+<text x="438" y="480" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">ما سقط منه الصحابيُّ عند البيقوني</text>
+<path d="M876 479 C868 479 868 475 860 475" fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".3"/>
+<rect x="876" y="520" width="128" height="54" rx="11" fill="var(--bg)" stroke="var(--muted)" stroke-width="1.5"/>
+<text x="940" y="546" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--muted)">المُسنَد</text>
+<text x="940" y="564" text-anchor="middle" direction="rtl" font-size="10" fill="var(--muted)">مجلس ٥</text>
+<rect x="585" y="528" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--muted)" stroke-width="1.2"/>
+<text x="723" y="548" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">الاتصالُ ولو لم يكن إلى النبي ﷺ</text>
+<path d="M876 547 C868 547 868 543 860 543" fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".3"/>
+<rect x="301" y="528" width="275" height="30" rx="15" fill="var(--paper)" stroke="var(--muted)" stroke-width="1.2"/>
+<text x="438" y="548" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">المرفوع (عكسُ الموقوف)</text>
+<path d="M876 547 C868 547 868 543 860 543" fill="none" stroke="var(--muted)" stroke-width="1.1" opacity=".3"/>
+<text x="510" y="608" text-anchor="middle" direction="rtl" font-size="12.5" font-weight="600" fill="var(--muted)">فلا تعريفَ واحدٌ يحصرها، ولا حكمَ واحدٌ يعمُّها — بل بحسب إطلاق الناقد.</text>
+</svg></div>
+  <p class="hint">على الجوال اسحب الرسم أفقيًا.</p>
+</section>
+
+<section>
+  <div class="sec-head"><h2>خلاصةٌ جامعة للمادة</h2><span class="muted">بعد أن تفرغي من المجالس السبعة</span></div>
+  <div class="prose">
+    <p>المادةُ كلُّها تدور على فكرةٍ واحدة: <b>أن مصطلحات الحديث لا تُختزل في حدٍّ لفظيٍّ واحد</b>، وأن طريقة الحفّاظ توسيعُ معاني الألفاظ لا حصرُها — ومن ثَمَّ لا يصحُّ أن تُنزِّلي اللفظَ على درجةٍ ثابتة، بل بحسب إطلاق الناقد وقرائنِ الحال. وتتفرّع عنها فكرةٌ عمليّة: <b>أن القبول لا يساوي الصحة</b>، وأن المعيار الفاصل في كل باب سؤالٌ واحد: هل تبيَّن خطؤه أم لا؟ ووسيلةُ الجواب في كل باب واحدة أيضًا: <b>جمعُ الطرق</b>.</p>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 980 536" width="100%" style="min-width:900px;display:block" role="img" aria-label="خريطة جامعة: حديث بين يديك فاجمع طرقه، ثم ثلاث حالات — راوٍ ضعيف، وثقة تفرّد، وثقات اختلفوا — ولكل حالة ما تصنع فيها ونتيجتاها">
+<defs><marker id="arm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker></defs>
+<text x="964" y="26" text-anchor="start" direction="rtl" font-size="13.5" font-family="var(--display)" font-weight="700" fill="var(--muted)">الخريطةُ الكبرى: من حديثٍ بين يديك إلى الحكم</text>
+<text x="964" y="46" text-anchor="start" direction="rtl" font-size="12" fill="var(--muted)">ثلاثُ حالاتٍ يعود إليها الفصلُ كلُّه — ومفتاحُها واحد: جمعُ الطرق.</text>
+<rect x="770" y="78" width="202" height="54" rx="27" fill="var(--bg)" stroke="var(--ink)" stroke-width="1.5"/>
+<text x="871" y="102" text-anchor="middle" direction="rtl" font-size="15" font-family="var(--display)" font-weight="700" fill="var(--ink)">حديثٌ بين يديك</text>
+<text x="871" y="121" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--muted)">فاجمعْ طُرقَه أولًا</text>
+<rect x="778" y="160" width="186" height="56" rx="11" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.5"/>
+<text x="871" y="186" text-anchor="middle" direction="rtl" font-size="14.5" font-family="var(--display)" font-weight="700" fill="var(--gold)">راوٍ ضعيف</text>
+<text x="871" y="205" text-anchor="middle" direction="rtl" font-size="10.5" fill="var(--muted)">المجلسان ٢ و٣</text>
+<line x1="871" y1="132" x2="871" y2="160" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".4"/>
+<rect x="454" y="160" width="300" height="56" rx="11" fill="var(--paper)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="604" y="193" text-anchor="middle" direction="rtl" font-size="12.5" font-weight="600" fill="var(--ink)">هل تبيَّن خطؤه؟</text>
+<path d="M772 188 L760 188" stroke="var(--gold)" stroke-width="1.6" marker-end="url(#arm)"/>
+<rect x="104" y="142" width="250" height="38" rx="19" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.5"/>
+<text x="229" y="166" text-anchor="middle" direction="rtl" font-size="12.5" font-family="var(--display)" font-weight="700" fill="var(--gold)">مقبولٌ للاعتبار</text>
+<path d="M448 188 C398 188 398 161 348 161" fill="none" stroke="var(--gold)" stroke-width="1.6" opacity=".55"/>
+<text x="404" y="165" text-anchor="middle" direction="rtl" font-size="10.5" font-weight="600" fill="var(--gold)">لا</text>
+<rect x="104" y="188" width="250" height="38" rx="19" fill="var(--bg)" stroke="var(--red)" stroke-width="1.5"/>
+<text x="229" y="212" text-anchor="middle" direction="rtl" font-size="12.5" font-family="var(--display)" font-weight="700" fill="var(--red)">مردود</text>
+<path d="M448 188 C398 188 398 207 348 207" fill="none" stroke="var(--red)" stroke-width="1.6" opacity=".55"/>
+<text x="404" y="211" text-anchor="middle" direction="rtl" font-size="10.5" font-weight="600" fill="var(--red)">نعم</text>
+<line x1="16" y1="252" x2="964" y2="252" stroke="var(--line)" stroke-dasharray="4 4"/>
+<rect x="778" y="274" width="186" height="56" rx="11" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+<text x="871" y="300" text-anchor="middle" direction="rtl" font-size="14.5" font-family="var(--display)" font-weight="700" fill="var(--accent)">ثقةٌ تفرَّد</text>
+<text x="871" y="319" text-anchor="middle" direction="rtl" font-size="10.5" fill="var(--muted)">المجلسان ٤ و٦</text>
+<line x1="871" y1="160" x2="871" y2="274" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".4"/>
+<rect x="454" y="274" width="300" height="56" rx="11" fill="var(--paper)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="604" y="307" text-anchor="middle" direction="rtl" font-size="12.5" font-weight="600" fill="var(--ink)">وازِنْ قرائنَ المتن والإسناد والراوي</text>
+<path d="M772 302 L760 302" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#arm)"/>
+<rect x="104" y="256" width="250" height="38" rx="19" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+<text x="229" y="280" text-anchor="middle" direction="rtl" font-size="12.5" font-family="var(--display)" font-weight="700" fill="var(--accent)">مقبولٌ غيرُ منكَر</text>
+<path d="M448 302 C398 302 398 275 348 275" fill="none" stroke="var(--accent)" stroke-width="1.6" opacity=".55"/>
+<text x="404" y="279" text-anchor="middle" direction="rtl" font-size="10.5" font-weight="600" fill="var(--accent)">احتُمِل تفرُّدُه</text>
+<rect x="104" y="302" width="250" height="38" rx="19" fill="var(--bg)" stroke="var(--red)" stroke-width="1.5"/>
+<text x="229" y="326" text-anchor="middle" direction="rtl" font-size="12.5" font-family="var(--display)" font-weight="700" fill="var(--red)">منكَرٌ مردود</text>
+<path d="M448 302 C398 302 398 321 348 321" fill="none" stroke="var(--red)" stroke-width="1.6" opacity=".55"/>
+<text x="404" y="325" text-anchor="middle" direction="rtl" font-size="10.5" font-weight="600" fill="var(--red)">لم يُحتمَل</text>
+<line x1="16" y1="366" x2="964" y2="366" stroke="var(--line)" stroke-dasharray="4 4"/>
+<rect x="778" y="388" width="186" height="56" rx="11" fill="var(--bg)" stroke="var(--red)" stroke-width="1.5"/>
+<text x="871" y="414" text-anchor="middle" direction="rtl" font-size="14.5" font-family="var(--display)" font-weight="700" fill="var(--red)">ثقاتٌ اختلفوا</text>
+<text x="871" y="433" text-anchor="middle" direction="rtl" font-size="10.5" fill="var(--muted)">المجلس ٧</text>
+<line x1="871" y1="274" x2="871" y2="388" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="4 4" opacity=".4"/>
+<rect x="454" y="388" width="300" height="56" rx="11" fill="var(--paper)" stroke="var(--line)" stroke-width="1.5"/>
+<text x="604" y="421" text-anchor="middle" direction="rtl" font-size="12.5" font-weight="600" fill="var(--ink)">رجِّحْ: الثَّبْتُ · المُلازِمُ · الأكثرُ · سلوكُ المَجَرّة</text>
+<path d="M772 416 L760 416" stroke="var(--red)" stroke-width="1.6" marker-end="url(#arm)"/>
+<rect x="104" y="370" width="250" height="38" rx="19" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+<text x="229" y="394" text-anchor="middle" direction="rtl" font-size="12.5" font-family="var(--display)" font-weight="700" fill="var(--accent)">مقبولٌ للاحتجاج</text>
+<path d="M448 416 C398 416 398 389 348 389" fill="none" stroke="var(--accent)" stroke-width="1.6" opacity=".55"/>
+<text x="404" y="393" text-anchor="middle" direction="rtl" font-size="10.5" font-weight="600" fill="var(--accent)">المحفوظ</text>
+<rect x="104" y="416" width="250" height="38" rx="19" fill="var(--bg)" stroke="var(--red)" stroke-width="1.5"/>
+<text x="229" y="440" text-anchor="middle" direction="rtl" font-size="12.5" font-family="var(--display)" font-weight="700" fill="var(--red)">شاذٌّ أو مُعَلٌّ ← مردود</text>
+<path d="M448 416 C398 416 398 435 348 435" fill="none" stroke="var(--red)" stroke-width="1.6" opacity=".55"/>
+<text x="404" y="439" text-anchor="middle" direction="rtl" font-size="10.5" font-weight="600" fill="var(--red)">المرجوح</text>
+<text x="490" y="522" text-anchor="middle" direction="rtl" font-size="12.5" font-weight="600" fill="var(--muted)">والمعيارُ الواحدُ في الثلاثة: هل تبيَّن خطؤه؟ — «حديثُ الضعفاءِ قد يُحتاجُ إليه في وقتٍ، والمنكَرُ أبدًا منكَرٌ».</text>
+</svg></div>
+  <p class="hint">على الجوال اسحب الرسم أفقيًا.</p>
+
+  <div class="sec-head" style="margin-top:34px"><h3>كلُّ مجلسٍ في سؤالٍ وجواب</h3></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المجلس</th><th>السؤال الذي يجيب عنه، وخلاصتُه</th></tr></thead>
+      <tbody>
+        <tr><td>المجلس ١ — المقدمة</td><td><b>لماذا نرجع إلى كتب المتقدمين ولا نكتفي بالمختصرات؟</b><br>لأن المختصر يختزل ترجمةً في أربع صفحات إلى كلمةٍ واحدة، فيضيع حالُ الراوي. وأعيانُ المتقدمين تسعة، لكلٍّ تخصُّصُه، وأغلبُ كتبهم تطبيقٌ لا تنظير — ولذلك احتجنا الكتبَ الجامعة.</td></tr>
+        <tr><td>المجلس ٢ — أقسام الحديث</td><td><b>هل القبولُ يساوي الصحة؟</b><br>لا. فالمقبول قسمان: للاحتجاج وللاعتبار، والجملةُ الجامعة لهما بالحدِّ الأدنى: «ما لم يتبيَّن خطؤه». فالضعيفُ اليسير مقبولٌ للاعتبار، وحديثُ الثقة قد يُردُّ بشذوذٍ أو علّة.</td></tr>
+        <tr><td>المجلس ٣ — المقبول للاعتبار</td><td><b>ما فائدةُ الضعيف؟ وأين حدُّه؟</b><br>ثلاثُ فوائد: ترجيحُ حال الحديث، وطلبُ العاضد، والاستشهادُ به في الثواب والعقاب — لا تأسيسُ عبادةٍ به. والفاصلُ بينه وبين المردود: جمعُ الطرق، فـ«الحديثُ إذا لم تُجمَعْ طُرقُه لم يتبيَّنْ خطؤه».</td></tr>
+        <tr><td>المجلس ٤ — الحسن والمنكر والتفرّد</td><td><b>كيف عرفوا الخطأ في حديثٍ فردٍ رواتُه ثقات؟</b><br>بفصل القرائن: قرائنُ المتن والإسناد والراوي. وقاعدةُ الموازنات: كلما ارتفع المتنُ أو الإسنادُ لزم أن ترتفع صفاتُ الراوي ليُحتمَل تفرُّدُه. وتنتقل النكارةُ إلى الراوي إذا أكثر من الأفراد.</td></tr>
+        <tr><td>المجلس ٥ — توسيعُ المعاني</td><td><b>هل لكل مصطلحٍ حدٌّ واحد؟</b><br>لا؛ وهذه قاعدةُ الفصل كلِّه. فالمنكَرُ ستةُ معانٍ، والشاذُّ معنيان، والمضطربُ دلالتان، والمُسنَدُ معنيان. فلا تقل «اختلفوا في معناه»، بل: ينزل على صُوَرٍ متعددة.</td></tr>
+        <tr><td>المجلس ٦ — الغريب والتدليس</td><td><b>وما حكمُ عنعنة المدلِّس؟</b><br>الغريبُ مستحسَنٌ من جهةِ ندرتِه مستنكَرٌ من جهةِ تفرُّدِه، وحكمُه الضعفُ غالبًا. ورواية المدلِّس ليست مردودةً مطلقًا: «رَدٌّ قَبولٌ» — بعد الاختبار بخمس قرائن.</td></tr>
+        <tr><td>المجلس ٧ — اختلاف الثقات</td><td><b>أيُّ الثقتين يُقدَّم إذا اختلفا؟</b><br>هذا ميدانُ علم العلل. ويُرجَّح بالثَّبْت والمُلازِم والأكثر وسلوكِ المَجَرّة، ويُستثنى المُبرَّزُ فيَجبُر حفظُه نقصَ العدد. وزيادةُ المتن تُردُّ لهيبة الثقات إلا من مُبرَّز.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-head" style="margin-top:34px"><h3>أدواتُ الناقد</h3></div>
+  <div class="panel scroll"><svg viewBox="0 0 1020 404" width="100%" style="min-width:900px;display:block" role="img" aria-label="أدوات الناقد الثلاث: قرائن التفرّد، وطرق كشف التدليس، وقرائن الترجيح">
+<text x="1004" y="26" text-anchor="start" direction="rtl" font-size="13.5" font-family="var(--display)" font-weight="700" fill="var(--muted)">أدواتُ الناقد الثلاث</text>
+<text x="1004" y="46" text-anchor="start" direction="rtl" font-size="12" fill="var(--muted)">ما تمسكه بيدك حين تنظر في إسناد.</text>
+<rect x="687" y="72" width="317" height="290" rx="11" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
+<text x="845" y="102" text-anchor="middle" direction="rtl" font-size="15.5" font-family="var(--display)" font-weight="700" fill="var(--accent)">قرائنُ التفرّد</text>
+<text x="845" y="122" text-anchor="middle" direction="rtl" font-size="10.5" fill="var(--muted)">المجلس ٤</text>
+<rect x="699" y="138" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.1"/>
+<text x="845" y="157" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">①  قرائنُ المتن</text>
+<rect x="699" y="172" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.1"/>
+<text x="845" y="191" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">②  قرائنُ الإسناد</text>
+<rect x="699" y="206" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.1"/>
+<text x="845" y="225" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">③  قرائنُ الراوي</text>
+<text x="845" y="340" text-anchor="middle" direction="rtl" font-size="11" font-weight="600" fill="var(--accent)">وإذا اشتبكت الثلاثة فمنكَرٌ قطعًا</text>
+<rect x="351" y="72" width="317" height="290" rx="11" fill="var(--paper)" stroke="var(--gold)" stroke-width="1.5"/>
+<text x="510" y="102" text-anchor="middle" direction="rtl" font-size="15.5" font-family="var(--display)" font-weight="700" fill="var(--gold)">كشفُ التدليس</text>
+<text x="510" y="122" text-anchor="middle" direction="rtl" font-size="10.5" fill="var(--muted)">المجلس ٦</text>
+<rect x="363" y="138" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.1"/>
+<text x="510" y="157" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">①  نكارةٌ في المتن أو الإسناد</text>
+<rect x="363" y="172" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.1"/>
+<text x="510" y="191" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">②  حَصْرُ سماعه من شيخه</text>
+<rect x="363" y="206" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.1"/>
+<text x="510" y="225" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">③  إبرازُ الواسطة في طريقٍ آخر</text>
+<rect x="363" y="240" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.1"/>
+<text x="510" y="259" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">④  مخالفتُه للثقات</text>
+<rect x="363" y="274" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.1"/>
+<text x="510" y="293" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">⑤  إكثارُه من التدليس</text>
+<text x="510" y="340" text-anchor="middle" direction="rtl" font-size="11" font-weight="600" fill="var(--gold)">والحكم: ردٌّ وقبولٌ بعد الاختبار</text>
+<rect x="16" y="72" width="317" height="290" rx="11" fill="var(--paper)" stroke="var(--red)" stroke-width="1.5"/>
+<text x="175" y="102" text-anchor="middle" direction="rtl" font-size="15.5" font-family="var(--display)" font-weight="700" fill="var(--red)">قرائنُ الترجيح</text>
+<text x="175" y="122" text-anchor="middle" direction="rtl" font-size="10.5" fill="var(--muted)">المجلس ٧</text>
+<rect x="28" y="138" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--red)" stroke-width="1.1"/>
+<text x="175" y="157" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">①  تقديمُ الثَّبْت</text>
+<rect x="28" y="172" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--red)" stroke-width="1.1"/>
+<text x="175" y="191" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">②  تقديمُ المُلازِم</text>
+<rect x="28" y="206" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--red)" stroke-width="1.1"/>
+<text x="175" y="225" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">③  تقديمُ الأكثر</text>
+<rect x="28" y="240" width="293" height="28" rx="14" fill="var(--bg)" stroke="var(--red)" stroke-width="1.1"/>
+<text x="175" y="259" text-anchor="middle" direction="rtl" font-size="11.5" fill="var(--ink)">④  سلوكُ المَجَرّة</text>
+<text x="175" y="340" text-anchor="middle" direction="rtl" font-size="11" font-weight="600" fill="var(--red)">ويُستثنى المُبرَّزُ فيَجبُر حفظُه نقصَ العدد</text>
+<text x="510" y="390" text-anchor="middle" direction="rtl" font-size="12.5" font-weight="600" fill="var(--muted)">وفوقها كلِّها: حفظُ مراتب الثقات، وإدمانُ النظر في تطبيقات الحفّاظ — فالنظريُّ وحده لا يكفي.</text>
+</svg></div>
+  <p class="hint">على الجوال اسحب الرسم أفقيًا.</p>
+
+  <div class="note" style="margin-top:28px">
+    <span class="cal-t">أخطاءٌ شائعةٌ تصحّحها هذه المادة</span>
+    <ul>
+      <li>الاكتفاءُ بـ«التقريب» في الحكم على الراوي، ثم إنزالُ كلِّ لفظٍ على درجةٍ ثابتة.</li>
+      <li>الظنُّ أن «مقبول» تساوي «صحيح»، وأن «ضعيف» تساوي «مردود».</li>
+      <li>حصرُ المصطلح في تعريفٍ حدِّيٍّ واحد، ثم القولُ «اختلفوا في معناه».</li>
+      <li>التقويةُ الآليّة: «يوجد إسنادٌ آخر، إذن الحديث صحيح» — بلا سَبْرٍ ولا نظر.</li>
+      <li>تأسيسُ أصلِ عبادةٍ بحديثٍ ضعيفٍ بحجّة فضائل الأعمال.</li>
+      <li>ردُّ رواية المدلِّس مطلقًا ما لم يصرِّح بالسماع.</li>
+      <li>نسبةُ قبولِ زيادة الثقة مطلقًا إلى البخاري — وقد ردَّها ابنُ رجب.</li>
+    </ul>
+  </div>
+
+  <div class="sum" style="margin-top:16px">
+    <span class="cal-t">خلاصةُ الخلاصة</span>
+    <p>اجمعْ طُرقَ الحديث، ثم انظرْ: راوٍ ضعيفٌ لم يتبيَّن خطؤه فهو مقبولٌ للاعتبار؛ وثقةٌ تفرَّد فوازِنْ قرائنَ المتن والإسناد والراوي؛ وثقاتٌ اختلفوا فرجِّحْ بالثَّبْت والمُلازِم والأكثر وسلوكِ المَجَرّة. وفوق ذلك كلِّه: احفظي مراتبَ الثقات، وأدمني النظرَ في تطبيقات الحفّاظ — فالكلامُ النظريُّ وحده لا يصنع ناقدًا.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على المادة</h2><span class="muted">15 سؤالًا تعبُر المجالس السبعة</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين المجالس لا تختبر كلَّ مجلسٍ وحده؛ فاختر إجابتك ليظهر الشرح. ولكل درسٍ أسئلتُه الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">جمعتَ طرقَ حديثٍ ضعيفٍ بسوء حفظ راويه، فلم تجد فيه مخالفةً ولا ما يدلُّ على خطئه. ما حكمه؟</p>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">مردودٌ لا يُنتفَع به، لأن راويه ضعيف.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">حسنٌ لذاته، لأن جمع الطرق جبَر ضعفَه.</span></label>
+    <label class="opt ok"><input type="radio" name="gq1"><span class="t">مقبولٌ للاعتبار؛ فقد تبيَّن ضعفُه ولم يتبيَّن خطؤه.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">صحيحٌ لغيره، لأن انتفاء المخالفة يرفعه إلى الصحة.</span></label>
+    <p class="exp">وهذا هو موضعه في الدائرة الكبرى لا الصغرى (المجلس ٢). ولاحظ أن انتفاء المخالفة لا يرفعه وحده إلى الصحيح لغيره؛ فالارتقاء يحتاج عاضدًا مع سَبْرٍ ودقّة، لا عدًّا آليًّا للطرق (المجلس ٣).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الجامع بين «لا تكتفِ بالتقريب» في المجلس الأول و«لا تحصر المصطلح بحدٍّ» في الخامس؟</p>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما إنكارٌ على المتأخرين أصلَ تأليفهم في المصطلح.</span></label>
+    <label class="opt ok"><input type="radio" name="gq2"><span class="t">كلاهما إنكارٌ على الاختزال: اختزالِ حالِ الراوي في كلمة، واختزالِ المصطلح في حدٍّ واحد.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما خاصٌّ بباب الجرح والتعديل دون غيره.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما يقرّر أن كتب المتقدمين فُقدت فلا سبيل إليها.</span></label>
+    <p class="exp">فالمرضُ واحدٌ في البابين: قالَبٌ جاهزٌ يُنزَّل على واقعٍ أوسع منه. ولذلك كان علاجُهما واحدًا أيضًا: الرجوعُ إلى تطبيقات الحفّاظ أنفسهم لا إلى الحدود المختصرة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">حديثٌ إسنادُه متصلٌ بالتحديث الصريح، ورواتُه كلُّهم ثقاتٌ وصدوقون، ولا مخالفةَ فيه ولا إشكالَ في متنه — أيمكن أن يكون منكرًا؟</p>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">لا؛ فاجتماعُ هذه الشروط يوجب الصحة.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">لا؛ إلا أن يكون أحدُ رواته مدلِّسًا قد عنعن.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">نعم؛ لكن بشرط أن يخالف ظاهرَ القرآن.</span></label>
+    <label class="opt ok"><input type="radio" name="gq3"><span class="t">نعم؛ إذا لم تجتمع في المتفرِّد الصفاتُ التي تؤهِّله للتفرّد بمثل هذه الرواية.</span></label>
+    <p class="exp">وهذا هو بابُ التفرّد الذي عقد له المجلسُ الرابع فصلَ القرائن. فالفردُ أصعبُ من المتعدّد لأنه لا أصلَ تقارنه به، فيُنظَر في قرائن المتن والإسناد والراوي.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">اختلف ثقتان: في أحد الجانبين عددٌ أكثر، وفي الآخر مالكٌ منفردًا. ما الصواب؟</p>
+    <label class="opt ok"><input type="radio" name="gq4"><span class="t">نَتَّئِد؛ فحفظُ المُبرَّز يَجبُر نقصَ مخالفته للأكثر، فلا نردُّ قولَه لمجرّد العدد.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">يُقدَّم الأكثرُ حتمًا، فالعددُ قرينةٌ قاطعة.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">يُحكم بالاضطراب لتعذُّر الترجيح.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">يُرجَّح الوجهان معًا في كل اختلافٍ بين ثقتين.</span></label>
+    <p class="exp">فقرينةُ «الأكثر على الأقل» لها استثناؤها: إذا كان المخالفُ مُبرَّزًا متقدِّمًا جدًّا في الحفظ كمالكٍ وشعبة وأحمد (المجلس ٧). والقرائنُ تُوازَن ولا تُطبَّق آليًّا.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">عنعن الأعمشُ حديثًا في متنه نكارة، ورواةُ إسناده ثقات. على مَن يُحمَل الخطأ؟</p>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">على الأعمش نفسِه، لأنه مدلِّسٌ لم يصرِّح بالسماع.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">على الصحابيِّ راوي الحديث.</span></label>
+    <label class="opt ok"><input type="radio" name="gq5"><span class="t">على أضعف حلقةٍ في السلسلة، وهي مَن أسقطه الأعمشُ ولم يُبيِّنه.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">يُتوقَّف فلا يُحمَل على أحد.</span></label>
+    <p class="exp">فحقيقةُ التدليس أنه سمعه من آخرَ ولم يُبيِّن مَن هو؛ وإنما عرفنا أن هناك مَن أُسقِط لأنه اجتمع أمران: مدلِّسٌ ونكارة (المجلس ٦).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">«سكت عنه أبو داود» و«حسَّنه الترمذي» — ماذا يفيدان؟</p>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">أن الحديث صحيحٌ على شرط الشيخين.</span></label>
+    <label class="opt ok"><input type="radio" name="gq6"><span class="t">أنه مقبولٌ بالحدِّ الأدنى — احتجاجًا أو اعتبارًا — لا أنه «حسنٌ» بالاصطلاح المتأخر.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">أنهما توقَّفا فيه فلم يظهر لهما حكمُه.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">أن ضعفه شديدٌ وأنه في حكم المردود.</span></label>
+    <p class="exp">فـ«صالح» عند أبي داود تشمل الصالحَ للاحتجاج والصالحَ للاعتبار؛ وتحسينُ الترمذي قريبٌ من مراد أحمد بالضعيف اليسير كما بيَّن ابنُ رجب (المجلس ٢).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا كان حديث «مِن حُسنِ إسلامِ المرء» مثالًا جامعًا؟</p>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">لأنه في الأربعين النووية فاشتُهر.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">لأن في إسناده الموصول راويًا متروكًا.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">لأن النوويَّ خالف الأئمة فيه وحده.</span></label>
+    <label class="opt ok"><input type="radio" name="gq7"><span class="t">لأنه يجسِّد قاعدة ابن المديني: لولا جمعُ الطرق لظهر الموصولُ صحيحًا.</span></label>
+    <p class="exp">فالموصولُ تفرَّد به قُرّةُ بن عبد الرحمن (ومن طريقه الأوزاعيُّ) فخالف مالكًا وأصحابَ الزهريِّ الذين أرسلوه عن عليِّ بن الحسين؛ فحكمُه ضعيفٌ مرسل، وهو في أعلى درجات المقبول للاعتبار (المجلس ٣).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الفرق بين «قرائن التفرّد» و«قرائن الترجيح»؟</p>
+    <label class="opt ok"><input type="radio" name="gq8"><span class="t">الأولى حين ينفرد الراوي فلا أصلَ تقارنه به، والثانية حين يختلف الثقاتُ فيتقابل وجهان.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">الأولى في المتن والثانية في الإسناد.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">الأولى عند المتقدمين والثانية عند المتأخرين.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">لا فرق بينهما، وإنما هو اختلافُ عبارة.</span></label>
+    <p class="exp">فالأولى ثلاث: المتنُ والإسنادُ والراوي (المجلس ٤). والثانية أربع: الثَّبْتُ والمُلازِمُ والأكثرُ وسلوكُ المَجَرّة (المجلس ٧). واختلافُ الموقف هو الذي غيَّر الأداة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">أطلق أبو حاتم «المضطرِب» على حديثٍ ليس فيه وجوهٌ مختلفة من الرواية. ماذا أراد؟</p>
+    <label class="opt"><input type="radio" name="gq9"><span class="t">أراد أن له أربعة وجوهٍ لم يذكرها.</span></label>
+    <label class="opt"><input type="radio" name="gq9"><span class="t">أراد أنه مرسلٌ منقطع.</span></label>
+    <label class="opt ok"><input type="radio" name="gq9"><span class="t">أراد الخطأ المحض؛ فهذه دلالةٌ ثانية للمضطرب غير الأصل فيه.</span></label>
+    <label class="opt"><input type="radio" name="gq9"><span class="t">أراد أنه مرادفٌ للشاذِّ عند المتأخرين.</span></label>
+    <p class="exp">والأصلُ في المضطرب أن يظهر اختلالٌ وتعدُّدٌ في وجوه الرواية، لكنّ اللفظ لا يُحصَر في ذلك — وهذه هي قاعدة المجلس الخامس بعينها.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">أين تجد حكم البخاريِّ على حديثٍ لم يُخرِجه في «صحيحه»؟</p>
+    <label class="opt"><input type="radio" name="gq10"><span class="t">في «تقريب التهذيب» و«تهذيب التهذيب».</span></label>
+    <label class="opt ok"><input type="radio" name="gq10"><span class="t">في «التاريخ الكبير»، و«جامع الترمذي»، و«العلل الكبير» للترمذي.</span></label>
+    <label class="opt"><input type="radio" name="gq10"><span class="t">في «الكفاية» للخطيب البغدادي.</span></label>
+    <label class="opt"><input type="radio" name="gq10"><span class="t">في «شرح علل الترمذي» لابن رجب.</span></label>
+    <p class="exp">فكتبُ التهذيب للرجال لا للأحكام على الأحاديث؛ و«الكفاية» و«شرح العلل» من الكتب الجامعة المتأخرة لا من مصادر أحكامه (المجلس ١).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">حديثٌ مقبولٌ للاعتبار، أردتَ أن تذكره. ما أدقُّ صيغة؟</p>
+    <label class="opt"><input type="radio" name="gq11"><span class="t">«قال النبيُّ ﷺ»، لأنه مقبول.</span></label>
+    <label class="opt"><input type="radio" name="gq11"><span class="t">لا يجوز ذكرُه بحالٍ لأنه ضعيف.</span></label>
+    <label class="opt ok"><input type="radio" name="gq11"><span class="t">«وقد رُوِيَ عن النبي ﷺ…»، لأن «رُوي» لا تفيد الجزم بالثبوت.</span></label>
+    <label class="opt"><input type="radio" name="gq11"><span class="t">«قال النبيُّ ﷺ» في الفضائل، و«رُوي» في الأحكام.</span></label>
+    <p class="exp">وهي صيغةُ التمريض التي يستعملها البخاريُّ لدقّته فيما فيه إشكال. ولاحظ أن القبول للاعتبار لا يُجيز تأسيسَ حكمٍ ولا عبادةٍ به، وإنما الاستشهاد (المجلس ٣).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">زيادةٌ في متنٍ يترتَّب عليها حكم، لم يذكرها جملةُ الثقات، وزادها مالك. ما الحكم؟</p>
+    <label class="opt"><input type="radio" name="gq12"><span class="t">تُردُّ لهيبة الثقات، ولا يُستثنى أحد.</span></label>
+    <label class="opt ok"><input type="radio" name="gq12"><span class="t">يقرُب الكلامُ في اعتمادها، لأن الزائدَ مُبرَّزٌ متقدِّمٌ في الحفظ.</span></label>
+    <label class="opt"><input type="radio" name="gq12"><span class="t">تُقبل مطلقًا؛ فزيادةُ الثقة مقبولةٌ عند البخاري.</span></label>
+    <label class="opt"><input type="radio" name="gq12"><span class="t">يُتوقَّف فيها حتى تأتي من طريق صحابيٍّ آخر.</span></label>
+    <p class="exp">«لكنْ إذا مُبرَّزٌ قد زادَها … فيقرُبُ الكلامُ في اعتمادِها». ومثالُها زيادةُ مالك «من المسلمين» في زكاة الفطر وهي في البخاري. وأما نسبةُ قبول زيادة الثقة مطلقًا إلى البخاري فخطأٌ ردَّه ابنُ رجب (المجلس ٧).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">قال شعبةُ عن أحاديث عبد الملك بن أبي سليمان: «من حُسنِها فَرَرْتُ». ما وجهُه؟</p>
+    <label class="opt"><input type="radio" name="gq13"><span class="t">تركها لحسن معناها خشيةَ أن يُفتَن بها الناس.</span></label>
+    <label class="opt"><input type="radio" name="gq13"><span class="t">تركها لأن عبد الملك ضعيفٌ متروك.</span></label>
+    <label class="opt"><input type="radio" name="gq13"><span class="t">كان يرويها ثم تركها لمّا تبيَّن أنه خالف الثقات.</span></label>
+    <label class="opt ok"><input type="radio" name="gq13"><span class="t">أنها غرائبُ تفرَّد بها وليست من المشاهير المتداولة، والغرابةُ قرينةُ استنكار.</span></label>
+    <p class="exp">فحُسنُها هو غرابتُها نفسُها — وهذا يكشف حكم الغريب: مستحسَنٌ من جهةِ ندرتِه، مستنكَرٌ من جهةِ تفرُّدِه، وحكمُه الضعفُ غالبًا. ولذلك افتخر أبو داود بأن أحاديث كتابه «مشاهير» (المجلس ٦).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">روى ثقتان حديثًا، فخالف أحدُهما مَن هو أوثقُ منه. أين يقع حديثُ المخالف؟</p>
+    <label class="opt ok"><input type="radio" name="gq14"><span class="t">في المردود، بالشذوذ أو العلّة.</span></label>
+    <label class="opt"><input type="radio" name="gq14"><span class="t">في المقبول للاحتجاج، لأن راويه ثقة.</span></label>
+    <label class="opt"><input type="radio" name="gq14"><span class="t">في المقبول للاعتبار دائمًا، لأن الثقة لا يُردُّ حديثُه.</span></label>
+    <label class="opt"><input type="radio" name="gq14"><span class="t">لا يدخل الثقاتُ في المردود أصلًا.</span></label>
+    <p class="exp">فهذه الأقسام متعلّقةٌ بأحوال الرواة وبالإسناد معًا، لا بأحدهما وحده؛ ولذلك كان للثقات مدخلٌ في المردود (المجلس ٢).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما السؤال الواحد الذي يفصل في أبواب المادة كلِّها؟</p>
+    <label class="opt"><input type="radio" name="gq15"><span class="t">هل الراوي ثقةٌ أم ضعيف؟</span></label>
+    <label class="opt"><input type="radio" name="gq15"><span class="t">هل أخرجه الشيخان أم لا؟</span></label>
+    <label class="opt ok"><input type="radio" name="gq15"><span class="t">هل تبيَّن خطؤه أم لا؟</span></label>
+    <label class="opt"><input type="radio" name="gq15"><span class="t">هل له متابعٌ أو شاهد؟</span></label>
+    <p class="exp">وهو المعيار الفاصل بين المقبول للاعتبار والمردود، وهو نفسه ما يُسأل عند التفرّد وعند اختلاف الثقات. وأما وثاقةُ الراوي ووجودُ المتابع فقرينتان تُعين على الجواب، لا أنهما الجوابُ نفسه — وعبارةُ أحمد تجمعه: «حديثُ الضعفاءِ قد يُحتاجُ إليه في وقتٍ، والمنكَرُ أبدًا منكَرٌ».</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
 </section>
 
 <section>
