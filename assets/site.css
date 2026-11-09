@@ -111,3 +111,7 @@ a.tile:hover{transform:translateY(-2px);border-color:var(--accent)}
 .src{font-size:.85rem;color:var(--muted)}
 .muted{color:var(--muted)}
 .src a{color:var(--accent)}
+
+/* tile counter: a number plus the unit it counts, so the figure is never ambiguous */
+.tile .cnt{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.tile .cnt .u{font-family:var(--body);font-size:.92rem;font-weight:500;color:var(--muted);line-height:1}
