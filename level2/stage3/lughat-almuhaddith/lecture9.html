@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الطعن في المروي: الاعتبار والتفرد والاختلاف · شرح لغة المحدث</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+
+/* ---- additions for نظم المعين study sheets ---- */
+/* green "summary" callout and violet "question" callout, matching note/warn */
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:6px}
+.ask{background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .warn .cal-t{color:var(--red)} .sum .cal-t{color:var(--accent)}
+.ask .cal-t{color:var(--gold)}
+
+/* verses of the نظم: two hemistichs separated by a dotted gap */
+.verse{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.verse p{font-family:var(--display);font-size:1.08rem;line-height:2;color:var(--ink)}
+.verse .sp{color:var(--gold);padding:0 8px}
+.verse cite{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:6px}
+
+/* diagrams keep a fixed light surface so the fixed SVG palette stays legible in both themes */
+.dia{background:#FFFFFF;border:1px solid #D5DBE3;border-radius:10px;padding:14px 10px 8px;overflow-x:auto}
+.dia .cap{font-family:var(--display);color:#0d3b66;font-size:.98rem;text-align:center;margin-bottom:6px;display:block}
+.dia svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* key term + book title inline marks */
+.kw{color:var(--gold);font-weight:600}
+.bk{color:var(--accent);font-weight:600}
+
+/* definition rows (imam cards / labelled fields) */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;align-items:start}
+.row .lb{font-size:.82rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 10px;text-align:center}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:4px}.row .lb{justify-self:start}}
+.card-h{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.card-h .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1}
+.card-h b{font-family:var(--display);font-size:1.15rem}
+
+.mm.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mm.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.mm.four,.mm.two{grid-template-columns:1fr}}
+
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp,.mcq:has(input) .exp{display:block}.quiz .rst{display:none}}
+
+/* ---- additions for لغة المحدث study sheets ---- */
+/* isnad chain: narrators as pills joined by arrows; .x = dropped narrator, .on = highlighted */
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.9rem}
+.chain .nd{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 10px;line-height:1.7}
+.chain .nd.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.chain .nd.x{border-color:var(--red);background:var(--red-soft);color:var(--red);text-decoration:line-through}
+.chain .nd.g{border-color:var(--gold);background:var(--gold-soft);color:var(--gold);font-weight:600}
+.chain .ar{color:var(--muted)}
+.chain .lb{font-size:.8rem;font-weight:600;color:var(--muted);min-width:7em}
+.chains{display:flex;flex-direction:column;gap:10px}
+/* two/three column comparison boxes */
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cmp.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cmp > div{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:0 0 10px 10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cmp > div.g{border-top-color:var(--gold)} .cmp > div.r{border-top-color:var(--red)}
+.cmp h3{font-size:1rem}
+@media (max-width:700px){.cmp,.cmp.three{grid-template-columns:1fr}}
+</style>
+</head>
+<body style="margin:0">
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">شرح لغة المحدث</a><span style="color:var(--muted)">‹</span><span aria-current="page" style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">الدرس ٩</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture8.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture10.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">شرح لغة المحدِّث · الشيخ طارق بن عوض الله · الدرس التاسع</div>
+  <h1>الطعن في المروي: الاعتبار والتفرد والاختلاف</h1>
+  <p class="muted">ملخص مذاكرة: الخريطة الذهنية أولًا، ثم أبيات المنظومة وتفصيلها بالرسوم والجداول، ثم أسئلة مراجعة في الآخر.</p>
+</header>
+
+<!-- ===== mind map ===== -->
+<section>
+  <h2>الخريطة الذهنية للدرس <span class="tag">ابدأ من هنا</span></h2>
+  <div class="mm">
+    <div class="mm-root">الطعن في المروي: كيف يُكتشف الخطأ؟</div>
+    <div class="mm-branch">
+      <h3>الاعتبار</h3>
+      <ul class="tree">
+        <li><b>سبر</b> رواية الراوي بكل ما في الباب</li>
+        <li>متابعة تامة · قاصرة · شاهد · فرد</li>
+        <li><b>غايته</b>: معرفة المحفوظ من غيره</li>
+        <li><b>ثبوت المتابعة</b> بثلاثة شروط</li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>التفرّد</h3>
+      <ul class="tree">
+        <li>مظنّة الخطأ، ويُعلّ <b>بقرينة</b></li>
+        <li><b>القرائن</b>: طبقة نازلة · دون الحفاظ · مُقلّ · عن مكثر · مستنكر · مما يشتهر · اختلاف</li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>الاختلاف</h3>
+      <ul class="tree">
+        <li>راوٍ واحد/عدد · مخرجٌ واحد/متعدد</li>
+        <li><b>الاضطراب</b> أكثره مع اتحاد المخرج</li>
+        <li><b>مختلف الحديث</b>: جمع ← نسخ ← ترجيح ← توقف</li>
+        <li><b>المخرج</b> والقرائن</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 1 ===== -->
+<section>
+  <h2>أولًا: الطعن في المروي (علل الأحاديث)</h2>
+  <div class="verse">
+    <p>وَ«الطَّعْنُ فِي الْمَرْوِي» بِشَيْئَيْنِ، هُمَا <span class="sp">…</span> شُذُوذٌ أَوْ عِلَّةٌ أَوْ كِلَاهُمَا</p>
+    <p>فَبِالتَّفَرُّدِ وَبِالْمُخَالَفَهْ <span class="sp">…</span> مَعْ قَرَائِنَ، فَأَهْلُ الْمَعْرِفَهْ</p>
+    <p>يَرَوْنَ -أَيْ: مَتْنَهُ أَوْ إِسْنَادَهْ- <span class="sp">…</span> قَدِ اعْتَرَاهُ نَقْصٌ اَوْ زِيَادَهْ</p>
+  </div>
+  <p><b>الطعن في المروي:</b> هو في روايةٍ سالمةٍ من الطعن في رواتها؛ إذ إن الرواة ثقات والرواية من حيث الظاهر صحيحة، ويرى العلماء أن هذه الرواية قد اعتراها خطأ، فقد أخطأ فيها الراوي الثقة. فـ<b>الحديث المعلول هو حديثٌ خطأ، وإن كان راويه سالمًا من الضعف القادح.</b></p>
+  <div class="note">
+    <span class="cal-t">أدقّ مباحث الحديث</span>
+    <p>مبحث الطعن في الرواية يكون لأحاديث رواتها ثقات أكثر مما هو لأحاديث رواتها غير ثقات — وهذا هو مبحث علم العلل (أحاديث ظاهرها الصحة ورواتها ثقات). ولم يتكلم فيه إلا قليلون من أئمة الحفاظ، أمثال: شعبة، والقطان، وابن حنبل، والبخاري.</p>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 900 230" width="100%" style="min-width:820px;display:block" role="img" aria-label="موجبات الطعن في المروي: التفرد والمخالفة، كل منهما مصحوب بقرينة دالة على الخطأ ينتج علة؛ والشذوذ يدرك بالتفرد غير المحتمل أو بالمخالفة، والعلة شذوذ وزيادة تدرك بالمخالفة؛ وإذا اجتمعا لا يتولد ثالث">
+<rect x="620" y="30" width="220" height="50" rx="10" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="730" y="61" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="fill:var(--gold)">التفرّد</text>
+<rect x="620" y="120" width="220" height="50" rx="10" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="730" y="151" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="fill:var(--red)">المخالفة</text>
+<text x="730" y="200" text-anchor="middle" direction="rtl" font-size="12" style="fill:var(--muted)">«يُدرك الخلل في الرواية بأمرين»</text>
+<path d="M620 55 C570 55 560 100 510 100 M620 145 C570 145 560 100 510 100" fill="none" style="stroke:var(--muted)" stroke-width="1.8"/>
+<rect x="320" y="72" width="190" height="56" rx="28" style="fill:var(--ink)"/>
+<text x="415" y="96" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--bg)">+ قرينةٌ دالّة</text>
+<text x="415" y="116" text-anchor="middle" direction="rtl" font-size="12" style="fill:var(--bg)">على الخطأ</text>
+<path d="M320 100 L270 100" style="stroke:var(--muted)" stroke-width="1.8"/>
+<rect x="60" y="62" width="210" height="76" rx="10" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="165" y="92" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="fill:var(--accent)">شذوذٌ أو علّة</text>
+<text x="165" y="116" text-anchor="middle" direction="rtl" font-size="11.5" style="fill:var(--ink)">وإن لم تصحبهما قرينة فلا عِلّة</text>
+<text x="400" y="172" text-anchor="middle" direction="rtl" font-size="12" style="fill:var(--ink)">العلة: شذوذٌ وزيادة، وتُدرك بالمخالفة</text>
+<text x="400" y="194" text-anchor="middle" direction="rtl" font-size="12" style="fill:var(--ink)">الشذوذ: بالمخالفة أحيانًا، وبالتفرد غير المحتمل</text>
+<text x="400" y="216" text-anchor="middle" direction="rtl" font-size="12" font-weight="600" style="fill:var(--muted)">وإذا اجتمعا في حديثٍ لا يتولد ثالث، بل يكون الحديث معلولًا</text>
+</svg></div>
+  <p class="muted">وقد يكون كلٌّ من التفرد والمخالفة كافيين للدلالة على وقوع الخلل والحكم بالعلة، وربما لا يكون هذا كافيًا فيحتاج الناقد إلى قرائن؛ إذا انضمت تنبّه العارف بهذا الشأن على وقوع الخلل فيغلب على ظنه فيحكم به، أو يتردد فيتوقف فيه.</p>
+</section>
+
+<!-- ===== 2 ===== -->
+<section>
+  <h2>ثانيًا: الاعتبار والمتابعة والشاهد</h2>
+  <div class="verse">
+    <p>وَيَعْرِفُونَ كَوْنَهُ تَفَرَّدَا <span class="sp">…</span> وَكَوْنَهُ خُولِفَ فِيمَا أَسْنَدَا</p>
+    <p>بِـ«الِاعْتِبَارِ»، وَهْوَ: سَبْرُ مَا رَوَى <span class="sp">…</span> بِعَرْضِهِ بِكُلِّ مَا الْبَابُ حَوَى</p>
+    <p>فَإِنْ يَكُنْ غَيْرُهُ يَرْوِيهِ مَعَهْ <span class="sp">…</span> أَوْ شَيْخَهُ أَوْ فَوْقُ فَـ«الْمُتَابَعَهْ»</p>
+    <p>وَإِنْ يَكُنْ مَتْنٌ بِمَعْنَاهُ وَرَدْ <span class="sp">…</span> فَـ«شَاهِدٌ»، وَفَاقِدُ ذَيْنِ «انْفَرَدْ»</p>
+  </div>
+  <p><b>الاعتبار عند أهل الحديث:</b> هيئة التوصّل إلى معرفة اتفاق الرواة أو اختلافهم أو تفرّد بعضهم؛ وهو سبر رواية الراوي بأن يأتي إلى روايته فيعتبرها بما في الباب من روايات غيره من الرواة ليعرف:</p>
+  <div class="panel scroll"><svg viewBox="0 0 900 290" width="100%" style="min-width:860px;display:block" role="img" aria-label="مخطط الاعتبار: هل شاركه غيره فرواه عن شيخه؟ إن لم يكن فهل تابع أحد شيخه فمن فوقه؟ وهذه المتابعة؛ إن لم يكن فهل أتى بمعناه حديث آخر؟ وهذا الشاهد؛ إن لم يكن فالحديث فرد">
+<defs><marker id="ar9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--muted)"/></marker></defs>
+<g direction="rtl" text-anchor="middle">
+<rect x="560" y="16" width="310" height="46" rx="10" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="715" y="44" font-size="13.5" style="fill:var(--ink)">هل شاركه غيره فرواه عن شيخه؟</text>
+<rect x="560" y="86" width="310" height="46" rx="10" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="715" y="114" font-size="13.5" style="fill:var(--ink)">هل تابع أحدٌ شيخَه فرواه عمّن روى عنه؟</text>
+<rect x="560" y="156" width="310" height="46" rx="10" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="715" y="184" font-size="13.5" style="fill:var(--ink)">هل أتى بمعناه حديثٌ آخر في الباب؟</text>
+<rect x="610" y="226" width="210" height="46" rx="23" style="fill:var(--red)"/>
+<text x="715" y="254" font-size="14.5" font-weight="700" fill="#fff">فالحديث «فرد»</text>
+<path d="M715 62 L715 86" style="stroke:var(--muted)" stroke-width="1.5" marker-end="url(#ar9)"/>
+<path d="M715 132 L715 156" style="stroke:var(--muted)" stroke-width="1.5" marker-end="url(#ar9)"/>
+<path d="M715 202 L715 226" style="stroke:var(--muted)" stroke-width="1.5" marker-end="url(#ar9)"/>
+<text x="740" y="78" font-size="11" style="fill:var(--red)">لا</text><text x="740" y="148" font-size="11" style="fill:var(--red)">لا</text><text x="740" y="218" font-size="11" style="fill:var(--red)">لا</text>
+<path d="M560 39 L440 39" style="stroke:var(--accent)" stroke-width="1.8" marker-end="url(#ar9)"/>
+<path d="M560 109 L440 109" style="stroke:var(--accent)" stroke-width="1.8" marker-end="url(#ar9)"/>
+<path d="M560 179 L440 179" style="stroke:var(--gold)" stroke-width="1.8" marker-end="url(#ar9)"/>
+<text x="500" y="32" font-size="11" style="fill:var(--accent)">نعم</text><text x="500" y="102" font-size="11" style="fill:var(--accent)">نعم</text><text x="500" y="172" font-size="11" style="fill:var(--gold)">نعم</text>
+<rect x="220" y="16" width="216" height="46" rx="23" style="fill:var(--accent)"/>
+<text x="328" y="44" font-size="14" font-weight="700" fill="#fff">متابعةٌ تامة</text>
+<rect x="220" y="86" width="216" height="46" rx="23" style="fill:var(--accent)" opacity=".75"/>
+<text x="328" y="114" font-size="14" font-weight="700" fill="#fff">متابعةٌ قاصرة</text>
+<text x="328" y="148" font-size="11" style="fill:var(--muted)">وهكذا إلى آخر الإسناد</text>
+<rect x="220" y="156" width="216" height="46" rx="23" style="fill:var(--gold)"/>
+<text x="328" y="184" font-size="14" font-weight="700" fill="#fff">شاهد</text>
+<text x="110" y="40" font-size="11.5" style="fill:var(--muted)">للراوي نفسه</text>
+<text x="110" y="110" font-size="11.5" style="fill:var(--muted)">لشيخه فمن فوقه</text>
+<text x="110" y="172" font-size="11.5" style="fill:var(--muted)">من رواية صحابيٍّ آخر</text>
+<text x="110" y="190" font-size="11.5" style="fill:var(--muted)">باللفظ أو بالمعنى</text>
+</g>
+</svg></div>
+  <div class="panel scroll"><svg viewBox="0 0 900 250" width="100%" style="min-width:860px;display:block" role="img" aria-label="تمثيل المتابعة التامة والقاصرة والشاهد على إسناد: المتابع التام يشارك الراوي في شيخه، والقاصر يتابع شيخه أو من فوقه عن نفس الصحابي، والشاهد من رواية صحابي آخر">
+<g direction="rtl" text-anchor="middle" font-size="12.5">
+<text x="884" y="22" text-anchor="start" font-size="13.5" font-weight="700" style="fill:var(--muted)">على إسنادٍ واحد: أين تقع كل متابعة؟</text>
+<rect x="760" y="100" width="110" height="40" rx="8" style="fill:var(--accent-soft);stroke:var(--accent)"/><text x="815" y="125" font-weight="700" style="fill:var(--accent)">الراوي</text>
+<rect x="610" y="100" width="110" height="40" rx="8" style="fill:var(--paper);stroke:var(--line)"/><text x="665" y="125" style="fill:var(--ink)">شيخه</text>
+<rect x="460" y="100" width="110" height="40" rx="8" style="fill:var(--paper);stroke:var(--line)"/><text x="515" y="125" style="fill:var(--ink)">شيخ شيخه</text>
+<rect x="310" y="100" width="110" height="40" rx="8" style="fill:var(--paper);stroke:var(--line)"/><text x="365" y="125" style="fill:var(--ink)">الصحابي (أ)</text>
+<rect x="160" y="100" width="110" height="40" rx="8" style="fill:var(--ink)"/><text x="215" y="125" font-weight="700" style="fill:var(--bg)">النبي ﷺ</text>
+<path d="M760 120 L720 120 M610 120 L570 120 M460 120 L420 120 M310 120 L270 120" style="stroke:var(--muted)" stroke-width="1.5"/>
+<rect x="760" y="30" width="110" height="36" rx="18" style="fill:var(--accent)"/><text x="815" y="53" font-weight="700" fill="#fff">متابعٌ تام</text>
+<path d="M800 66 C760 86 700 86 665 100" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-dasharray="5 4"/>
+<rect x="580" y="30" width="140" height="36" rx="18" style="fill:var(--accent)" opacity=".75"/><text x="650" y="53" font-weight="700" fill="#fff">متابعٌ قاصر</text>
+<path d="M630 66 C600 86 540 86 515 100" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-dasharray="5 4"/>
+<rect x="310" y="180" width="110" height="40" rx="8" style="fill:var(--gold-soft);stroke:var(--gold)"/><text x="365" y="205" style="fill:var(--gold)">الصحابي (ب)</text>
+<path d="M310 200 C280 200 250 160 215 140" fill="none" style="stroke:var(--gold)" stroke-width="1.6"/>
+<rect x="440" y="180" width="110" height="40" rx="18" style="fill:var(--gold)"/><text x="495" y="205" font-weight="700" fill="#fff">شاهد</text>
+</g>
+</svg></div>
+  <div class="ben">
+    <div class="card"><span class="n">١</span><div><strong>المتابعة التامة (للراوي نفسه)</strong><span>مشاركة راوٍ لآخر في الرواية عن شيخه، وتكون مختصةً بالرواية عن نفس الصحابي، ويُستفاد منها التقوية.</span></div></div>
+    <div class="card"><span class="n">٢</span><div><strong>المتابعة القاصرة (لشيخه فمن فوقه)</strong><span>أن يتابع راوٍ شيخَ الراوي الآخر في الرواية عن نفس الصحابي، ويُستفاد منها التقوية.</span></div></div>
+    <div class="card"><span class="n">٣</span><div><strong>الشاهد</strong><span>يكون من رواية صحابيٍّ آخر بالمعنى، أو باللفظ كذلك. وقد تُطلق المتابعة على الشاهد والعكس.</span></div></div>
+    <div class="card"><span class="n">٤</span><div><strong>لا اقتصار على اللفظ</strong><span>المتابعة (تامة أو قاصرة) لا تقتصر على اللفظ، بل لو جاءت بالمعنى كفى؛ لكنها مختصةٌ برواية ذلك الصحابي.</span></div></div>
+  </div>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>النتيجة</th><th>الوصف</th></tr></thead>
+      <tbody>
+        <tr><td>لم تكن لها متابعةٌ ولا شاهد</td><td><b>روايةٌ غريبة</b>: غرابةٌ مطلقةٌ إسنادًا ومتنًا</td></tr>
+        <tr><td>وُجد الشاهد</td><td>فالغرابة تكون <b>نسبية</b> متعلقة بالإسناد الأول فقط</td></tr>
+        <tr><td>وُجدت المتابعة القاصرة</td><td>فتوصف الرواية الأولى بأنها غريبة، أي: غريبةٌ عن الشيخ الذي لم يقع الوفاق عليه</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>أمورٌ ينبغي التعرف عليها في الاعتبار</h3>
+  <div class="ben detail">
+    <div class="card"><span class="n">١</span><div><strong>لا يكتفون بالمرفوعات</strong><span>أئمة الحديث حين يعتبرون الرواية بغيرها ينظرون أيضًا في الموقوفات والمراسيل التي تُروى في هذا الباب: فقد يكون الوقف هو الصواب في الحديث وليس الرفع، وكذلك المراسيل؛ وبدون معرفة الموقوفات لا يتبيّن أخطاء الرواة، وبدون معرفة المراسيل لا يتبيّن خطأ من روى الحديث موصولًا والصواب أنه مرسل. وقد أنكر الإمام أحمد على من لا يكتب إلا المتصل ويدع كتابة المراسيل.<em>فائدة كتابة المراسيل والموقوفات: معرفة علة الحديث (يستطيع الراوي أن يعتبر الرواية ليعرف تفرد الراوي أو مخالفته أو موافقته)، وتقوية الأحاديث لأنها تكون مختلفة المخرج عن الموصول والمرفوع. وقد رأى أهل العلم صحة الحديث حين يكون مرفوعًا وموقوفًا أو موصولًا ومرسلًا؛ فإن تعدد الأسانيد للحديث الواحد يقوّي بعضها بعضًا.</em></span></div></div>
+    <div class="card"><span class="n">٢</span><div><strong>للاعتبار معنيان</strong><span><b>الأول</b> (درج عليه المتأخرون): الاستشهاد والاستئناس والاعتضاد والتقوية؛ فيقولون: «هذا الحديث/الإسناد يصلح للاعتبار»، «هذا الراوي يصلح حديثه للاعتبار» — يقصدون: ضعفه ليس شديدًا بل ضعفٌ محتمل يمكن أن يتقوى بغيره أو يُستشهد له بما رواه غيره مثله أو أقوى منه. وقولهم «فلانٌ لا يصلح للاعتبار» أو «لا يُعتبر به»: يريدون تضعيفه بشدة. <b>الثاني</b>: الاعتبار بمعنى <b>الاختبار</b> بصرف النظر عن حال الراوي: يكتب العلماء أحاديث الرواة لينظروا فيها، ثم يعرضونها على أحاديث الثقات.<em>وله صورةٌ أخرى: يُطلق على أحاديث الرواة الذين ضعّفوهم ضعفًا شديدًا؛ يكتبونها ليعرفوها وليعرفوا ضعف رواتها، حتى إذا سُئلوا عنها أو عن رواتها أجابوا بما يعرفون. ويُميَّز بالسياق: لا يُدخله الحفّاظ في كتبهم — كتب ابن معين صحيفةً موضوعة عن أبان عن أنس ليعرفها، حتى إذا جاء كذّابٌ فجعل ثابتًا مكان أبان عرف ذلك وميّزه.</em></span></div></div>
+    <div class="card"><span class="n">٣</span><div><strong>المقصود معرفة المحفوظ من غير المحفوظ</strong><span>لا مجرد الوقوف على المتابع أو الشاهد، أو معرفة التفرد من عدمه.</span></div></div>
+    <div class="card"><span class="n">٤</span><div><strong>معرفة أحوال الرواة ومنازلهم</strong><span>من حيث الحفظ والضبط، باستقراء مرويات الراوي وعرضها على روايات الثقات: إذا كان كثيرًا ما ينفرد ويخالف ← «سيء الحفظ» ليس بضابط؛ إذا غلب عليه وقلّما أصاب ← «متروك الحديث»؛ إذا غلب على ظن الناقد أن الأحاديث التي خالف فيها أو تفرّد بها من وضعه ومما تعمّد فعله ← «متهم بالكذب»؛ إذا وقف على ما يدل على أنه يتعمد الكذب ← «كذاب» أو «يضع الحديث»، وهي من أسوأ ألفاظ الجرح.<em>ومن هنا يتبيّن الربط: علم الجرح والتعديل مبنيٌّ على علم علل الأحاديث؛ لأن علم العلل يتبيّن فيه خطأ الرواة من خلال اعتبار أحاديثهم، فإذا اعتبرت أحاديثهم وتبيّن الخطأ منها والصواب نستطيع أن نحكم على الرواة.</em></span></div></div>
+  </div>
+
+  <h3>مثالٌ تطبيقي على خطوات الاعتبار</h3>
+  <div class="chains panel">
+    <div class="chain"><span class="nd on">حماد بن سلمة</span><span class="ar">←</span><span class="nd">أيوب</span><span class="ar">←</span><span class="nd">ابن سيرين</span><span class="ar">←</span><span class="nd">أبو هريرة</span><span class="ar">←</span><span class="nd g">النبي ﷺ</span><span class="lb">وُجد عند حماد دون غيره من أصحاب أيوب</span></div>
+  </div>
+  <div class="flow">
+    <div class="step"><b>١. هل هو حديثه؟</b><span class="muted">هل رواه أصحاب حماد عنه؟ فإن وُجد من رواية ضعيفٍ عنه أُلزق الخبر بذلك الضعيف</span></div>
+    <div class="arr">←</div>
+    <div class="step"><b>٢. المتابعات</b><span class="muted">هل تابع أحدٌ حمادًا عن أيوب؟ ثم أيوبَ عن ابن سيرين؟ ثم ابنَ سيرين عن أبي هريرة؟</span></div>
+    <div class="arr">←</div>
+    <div class="step"><b>٣. الشاهد</b><span class="muted">هل رواه عن النبي ﷺ غير أبي هريرة باللفظ أو المعنى؟ فإن وُجد فالخبر له أصلٌ يُرجع إليه</span></div>
+    <div class="arr">←</div>
+    <div class="step" style="border-color:var(--red)"><b style="color:var(--red)">٤. الحكم</b><span class="muted">إذا عُدم ذلك والخبر يخالف الأصول الثلاثة (القرآن والسنة والإجماع) فهو موضوع وإن كان راويه ثقة</span></div>
+  </div>
+  <div class="warn">
+    <span class="cal-t">الحكم بالوضع ليس لمجرد التفرد</span>
+    <p>بل لتفرّده المصحوب بالقرائن الدالة على كونه خطأ: تفرّد بالإسناد ولم نجد متابعةً ولا شاهدًا، وأيضًا مخالفته للأصول الثلاثة. ويُحكم بوضع الحديث وأن ناقله الذي تفرّد به وضعه، سواء عن قصدٍ أو خطأ؛ وإلا فحمادٌ لا يُظن به أن يتعمّد وضع حديثٍ عن رسول الله ﷺ، وإنما مقصوده أن الراوي إما تعمّد اختلاقه، أو أنه أُدخل عليه واغترّ به عن غير قصد.</p>
+  </div>
+</section>
+
+<!-- ===== 3 ===== -->
+<section>
+  <h2>ثالثًا: ثبوت المتابعة غير الاعتداد بها</h2>
+  <p>فليست كل متابعةٍ تصلح للاعتداد ودفع التفرد: فمتابعة الكذاب لا تصلح للاعتداد، فروايته وعدمها سواء وإن ثبتت عنه؛ ومتابعة الراوي الضعيف جدًّا المتروك الحديث — فإن ثبتت روايته ومتابعته — لا تنفع لأن ضعفه شديد.</p>
+  <h3>شروط ثبوت المتابعة إلى الراوي</h3>
+  <div class="ben detail">
+    <div class="card"><span class="n">١</span><div><strong>صحة الإسناد إلى كلٍّ من الراوي المتابِع والراوي المتابَع له</strong><span>إذ كيف تثبت المتابعة دون ثبوت الرواية؟ وهذا أيضًا ينطبق على الحديث المرسل والاحتجاج به؛ اشترط العلماء لكي يتقوى المرسل بالمرسل صحة الإسناد إلى الراويين المرسلين.</span></div></div>
+    <div class="card"><span class="n">٢</span><div><strong>أن تكون الرواية محفوظةً عن كلٍّ منهما</strong><span>هناك فرقٌ بين الرواية التي ظاهرها الصحة والرواية المحفوظة؛ فالمحفوظة معناها سلامة الرواية من أخطاء في الإسناد أو المتن. ومن الأخطاء التي تجعل الرواية غير محفوظة: <b>إبدال الرواة</b> (كإبدال راوٍ بآخر مشاركٍ لراوي الحديث في الطبقة، فيصير الحديث لراويين وإنما هو لراوٍ واحد)، أو <b>إدخال حديثٍ في حديث</b> (فيظهر أن للحديث أكثر من إسنادٍ والواقع أن له إسنادًا واحدًا).<em>أمثلة: «إنما الأعمال بالنيات» صحيحٌ متفقٌ عليه، تفرّد به يحيى بن سعيد الأنصاري، ولم يصح عن رسول الله ﷺ إلا من هذا الوجه؛ وجاءت متابعةٌ ليحيى بإسنادٍ حسنٍ من حيث الظاهر، ومع ذلك لم يعتدّ بها أهل العلم وأنكروها لأن هذا الراوي يُغرب ويخطئ — أنكروا المتابعة رغم أن أصل الحديث صحيح، فكيف إن كان إسناده غير صحيح أو حسن؟! وحديث «إذا أقيمت الصلاة فلا تقوموا حتى تروني»: صحيحٌ متفقٌ عليه وله إسنادٌ محفوظ؛ أخطأ فيه جرير بن حازم فغيّر إسناده وأدخل إسنادًا في إسناد، فهي روايةٌ خطأ ليست محفوظة، فلا نستطيع أن نقول إنها شاهد؛ لأن الشاهد لا بدّ أن يكون معروفًا أو محفوظًا، لا معلولًا ولا شاذًّا أو منكرًا.</em></span></div></div>
+    <div class="card"><span class="n">٣</span><div><strong>أن يكون كلٌّ من الراويين قد سمعا الحديث من الشيخ الذي اتفقا على روايته عنه</strong><span>لا تثبت المتابعة إلا بثبوت سماع الراويين. وإن لم يثبت للراوي سماعٌ ثم تابعه غيره على رواية الحديث عن الشيخ: لم تكن المتابعة حينئذٍ للراوي الأول بل للواسطة التي أسقطها؛ وقد يكون الراوي الذي سقط هو نفسه ذلك الراوي المتابِع عن شيخه، فأسقطه الأول وارتقى إلى شيخه، وعليه يعود الحديث إلى ذلك الراوي المتابِع ويبقى حديثًا فردًا لا تعدّد فيه ولا متابعة.</span></div></div>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 900 260" width="100%" style="min-width:860px;display:block" role="img" aria-label="مثال: ابن جريج المدلس يروي عن عمرو بن شعيب، وتابعه المثنى بن الصباح الضعيف؛ والراجح أن ابن جريج أخذه من المثنى ثم أسقطه، بدليل رواية مصنف عبد الرزاق ابن جريج عن المثنى عن عمرو، فتعود المتابعة الظاهرة إلى راو واحد ضعيف">
+<text x="884" y="24" text-anchor="start" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">متابعةٌ في الظاهر، وراوٍ واحدٌ في الحقيقة</text>
+<g direction="rtl" text-anchor="middle" font-size="12.5">
+<text x="760" y="60" font-weight="700" style="fill:var(--muted)">في الظاهر</text>
+<rect x="680" y="76" width="160" height="40" rx="8" style="fill:var(--gold-soft);stroke:var(--gold)"/><text x="760" y="101" style="fill:var(--ink)">ابن جريج (مدلّس)</text>
+<rect x="680" y="146" width="160" height="40" rx="8" style="fill:var(--red-soft);stroke:var(--red)"/><text x="760" y="171" style="fill:var(--ink)">المثنى بن الصباح (ضعيف)</text>
+<rect x="490" y="111" width="150" height="40" rx="8" style="fill:var(--paper);stroke:var(--line)"/><text x="565" y="136" style="fill:var(--ink)">عمرو بن شعيب</text>
+<path d="M680 96 C660 96 660 125 640 128 M680 166 C660 166 660 137 640 134" fill="none" style="stroke:var(--muted)" stroke-width="1.5"/>
+<text x="565" y="176" style="fill:var(--muted)">عن أبيه عن جده</text>
+<line x1="450" y1="50" x2="450" y2="230" style="stroke:var(--line)" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="240" y="60" font-weight="700" style="fill:var(--red)">في الحقيقة (والقرينة: مصنف عبد الرزاق)</text>
+<rect x="310" y="80" width="130" height="40" rx="8" style="fill:var(--gold-soft);stroke:var(--gold)"/><text x="375" y="105" style="fill:var(--ink)">ابن جريج</text>
+<rect x="160" y="80" width="140" height="40" rx="8" style="fill:var(--red-soft);stroke:var(--red)"/><text x="230" y="105" style="fill:var(--ink)">المثنى</text>
+<rect x="20" y="80" width="130" height="40" rx="8" style="fill:var(--paper);stroke:var(--line)"/><text x="85" y="105" style="fill:var(--ink)">عمرو</text>
+<path d="M310 100 L300 100 M160 100 L150 100" style="stroke:var(--muted)" stroke-width="2"/>
+<text x="230" y="160" style="fill:var(--ink)">ابن جريج لم يسمعه من عمرو، بل أخذه من</text>
+<text x="230" y="180" style="fill:var(--ink)">المثنى ثم أسقطه — فرجع الحديث إلى راوٍ ضعيف</text>
+<text x="230" y="208" font-weight="700" style="fill:var(--red)">فليست رواية المثنى متابعةً لابن جريج،</text>
+<text x="230" y="226" font-weight="700" style="fill:var(--red)">بل رواية ابن جريج هي رواية المثنى نفسها</text>
+</g>
+</svg></div>
+</section>
+
+<!-- ===== 4 ===== -->
+<section>
+  <h2>رابعًا: التفرّد وقرائن ردّه</h2>
+  <div class="verse">
+    <p>وَكَثُرَ الْإِعْلَالُ بِالتَّفَرُّدِ <span class="sp">…</span> لَدَى أَئِمَّةِ الْحَدِيثِ الْعُمُدِ</p>
+    <p>وَجَاءَ ذَمُّ الْفَرْدِ عَنْ جُمْهُورِ <span class="sp">…</span> الْعُلَمَا، وَالْمَدْحُ لِلْمَشْهُورِ</p>
+    <p>فَقَوِّ الْإِعْلَالَ بِهِ إِنْ تَقْتَرِنْ <span class="sp">…</span> بِهِ قَرِينَةٌ، كَأَنْ يَكُونَ مِنْ</p>
+    <p>نَازِلٍ، أَوْ مَنْ هُمْ دُونَ أَهْلِ <span class="sp">…</span> الْحِفْظِ وَالْإِتْقَانِ، أَوْ مُقِلِّ</p>
+    <p>أَوْ عَنْ إِمَامٍ مُكْثِرٍ، أَصْحَابُهُ <span class="sp">…</span> قَدْ جَمَعُوا حَدِيثَهُ، أَوْ كُتُبُهُ</p>
+    <p>مَشْهُورَةٌ، أَوْ أَنْ يَكُونَ الْخَبَرُ <span class="sp">…</span> إِسْنَادُهُ أَوْ مَتْنُهُ مُسْتَنْكَرُ</p>
+    <p>أَوْ جَرَتِ الْعَادَةُ بِاشْتِهَارِ <span class="sp">…</span> مَا كَانَ مِثْلَهُ مِنَ الْأَخْبَارِ</p>
+  </div>
+  <p>يعبّر الأئمة الكبار عن الإعلال بالإفراد بالقول: «تفرّد به فلان»، «لا يُتابَع عليه». وعدّه العلماء علةً توجب ضعف الحديث، وقالوا: إن الغرائب والأفراد هي مظنّة الخطأ والوهم، بعكس الأحاديث المشاهير فهي أبعد عن الخطأ؛ وعدّوا الغرائب والأفراد من المناكير وأن رواتها هم من الضعفاء. وعاب الخطيب البغدادي على طلاب الحديث في زمانه إقبالهم على كتب الأحاديث الغريبة والمنكر دون الصحيح والمشهور، وأيّده ابن رجب في أن بعضًا من المشتغلين في الحديث لا يعتنون بالكتب الستة ونحوها، ويُقبلون على مظانّ أحاديث الغرائب والمناكير مثل مسند البزار ومعاجم الطبراني وأفراد الدارقطني.</p>
+  <div class="cmp">
+    <div class="r"><h3>متى يُعلّ النقاد بالتفرد؟</h3><p>إذا انضمت إليه قرينةٌ تدل على خطأ المتفرّد.</p></div>
+    <div><h3>ومتى يقبلونه؟</h3><p>إذا انضم إلى الراوي ما يؤكد حفظه لما تفرّد به.</p></div>
+  </div>
+  <p class="muted">وحين يردّ العلماء الحديث الذي تفرّد به الراوي فقلّما يذكرون السبب الذي انضم إلى التفرد؛ إما لأن العلة كانت غامضةً خفية، أو لأنه كان مفهومًا لدى العالم المتخصص بعلم العلل. قال أحمد: «إذا سمعتَ أصحاب الحديث يقولون: هذا حديثٌ غريب أو فائدة، فاعلم أنه خطأ، أو دخل حديثٌ في حديث، أو خطأٌ من المحدّث، أو حديثٌ ليس له إسناد، وإن كان قد روى شعبة وسفيان».</p>
+
+  <h3>القرينة الأولى: طبقة الراوي</h3>
+  <p>إذا كان المنفرد بالحديث من أهل الطبقات النازلة — وهي ما دون عصر التابعين — لا يُقبل تفرّده؛ لاستقرار الرواية، ولأن الروايات والأحاديث قد عُرفت مخارجها، وتم جمع أحاديث الشيوخ وعُرفت مخارجها.</p>
+  <div class="panel scroll"><svg viewBox="0 0 900 260" width="100%" style="min-width:860px;display:block" role="img" aria-label="قول الذهبي في تفرد الحفاظ الثقات بحسب الطبقة: التابعين صحيح، أتباع التابعين صحيح غريب، أصحاب أتباع التابعين غريب فرد، طبقة شيوخ الأئمة كعثمان بن أبي شيبة وأبي سلمة التبوذكي منكر؛ فكلما علت الطبقة صح التفرد">
+<text x="884" y="24" text-anchor="start" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">الذهبي: الحفاظ الثقات إذا انفرد الرجل منهم — الحكم بحسب الطبقة</text>
+<g direction="rtl" text-anchor="middle">
+<rect x="690" y="50" width="180" height="70" rx="10" style="fill:var(--accent)"/><text x="780" y="80" font-size="14" font-weight="700" fill="#fff">التابعون</text><text x="780" y="104" font-size="12" fill="#fff">طبقةٌ عالية</text>
+<rect x="490" y="50" width="180" height="70" rx="10" style="fill:var(--accent)" opacity=".7"/><text x="580" y="80" font-size="14" font-weight="700" fill="#fff">أتباع التابعين</text>
+<rect x="290" y="50" width="180" height="70" rx="10" style="fill:var(--gold)"/><text x="380" y="78" font-size="13" font-weight="700" fill="#fff">بعد أتباع التابعين</text><text x="380" y="100" font-size="11" fill="#fff">(أصحاب أتباع التابعين)</text>
+<rect x="30" y="50" width="240" height="70" rx="10" style="fill:var(--red)"/><text x="150" y="78" font-size="13" font-weight="700" fill="#fff">طبقة شيوخ الأئمة</text><text x="150" y="100" font-size="11" fill="#fff">عثمان بن أبي شيبة، أبو سلمة التبوذكي</text>
+<text x="780" y="150" font-size="16" font-weight="700" style="fill:var(--accent)">صحيح</text>
+<text x="580" y="150" font-size="16" font-weight="700" style="fill:var(--accent)">صحيحٌ غريب</text>
+<text x="380" y="150" font-size="16" font-weight="700" style="fill:var(--gold)">غريبٌ فرد</text>
+<text x="150" y="150" font-size="16" font-weight="700" style="fill:var(--red)">يُعدّ منكرًا</text>
+<text x="380" y="176" font-size="11.5" style="fill:var(--muted)">يندر تفردهم؛ الإمام منهم عنده</text>
+<text x="380" y="194" font-size="11.5" style="fill:var(--muted)">مئتا ألف حديث لا يكاد ينفرد</text>
+<text x="380" y="212" font-size="11.5" style="fill:var(--muted)">بحديثين أو ثلاثة</text>
+<path d="M870 238 L30 238" style="stroke:var(--muted)" stroke-width="1.5" marker-end="url(#ar9)"/>
+<text x="450" y="230" font-size="12" font-weight="600" style="fill:var(--muted)">كلما علت الطبقة صحّ التفرد، وكلما نزلت ضعُف</text>
+</g>
+</svg></div>
+
+  <h3>بقية القرائن</h3>
+  <div class="ben detail">
+    <div class="card"><span class="n">٢</span><div><strong>أن يكون المتفرّد ممن هم دون أهل الحفظ والتثبت</strong><span>فإن تفرّدهم غير محتملٍ في الجملة لأنهم يخطئون في رواياتهم؛ أما تفرد الحافظ المشهور أو الإمام من الحفاظ فهو صحيح، فإن تفرّد من دونهم سُمّي تفرّدهم شذوذًا.<em>س: ما معنى قول أبي داود: «لا يُحتج بحديثٍ غريبٍ ولو كان من رواية مالك أو يحيى بن سعيد»؟ قوله هذا محمولٌ على ما انضم إليه مما دلّ على خطأ هذا الثقة الحافظ، وليس مجرد التفرد.</em></span></div></div>
+    <div class="card"><span class="n">٣</span><div><strong>أن يكون التفرد من راوٍ مقلّ</strong><span>لم يروِ إلا أحاديث قليلة، ولم يُعرف بمجالسة العلماء، ولم يشتهر بكثرة الطلب ولا بكثرة الرحلة في الحديث.</span></div></div>
+    <div class="card"><span class="n">٤</span><div><strong>أن يتفرّد عن أحد الحفاظ المكثرين حديثًا وله أصحابٌ كُثر</strong><span>قد جمعوا حديث هذا الحافظ وأكثروا من ملازمته، أو ممن كانت له كتبٌ مشهورةٌ متداولة حرص عليها طلاب العلم.<em>ذكر الإمام مسلم ما يعني: «أن من يعمد إلى مثل الزهري في جلالته وكثرة أصحابه الحفاظ لحديثه، أو لمثل هشام بن عروة، وحديثهما عند أهل العلم مبسوطٌ مشترك، فيروي عن أحدهما حديثًا لا يعرفه أحدٌ من أصحابهما — فغير جائزٍ قبول هذه الأحاديث». وقول مسلم متعلقٌ بحكم التفرد عن الحفاظ المكثرين دون النظر إلى حال الراوي المتفرد هل هو ثقة أم لا؛ وأعمل مسلم قاعدته في رواةٍ ثقات: المعافى بن عمران (من الحفاظ) روى عنه أحد الرواة الثقات (هشام بن بهرام) وتفرّد به عن بقية أصحاب المعافى، فأعلّ مسلم الحديث لهذا. وأعمل ابن حجر هذه القاعدة في رواةٍ ثقاتٍ أو صدوقين.</em></span></div></div>
+  </div>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>الحافظ المكثر أصحابًا وحديثًا</th><th>الراوي المتفرد</th><th>حكم الأئمة (أو تعليق الشيخ)</th></tr></thead>
+      <tbody>
+        <tr><td>ثابت البناني</td><td>حماد بن يحيى</td><td>لا يحتمل التفرد</td></tr>
+        <tr><td>سفيان الثوري <span class="muted">(أصحابه المكثرون: ابن المبارك، يحيى القطان، وكيع، عبد الرحمن بن مهدي، أبو نعيم — يُعتبر بحديثهم إذا تفرّدوا)</span></td><td>يحيى بن آدم تفرّد في روايةٍ عن سفيان</td><td>حديثه منكر مع أنه ثقةٌ في سفيان، ولكن ليس من أصحاب الثوري المكثرين؛ فلا يحتمل التفرد</td></tr>
+        <tr><td>سفيان بن عيينة <span class="muted">(أصحابه المكثرون: الحميدي، علي بن المديني)</span></td><td>ابن أبي عمر العدني تفرّد عن سفيان</td><td>يقول أبو حاتم: لا يحتمل تفرّده عن أصحاب سفيان بن عيينة، وهو عنده صدوق</td></tr>
+        <tr><td>سهيل</td><td>ربيعة روى عن سهيل روايةً وتفرّد بها</td><td>ربيعة ثقة، وروى عن سهيل جماعةٌ كثيرة ليس عند أحدهم هذا الحديث</td></tr>
+        <tr><td>شعبة</td><td>أبو داود الطيالسي</td><td>تفرّد به الطيالسي، وليس عند أصحاب شعبة</td></tr>
+        <tr><td>أيوب</td><td>حماد بن سلمة</td><td>لم يثبت الحديث أصلًا عند ابن حبان مع أنه وثّق حمادًا، إلا أنه ليس من حفّاظ حديث أيوب ولا من العارفين به</td></tr>
+        <tr><td>قتادة <span class="muted">(أصحابه المكثرون والعارفون بحديثه: هشام الدستوائي، ابن أبي عروبة، شعبة)</span></td><td>حماد بن سلمة، أبان، همام، الأوزاعي</td><td>لا يُقبل تفرّدهم عن قتادة لأن له أصحابًا قد أكثروا عنه وعرفوا حديثه، ويُعدّ الحديث منكرًا؛ ويُنظر إذا كان للحديث طريقٌ آخر عن النبي ﷺ وعن أنس بن مالك من غير طريق هؤلاء</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ben detail">
+    <div class="card"><span class="n">٥</span><div><strong>أن يكون الخبر المتفرَّد به مستنكرًا</strong><span><b>من قِبل إسناده</b>: أن يشتمل على رواية راوٍ عن شيخٍ لا يُعرف هذا الراوي بالأخذ عنه، فيقول النقاد: «فلانٌ عن فلانٍ لا يجيء»، «فلانٌ لا يُعرف عنه الأخذ عن فلان»؛ ويقوى الإعلال إذا كان الشيخ معروفًا بكثرة الأصحاب والأحاديث ثم تجيء روايةٌ غريبة. والأئمة لا يقصدون هنا إعلالها بالانقطاع، وإنما العلة أنه لا يُعرف بالأخذ عمّن فوقه، فهو لم يثبت سماعه حتى يُعلّ بعدم سماعه منه. <b>أمثلة</b>: قول يحيى بن معين إنه لم يسمع من رواية عبد الله بن دينار عن أنس إلا ما رواه محمد بن إسحاق حديث الرويبضة؛ وقول الأئمة: لا نعلم عبد الملك بن أبي سليمان روى عن نافع شيئًا؛ وقولهم في حديث «المنتزعات والمختلعات هن المنافقات»: الحسن لم يسمع من أبي هريرة شيئًا. واتفاقهم على شيءٍ يكون حجة.<em><b>من قِبل متنه</b>: (١) حديث الرجل الذي سأل: «أحجّ عن أبي؟» فقال ﷺ: «نعم، إن لم تزده خيرًا لم تزده شرًّا» — تفرّد به عبد الرزاق عن باقي أصحاب الثوري؛ فالحديث لفظه منكر لا تشبه ألفاظه ألفاظ رسول الله ﷺ، فهو لا يأمر بما لا يدري أينفع أم لا. (٢) حديث عكرمة بن عمار عن أبي زميل عن ابن عباس مرفوعًا، فيه قول أبي سفيان: «عندي أحسن العرب وأجمله أم حبيبة بنت أبي سفيان أزوّجكها» — أخرجه مسلم في صحيحه، وقد استنكر متنه جماعةٌ (ابن حزم، الذهبي، ابن الجوزي…)؛ لأن الحديث في فتح مكة ٨هـ، والرسول ﷺ تزوج أم حبيبة ٧هـ؛ وفيه «وتؤمّرني أن أقاتل الكفار» ولا يُعرف أنه ﷺ أمّر أبا سفيان؛ واتُّهم بهذا الحديث عكرمة بن عمار.<br><b>من قِبلهما معًا</b>: حديث قتيبة بن سعيد عن الليث بن سعد عن يزيد بن أبي حبيب عن أبي الطفيل عن معاذ بن جبل: أنه ﷺ كان في غزوة تبوك إذا ارتحل قبل زيغ الشمس أخّر الظهر حتى يجمعها إلى العصر. قال الحاكم: رواته أئمةٌ ثقات، وهو شاذّ السند والمتن. شذوذ السند: لا يوجد ليزيد بن أبي حبيب عن أبي الطفيل رواية؛ وشذوذ المتن: لا يوجد بهذا السياق عن أحدٍ من أصحاب أبي الطفيل ممن رواه عن معاذ.</em></span></div></div>
+    <div class="card"><span class="n">٦</span><div><strong>أن يكون الحديث المتفرَّد به مما جرت العادة باشتهار مثله</strong><span>يقول الخطيب البغدادي (بما معناه): «إن الثقة المأمون إذا أورد خبرًا متصل الإسناد قد تفرّد به، وأن هذا الخبر مما جرت العادة أن ينقله أهل التواتر، فهذا الخبر لا يُقبل تفرّده». وأمثلته: خروج أهل إقليمٍ بأسرهم على الإمام، وحصر العدو لأهل الموسم عند البيت الحرام. ومن الأحاديث التي لا يصح تفرّدها لأن فيها ما جرت العادة على اشتهاره: حديث ردّ الشمس لعلي بن أبي طالب — فيه أن الشمس قد رُدّت، وهذا حصل في النهار ولم يشتهر ولم ينقله أهل العلم ولم ينقله إلا الواحد والاثنان؛ فهذا يبيّن كذب ناقله؛ فانشقاق القمر كان بالليل واشتهر، فكيف بردّ الشمس في النهار.<em>تنبيه: هذا غير ما تعمّ به البلوى؛ فإن الراجح من أقوال العلماء أن التفرد فيما تعمّ به البلوى لا يُردّ به الخبر.</em></span></div></div>
+    <div class="card"><span class="n">٧</span><div><strong>أن يقع في الحديث المتفرَّد به اختلافٌ في الإسناد أو المتن</strong><span>يقدح في صحته ويدل على خطأ المتفرد به — وهذا موضوع الفقرة التالية.</span></div></div>
+  </div>
+</section>
+
+<!-- ===== 5 ===== -->
+<section>
+  <h2>خامسًا: الاختلاف وصوره</h2>
+  <div class="verse">
+    <p>أَوِ اعْتَرَى الرِّوَايَةَ اخْتِلَافُ <span class="sp">…</span> يَقْدَحُ، وَهْوَ -عِنْدَهُمْ- أَصْنَافُ</p>
+    <p>فِي الْمَتْنِ الِاخْتِلَافُ أَوْ فِي السَّنَدِ <span class="sp">…</span> أَوْ فِيهِمَا، مِنْ وَاحِدٍ أَوْ عَدَدِ</p>
+    <p>تَعَدَّدَ الْمَخْرَجُ أَوْ تَوَحَّدَا <span class="sp">…</span> -وَجُلُّ «الِاضْطِرَابِ» فِي هَذَا-، بَدَا</p>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 960 330" width="100%" style="min-width:900px;display:block" role="img" aria-label="صور اختلاف الحديث الأربع: راو واحد ومخرج واحد، وتعدد الرواة واتحاد المخرج، وتعدد الرواة وتعدد المخارج، ومختلف الحديث؛ مع حكم كل صورة">
+<rect x="380" y="12" width="200" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="480" y="40" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="fill:var(--bg)">صور اختلاف الحديث</text>
+<g fill="none" stroke-width="1.6" style="stroke:var(--muted)"><path d="M480 56 C480 74 845 70 845 88"/><path d="M480 56 C480 74 605 70 605 88"/><path d="M480 56 C480 74 365 70 365 88"/><path d="M480 56 C480 74 125 70 125 88"/></g>
+<g direction="rtl" text-anchor="middle" font-size="12">
+<rect x="740" y="88" width="210" height="230" rx="10" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="845" y="112" font-size="13.5" font-weight="700" style="fill:var(--red)">١. راوٍ واحد ومخرجٌ واحد</text>
+<text x="845" y="138" style="fill:var(--ink)">يختلف الراوي على نفسه،</text>
+<text x="845" y="156" style="fill:var(--ink)">فيرويه مرةً على وجه</text>
+<text x="845" y="174" style="fill:var(--ink)">ومرةً على وجهٍ آخر</text>
+<text x="845" y="204" style="fill:var(--muted)">إن كان حافظًا مكثرًا: يُقبل</text>
+<text x="845" y="222" style="fill:var(--muted)">ويدلّ على سعة حفظه</text>
+<text x="845" y="250" style="fill:var(--red)">وإلا: دلّ على اضطرابه</text>
+<text x="845" y="268" style="fill:var(--red)">وهو أكثر ما يُطلق عليه</text>
+<text x="845" y="286" style="fill:var(--red)">«الاضطراب»</text>
+<rect x="500" y="88" width="210" height="230" rx="10" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="605" y="112" font-size="13.5" font-weight="700" style="fill:var(--gold)">٢. تعدّد الرواة واتحاد المخرج</text>
+<text x="605" y="138" style="fill:var(--ink)">الخلاف بين عددٍ من الرواة</text>
+<text x="605" y="156" style="fill:var(--ink)">على شيخٍ واحد هو مخرج</text>
+<text x="605" y="174" style="fill:var(--ink)">الحديث</text>
+<text x="605" y="204" font-weight="700" style="fill:var(--red)">يضرّ ويُعدّ إعلالًا</text>
+<text x="605" y="226" style="fill:var(--ink)">ويؤدي إلى القدح في الوجه</text>
+<text x="605" y="244" style="fill:var(--ink)">الخطأ، ويتم الترجيح</text>
+<text x="605" y="262" style="fill:var(--ink)">باعتماد الرواية الأقوى</text>
+<rect x="260" y="88" width="210" height="230" rx="10" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="365" y="112" font-size="13.5" font-weight="700" style="fill:var(--accent)">٣. تعدّد الرواة والمخارج</text>
+<text x="365" y="138" style="fill:var(--ink)">كل راوٍ روى الحديث بإسنادٍ</text>
+<text x="365" y="156" style="fill:var(--ink)">غير إسناد الآخر</text>
+<text x="365" y="186" font-weight="700" style="fill:var(--accent)">لا يضرّ، بل تقوية</text>
+<text x="365" y="206" style="fill:var(--ink)">إذا كان الراوي ممن يُعتمد</text>
+<text x="365" y="224" style="fill:var(--ink)">على تفرّده، أو رأى النقاد</text>
+<text x="365" y="242" style="fill:var(--ink)">صحة الوجهين</text>
+<text x="365" y="270" style="fill:var(--red)">إلا إن كان التعدد ظاهريًّا</text>
+<text x="365" y="288" style="fill:var(--red)">يرجع لمخرجٍ واحد ← كالثانية</text>
+<rect x="20" y="88" width="210" height="230" rx="10" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="125" y="112" font-size="13.5" font-weight="700" style="fill:var(--ink)">٤. مختلف الحديث</text>
+<text x="125" y="138" style="fill:var(--ink)">حديثان متغايران،</text>
+<text x="125" y="156" style="fill:var(--ink)">لكلٍّ منهما مخرجٌ مختلف،</text>
+<text x="125" y="174" style="fill:var(--ink)">وهما متعارضان في المعنى</text>
+<text x="125" y="192" style="fill:var(--ink)">ظاهرًا</text>
+<text x="125" y="226" style="fill:var(--muted)">جمع ← نسخ ← ترجيح</text>
+<text x="125" y="244" style="fill:var(--muted)">← توقف</text>
+</g>
+</svg></div>
+
+  <h3>الترجيح عند الاختلاف من راوٍ واحد</h3>
+  <p>هنا لا يُنظر للمرجّحات المتعلقة بالرواة ممن هم دون الراوي الذي في حديثه الاختلاف؛ لأن الخلاف منه لا منهم — فهؤلاء الرواة إنما رووا حديثه هو؛ فربما أخذ الحفّاظ حديثه الخطأ، وربما أخذ الأدنى حفظًا أو الأقل عددًا حديثه الصحيح. إنما المرجّح هنا:</p>
+  <ul class="clean">
+    <li>النظر فيما إذا تابعه أحدٌ من الثقات على أحد الوجوه التي رواها: فإن كان ذلك كان هذا الوجه هو المحفوظ وهو الصواب، وما تفرّد به ولم يُتابَع عليه هو خطأٌ غير محفوظ.</li>
+    <li>ومن الممكن ترجيح الرواية التي ثبت أن الراوي رواها في <b>مجالس متعددة</b> على الرواية التي رواها في مجلسٍ واحد، حتى لو كان الراوي الذي رُوي عنه في المجلس الواحد أحفظ وأتقن؛ لأن الصواب واحدٌ والخطأ يتعدد، وتحديث الراوي بنفس الحديث في مجالس متعددة — وخاصةً في فتراتٍ متباعدة — دليلٌ على حفظه لها.</li>
+  </ul>
+  <div class="panel scroll"><svg viewBox="0 0 900 230" width="100%" style="min-width:860px;display:block" role="img" aria-label="مثال حديث لا نكاح إلا بولي ومداره أبو إسحاق السبيعي: رواه إسرائيل عن جده أبي إسحاق عن أبي بردة عن أبي موسى موصولا، ورواه شعبة وسفيان عن أبي إسحاق عن أبي بردة مرسلا؛ رجح الترمذي الوصل لأنهم سمعوه في أوقات مختلفة وشعبة وسفيان سمعوه في مجلس واحد">
+<text x="884" y="24" text-anchor="start" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">حديث «لا نكاح إلا بوليّ» — مداره أبو إسحاق السبيعي</text>
+<g direction="rtl" text-anchor="middle" font-size="12.5">
+<rect x="360" y="44" width="180" height="40" rx="20" style="fill:var(--ink)"/><text x="450" y="69" font-weight="700" style="fill:var(--bg)">أبو إسحاق السبيعي</text>
+<path d="M450 84 C450 104 690 100 690 120 M450 84 C450 104 210 100 210 120" fill="none" style="stroke:var(--muted)" stroke-width="1.6"/>
+<rect x="540" y="120" width="300" height="56" rx="10" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="690" y="142" font-weight="700" style="fill:var(--accent)">إسرائيل بن يونس (عن جدّه) ومن معه</text>
+<text x="690" y="164" style="fill:var(--ink)">عن أبي بردة عن أبي موسى عن النبي ﷺ (موصول)</text>
+<rect x="60" y="120" width="300" height="56" rx="10" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="210" y="142" font-weight="700" style="fill:var(--gold)">شعبة وسفيان الثوري</text>
+<text x="210" y="164" style="fill:var(--ink)">عن أبي بردة عن النبي ﷺ (مرسل)</text>
+<text x="690" y="200" font-weight="700" style="fill:var(--accent)">✓ رجّحه الترمذي: سمعوه في أوقاتٍ مختلفة</text>
+<text x="210" y="200" style="fill:var(--muted)">وإن كانا أحفظ وأثبت، سمعاه في مجلسٍ واحد</text>
+</g>
+</svg></div>
+  <div class="note">
+    <span class="cal-t">الترجيح لا ينفي الاضطراب</span>
+    <p>وإذا أمكن الترجيح إذا كان الاختلاف من راوٍ واحد، فهذا لا يعني أن الحديث ليس مضطربًا؛ لأن الترجيح لا ينفي وقوع الاضطراب فعلًا واختلاف الحديث نفسه. والاضطراب أكثر ما يكون في هذا النوع: إذا كان الخلاف مع اتحاد المخرج، وفيما كان الاختلاف من راوٍ واحد.</p>
+  </div>
+
+  <h3>الترجيح عند الاختلاف من عددٍ من الرواة (الصورة الثانية)</h3>
+  <p>إذا تعددت الروايات قُدّمت الرواية الأقوى على الرواية الأقل قوة: نظرًا لدرجة حفظ الرواة، أو نظرًا لعدد الرواة، أو من ناحية ما احتفت بها من قرائن (مثل: أحد الرواة أكثر صحبةً للشيخ المروي عنه)، أو غيرها من وجوه الترجيحات المعتمدة. <b>والحكم</b> يكون للرواية الراجحة، ولا يوصف الاختلاف هنا بالمضطرب ولا يأخذ حكمه.</p>
+  <blockquote>إذا روى الحفّاظ حديثًا عن الزهري (أو غيره من الأئمة) بإسنادٍ واحد ومتنٍ واحد، لا يختلفون فيه في معنى، وجاء راوٍ آخر فخالفهم إما في الإسناد أو بقلب المتن — فالصحيح ما رواه الجماعة من الحفّاظ دون ما انفرد به الراوي ولو كان حافظًا.<cite>الإمام مسلم (بالمعنى)</cite></blockquote>
+
+  <h3>الصورة الثالثة: تعدد المخارج الظاهري</h3>
+  <div class="cmp">
+    <div>
+      <h3>مثال (١): حديث أبي العالية الرياحي</h3>
+      <p>في الحديث الذي أمر فيه رسول الله ﷺ الرجل الذي ضحك في صلاته أن يعيد الوضوء والصلاة. مخرج الحديث: أبو العالية الرياحي رواه مرسلًا؛ ورواه الحسن البصري عن النبي ﷺ مرسلًا، والزهري مرسلًا، وإبراهيم مرسلًا — <b>كل هذه المراسيل ترجع إلى أبي العالية</b>؛ فهي مخرجٌ واحد لا تقوية فيه.</p>
+    </div>
+    <div class="g">
+      <h3>مثال (٢): «لساني هذا أوردني الموارد»</h3>
+      <p>رواه زيد بن أسلم عن أبيه عن عمر بن الخطاب أنه اطّلع على أبي بكر وهو آخذٌ بلسانه فقال: «لساني هذا أوردني الموارد»؛ ورواه الرواة عن زيد بن أسلم ولم يختلفوا أنه من حديثه. ورواه أحد الرواة بإسنادٍ آخر عن أبي بكر، وعدّه العلماء حديثًا منكرًا، وقالوا: إنما هذا حديث زيد بن أسلم. <b>الرواية الخطأ:</b> النضر بن إسماعيل عن إسماعيل عن قيس بن حازم عن أبي بكر.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6 ===== -->
+<section>
+  <h2>سادسًا: مختلف الحديث</h2>
+  <div class="verse">
+    <p>تَرْجِيحٌ اَوْ لَا. وَالْمُتُونُ فَإِذَا <span class="sp">…</span> اخْتَلَفَتْ مَعْنًى وَمَخْرَجًا -: فَذَا</p>
+    <p>«مُخْتَلِفُ الْحَدِيثِ»، مِنْهُ: مُطَّرَحْ <span class="sp">…</span> لِكَوْنِهِ مُعَارِضًا لِمَا رَجَحْ</p>
+    <p>وَمِنْهُ: مَنْسُوخٌ، وَمِنْهُ: نَاسِخُ <span class="sp">…</span> وَمِنْهُ: مَا أَظْهَرَ فِيهِ رَاسِخُ</p>
+    <p>جَمْعًا وَتَأْوِيلًا نَفَى إِشْكَالَهُ <span class="sp">…</span> وَمِنْهُ: مَا لَمْ يَعْلَمُوا تَأْوِيلَهُ</p>
+  </div>
+  <p>عند <b>تعدد المخارج</b> نتبع الخطوات التالية بالتدريج:</p>
+  <div class="flow">
+    <div class="step"><b>١. الجمع</b><span class="muted">بلا تكلّف ولا تعسّف</span></div>
+    <div class="arr">←</div>
+    <div class="step"><b>٢. النسخ</b><span class="muted">بمعرفة الناسخ والمنسوخ</span></div>
+    <div class="arr">←</div>
+    <div class="step"><b>٣. الترجيح</b><span class="muted">بين الحديثين</span></div>
+    <div class="arr">←</div>
+    <div class="step"><b>٤. التوقف</b><span class="muted">وقال بعضهم: الاضطراب والتساقط</span></div>
+  </div>
+  <div class="ben detail">
+    <div class="card"><span class="n">١</span><div><strong>الجمع</strong><span>هذا الاختلاف الذي فيه تعدد المخارج لا يُلجأ إلى الترجيح بين الروايتين إلا بعد بذل الجهد في الجمع أولًا بينهما: يُنظر إلى إمكانية الجمع بين مدلولي الحديثين، واللجوء للتأويل حلًّا للإشكال ولنفي الاختلاف دون التكلف والتعسف في الجمع؛ فكلما كان احتمال استعمال الحديثين يُستعملان معًا ولا يُعطَّل أحدهما الآخر.<em><b>قاعدةٌ مطردة:</b> «إذا وجدنا حديثًا صحيحًا صريحًا في حكمٍ من الأحكام، فإنه لا يُردّ باستنباطٍ من نصٍّ آخر لم يُسَق لذلك المعنى بالكلية». أمثلتها: أحاديث تحريم صيد المدينة لا تُردّ بسبب استنباطٍ من حديث النغير؛ وأحاديث توقيت صلاة العصر الصريحة لا تُردّ بحديث «مثلكم فيما خلا قبلكم من الأمم كمثل رجلٍ استأجر أجراء»؛ وحديث «ليس فيما دون خمسة أوسق صدقة» لا يُردّ بحديث «فيما سقت السماء العشر» — قال فيه الشافعي: ليس لبيان ما يجب من الزكاة، إنما لبيان قدر الزكاة.<br><b>قاعدة أحمد:</b> «أذهب إلى الخبرين جميعًا ولا أردّ أحدهما بالآخر». أمثلتها: الثوب تصيبه الجنابة (كان يغسله / فركه)؛ «لا تبع ما ليس عندك» ثم حديث أجاز السَّلَم؛ الشاة المصرّاة يردّها مع صاعٍ من تمر و«الخراج بالضمان»؛ «لا يُصلّى بعد العصر» و«من نام عن صلاةٍ فنسيها فليصلّها إذا ذكرها» ولا تطوّع بعد العصر؛ سجود السهو قبل السلام وبعده — فيسجد قبل وبعد في المواضع التي سجد فيها ﷺ.</em></span></div></div>
+    <div class="card"><span class="n">٢</span><div><strong>النسخ</strong><span>لا بدّ من الاحتراز في الشرع بالقول بالنسخ مع إمكانية الجمع. وكان الإمام أحمد شديد الورع في النسخ: ففي حديث «إذا صلّى جالسًا فصلّوا جلوسًا أجمعون» الذي نسخه بعض أهل العلم لم يأخذ أحمد بحكم النسخ؛ لأن أربعةً من الصحابة فعلوه (أسيد بن حضير، قيس بن قهد، جابر، أبو هريرة)، ورُوي عن خمسة — وذلك من علم الإمام وورعه كما قال ابن رجب. وورعه في إطلاق النسخ بسبب عدم جواز إبطال الأحكام الثابتة مع إمكان الجمع بينها وبين ما يعارضها بمجرد الاحتمال؛ بل من الواجب الجمع والعمل بها كلها.</span></div></div>
+    <div class="card"><span class="n">٣</span><div><strong>الترجيح</strong><span>عند الاختلاف وعدم إمكان الجمع، ولا توجد دلالةٌ على أيهما ناسخ، فلا يُرجَّح أحدهما دون الآخر إلا بسببٍ يدل على أن الذي ذهبنا إليه أقوى من الذي تركناه. ومن المرجحات: أن يكون أحد الحديثين أثبت من الآخر فنأخذ الأثبت، أو أولى بما يعرف أهل العلم، أو أشبه بكتاب الله أو سنة رسوله ﷺ، أو الذي عليه الأكثر من أصحاب الرسول ﷺ، أو أصح في القياس.</span></div></div>
+    <div class="card"><span class="n">٤</span><div><strong>التوقف</strong><span>إذا لم يمكن الجمع ولا النسخ ولا الترجيح وجب التوقف عن العمل بأحد الحديثين؛ وقال علماء: بل يُحكم باضطراب الحديثين وتساقطهما. <b>رأي ابن حجر:</b> التعبير بالتوقف أولى من التعبير بالتساقط؛ لأن الحكم برجحان أحد الحديثين قد يخفى على عالمٍ ويظهر لعالمٍ آخر بعده. <b>قول الشيخ طارق:</b> إذا غلب على نظر الباحث بعد السبر (أي جمع الطرق) أن الحديثين مضطربان، وعدم إمكان الجمع أو الترجيح، فيمكن التعبير بالتساقط أو الاضطراب، خاصةً إذا كان مسبوقًا في ذلك من إمامٍ مجتهد.</span></div></div>
+  </div>
+  <div class="ask">
+    <span class="cal-t">وإذا كان المخرج واحدًا في مختلف الحديث؟</span>
+    <p>لا يمكن الجمع بين الروايات المختلفة، إنما نلجأ إلى الترجيح بتقديم روايةٍ على أخرى؛ لأن المخرج واحدٌ وليس متعدد المخارج. وعند تعدد المخارج نقوم بالجمع للتأكد من تغاير الوقائع وأنها ليست واقعةً واحدة. <b>مثاله:</b> حديث أبي هريرة في قصة ذي اليدين: روايات ذكرت أنها صلاة الظهر، وأخرى العصر، وأكثر الروايات «إحدى صلاتي العشي» إما الظهر أو العصر — وكلها قصةٌ واحدة، والدليل: إحدى الروايات فيها تردد هل هي الظهر أو العصر، أي أن الراوي قد شك؛ وكذلك اختلاف الرواة في التعبير عن الجواب لمّا سأل الرسول ﷺ «ما يقول ذو اليدين؟»: «صدق» / «نعم» / «أومؤوا أن نعم» — وكلها اختلافٌ من الرواة والواقعة واحدة. وفي <b>حديث صلاة الخوف</b>: قال أبو داود إن له مخارج متعددة (أحد الوجوه أن العدو بين المسلمين وبين القبلة، ووجهٌ آخر أن الخوف أشد)، ولكن رأى الإمام أحمد أن المخرج واحد، وأن حديث جابر يُروى عنه وحده وجوه.</p>
+  </div>
+  <p class="muted">واللجوء إلى الجمع بين الروايات المختلفة يُنظر فيه لحال الشيخ وحال الرواة: فالشيخ الذي وقع عليه الخلاف لا بدّ أن يكون من الحفاظ المكثرين الذين عُرفوا بالتوسع في الرواية مثل الزهري؛ والرواة الذين وقع الخلاف بينهم لا بدّ أن يكونوا من حفّاظ حديث الشيخ العارفين به، فإن لم يكن بعضهم كذلك فلا يُعتبر بالخلاف ولا يُعرَّج عليه.</p>
+</section>
+
+<!-- ===== 7 ===== -->
+<section>
+  <h2>سابعًا: مخرج الحديث، والقرائن</h2>
+  <div class="verse">
+    <p>وَ«مَخْرَجُ الْحَدِيثِ»، أَيْ: مَدَارُهُ <span class="sp">…</span> وَأَصْلُهُ، الَّذِي بِهِ اعْتِبَارُهُ</p>
+    <p>أَمَّا «الْقَرَائِنُ»: فَلَا حَصْرَ لَهَا <span class="sp">…</span> وَالْمُتَخَصِّصُونَ هُمْ أَدْرَى بِهَا</p>
+  </div>
+  <p><b>مخرج الحديث:</b> هو مدار الحديث إلى الراوي الذي يدور عليه الإسناد ويرجع إليه، وكذلك أصله الذي يتم الاعتبار به، ويُعرف به هل الحديث معروفٌ ومحفوظ أم ليس كذلك؛ فيوزن به حديثٌ آخر بحسب الموافقة والمخالفة. <b>وما معنى قول المحدثين «هذا الحديث لا أصل له»؟</b> أي: لا مخرج أو مدار يرجع إليه فيُقارن به.</p>
+  <div class="panel scroll"><svg viewBox="0 0 900 220" width="100%" style="min-width:820px;display:block" role="img" aria-label="تفسير أبي بكر بن العربي وابن حجر لمخرج الحديث: أن يكون الحديث معروفا في أهل بلد الراوي: حديث أهل البصرة مخرجه قتادة، والكوفة أبو إسحاق السبيعي، والمدينة ابن شهاب الزهري، ومكة عطاء">
+<text x="884" y="24" text-anchor="start" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">«مخرج الحديث» أن يكون معروفًا في أهل بلد الراوي ويروونه عنه (ابن العربي وابن حجر)</text>
+<g direction="rtl" text-anchor="middle">
+<circle cx="770" cy="120" r="70" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="770" y="112" font-size="14" font-weight="700" style="fill:var(--accent)">البصرة</text><text x="770" y="136" font-size="13" style="fill:var(--ink)">قتادة</text>
+<circle cx="560" cy="120" r="70" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="560" y="112" font-size="14" font-weight="700" style="fill:var(--gold)">الكوفة</text><text x="560" y="136" font-size="13" style="fill:var(--ink)">أبو إسحاق السبيعي</text>
+<circle cx="350" cy="120" r="70" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="350" y="112" font-size="14" font-weight="700" style="fill:var(--accent)">المدينة</text><text x="350" y="136" font-size="13" style="fill:var(--ink)">ابن شهاب الزهري</text>
+<circle cx="140" cy="120" r="70" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="140" y="112" font-size="14" font-weight="700" style="fill:var(--gold)">مكة</text><text x="140" y="136" font-size="13" style="fill:var(--ink)">عطاء</text>
+<text x="450" y="212" font-size="12.5" style="fill:var(--red)">فإذا جاء حديثٌ بصريٌّ عن غير قتادة ونحوه كان شاذًّا</text>
+</g>
+</svg></div>
+  <div class="note">
+    <span class="cal-t">القرائن التي يُستدل بها على وقوع الخطأ في الرواية</span>
+    <p>غير منحصرةٍ ولا ضابط لها؛ بل لكل روايةٍ ترجيحٌ خاص بها يميّزه العالم المتخصص في العلل. وهذه القرائن يميّزها النقاد من الأئمة المتقدمين، ولسعة علمهم بهذا الأمر لا بدّ من التسليم لهم وتقليدهم؛ ولهذا كان الرواة يتراجعون عن الغلط عندما ينبّههم هؤلاء الحفاظ، ومن أصرّ من الرواة على الخطأ طعنوا به. وتنقسم القرائن إلى أنواع، منها: <b>قرائن إسنادية</b> متعلقة بالإسناد — لا يميّزها إلا المحدثون النقاد، فلا يؤخذ رأي غيرهم بها؛ فهي من أخص علوم الحديث وأدق مباحث الإسناد، والنقاد لا يكتفون بالحكم على الإسناد بالظاهر من الاتصال وثقة الرواة، إنما لهم نظرٌ ثاقب مبنيٌّ على معانٍ وقرائن في الإسناد متى وجدوها حكموا على السند بالنكارة، ومتى لم توجد حكموا عليه بالاستقامة والصحة — و<b>قرائن متنية</b>: يتكلم فيها المحدثون والفقهاء.</p>
+  </div>
+  <div class="cmp">
+    <div><h3>تفرّدٌ واختلافٌ مقبولان</h3><p>هناك تفرّدٌ يكون مصحوبًا بقرينةٍ دالةٍ على حفظه وإصابته فيستدعي قبول الحديث، وكذلك الاختلاف قد يكون مصحوبًا بقرينةٍ دالةٍ على صحته بكل الأوجه المختلفة، وكان هذا دليلًا على صحة الرواية.</p></div>
+    <div class="g"><h3>أمثلة</h3><p>«إنما الأعمال بالنيات»: تفرّد به يحيى الأنصاري عن محمد بن إبراهيم التيمي عن علقمة عن عمر — صحيحٌ متفقٌ عليه تلقته الأمة بالقبول. وأحاديث وقع فيها اختلافٌ بين الرواة وصحّحها الأئمة وكانت في الصحيحين: لأن الخلاف الواقع بها ليس من النوع الذي يضرّ، أو لأن العلماء تجنّبوا الضار منه فخرّجوا الصحيح ولو خالفهم غيرهم.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>خلاصة الدرس</h2>
+  <div class="sum">
+    <ul class="clean">
+      <li>الطعن في المروي بالشذوذ أو العلة، ويُدرك بالتفرد والمخالفة مع القرائن؛ وهو أدق مباحث الحديث.</li>
+      <li><b>الاعتبار</b>: سبر الرواية بكل ما في الباب ← متابعة تامة أو قاصرة أو شاهد أو فرد؛ وغايته معرفة المحفوظ.</li>
+      <li><b>ثبوت المتابعة</b> بثلاثة شروط: صحة الإسناد إليهما، وكونها محفوظة، وسماع كليهما من الشيخ.</li>
+      <li><b>التفرد</b> يُعلّ بقرائن سبع: الطبقة النازلة، دون الحفاظ، المقلّ، عن مكثرٍ له أصحاب، المستنكر، ما يشتهر مثله، والاختلاف.</li>
+      <li><b>الاختلاف</b> أربع صور؛ الاضطراب أكثره من راوٍ واحد مع اتحاد المخرج، والترجيح لا ينفيه.</li>
+      <li><b>مختلف الحديث</b>: جمع ثم نسخ ثم ترجيح ثم توقف؛ ومع اتحاد المخرج ترجيحٌ فقط.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== quiz ===== -->
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اختبر نفسك</span></h2>
+  <form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">راوٍ شارك آخر في روايته عن شيخه نفسه عن الصحابي نفسه. هذه:</p>
+    <label class="opt ok"><input type="radio" name="l9q1"><span class="t">متابعةٌ تامة.</span></label>
+    <label class="opt"><input type="radio" name="l9q1"><span class="t">متابعةٌ قاصرة.</span></label>
+    <label class="opt"><input type="radio" name="l9q1"><span class="t">شاهد.</span></label>
+    <label class="opt"><input type="radio" name="l9q1"><span class="t">فرد نسبي.</span></label>
+    <p class="exp">القاصرة متابعةٌ لشيخه فمن فوقه، والشاهد من رواية صحابيٍّ آخر.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">قولهم «فلانٌ لا يُعتبر به» يعني:</p>
+    <label class="opt"><input type="radio" name="l9q2"><span class="t">ثقة لا يحتاج إلى اعتبار.</span></label>
+    <label class="opt ok"><input type="radio" name="l9q2"><span class="t">ضعيفٌ بشدة لا يصلح للاستشهاد ولا للاعتضاد.</span></label>
+    <label class="opt"><input type="radio" name="l9q2"><span class="t">مجهول.</span></label>
+    <label class="opt"><input type="radio" name="l9q2"><span class="t">لم يُختبر حديثه بعد.</span></label>
+    <p class="exp">وهذا على المعنى الأول للاعتبار (الاستشهاد والتقوية).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">جاءت متابعةٌ ليحيى بن سعيد في «إنما الأعمال» بإسنادٍ حسن ظاهرًا، فأنكرها الأئمة. لماذا؟</p>
+    <label class="opt"><input type="radio" name="l9q3"><span class="t">لأن أصل الحديث ضعيف.</span></label>
+    <label class="opt ok"><input type="radio" name="l9q3"><span class="t">لأنها غير محفوظة؛ راويها يُغرب ويخطئ — وثبوت المتابعة يشترط كونها محفوظة.</span></label>
+    <label class="opt"><input type="radio" name="l9q3"><span class="t">لأن المتابعة لا تكون في الأحاديث الصحيحة.</span></label>
+    <label class="opt"><input type="radio" name="l9q3"><span class="t">لأنها موقوفة.</span></label>
+    <p class="exp">الصحيح ظاهرًا غير المحفوظ؛ فقد تكون الرواية صحيحة الإسناد ظاهرًا وهي خطأ.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">تابع المثنى بن الصباح ابنَ جريج عن عمرو بن شعيب. لماذا لا تنفع هذه المتابعة؟</p>
+    <label class="opt"><input type="radio" name="l9q4"><span class="t">لأن عمرو بن شعيب ضعيف.</span></label>
+    <label class="opt ok"><input type="radio" name="l9q4"><span class="t">لأن ابن جريج مدلسٌ يُحتمل أنه أخذه من المثنى وأسقطه، فتعود الروايتان إلى راوٍ واحدٍ ضعيف.</span></label>
+    <label class="opt"><input type="radio" name="l9q4"><span class="t">لأن المثنى أوثق من ابن جريج.</span></label>
+    <label class="opt"><input type="radio" name="l9q4"><span class="t">لأن المتابعة لا تكون بين مدلس وضعيف.</span></label>
+    <p class="exp">ويقوّي الاحتمال رواية مصنف عبد الرزاق: ابن جريج عن المثنى عن عمرو. وهذا هو الشرط الثالث: ثبوت السماع.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">بحسب الذهبي، تفرّد حافظٍ ثقةٍ من أتباع التابعين حكمه:</p>
+    <label class="opt"><input type="radio" name="l9q5"><span class="t">صحيح.</span></label>
+    <label class="opt ok"><input type="radio" name="l9q5"><span class="t">صحيحٌ غريب.</span></label>
+    <label class="opt"><input type="radio" name="l9q5"><span class="t">غريبٌ فرد.</span></label>
+    <label class="opt"><input type="radio" name="l9q5"><span class="t">منكر.</span></label>
+    <p class="exp">التابعون: صحيح؛ أتباعهم: صحيح غريب؛ بعدهم: غريب فرد؛ شيوخ الأئمة: منكر.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">تفرّد يحيى بن آدم — وهو ثقة — بحديثٍ عن سفيان الثوري. ما حكمه ولماذا؟</p>
+    <label class="opt"><input type="radio" name="l9q6"><span class="t">صحيح لأنه ثقة.</span></label>
+    <label class="opt ok"><input type="radio" name="l9q6"><span class="t">منكر؛ لأنه ليس من أصحاب الثوري المكثرين، وللثوري أصحابٌ جمعوا حديثه.</span></label>
+    <label class="opt"><input type="radio" name="l9q6"><span class="t">حسن.</span></label>
+    <label class="opt"><input type="radio" name="l9q6"><span class="t">موقوف.</span></label>
+    <p class="exp">قرينة التفرد عن إمامٍ مكثر: لا ينظر فيها لحال الراوي فقط بل لمنزلته من الشيخ.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">رجّح الترمذي وصل «لا نكاح إلا بولي» على رواية شعبة وسفيان المرسلة مع أنهما أحفظ. ما المرجّح؟</p>
+    <label class="opt"><input type="radio" name="l9q7"><span class="t">كثرة العدد فقط.</span></label>
+    <label class="opt ok"><input type="radio" name="l9q7"><span class="t">أن الواصلين سمعوه في مجالس متعددة، وشعبة وسفيان سمعاه في مجلسٍ واحد.</span></label>
+    <label class="opt"><input type="radio" name="l9q7"><span class="t">أن الوصل زيادة ثقة مقبولة مطلقًا.</span></label>
+    <label class="opt"><input type="radio" name="l9q7"><span class="t">أن إسرائيل أحفظ من شعبة.</span></label>
+    <p class="exp">الصواب واحدٌ والخطأ يتعدد؛ وتحديث الشيخ به في مجالس متباعدة دليل حفظه.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما ترتيب التعامل مع مختلف الحديث متعدد المخارج؟</p>
+    <label class="opt"><input type="radio" name="l9q8"><span class="t">الترجيح ثم الجمع ثم النسخ.</span></label>
+    <label class="opt"><input type="radio" name="l9q8"><span class="t">النسخ ثم الترجيح ثم الجمع.</span></label>
+    <label class="opt ok"><input type="radio" name="l9q8"><span class="t">الجمع ثم النسخ ثم الترجيح ثم التوقف.</span></label>
+    <label class="opt"><input type="radio" name="l9q8"><span class="t">التوقف مباشرة.</span></label>
+    <p class="exp">قاعدة أحمد: «أذهب إلى الخبرين جميعًا ولا أردّ أحدهما بالآخر»؛ ومع اتحاد المخرج لا جمع بل ترجيح.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+  </form>
+</section>
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture8.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture10.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>

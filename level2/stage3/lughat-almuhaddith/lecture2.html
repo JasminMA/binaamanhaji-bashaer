@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>السند والمتن وأنواعهما · شرح لغة المحدث</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+
+/* Layout: study sheet — RTL single column, tree overview first, then sections with diagrams and a self-test at the end */
+:root{
+  --bg:#F3F5F7; --paper:#FFFFFF; --ink:#18202C; --muted:#5A6576; --line:#D5DBE3;
+  --accent:#0E6B6B; --accent-soft:#DDEFEE; --gold:#9A6A12; --gold-soft:#F6EBD3;
+  --red:#A23B3B; --red-soft:#F5E1E1;
+  --display:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171E; --paper:#1A212B; --ink:#E7ECF2; --muted:#9AA6B6; --line:#2E3946;
+  --accent:#4FC2BE; --accent-soft:#183634; --gold:#E0B25A; --gold-soft:#33291A;
+  --red:#E58A8A; --red-soft:#3A2224; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.35;margin:0}
+h1{font-size:clamp(1.8rem,5vw,2.6rem)}
+h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
+h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
+h3{font-size:1.1rem}
+p{margin:0}
+.muted{color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
+.eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.warn{background:var(--red-soft);border-inline-start:4px solid var(--red);padding:12px 16px;border-radius:6px}
+blockquote{margin:0;padding:10px 16px;border-inline-start:3px solid var(--accent);background:var(--accent-soft);border-radius:6px}
+blockquote cite{display:block;font-style:normal;font-size:.85rem;color:var(--muted);margin-top:4px}
+ul.clean{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+
+/* Mind map */
+.mm{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;position:relative}
+.mm-root{grid-column:1/-1;justify-self:center;background:var(--ink);color:var(--bg);font-family:var(--display);font-size:1.2rem;padding:10px 26px;border-radius:999px;text-align:center}
+.mm-branch{border-top:3px solid var(--accent);background:var(--paper);border-radius:0 0 10px 10px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mm-branch:nth-of-type(3){border-color:var(--gold)}
+.mm-branch:nth-of-type(4){border-color:var(--red)}
+.mm-branch h3{font-size:1rem}
+.tree{list-style:none;margin:0;padding:0;font-size:.92rem}
+.tree ul{list-style:none;margin:0;padding-inline-start:16px;border-inline-start:1px dashed var(--line)}
+.tree li{position:relative;padding:3px 0 3px 0;padding-inline-start:12px}
+.tree li::before{content:"";position:absolute;inset-inline-start:0;top:15px;width:8px;border-top:1px dashed var(--muted)}
+.tree > li::before{display:none}
+.tree > li{padding-inline-start:0}
+.tree b{font-weight:600}
+@media (max-width:760px){.mm{grid-template-columns:1fr}}
+
+/* Benefits grid */
+.ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ben .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;gap:12px;min-width:0}
+.ben .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.ben .card div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ben .card strong{font-weight:600}
+.ben .card span{font-size:.9rem;color:var(--muted)}
+.ben.detail{grid-template-columns:1fr}
+.ben.detail .card span{font-size:.95rem;color:var(--ink)}
+.ben .card em{font-style:normal;display:block;margin-top:6px;padding:8px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--muted)}
+.ben .group{grid-column:1/-1;font-size:.85rem;color:var(--gold);font-weight:600;padding-top:6px}
+@media (max-width:640px){.ben{grid-template-columns:1fr}}
+
+/* Eras */
+.eras{display:flex;flex-direction:column;gap:12px}
+.era{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.era .when{font-family:var(--display);color:var(--accent);display:flex;flex-direction:column;gap:2px}
+.era .when small{font-family:var(--body);color:var(--muted);font-size:.85rem}
+.era.hi{border-color:var(--gold);box-shadow:inset -4px 0 0 var(--gold)}
+@media (max-width:600px){.era{grid-template-columns:1fr;gap:6px}}
+
+/* Flow */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .step{flex:1 1 150px;background:var(--paper);border:1px solid var(--line);padding:12px;text-align:center;display:flex;flex-direction:column;gap:4px;justify-content:center;min-width:0}
+.flow .step:first-child{border-radius:0 10px 10px 0}
+.flow .step:last-child{border-radius:10px 0 0 10px}
+.flow .step b{font-family:var(--display);font-size:1.1rem}
+.flow .arr{align-self:center;color:var(--accent);font-size:1.4rem;padding:0 6px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .step{border-radius:10px!important;flex:none}.flow .arr{transform:rotate(-90deg);text-align:center}}
+
+@media (min-width:641px){.flow{flex-wrap:nowrap}}
+/* tables */
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:520px}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+
+/* figures grid */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:2px}
+.person b{font-family:var(--display);font-size:1.05rem}
+.person span{font-size:.85rem;color:var(--muted)}
+@media (max-width:640px){.people{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* quiz */
+details{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:600;list-style:none}
+details summary::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+details[open] summary{margin-bottom:6px}
+details p{color:var(--muted)}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.quiz{display:flex;flex-direction:column;gap:8px}
+svg{direction:ltr}
+svg text{font-family:var(--body)}
+
+/* ---- additions for نظم المعين study sheets ---- */
+/* green "summary" callout and violet "question" callout, matching note/warn */
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:6px}
+.ask{background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:6px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .warn .cal-t{color:var(--red)} .sum .cal-t{color:var(--accent)}
+.ask .cal-t{color:var(--gold)}
+
+/* verses of the نظم: two hemistichs separated by a dotted gap */
+.verse{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 16px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.verse p{font-family:var(--display);font-size:1.08rem;line-height:2;color:var(--ink)}
+.verse .sp{color:var(--gold);padding:0 8px}
+.verse cite{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:6px}
+
+/* diagrams keep a fixed light surface so the fixed SVG palette stays legible in both themes */
+.dia{background:#FFFFFF;border:1px solid #D5DBE3;border-radius:10px;padding:14px 10px 8px;overflow-x:auto}
+.dia .cap{font-family:var(--display);color:#0d3b66;font-size:.98rem;text-align:center;margin-bottom:6px;display:block}
+.dia svg{display:block;margin:0 auto;max-width:100%;height:auto}
+
+/* key term + book title inline marks */
+.kw{color:var(--gold);font-weight:600}
+.bk{color:var(--accent);font-weight:600}
+
+/* definition rows (imam cards / labelled fields) */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;align-items:start}
+.row .lb{font-size:.82rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 10px;text-align:center}
+@media (max-width:640px){.row{grid-template-columns:1fr;gap:4px}.row .lb{justify-self:start}}
+.card-h{display:flex;gap:10px;align-items:baseline;margin-bottom:8px}
+.card-h .n{font-family:var(--display);font-size:1.5rem;color:var(--accent);line-height:1}
+.card-h b{font-family:var(--display);font-size:1.15rem}
+
+.mm.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.mm.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.mm.four,.mm.two{grid-template-columns:1fr}}
+
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp,.mcq:has(input) .exp{display:block}.quiz .rst{display:none}}
+
+/* ---- additions for لغة المحدث study sheets ---- */
+/* isnad chain: narrators as pills joined by arrows; .x = dropped narrator, .on = highlighted */
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.9rem}
+.chain .nd{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:3px 10px;line-height:1.7}
+.chain .nd.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent);font-weight:600}
+.chain .nd.x{border-color:var(--red);background:var(--red-soft);color:var(--red);text-decoration:line-through}
+.chain .nd.g{border-color:var(--gold);background:var(--gold-soft);color:var(--gold);font-weight:600}
+.chain .ar{color:var(--muted)}
+.chain .lb{font-size:.8rem;font-weight:600;color:var(--muted);min-width:7em}
+.chains{display:flex;flex-direction:column;gap:10px}
+/* two/three column comparison boxes */
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cmp.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cmp > div{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:0 0 10px 10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cmp > div.g{border-top-color:var(--gold)} .cmp > div.r{border-top-color:var(--red)}
+.cmp h3{font-size:1rem}
+@media (max-width:700px){.cmp,.cmp.three{grid-template-columns:1fr}}
+</style>
+</head>
+<body style="margin:0">
+
+<div class="wrap" dir="rtl" lang="ar">
+<nav dir="rtl" aria-label="التنقل" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem"><a href="../../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">البناء المنهجي</a><span style="color:var(--muted)">‹</span><a href="../../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المستوى الثاني</a><span style="color:var(--muted)">‹</span><a href="../index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">المرحلة الثالثة</a><span style="color:var(--muted)">‹</span><a href="index.html" style="color:var(--muted);text-decoration:none;border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:4px 12px">شرح لغة المحدث</a><span style="color:var(--muted)">‹</span><span aria-current="page" style="color:#fff;background:var(--accent);border-radius:99px;padding:4px 12px;font-weight:600">الدرس ٢</span></nav>
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture1.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture3.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+
+<header>
+  <div class="eyebrow">شرح لغة المحدِّث · الشيخ طارق بن عوض الله · الدرس الثاني</div>
+  <h1>السند والمتن وأنواعهما</h1>
+  <p class="muted">ملخص مذاكرة: الخريطة الذهنية أولًا، ثم أبيات المنظومة وتفصيلها بالرسوم والجداول، ثم أسئلة مراجعة في الآخر.</p>
+</header>
+
+<!-- ===== mind map ===== -->
+<section>
+  <h2>الخريطة الذهنية للدرس <span class="tag">ابدأ من هنا</span></h2>
+  <div class="mm">
+    <div class="mm-root">السند والمتن وأنواعهما</div>
+    <div class="mm-branch">
+      <h3>السند</h3>
+      <ul class="tree">
+        <li><b>تعريفه</b>: الإخبار عن طريق المتن
+          <ul><li>= الإسناد = الطريق</li></ul>
+        </li>
+        <li><b>المسلسل</b>
+          <ul><li>بأحوال الرواة · بأوصافهم · بصيغ الأداء والزمان والمكان</li></ul>
+        </li>
+        <li><b>العالي والنازل</b>
+          <ul><li>علو صفة (٢) + علو مسافة (٣) = خمسة</li></ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>المتن وأقسامه</h3>
+      <ul class="tree">
+        <li><b>المتن</b>: ما انتهى إليه السند</li>
+        <li><b>بحسب من أُضيف إليه</b>
+          <ul>
+            <li>مرفوع · موقوف · مقطوع</li>
+            <li>المرفوع حكمًا وقرائنه</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="mm-branch">
+      <h3>ألقاب المتون</h3>
+      <ul class="tree">
+        <li>الحديث · الخبر · الأثر</li>
+        <li>السنة · الحديث القدسي</li>
+        <li>المسند (ثلاثة أقوال)</li>
+        <li>الإسرائيليات</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 1 ===== -->
+<section>
+  <h2>أولًا: تعريف السند</h2>
+  <div class="verse">
+    <p>وَ«السَّنَدُ»: الْإِخْبَارُ عَنْ طَرِيقِ <span class="sp">…</span> مَتْنٍ، كَـ«الْإِسْنَادِ» وَكَـ«الطَّرِيقِ»</p>
+    <p>وَبَعْضُهَا -عِنْدَهُمُ- مُسَلْسَلَهْ <span class="sp">…</span> وَبَعْضُهَا: عَالِيَةٌ أَوْ نَازِلَهْ</p>
+  </div>
+  <p><b>السند</b>: حكاية طريق المتن، أو الإخبار عن طريق المتن. و<b>السند والإسناد والطريق</b> معانٍ مترادفة عند المحدّثين.</p>
+  <div class="warn">
+    <span class="cal-t">تعريفٌ شائع غير صحيح: «السند هو سلسلة الرواة الموصلة إلى المتن»</span>
+    <p>وسبب عدم صحته ثلاثة أمور:</p>
+  </div>
+  <div class="cmp three">
+    <div class="r"><h3>١. أهمل أدوات الأداء</h3><p>الإسناد جزءان: <b>الرجال</b> و<b>أدوات الأداء</b> (حدثنا، أخبرنا، عن…)؛ والتعريف ذكر الرجال وحدهم.</p></div>
+    <div class="r"><h3>٢. لفظ «سلسلة» يُدخل الاتصال</h3><p>وليست كل الأسانيد متصلة؛ فيكون التعريف بذلك <b>غير جامع</b>، إذ يُخرج المنقطع والمرسل وهما أسانيد.</p></div>
+    <div class="r"><h3>٣. قد تكون الواسطة كتابًا</h3><p>من الأسانيد ما تكون الواسطة في إحدى طبقاته «الكتاب» لا «الراوي»، مثل <b>الوجادة</b>.</p></div>
+  </div>
+  <div class="chains panel">
+    <div class="chain"><span class="lb">رجال الإسناد</span><span class="nd on">مالك</span><span class="ar">←</span><span class="nd on">نافع</span><span class="ar">←</span><span class="nd on">ابن عمر</span><span class="ar">←</span><span class="nd g">النبي ﷺ</span></div>
+    <div class="chain"><span class="lb">أدوات الأداء</span><span class="nd">حدثنا</span><span class="nd">عن</span><span class="nd">أنّ</span><span class="nd">قال</span><span class="nd">سمعت</span><span class="nd">أخبرنا</span></div>
+    <p class="muted" style="font-size:.88rem">الإسناد الكامل = رجالٌ + أدواتُ أداءٍ تربط كلَّ راوٍ بمن فوقه؛ وبالأدوات يُعرف السماع من غيره.</p>
+  </div>
+</section>
+
+<!-- ===== 2 ===== -->
+<section>
+  <h2>ثانيًا: الإسناد المسلسل</h2>
+  <div class="verse">
+    <p>أَمَّا «الْمُسَلْسَلُ»: فَمَا تَوَارَدَا <span class="sp">…</span> فِيهِ الرُّوَاةُ وَاحِدًا فَوَاحِدَا</p>
+    <p>فِي صِفَةٍ أَوْ حَالَةٍ قَوْلِيَّةِ <span class="sp">…</span> لَهُمْ أَوِ الْإِسْنَادِ، أَوْ فِعْلِيَّةِ</p>
+  </div>
+  <p><b>تعريفه:</b> هو الذي توارد رجاله واحدًا فواحدًا على حالةٍ واحدة أو صفةٍ واحدة، سواء كانت الصفة للرواة أو للإسناد، وسواء كان ما وقع منه في صيغ الأداء أم متعلقًا بزمن الرواية أو بالمكان، وسواء كانت أحوال الرواة أو أوصافهم أقوالًا أو أفعالًا أو هما معًا.</p>
+  <div class="panel scroll"><svg viewBox="0 0 960 396" width="100%" style="min-width:900px;display:block" role="img" aria-label="شجرة أنواع المسلسل: بأحوال الرواة (قولية وفعلية ومعًا)، وبأوصاف الرواة (قولية وفعلية: بالأسماء والصفات والنسبة)، وبما وقع في الإسناد (صيغ الأداء والزمان والمكان) مع أمثلة لكل نوع">
+<rect x="380" y="14" width="200" height="46" rx="23" style="fill:var(--ink)"/>
+<text x="480" y="43" text-anchor="middle" direction="rtl" font-size="17" font-weight="700" style="font-family:var(--display);fill:var(--bg)">المسلسل</text>
+<path d="M480 60 C480 80 800 76 800 96" fill="none" stroke-width="2" style="stroke:var(--accent)"/>
+<path d="M480 60 L480 96" fill="none" stroke-width="2" style="stroke:var(--gold)"/>
+<path d="M480 60 C480 80 160 76 160 96" fill="none" stroke-width="2" style="stroke:var(--red)"/>
+<rect x="680" y="96" width="240" height="44" rx="10" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="800" y="124" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--accent)">بأحوال الرواة</text>
+<rect x="360" y="96" width="240" height="44" rx="10" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="480" y="124" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--gold)">بأوصاف الرواة</text>
+<rect x="40" y="96" width="240" height="44" rx="10" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="160" y="124" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--red)">بما وقع في الإسناد</text>
+<g font-size="12.5" direction="rtl">
+<rect x="680" y="160" width="240" height="66" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="908" y="182" text-anchor="start" font-weight="700" style="fill:var(--accent)">قولية</text>
+<text x="908" y="204" text-anchor="start" style="fill:var(--ink)">«سمعتُ فلانًا يقول: أشهدُ باللهِ</text>
+<text x="908" y="220" text-anchor="start" style="fill:var(--ink)">لقد حدثني فلان…»</text>
+<rect x="680" y="236" width="240" height="56" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="908" y="258" text-anchor="start" font-weight="700" style="fill:var(--accent)">فعلية</text>
+<text x="908" y="280" text-anchor="start" style="fill:var(--ink)">«دخلنا على فلان فأطعمنا تمرًا…»</text>
+<rect x="680" y="302" width="240" height="72" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="908" y="324" text-anchor="start" font-weight="700" style="fill:var(--accent)">قولية وفعلية معًا</text>
+<text x="908" y="346" text-anchor="start" style="fill:var(--ink)">«حدثني فلان وهو آخذٌ بلحيته</text>
+<text x="908" y="362" text-anchor="start" style="fill:var(--ink)">قال: آمنتُ بالقدر»</text>
+<rect x="360" y="160" width="240" height="56" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="588" y="182" text-anchor="start" font-weight="700" style="fill:var(--gold)">بصفاتهم القولية</text>
+<text x="588" y="204" text-anchor="start" style="fill:var(--ink)">المسلسل بقراءة سورة الصف</text>
+<rect x="360" y="226" width="240" height="156" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="588" y="248" text-anchor="start" font-weight="700" style="fill:var(--gold)">بصفاتهم الفعلية</text>
+<text x="588" y="272" text-anchor="start" style="fill:var(--ink)">بأسماء الرواة:</text>
+<text x="588" y="290" text-anchor="start" style="fill:var(--muted)">المسلسل بالمحمدين</text>
+<text x="588" y="314" text-anchor="start" style="fill:var(--ink)">بصفات الرواة:</text>
+<text x="588" y="332" text-anchor="start" style="fill:var(--muted)">المسلسل بالفقهاء، وبالمحدّثين</text>
+<text x="588" y="354" text-anchor="start" style="fill:var(--ink)">بنسبة الرواة:</text>
+<text x="588" y="370" text-anchor="start" style="fill:var(--muted)">بالدمشقيين أو المصريين</text>
+<rect x="40" y="160" width="240" height="66" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="268" y="182" text-anchor="start" font-weight="700" style="fill:var(--red)">بصيغ الأداء</text>
+<text x="268" y="204" text-anchor="start" style="fill:var(--ink)">بـ«سمعتُ فلانًا» أو «حدثنا فلان»</text>
+<rect x="40" y="236" width="240" height="56" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="268" y="258" text-anchor="start" font-weight="700" style="fill:var(--red)">بزمان الرواية</text>
+<text x="268" y="280" text-anchor="start" style="fill:var(--ink)">المسلسل بروايته يوم العيد</text>
+<rect x="40" y="302" width="240" height="72" rx="8" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="268" y="324" text-anchor="start" font-weight="700" style="fill:var(--red)">بمكان الرواية</text>
+<text x="268" y="346" text-anchor="start" style="fill:var(--ink)">المسلسل بإجابة الدعاء</text>
+<text x="268" y="362" text-anchor="start" style="fill:var(--ink)">في الملتزم</text>
+</g>
+</svg></div>
+
+  <h3>التسلسل قد يكون في كل الإسناد أو في بعضه: «المسلسل بالأولية»</h3>
+  <div class="chains panel">
+    <div class="chain"><span class="nd on">… كلٌّ يقول: «وهو أوّل حديثٍ سمعتُه منه»</span><span class="ar">←</span><span class="nd on">سفيان بن عيينة</span><span class="ar">←</span><span class="nd">عمرو بن دينار</span><span class="ar">←</span><span class="nd">أبو قابوس</span><span class="ar">←</span><span class="nd">عبد الله بن عمرو</span><span class="ar">←</span><span class="nd g">النبي ﷺ: «الراحمون يرحمهم الرحمن»</span></div>
+    <p class="muted" style="font-size:.88rem">ينتهي التسلسل إلى سفيان بن عيينة، وينقطع التسلسل فيما فوقه (عمرو بن دينار عن أبي قابوس)؛ فالتسلسل هنا في <b>بعض</b> الإسناد.</p>
+  </div>
+  <blockquote>«وقلّما تسلم المسلسلات من ضعف» — في وصف التسلسل، لا في أصل المتن.<cite>ابن الصلاح</cite></blockquote>
+  <div class="ben">
+    <div class="card"><span class="n">١</span><div><strong>دفع شبهة تدليس التسوية</strong><span>تسلسل الإسناد بصيغ السماع في كل الطبقات يدفع شبهة تدليس التسوية عن الراوي المعروف بها إذا كان أحد رواة الحديث.</span></div></div>
+    <div class="card"><span class="n">٢</span><div><strong>زيادة الضبط وإفادة العلم</strong><span>المسلسل بالأئمة الحفاظ المتقنين — حيث لا يكون غريبًا — يفيد العلم، وهو من القرائن التي ذكرها ابن حجر: كحديثٍ رواه أحمد عن الشافعي عن مالك.</span></div></div>
+  </div>
+</section>
+
+<!-- ===== 3 ===== -->
+<section>
+  <h2>ثالثًا: الإسناد العالي والنازل</h2>
+  <div class="verse">
+    <p>ثُمَّ «الْعُلُوُّ»: فَعُلُوُّ الصِّفَةِ <span class="sp">…</span> قِسْمَانِ، وَالْعُلُوُّ بِالْمَسَافَةِ</p>
+    <p>ثَلَاثَةُ الْأَقْسَامِ، فَهْيَ خَمْسَهْ <span class="sp">…</span> ثُمَّ النُّزُولُ، وَيَكُونُ عَكْسَهْ</p>
+    <p>فَالْأَوَّلَانِ: قِدَمُ الْوَفَاةِ <span class="sp">…</span> وَقِدَمُ السَّمَاعِ لِلرُّوَاةِ</p>
+    <p>وَالْقُرْبُ: لِلنَّبِيِّ، أَوْ إِمَامِ <span class="sp">…</span> أَوْ نِسْبَةٍ لِكُتُبِ الْأَعْلَامِ</p>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 960 330" width="100%" style="min-width:900px;display:block" role="img" aria-label="أقسام العلو الخمسة: علو الصفة بتقدم وفاة الراوي وبتقدم السماع من الشيخ، وعلو المسافة بالقرب من النبي وبالقرب من إمام وبالنسبة إلى كتاب معتمد؛ والنزول عكس كل قسم">
+<rect x="380" y="14" width="200" height="46" rx="23" style="fill:var(--ink)"/>
+<text x="480" y="43" text-anchor="middle" direction="rtl" font-size="17" font-weight="700" style="font-family:var(--display);fill:var(--bg)">العلوّ: خمسة أقسام</text>
+<path d="M480 60 C480 82 755 76 755 98" fill="none" stroke-width="2" style="stroke:var(--gold)"/>
+<path d="M480 60 C480 82 290 76 290 98" fill="none" stroke-width="2" style="stroke:var(--accent)"/>
+<rect x="590" y="98" width="330" height="44" rx="10" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="755" y="126" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--gold)">علوّ الصفة (قسمان)</text>
+<rect x="40" y="98" width="500" height="44" rx="10" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="290" y="126" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--accent)">علوّ المسافة بقلّة الوسائط (ثلاثة)</text>
+<path d="M755 142 L840 162 M755 142 L670 162" stroke-width="1.6" fill="none" style="stroke:var(--gold)"/>
+<path d="M290 142 L456 162 M290 142 L290 162 M290 142 L124 162" stroke-width="1.6" fill="none" style="stroke:var(--accent)"/>
+<g font-size="12.5" direction="rtl">
+<rect x="765" y="162" width="155" height="120" rx="8" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="842" y="186" text-anchor="middle" font-weight="700" style="fill:var(--gold)">١. تقدُّم الوفاة</text>
+<text x="842" y="210" text-anchor="middle" style="fill:var(--ink)">موتُ راوٍ قبل نظيره</text>
+<text x="842" y="228" text-anchor="middle" style="fill:var(--ink)">في الإسناد الآخر</text>
+<text x="842" y="252" text-anchor="middle" style="fill:var(--muted)">وإن تساوى العدد</text>
+<rect x="595" y="162" width="155" height="120" rx="8" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="672" y="186" text-anchor="middle" font-weight="700" style="fill:var(--gold)">٢. تقدُّم السماع</text>
+<text x="672" y="210" text-anchor="middle" style="fill:var(--ink)">من سمع قديمًا أعلى</text>
+<text x="672" y="228" text-anchor="middle" style="fill:var(--ink)">ممن سمع أخيرًا</text>
+<text x="672" y="252" text-anchor="middle" style="fill:var(--muted)">ويتأكد إذا اختلط الشيخ</text>
+<rect x="378" y="162" width="156" height="120" rx="8" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="456" y="186" text-anchor="middle" font-weight="700" style="fill:var(--accent)">٣. القرب من النبي ﷺ</text>
+<text x="456" y="210" text-anchor="middle" style="fill:var(--ink)">بإسنادٍ صحيح</text>
+<text x="456" y="228" text-anchor="middle" style="fill:var(--ink)">قويٍّ لا ضعف فيه</text>
+<text x="456" y="252" text-anchor="middle" style="fill:var(--muted)">وهو أعظمها</text>
+<rect x="212" y="162" width="156" height="120" rx="8" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="290" y="186" text-anchor="middle" font-weight="700" style="fill:var(--accent)">٤. القرب من إمام</text>
+<text x="290" y="210" text-anchor="middle" style="fill:var(--ink)">كشعبة ومالك</text>
+<text x="290" y="228" text-anchor="middle" style="fill:var(--ink)">والأعمش وابن جريج</text>
+<text x="290" y="252" text-anchor="middle" style="fill:var(--muted)">ولو كثر العدد بعده</text>
+<rect x="46" y="162" width="156" height="120" rx="8" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="124" y="186" text-anchor="middle" font-weight="700" style="fill:var(--accent)">٥. بالنسبة لكتاب</text>
+<text x="124" y="210" text-anchor="middle" style="fill:var(--ink)">كالستة والموطأ والمسند</text>
+<text x="124" y="228" text-anchor="middle" style="fill:var(--ink)">تصل إلى شيخ المصنف</text>
+<text x="124" y="252" text-anchor="middle" style="fill:var(--muted)">أو شيخ شيخه</text>
+</g>
+<text x="480" y="312" text-anchor="middle" direction="rtl" font-size="13" font-weight="600" style="fill:var(--red)">والنزول عكس العلوّ؛ فكلُّ قسمٍ من أقسام العلوّ يقابله نزول</text>
+</svg></div>
+
+  <h3>أمثلة مرسومة</h3>
+  <div class="chains panel">
+    <p><b>علو تقدّم الوفاة:</b> الحديث نفسه عن مالك من طريقين متساويين عددًا:</p>
+    <div class="chain"><span class="nd on">عبد الله بن وهب (ت ١٩٨هـ)</span><span class="ar">←</span><span class="nd">مالك</span><span class="ar">←</span><span class="nd">…</span><span class="lb" style="color:var(--accent)">← أعلى</span></div>
+    <div class="chain"><span class="nd">قتيبة بن سعيد (ت ٢٤٢هـ)</span><span class="ar">←</span><span class="nd">مالك</span><span class="ar">←</span><span class="nd">…</span></div>
+    <p style="margin-top:8px"><b>علو تقدّم السماع وعكسه:</b> من سمع من شيخٍ قديمًا قبل اختلاطه أعلى ممن سمع أخيرًا. وأحيانًا <b>يرجح العكس</b>: إذا صار الشيخ في آخر عمره يحدّث من كتبه فلا يخطئ، وكان قديمًا يخطئ — كـ<b>همّام بن يحيى</b>.</p>
+    <p style="margin-top:8px"><b>العلو بالنسبة لكتاب:</b> حديثٌ رواه البخاري، فترويه بإسنادك إلى شيخ البخاري أو شيخ شيخه، بإسنادٍ عالٍ مما لو رويته عن طريق البخاري.</p>
+    <div class="chain"><span class="nd">أنت</span><span class="ar">←</span><span class="nd">…</span><span class="ar">←</span><span class="nd">البخاري</span><span class="ar">←</span><span class="nd">شيخ البخاري</span><span class="lb">نازل</span></div>
+    <div class="chain"><span class="nd">أنت</span><span class="ar">←</span><span class="nd">…</span><span class="ar">←</span><span class="nd on">شيخ البخاري مباشرةً</span><span class="lb" style="color:var(--accent)">عالٍ (موافقة)</span></div>
+  </div>
+  <div class="note">
+    <span class="cal-t">فوائد في العالي والنازل</span>
+    <ul class="clean">
+      <li>استعمل أبو داود لفظ «العالي» بمعنى <b>المرفوع</b> أو <b>الصحيح</b>.</li>
+      <li>عبّر ابن المبارك عن العلو بلفظ <b>«قريب الإسناد»</b>.</li>
+    </ul>
+  </div>
+  <div class="ask">
+    <span class="cal-t">طريقة الإمام مسلم إذا احتاج أحيانًا للوصول إلى علوّ السند</span>
+    <ul class="clean">
+      <li>إذا وجد روايةً محفوظةً من أوجهٍ نازلة الإسناد، أخرجها في الصحيح بطرقٍ أخرى عن بعض الضعفاء إذا كانت <b>عالية</b>، بعد تحققه أن الراوي الضعيف لم يخطئ فيها، وأن أصل الحديث معروفٌ من رواية الثقات.</li>
+      <li>فروايته عنهم ليست احتجاجًا بالضعيف، ولا هي من باب المتابعات والشواهد، ورتبتها تقصر عن درجة رجال «الصحيح» عند الإطلاق.</li>
+      <li>ومن الضعفاء الذين أخرج لهم بهذه الطريقة: <b>أسباط بن نصر، وقطن بن نُسير، وأحمد بن عيسى</b>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 4 ===== -->
+<section>
+  <h2>رابعًا: المتن، وحدّ «الحديث الواحد»</h2>
+  <div class="verse">
+    <p>وَ«الْمَتْنُ»: مَا انْتَهَى إِلَيْهِ السَّنَدُ <span class="sp">…</span> مِنَ الْكَلَامِ، جُمْلَةٌ أَوْ عَدَدُ</p>
+  </div>
+  <p><b>المتن:</b> ما ينتهي إليه غاية السند من الكلام، سواء انتهى إلى الرسول ﷺ أو إلى غيره، وسواء كان الكلام جملةً واحدة أو عدة جمل.</p>
+  <div class="ben detail">
+    <div class="group">قول ابن تيمية في حدّ الحديث الواحد</div>
+    <div class="card"><span class="n">١</span><div><strong>ما رواه الصحابي متصلًا بعضه ببعض</strong><span>وإن حوى جملًا كثيرة — كحادثة الإفك، وحديث توبة كعب بن مالك — وإن قلّ التناسب بينها. فليس الحديث كالجملة الواحدة، بل كالآيات المتصلة.</span></div></div>
+    <div class="card"><span class="n">٢</span><div><strong>إذا فرغ الصحابي ثم روى غيره بفاصل</strong><span>إذا روى الصحابي كلامًا ثم فرغ منه، وروى غيره وكان بين الكلامين فاصل، فهذان حديثان.</span></div></div>
+    <div class="card"><span class="n">٣</span><div><strong>قد يحوي قصصًا متعددة</strong><span>يُسمّى حديثًا واحدًا لأن الصحابي حدّث به متصلًا، كحديث جابر الطويل في الحج.</span></div></div>
+    <div class="card"><span class="n">٤</span><div><strong>وقد يفرّقه بعض الرواة</strong><span>فيجعلونه أحاديث، كفعل البخاري في كتاب أبي بكر في الصدقة، وهو جائز.</span></div></div>
+  </div>
+</section>
+
+<!-- ===== 5 ===== -->
+<section>
+  <h2>خامسًا: المرفوع والموقوف والمقطوع</h2>
+  <div class="verse">
+    <p>فَمَا أُضِيفَ لِلنَّبِي «الْمَرْفُوعُ» <span class="sp">…</span> وَالصَّاحِبِ «الْمَوْقُوفُ» وَ«الْمَقْطُوعُ»</p>
+    <p>لِلتَّابِعِي، ضَعِيفًا أَوْ صَحِيحَا <span class="sp">…</span> قَوْلًا وَفِعْلًا، حُكْمًا أَوْ تَصْرِيحَا</p>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 900 230" width="100%" style="min-width:860px;display:block" role="img" aria-label="أقسام المتن بحسب من أضيف إليه: المرفوع ما أضيف إلى النبي، والموقوف ما أضيف إلى الصحابي، والمقطوع ما أضيف إلى التابعي؛ والإضافة لا تعني الحكم بالصحة أو الاتصال">
+<text x="884" y="26" text-anchor="start" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">المتنُ يُسمّى باسم من انتهى إليه الكلام</text>
+<rect x="640" y="50" width="230" height="72" rx="12" stroke-width="1.6" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="755" y="80" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--accent)">النبي ﷺ</text>
+<text x="755" y="104" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">قول · فعل · تقرير · وصف</text>
+<rect x="335" y="50" width="230" height="72" rx="12" stroke-width="1.6" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="450" y="80" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--gold)">الصحابي</text>
+<text x="450" y="104" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">قوله أو فعله</text>
+<rect x="30" y="50" width="230" height="72" rx="12" stroke-width="1.6" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="145" y="80" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--red)">التابعي ومن دونه</text>
+<text x="145" y="104" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">قوله أو فعله</text>
+<path d="M755 122 L755 150" stroke-width="2" style="stroke:var(--accent)"/><path d="M450 122 L450 150" stroke-width="2" style="stroke:var(--gold)"/><path d="M145 122 L145 150" stroke-width="2" style="stroke:var(--red)"/>
+<rect x="675" y="150" width="160" height="40" rx="20" style="fill:var(--accent)"/>
+<text x="755" y="176" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" fill="#fff" style="font-family:var(--display)">المرفوع</text>
+<rect x="370" y="150" width="160" height="40" rx="20" style="fill:var(--gold)"/>
+<text x="450" y="176" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" fill="#fff" style="font-family:var(--display)">الموقوف</text>
+<rect x="65" y="150" width="160" height="40" rx="20" style="fill:var(--red)"/>
+<text x="145" y="176" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" fill="#fff" style="font-family:var(--display)">المقطوع</text>
+<text x="450" y="218" text-anchor="middle" direction="rtl" font-size="12.5" font-weight="600" style="fill:var(--muted)">«ضعيفًا أو صحيحًا»: الإضافة وصفٌ للمتن، وليست حكمًا عليه بالصحة أو الاتصال</text>
+</svg></div>
+  <p class="muted">والمقطوع إذا كان متصل السند يُقيَّد بأنه متصلٌ إلى فلان، كقولهم: «متصلٌ إلى سعيد بن المسيب». وقد عبّر بعض المتقدمين (كالشافعي والطبراني) عن <b>المنقطع</b> بالمقطوع، ووُجد عكسه أيضًا.</p>
+
+  <h3>المرفوع حكمًا</h3>
+  <p><b>تعريفه:</b> متونٌ موقوفةٌ على الصحابي لفظًا، ومرفوعةٌ إلى الرسول ﷺ حكمًا؛ بسبب قرينةٍ انضمت إليها تبيّن أنها لا يمكن أن تكون من قول الصحابي أو اجتهاده.</p>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>#</th><th>الصورة</th><th>مثالها أو شرطها</th></tr></thead>
+      <tbody>
+        <tr><td>١</td><td>الغيبيات التي يخبر بها الصحابي</td><td>الأمم السابقة، أشراط الساعة، وصف الجنة والنار، ثوابٌ معيّن لفعلٍ معيّن — <b>بشرط</b> ألا يكون الصحابي ممن عُرف بالأخذ عن الإسرائيليات</td></tr>
+        <tr><td>٢</td><td>«فعلنا» أو «قلنا» بحضرة النبي ﷺ</td><td>كذا ولم يُنكر</td></tr>
+        <tr><td>٣</td><td>«كنا نفعل كذا» في حياته ﷺ وإن لم يكن بحضرته</td><td>لأنه زمان وحيٍ وتشريع؛ فأي فعلٍ مخالفٍ سينزل به وحي: «كنا نعزل والقرآن ينزل»</td></tr>
+        <tr><td>٤</td><td>لفظٌ يدل على أنه أخذ الخبر عن النبي ﷺ</td><td>«من السنة كذا»، «أُمِرنا» أو «نُهينا»، وقول الراوي عن الصحابي: «رفعه» أو «يبلغ به» أو «يرويه»</td></tr>
+        <tr><td>٥</td><td>أحكامٌ لا مجال للاجتهاد فيها</td><td>قول أبي هريرة في رجلٍ خرج من المسجد بعد الأذان: «أما هذا فقد عصى أبا القاسم»</td></tr>
+        <tr><td>٦</td><td>تفسير الصحابي مما له علاقة بأسباب النزول</td><td>أما التفسير الذي لا علاقة له بأسباب النزول فالراجح أنه ليس له حكم الرفع؛ لأنه راجع إلى اجتهاد الصحابي، إلا مع قرينة</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">
+    <span class="cal-t">القرائن السابقة للموقوف أصلًا</span>
+    <p>هذه القرائن تحكم للموقوف بحكم الرفع؛ أما ما دونه (المقطوع) فلا يُحكم له بالرفع إلا في بعضها.</p>
+  </div>
+  <div class="ben detail">
+    <div class="group">فوائد في المرفوع</div>
+    <div class="card"><span class="n">١</span><div><strong>إخبار الصحابي عن شهرة أمرٍ وتقريره</strong><span>إذا أخبر الصحابي عن أمرٍ مشهور لا يخفى على أهل المدينة فذلك يكون كرفعه، وهذا مما يراه البخاري. مثاله: حرمة رفع الصوت في المسجد النبوي، فإن عمر لمّا قام به اثنان تجاوزا عنهما لأنهما ليسا من أهل المدينة.</span></div></div>
+    <div class="card"><span class="n">٢</span><div><strong>لفظ المماثلة لا يعني التماثل من كل وجه</strong><span>حديث أيوب عن أبي قلابة أن مالك بن الحويرث صلّى بهم ليريهم كيف كان يصلي رسول الله ﷺ، وفيه الجلوس بعد السجدة الثانية، وقوله: «صلاة عمرو بن سلمة تماثل صلاة مالك» — لا يعني أن جميع حركات الصلاة مرفوعة في هذا الحديث.</span></div></div>
+    <div class="card"><span class="n">٣</span><div><strong>المرفوع تصريحًا مقدَّمٌ على المرفوع حكمًا</strong><span>إذا تعارضا ولم يمكن الجمع: حديث ابن عمر أن النبي ﷺ نهى عن بيع أمهات الأولاد وقال «لا يُبعن ولا يوهبن…» أولى بالعمل من حديث أبي سعيد: «كنا نبيع أمهات الأولاد على عهد رسول الله ﷺ»؛ لأن هذا لا تنصيص فيه أنه من قوله ﷺ.</span></div></div>
+    <div class="card"><span class="n">٤</span><div><strong>الدعاء لا يأخذ حكم الرفع</strong><span>من المرفوع حكمًا ما يحصل بفعله ثوابٌ أو عقابٌ مخصوص؛ أما إذا خرج مخرج الدعاء فلا، كقول أبي الدرداء: «إذا زوّقتم مساجدكم وحلّيتم مصاحفكم فالدمار عليكم».</span></div></div>
+  </div>
+</section>
+
+<!-- ===== 6 ===== -->
+<section>
+  <h2>سادسًا: الحديث والخبر والأثر</h2>
+  <div class="verse">
+    <p>وَخَصَّصُوا «الْحَدِيثَ» بِالْمَرْفُوعِ <span class="sp">…</span> وَقِيلَ: بَلْ يُطْلَقُ لِلْجَمِيعِ</p>
+    <p>فَهْوَ عَلَى هَذَا مُرَادِفُ «الْخَبَرْ» <span class="sp">…</span> وَشَهَّرُوا شُمُولَ هَذَيْنِ «الْأَثَرْ»</p>
+  </div>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>اللفظ</th><th>الأقوال فيه</th></tr></thead>
+      <tbody>
+        <tr><td>الحديث</td><td>(١) هو المرفوع. (٢) يشمل المرفوع والموقوف والمقطوع — كقول البخاري: «أحفظ مئة ألف حديثٍ صحيح»، فإنه يشمل الموقوفة والمقطوعة، كما أن الحديث الواحد المروي بإسنادين يُعدّ حديثين. (٣) مرادفٌ للخبر. (٤) لا يُطلق على غير المرفوع إلا بقيد؛ فإذا لم يُقيَّد عُني به بالدرجة الأولى المرفوع.</td></tr>
+        <tr><td>الخبر</td><td>(١) مرادفٌ للحديث. (٢) الحديث ما جاء عن النبي ﷺ، والخبر ما جاء عن غيره. (٣) بينهما عمومٌ وخصوص: فكلُّ حديثٍ خبرٌ ولا عكس.</td></tr>
+        <tr><td>الأثر</td><td>(١) يُطلق على المرفوع والموقوف والمقطوع. (٢) عند فقهاء الخراسانيين: المرفوع خبر، والموقوف أثر. (٣) عند ابن حجر: يقال للموقوف والمقطوع أثر.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 860 210" width="100%" style="min-width:780px;display:block" role="img" aria-label="رسم العموم والخصوص: دائرة الخبر الكبرى تحتوي دائرة الحديث، فكل حديث خبر ولا عكس؛ وعند الخراسانيين المرفوع خبر والموقوف أثر">
+<ellipse cx="620" cy="110" rx="200" ry="88" style="fill:var(--gold-soft);stroke:var(--gold)" stroke-width="1.6"/>
+<ellipse cx="680" cy="110" rx="100" ry="56" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.6"/>
+<text x="680" y="106" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--accent)">الحديث</text>
+<text x="680" y="126" text-anchor="middle" direction="rtl" font-size="11.5" style="fill:var(--muted)">عن النبي ﷺ</text>
+<text x="500" y="90" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--gold)">الخبر</text>
+<text x="500" y="112" text-anchor="middle" direction="rtl" font-size="11.5" style="fill:var(--muted)">عن النبي ﷺ</text>
+<text x="500" y="130" text-anchor="middle" direction="rtl" font-size="11.5" style="fill:var(--muted)">وعن غيره</text>
+<text x="620" y="208" text-anchor="middle" direction="rtl" font-size="12" font-weight="600" style="fill:var(--ink)">قول العموم والخصوص: كلُّ حديثٍ خبرٌ ولا عكس</text>
+<rect x="40" y="40" width="300" height="130" rx="12" style="fill:var(--paper);stroke:var(--line)"/>
+<text x="190" y="66" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">اصطلاح فقهاء الخراسانيين</text>
+<rect x="196" y="84" width="124" height="34" rx="17" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="258" y="106" text-anchor="middle" direction="rtl" font-size="13" style="fill:var(--accent)">المرفوع = خبر</text>
+<rect x="60" y="84" width="124" height="34" rx="17" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="122" y="106" text-anchor="middle" direction="rtl" font-size="13" style="fill:var(--gold)">الموقوف = أثر</text>
+<text x="190" y="148" text-anchor="middle" direction="rtl" font-size="11.5" style="fill:var(--muted)">وعند ابن حجر: الموقوف والمقطوع = أثر</text>
+</svg></div>
+</section>
+
+<!-- ===== 7 ===== -->
+<section>
+  <h2>سابعًا: السنة والحديث القدسي</h2>
+  <div class="verse">
+    <p>وَ«سُنَّةٌ»: مَدْلُولُهُ، وَجَازَا <span class="sp">…</span> إِطْلَاقُهَا لِلَفْظِهِ مَجَازَا</p>
+    <p>وَمَا أَضَافَهُ النَّبِي لِلَّهِ <span class="sp">…</span> دُونَ الْقُرَانِ -: «الْقُدُسِي الْإِلَهِي»</p>
+  </div>
+  <div class="cmp">
+    <div>
+      <h3>السنة</h3>
+      <p><b>مدلولات الأحاديث الثابتة هي السنة</b>؛ وإطلاق السنة على ألفاظها من باب المجاز أو الاصطلاح. وتُطلق لغةً وشرعًا على:</p>
+      <ul class="clean">
+        <li><b>ما ابتدأه رجلٌ فتبعه فيه غيره</b>: «من سنّ في الإسلام سنةً حسنة…»؛ وعلى هذا فكل أمرٍ من أمور النبي ﷺ المتعلقة بالدين — قولٍ أو فعلٍ أو كفٍّ أو تقرير — سنة.</li>
+        <li><b>السيرة العامة</b>: سنة النبي ﷺ التي تقابل الكتاب، وتسمى «الهدي»: «وخيرُ الهدي هديُ محمد» — فهي مجموع أمور الدين قولًا وفعلًا وكفًّا وتقريرًا.</li>
+      </ul>
+    </div>
+    <div class="g">
+      <h3>الحديث القدسي</h3>
+      <p><b>تعريفه:</b> ما أُضيف إلى الرسول ﷺ، وأضافه هو إلى ربه عز وجل.</p>
+      <table style="min-width:0">
+        <thead><tr><th></th><th>القرآن</th><th>القدسي</th></tr></thead>
+        <tbody>
+          <tr><td>الإعجاز</td><td>معجز</td><td>ليس كذلك</td></tr>
+          <tr><td>التعبد بلفظه</td><td>متعبَّدٌ به</td><td>ليس كذلك</td></tr>
+          <tr><td>طريقه</td><td>التواتر</td><td>قد يكون ضعيفًا</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8 ===== -->
+<section>
+  <h2>ثامنًا: المسند، والإسرائيليات</h2>
+  <div class="verse">
+    <p>وَ«الْمُسْنَدُ»: الْمَرْفُوعُ ذَا اتِّصَالِ <span class="sp">…</span> وَقِيلَ: الْأَوَّلُ، وَقِيلَ: التَّالِي</p>
+    <p>مَا عَنْ بَنِي إِسْرَائِيلَ جَاءَ -: «إِسْرَا <span class="sp">…</span> ئِيلِيَّةٌ»، مُصَرَّحًا أَوْ غَيْرَا</p>
+  </div>
+  <div class="panel scroll"><svg viewBox="0 0 900 220" width="100%" style="min-width:860px;display:block" role="img" aria-label="المسند في ثلاثة أقوال: المرفوع المتصل وهو المعتمد، أو المتصل وإن لم يكن مرفوعا وهو الأول، أو المرفوع وإن لم يكن متصلا وهو التالي">
+<text x="884" y="26" text-anchor="start" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">«المسند» = تقاطع الرفع والاتصال، وقيل: أحدهما</text>
+<circle cx="520" cy="118" r="82" style="fill:var(--accent-soft);stroke:var(--accent)" stroke-width="1.6" opacity=".9"/>
+<circle cx="390" cy="118" r="82" style="fill:var(--gold-soft);stroke:var(--gold)" stroke-width="1.6" opacity=".9"/>
+<path d="M455 68 A82 82 0 0 1 455 168 A82 82 0 0 1 455 68 Z" style="fill:var(--accent)" opacity=".35"/>
+<text x="560" y="110" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--accent)">المرفوع</text>
+<text x="560" y="130" text-anchor="middle" direction="rtl" font-size="11" style="fill:var(--muted)">قول «التالي»</text>
+<text x="350" y="110" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--gold)">المتصل</text>
+<text x="350" y="130" text-anchor="middle" direction="rtl" font-size="11" style="fill:var(--muted)">قول «الأول»</text>
+<text x="455" y="122" text-anchor="middle" direction="rtl" font-size="12" font-weight="700" style="fill:var(--ink)">المسند</text>
+<text x="770" y="80" text-anchor="middle" direction="rtl" font-size="13" font-weight="700" style="fill:var(--accent)">تعريف ابن حجر والحاكم</text>
+<text x="770" y="102" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">«مرفوعُ صحابيٍّ بسندٍ ظاهرُه الاتصال»</text>
+<text x="770" y="124" text-anchor="middle" direction="rtl" font-size="12" style="fill:var(--muted)">وهو أصح التعاريف والمعتمد</text>
+<path d="M650 102 L540 118" stroke-dasharray="4 4" style="stroke:var(--muted)"/>
+<text x="140" y="96" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">في كتب العلل عند المتقدمين:</text>
+<text x="140" y="118" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">«رواه فلانٌ مسندًا، ورواه فلانٌ مرسلًا»</text>
+<text x="140" y="140" text-anchor="middle" direction="rtl" font-size="12" style="fill:var(--muted)">المسند = المتصل مقابل المرسل</text>
+</svg></div>
+  <div class="panel scroll">
+    <table>
+      <thead><tr><th>قيد في تعريف ابن حجر</th><th>ما يُخرجه وما يُدخله</th></tr></thead>
+      <tbody>
+        <tr><td>«مرفوع صحابي»</td><td>يُخرج ما رفعه التابعي لكونه مرسلًا، وما رفعه من دون التابعي لكونه معضلًا أو منقطعًا.</td></tr>
+        <tr><td>«بسندٍ ظاهرُه الاتصال»</td><td>يُخرج ما ظاهره الانقطاع (الجلي)، ويُدخل ما فيه احتمال الانقطاع، ويُدخل المتصل من باب أولى.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">واستعمال المسند في كتب العلل بمعنى المتصل في مقابلة المرسل يكون في المرفوعات غالبًا، وقد يُستعمل في الموقوفات أيضًا: «رواه فلانٌ مسندًا» أي متصلًا؛ لكن غالب المقارنات في الأحاديث المرفوعة.</p>
+  <div class="note">
+    <span class="cal-t">الإسرائيليات</span>
+    <p>كل ما جاء عن بني إسرائيل، في كتبهم أو من روايةٍ عنهم، سواء صرّح الراوي بالأخذ أو لا؛ وهو ما يرويه الصحابي أو التابعي ممن عُرفوا بالأخذ عن أهل الكتاب: في <b>الأمور الماضية</b> كبدء الخلق، وفي <b>الأمور الآتية</b> كالملاحم والفتن وأحوال يوم القيامة مما لا مجال للرأي فيه. <b>ولهذا اشتُرط</b> في المرفوع حكمًا مما أخبر به الصحابي ولا مجال للاجتهاد فيه: ألا يكون الصحابي معروفًا بالأخذ عن بني إسرائيل.</p>
+  </div>
+</section>
+
+<section>
+  <h2>خلاصة الدرس</h2>
+  <div class="sum">
+    <ul class="clean">
+      <li><b>السند</b> الإخبار عن طريق المتن، وهو والإسناد والطريق مترادفة؛ و«سلسلة الرواة الموصلة إلى المتن» تعريفٌ غير صحيح.</li>
+      <li><b>المسلسل</b>: تواردُ الرواة واحدًا فواحدًا على صفةٍ أو حالةٍ لهم أو للإسناد؛ وقلّما يسلم وصفُ التسلسل من ضعف.</li>
+      <li><b>العلو خمسة</b>: صفة (تقدم الوفاة، تقدم السماع) ومسافة (القرب من النبي، من إمام، بالنسبة لكتاب)، والنزول عكسها.</li>
+      <li><b>المتن</b> ما انتهى إليه السند؛ وهو مرفوع أو موقوف أو مقطوع بحسب من أُضيف إليه، صحيحًا كان أو ضعيفًا.</li>
+      <li><b>المرفوع حكمًا</b> ستُّ صور؛ والمرفوع تصريحًا مقدَّمٌ عليه عند التعارض.</li>
+      <li><b>المسند</b>: مرفوع صحابي بسندٍ ظاهره الاتصال، وقيل المتصل، وقيل المرفوع.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== quiz ===== -->
+<section>
+  <h2>أسئلة مراجعة <span class="tag">اختبر نفسك</span></h2>
+  <form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">لماذا لا يصح تعريف السند بأنه «سلسلة الرواة الموصلة إلى المتن»؟</p>
+    <label class="opt"><input type="radio" name="l2q1"><span class="t">لأن السند لا يشمل الصحابي.</span></label>
+    <label class="opt ok"><input type="radio" name="l2q1"><span class="t">لأنه أهمل أدوات الأداء، وأدخل الاتصال بلفظ «سلسلة»، ولم يراعِ أن الواسطة قد تكون كتابًا.</span></label>
+    <label class="opt"><input type="radio" name="l2q1"><span class="t">لأن السند والطريق ليسا مترادفين.</span></label>
+    <label class="opt"><input type="radio" name="l2q1"><span class="t">لأن المتن جزءٌ من السند.</span></label>
+    <p class="exp">الإسناد جزءان: الرجال وأدوات الأداء؛ و«السلسلة» تُخرج المنقطع والمرسل فيكون التعريف غير جامع؛ والوجادة واسطتها كتاب.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">«المسلسل بالدمشقيين» من أي أنواع التسلسل؟</p>
+    <label class="opt"><input type="radio" name="l2q2"><span class="t">بأحوال الرواة القولية.</span></label>
+    <label class="opt ok"><input type="radio" name="l2q2"><span class="t">بأوصاف الرواة (نسبتهم).</span></label>
+    <label class="opt"><input type="radio" name="l2q2"><span class="t">بمكان الرواية.</span></label>
+    <label class="opt"><input type="radio" name="l2q2"><span class="t">بصيغ الأداء.</span></label>
+    <p class="exp">التسلسل بنسبة الرواة كالدمشقيين والمصريين من أوصافهم؛ أما المكان فكالمسلسل بإجابة الدعاء في الملتزم.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">روى ابن وهب (ت ١٩٨) وقتيبة (ت ٢٤٢) حديثًا عن مالك بعددٍ متساوٍ. أيهما أعلى ولماذا؟</p>
+    <label class="opt ok"><input type="radio" name="l2q3"><span class="t">رواية ابن وهب؛ لعلوّ الصفة بتقدم وفاة الراوي.</span></label>
+    <label class="opt"><input type="radio" name="l2q3"><span class="t">رواية قتيبة؛ لأنه أحفظ.</span></label>
+    <label class="opt"><input type="radio" name="l2q3"><span class="t">هما سواء لتساوي العدد.</span></label>
+    <label class="opt"><input type="radio" name="l2q3"><span class="t">رواية ابن وهب؛ لعلوّ المسافة.</span></label>
+    <p class="exp">العدد متساوٍ فلا علوّ مسافة؛ وإنما هو علوّ صفة: من تقدّمت وفاته أعلى.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">متى يكون السماع المتأخر من الشيخ أعلى من القديم؟</p>
+    <label class="opt"><input type="radio" name="l2q4"><span class="t">إذا اختلط الشيخ في آخر عمره.</span></label>
+    <label class="opt ok"><input type="radio" name="l2q4"><span class="t">إذا صار الشيخ آخرًا يحدّث من كتبه فلا يخطئ، وكان قديمًا يخطئ — كهمّام بن يحيى.</span></label>
+    <label class="opt"><input type="radio" name="l2q4"><span class="t">لا يكون ذلك أبدًا.</span></label>
+    <label class="opt"><input type="radio" name="l2q4"><span class="t">إذا كان التلميذ أكبر سنًّا.</span></label>
+    <p class="exp">الأصل أن السماع القديم أعلى ويتأكد ذلك مع الاختلاط؛ وقد يرجح العكس في مثل حال همّام.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">قول أبي هريرة فيمن خرج من المسجد بعد الأذان: «أما هذا فقد عصى أبا القاسم» حكمه:</p>
+    <label class="opt"><input type="radio" name="l2q5"><span class="t">موقوفٌ لفظًا وحكمًا.</span></label>
+    <label class="opt ok"><input type="radio" name="l2q5"><span class="t">مرفوعٌ حكمًا؛ لأنه حكمٌ لا مجال للاجتهاد فيه.</span></label>
+    <label class="opt"><input type="radio" name="l2q5"><span class="t">مقطوع.</span></label>
+    <label class="opt"><input type="radio" name="l2q5"><span class="t">إسرائيلي.</span></label>
+    <p class="exp">الحكم بالمعصية لا يقوله الصحابي من اجتهاده؛ فله حكم الرفع.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">تفسير الصحابي لآيةٍ لا علاقة له بأسباب النزول:</p>
+    <label class="opt"><input type="radio" name="l2q6"><span class="t">مرفوعٌ حكمًا دائمًا.</span></label>
+    <label class="opt ok"><input type="radio" name="l2q6"><span class="t">الراجح أنه ليس له حكم الرفع إلا مع قرينة؛ لأنه راجعٌ لاجتهاد الصحابي.</span></label>
+    <label class="opt"><input type="radio" name="l2q6"><span class="t">مردود.</span></label>
+    <label class="opt"><input type="radio" name="l2q6"><span class="t">مقطوع.</span></label>
+    <p class="exp">التفسير المتعلق بأسباب النزول هو الذي له حكم الرفع؛ لأنه إخبارٌ عن واقعةٍ شهدها.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الفرق بين القرآن والحديث القدسي من حيث الطريق؟</p>
+    <label class="opt"><input type="radio" name="l2q7"><span class="t">كلاهما متواتر.</span></label>
+    <label class="opt ok"><input type="radio" name="l2q7"><span class="t">القرآن متواتر، والقدسي ليس كذلك بل قد يكون ضعيفًا.</span></label>
+    <label class="opt"><input type="radio" name="l2q7"><span class="t">القدسي متواتر والقرآن آحاد.</span></label>
+    <label class="opt"><input type="radio" name="l2q7"><span class="t">لا فرق بينهما.</span></label>
+    <p class="exp">والقرآن معجزٌ متعبَّدٌ بلفظه، والقدسي ليس كذلك.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">قول المتقدمين في كتب العلل: «رواه فلانٌ مسندًا ورواه فلانٌ مرسلًا» — المسند هنا بمعنى:</p>
+    <label class="opt"><input type="radio" name="l2q8"><span class="t">المرفوع وإن لم يكن متصلًا.</span></label>
+    <label class="opt ok"><input type="radio" name="l2q8"><span class="t">المتصل في مقابلة المرسل.</span></label>
+    <label class="opt"><input type="radio" name="l2q8"><span class="t">الكتاب المرتب على مسانيد الصحابة.</span></label>
+    <label class="opt"><input type="radio" name="l2q8"><span class="t">الصحيح.</span></label>
+    <p class="exp">ويُستعمل كذلك في الموقوفات، لكن غالب المقارنات تكون في المرفوعات.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+  </form>
+</section>
+
+<nav dir="rtl" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;font-size:.92rem;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px">
+<a href="index.html" style="color:var(--accent);font-weight:600;text-decoration:none">← صفحة المادة: كل الدروس</a><span style="display:flex;gap:14px">
+<a href="lecture1.html" style="color:var(--muted);text-decoration:none">→ الدرس السابق</a>
+<a href="lecture3.html" style="color:var(--muted);text-decoration:none">الدرس التالي ←</a>
+</span></nav>
+</div>
+
+</body>
+</html>
