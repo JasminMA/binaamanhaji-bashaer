@@ -1,0 +1,25 @@
+name: Site checks
+
+# Runs tools/check-site.ps1 (which also runs build.ps1 -Check) on every push to main
+# and on every pull request. It only reads the repository: it never changes pages
+# and has nothing to do with how the site is published.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Run the site checks
+        shell: pwsh
+        run: ./tools/check-site.ps1

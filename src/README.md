@@ -48,3 +48,17 @@ A course under a different level or stage needs its folders added to `site.json`
 
 The build refuses a lesson body that contains `<html>`, `<head>`, `<body>` or a doctype, a lesson file that is
 not listed in `course.json` (and the reverse), and any template typo.
+
+## Checks
+
+`tools/check-site.ps1` checks every page: generated pages up to date, RTL and accessibility basics, balanced tags,
+duplicate ids, broken links and `#fragments`, pages nothing links to, shared CSS (dark mode, stray `*/`) and the
+security rules (no external scripts, no `http://`, no inline handlers or injection sinks, no local paths or emails).
+It exits with 1 if anything is wrong.
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/check-site.ps1
+```
+
+GitHub runs it on every push to `main` and on every pull request (`.github/workflows/checks.yml`); a red cross on
+the commit means a problem to fix. It only reads the repository, it never edits pages or changes how the site is published.

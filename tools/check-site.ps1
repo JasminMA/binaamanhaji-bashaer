@@ -1,0 +1,364 @@
+<#
+.SYNOPSIS
+  Checks every page of the site: structure, RTL/accessibility, links, orphans, CSS and security.
+  Exit code 1 if any ERROR is found (warnings do not fail the run).
+
+.DESCRIPTION
+  Run from anywhere (no installs needed, Windows PowerShell 5.1 or PowerShell 7):
+    powershell -NoProfile -ExecutionPolicy Bypass -File tools/check-site.ps1
+  GitHub runs the same script on every push (.github/workflows/checks.yml).
+
+  What it checks
+    build      generated lecture pages are up to date with src/ (build.ps1 -Check)
+    structure  doctype, <html lang="ar" dir="rtl">, charset, viewport, title, one aria-current,
+               one <h1> per lecture, balanced tags, every <svg> labelled (role="img" + aria-label) or aria-hidden
+    css        right shared stylesheet linked with the right ../ depth, no copied <style> in lecture
+               pages, shared CSS has dark mode and closed comments (a stray */ silently drops a rule)
+    ids        no duplicate ids; #fragment links and url(#x) references resolve
+    links      every internal link points to a real file (and a real #fragment); no root-absolute links;
+               no page that cannot be reached from the home page (orphans)
+    security   no external scripts or http://, no inline handlers, no HTML-injection sinks in scripts,
+               target=_blank has rel="noopener noreferrer", iframes sandboxed, no trackers,
+               no local paths / emails / keys in published files
+
+  Keep this file ASCII-only: Windows PowerShell 5.1 reads BOM-less scripts as ANSI.
+#>
+[CmdletBinding()]
+param()
+
+Set-StrictMode -Version 2.0
+$ErrorActionPreference = 'Stop'
+
+trap {
+    $e = $_.Exception
+    while ($null -ne $e.InnerException) { $e = $e.InnerException }
+    Write-Host "check-site.ps1 crashed: $($e.Message)"
+    Write-Host $_.ScriptStackTrace
+    exit 2
+}
+
+$root = Split-Path -Parent $PSScriptRoot
+$utf8 = New-Object System.Text.UTF8Encoding($false)
+$inCI = ($env:GITHUB_ACTIONS -eq 'true')
+
+$script:errors = 0
+$script:warnings = 0
+
+function Add-Issue([string]$level, [string]$file, [int]$line, [string]$msg) {
+    if ($level -eq 'error') { $script:errors++ } else { $script:warnings++ }
+    $where = $file
+    if ($line -gt 0) { $where = "${file}:$line" }
+    if ($inCI) {
+        $ann = if ($level -eq 'error') { 'error' } else { 'warning' }
+        $lineArg = if ($line -gt 0) { ",line=$line" } else { '' }
+        Write-Host "::$ann file=$file$lineArg::$msg"
+    } else {
+        Write-Host ("{0,-7} {1}  {2}" -f $level.ToUpper(), $where, $msg)
+    }
+}
+function Fail([string]$file, [int]$line, [string]$msg) { Add-Issue 'error' $file $line $msg }
+function Warn([string]$file, [int]$line, [string]$msg) { Add-Issue 'warning' $file $line $msg }
+
+function Read-Text([string]$path) {
+    return ([System.IO.File]::ReadAllText($path, $utf8)).Replace("`r`n", "`n")
+}
+function Line-Of([string]$text, [int]$index) {
+    if ($index -le 0) { return 1 }
+    return $text.Substring(0, [Math]::Min($index, $text.Length)).Split("`n").Count
+}
+function Rel([string]$full) {
+    return $full.Substring($root.Length).TrimStart('\', '/').Replace('\', '/')
+}
+# Replace matches with the same number of newlines so line numbers of what remains stay right.
+function Blank-Out([string]$text, [string]$pattern) {
+    $ev = [System.Text.RegularExpressions.MatchEvaluator]{ param($m) return ("`n" * ($m.Value.Split("`n").Count - 1)) }
+    return [regex]::Replace($text, $pattern, $ev, 'IgnoreCase,Singleline')
+}
+# 'a/b' + '../c' -> 'a/c' ; $null when the link climbs above the repository root.
+function Resolve-Link([string]$fromDir, [string]$href) {
+    $parts = New-Object System.Collections.Generic.List[string]
+    if ($fromDir -ne '') { $parts.AddRange([string[]]$fromDir.Split('/')) }
+    foreach ($seg in $href.Split('/')) {
+        if ($seg -eq '' -or $seg -eq '.') { continue }
+        if ($seg -eq '..') {
+            if ($parts.Count -eq 0) { return $null }
+            $parts.RemoveAt($parts.Count - 1)
+        } else { $parts.Add($seg) }
+    }
+    return ($parts -join '/')
+}
+
+# ---------------------------------------------------------------------------------------
+# Collect files
+# ---------------------------------------------------------------------------------------
+$skipDirs = '/.git/', '/src/', '/.claude/', '/node_modules/'
+$allFiles = @(Get-ChildItem -Path $root -Recurse -File -Force | Where-Object {
+    $r = '/' + (Rel $_.FullName)
+    $keep = $true
+    foreach ($d in $skipDirs) { if ($r.Contains($d)) { $keep = $false } }
+    $keep
+})
+$pages = @($allFiles | Where-Object { $_.Extension -eq '.html' })
+$cssFiles = @($allFiles | Where-Object { $_.Extension -eq '.css' })
+if ($pages.Count -eq 0) { throw 'No .html pages found - wrong folder?' }
+
+$fileExists = @{}                       # every published file, by repo-relative path
+foreach ($f in $allFiles) { $fileExists[(Rel $f.FullName)] = $true }
+
+$pageInfo = @{}                         # rel -> @{ ids = HashSet; links = list }
+
+# ---------------------------------------------------------------------------------------
+# 0. Generated pages are up to date
+# ---------------------------------------------------------------------------------------
+$buildScript = Join-Path $root 'build.ps1'
+if (Test-Path -LiteralPath $buildScript) {
+    $exe = (Get-Process -Id $PID).Path
+    $argList = @('-NoProfile')
+    if ([System.Environment]::OSVersion.Platform -eq 'Win32NT') { $argList += @('-ExecutionPolicy', 'Bypass') }
+    $argList += @('-File', $buildScript, '-Check')
+    $out = (& $exe @argList 2>&1 | ForEach-Object { "$_" }) -join ' | '
+    if ($LASTEXITCODE -ne 0) { Fail 'build.ps1' 0 "generated pages are stale or the build failed. Run build.ps1 and commit the result. ($out)" }
+}
+
+# ---------------------------------------------------------------------------------------
+# 1. Per-page checks
+# ---------------------------------------------------------------------------------------
+$balanceTags = 'div', 'section', 'nav', 'header', 'footer', 'main', 'svg', 'g', 'defs', 'marker', 'pattern',
+               'text', 'tspan', 'details', 'summary', 'ul', 'ol', 'table', 'thead', 'tbody', 'form', 'label',
+               'button', 'a', 'span', 'b', 'strong', 'em', 'h1', 'h2', 'h3', 'h4'
+$fontHosts = 'fonts.googleapis.com', 'fonts.gstatic.com'
+$trackers = 'google-analytics|googletagmanager|gtag\(|doubleclick|facebook\.net|connect\.facebook|hotjar|clarity\.ms|mixpanel|segment\.(io|com)|plausible\.io|matomo|fullstory|sentry\.io|statcounter|yandex\.ru/metrika'
+$sinks = 'innerHTML|outerHTML|insertAdjacentHTML|document\.write|\beval\s*\(|new\s+Function|\bsrcdoc\b|javascript:|setTimeout\s*\(\s*[''"`]|setInterval\s*\(\s*[''"`]'
+$untrustedSources = 'location\.(search|hash)|document\.referrer|localStorage|sessionStorage'
+
+foreach ($pf in $pages) {
+    $rel = Rel $pf.FullName
+    $dir = ''
+    if ($rel.Contains('/')) { $dir = $rel.Substring(0, $rel.LastIndexOf('/')) }
+    $depth = 0
+    if ($dir -ne '') { $depth = $dir.Split('/').Count }
+    $up = '../' * $depth
+    $raw = Read-Text $pf.FullName
+
+    # Split out scripts and styles so HTML checks do not look inside them.
+    $scripts = [regex]::Matches($raw, '<script\b([^>]*)>(.*?)</script>', 'IgnoreCase,Singleline')
+    $styles = [regex]::Matches($raw, '<style\b[^>]*>(.*?)</style>', 'IgnoreCase,Singleline')
+    $body = Blank-Out $raw '<!--.*?-->'
+    $body = Blank-Out $body '<script\b[^>]*>.*?</script>'
+    $body = Blank-Out $body '<style\b[^>]*>.*?</style>'
+
+    $isLecture = ($pf.Name -match '^lecture\d+\.html$')
+    $isIndex = ($pf.Name -eq 'index.html')
+
+    # --- structure ---------------------------------------------------------------
+    if ($raw -notmatch '^\s*<!doctype html>') { Fail $rel 1 'page must start with <!doctype html>' }
+    if ($raw -notmatch '<html\b[^>]*\blang="ar"') { Fail $rel 0 'missing <html lang="ar">' }
+    if ($raw -notmatch '<html\b[^>]*\bdir="rtl"') { Fail $rel 0 'missing <html dir="rtl">' }
+    if ($raw -notmatch '<meta\s+charset="utf-8"') { Fail $rel 0 'missing <meta charset="utf-8">' }
+    if ($raw -notmatch '<meta\s+name="viewport"[^>]*width=device-width') { Fail $rel 0 'missing viewport meta (width=device-width)' }
+    $t = [regex]::Match($raw, '<title>(.*?)</title>', 'Singleline')
+    if (-not $t.Success -or $t.Groups[1].Value.Trim() -eq '') { Fail $rel 0 'missing or empty <title>' }
+
+    $cur = [regex]::Matches($body, 'aria-current="page"').Count
+    if ($cur -ne 1) { Fail $rel 0 "expected exactly one aria-current=""page"" (the current breadcrumb item), found $cur" }
+    if ($isLecture) {
+        $h1 = [regex]::Matches($body, '<h1\b').Count
+        if ($h1 -ne 1) { Fail $rel 0 "lecture page needs exactly one <h1>, found $h1" }
+    }
+
+    # tags that are always closed must balance
+    foreach ($tag in $balanceTags) {
+        $opens = [regex]::Matches($body, "<$tag(?=[\s>/])(?:[^>""']|""[^""]*""|'[^']*')*(?<!/)>", 'IgnoreCase').Count
+        $closes = [regex]::Matches($body, "</$tag\s*>", 'IgnoreCase').Count
+        if ($opens -ne $closes) { Fail $rel 0 "unbalanced <$tag>: $opens opening vs $closes closing" }
+    }
+
+    # every svg is either decorative (aria-hidden) or labelled
+    foreach ($m in [regex]::Matches($body, '<svg\b[^>]*>', 'IgnoreCase')) {
+        $tag = $m.Value
+        $hidden = ($tag -match 'aria-hidden="true"')
+        $labelled = ($tag -match 'role="img"') -and ($tag -match 'aria-label="[^"]+"')
+        if (-not $hidden -and -not $labelled) { Fail $rel (Line-Of $body $m.Index) '<svg> needs role="img" + aria-label, or aria-hidden="true" if decorative' }
+    }
+
+    # --- stylesheet --------------------------------------------------------------
+    $linkedCss = @([regex]::Matches($body, '<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"', 'IgnoreCase') | ForEach-Object { $_.Groups[1].Value })
+    if ($isIndex) {
+        if ($linkedCss -notcontains ($up + 'assets/site.css')) { Fail $rel 0 "index page must link ${up}assets/site.css" }
+    }
+    if ($isLecture) {
+        if ($linkedCss -notcontains ($up + 'assets/lecture.css')) { Fail $rel 0 "lecture page must link ${up}assets/lecture.css" }
+        foreach ($s in $styles) {
+            if ($s.Groups[1].Value -match ':root') { Fail $rel (Line-Of $raw $s.Index) 'lecture page carries its own copy of the shared styles (:root); keep styles in assets/lecture.css' }
+        }
+    }
+
+    # --- ids and references ------------------------------------------------------
+    $ids = New-Object 'System.Collections.Generic.HashSet[string]'
+    foreach ($m in [regex]::Matches($body, '[\s"''<]id="([^"]+)"')) {
+        if (-not $ids.Add($m.Groups[1].Value)) { Fail $rel (Line-Of $body $m.Index) "duplicate id=""$($m.Groups[1].Value)"" (SVG url(#id) references would hit the wrong element)" }
+    }
+    foreach ($m in [regex]::Matches($body, 'url\(\s*#([^)\s]+)\s*\)')) {
+        if (-not $ids.Contains($m.Groups[1].Value)) { Fail $rel (Line-Of $body $m.Index) "url(#$($m.Groups[1].Value)) points to no element" }
+    }
+
+    # --- links -------------------------------------------------------------------
+    $links = New-Object System.Collections.Generic.List[object]    # internal links, resolved later
+    foreach ($m in [regex]::Matches($body, '<(\w+)\b((?:[^>"'']|"[^"]*"|''[^'']*'')*)>', 'IgnoreCase')) {
+        $tagName = $m.Groups[1].Value.ToLower()
+        $attrs = $m.Groups[2].Value
+        $line = Line-Of $body $m.Index
+
+        # inline event handlers
+        if ($attrs -match '(?:^|\s)on[a-z]+\s*=') { Fail $rel $line "inline event handler in <$tagName>; use addEventListener in a script instead" }
+
+        # target=_blank
+        if ($attrs -match 'target="_blank"') {
+            $relAttr = [regex]::Match($attrs, 'rel="([^"]*)"').Groups[1].Value
+            if ($relAttr -notmatch 'noopener' -or $relAttr -notmatch 'noreferrer') { Fail $rel $line 'target="_blank" needs rel="noopener noreferrer"' }
+        }
+        if ($tagName -eq 'iframe' -and $attrs -notmatch '\ssandbox') { Fail $rel $line '<iframe> without sandbox' }
+
+        foreach ($am in [regex]::Matches($attrs, '(?:^|\s)(href|src|xlink:href)\s*=\s*"([^"]*)"')) {
+            $attr = $am.Groups[1].Value
+            $href = $am.Groups[2].Value.Trim()
+            if ($href -eq '' -or $href -eq '#') { continue }
+            if ($href -match '^(mailto:|tel:|data:image/)') { continue }
+            if ($href -match '^javascript:') { Fail $rel $line 'javascript: URL'; continue }
+            if ($href -match '^http://') { Fail $rel $line "insecure http:// URL ($href)"; continue }
+            if ($href -match '^//') { Fail $rel $line "protocol-relative URL ($href)"; continue }
+            if ($href -match '^https://') {
+                $h = ([uri]$href).Host.ToLower()
+                if ($tagName -ne 'a' -and $fontHosts -notcontains $h) { Fail $rel $line "external resource from $h (only Google Fonts may be loaded from outside; an <a> link is fine)" }
+                continue
+            }
+            if ($href.StartsWith('/')) { Fail $rel $line "root-absolute link ($href) breaks on a GitHub Pages project site; use a relative path"; continue }
+            if ($href -match '^[a-zA-Z][a-zA-Z0-9+.-]*:') { Fail $rel $line "unexpected URL scheme ($href)"; continue }
+
+            $frag = ''
+            $pathPart = $href
+            if ($href.Contains('#')) { $pathPart = $href.Substring(0, $href.IndexOf('#')); $frag = $href.Substring($href.IndexOf('#') + 1) }
+            if ($pathPart.Contains('?')) { $pathPart = $pathPart.Substring(0, $pathPart.IndexOf('?')) }
+            $links.Add(@{ line = $line; path = $pathPart; frag = $frag; attr = $attr; tag = $tagName; href = $href })
+        }
+    }
+
+    # --- scripts -----------------------------------------------------------------
+    foreach ($s in $scripts) {
+        $attrs = $s.Groups[1].Value
+        $code = $s.Groups[2].Value
+        $line = Line-Of $raw $s.Index
+        $srcM = [regex]::Match($attrs, '\bsrc\s*=\s*"([^"]*)"')
+        if ($srcM.Success -and $srcM.Groups[1].Value -match '^(https?:)?//') { Fail $rel $line "external script ($($srcM.Groups[1].Value)); scripts must be inline or a local file under assets/" }
+        if ($code -match $sinks) { Fail $rel $line "HTML-injection sink in script ($($Matches[0])); use textContent/classList/dataset instead" }
+        if ($code -match 'addEventListener\(\s*[''"]message[''"]|postMessage') { Fail $rel $line 'postMessage/message listener needs a manual security review (event.origin check)' }
+        if ($code -match $untrustedSources) { Warn $rel $line "script reads $($Matches[0]); make sure the value is never used as HTML, a URL or a class name, and storage access is in try/catch" }
+    }
+
+    # --- trackers ----------------------------------------------------------------
+    if ($raw -match $trackers) { Fail $rel 0 "tracking/analytics reference ($($Matches[0]))" }
+
+    $pageInfo[$rel] = @{ ids = $ids; links = $links; dir = $dir; isHtml = $true }
+}
+
+# ---------------------------------------------------------------------------------------
+# 2. Cross-page: links resolve, fragments exist, no orphans
+# ---------------------------------------------------------------------------------------
+$edges = @{}                            # page -> html pages it links to
+foreach ($rel in $pageInfo.Keys) {
+    $info = $pageInfo[$rel]
+    $edges[$rel] = New-Object System.Collections.Generic.List[string]
+    foreach ($l in $info.links) {
+        $target = $rel
+        if ($l.path -ne '') {
+            $decoded = [uri]::UnescapeDataString($l.path)
+            $target = Resolve-Link $info.dir $decoded
+            if ($null -eq $target) { Fail $rel $l.line "link climbs above the repository root ($($l.href))"; continue }
+            if ($decoded.EndsWith('/') -or $target -eq '') {
+                $target = (($target + '/index.html').TrimStart('/'))
+            }
+            if (-not $fileExists.ContainsKey($target)) {
+                $asDir = $target + '/index.html'
+                if ($fileExists.ContainsKey($asDir)) { $target = $asDir }
+                else { Fail $rel $l.line "broken link: $($l.href) (no such file: $target)"; continue }
+            }
+        }
+        if ($target.EndsWith('.html') -and $pageInfo.ContainsKey($target)) {
+            if ($target -ne $rel) { $edges[$rel].Add($target) }
+            if ($l.frag -ne '') {
+                $f = [uri]::UnescapeDataString($l.frag)
+                if (-not $pageInfo[$target].ids.Contains($f)) { Fail $rel $l.line "link to #$f, but $target has no element with that id" }
+            }
+        }
+    }
+}
+
+# orphans: everything must be reachable from the home page
+$homePage = 'index.html'
+if (-not $pageInfo.ContainsKey($homePage)) {
+    Fail $homePage 0 'home page index.html is missing'
+} else {
+    $seen = New-Object 'System.Collections.Generic.HashSet[string]'
+    $queue = New-Object System.Collections.Generic.Queue[string]
+    [void]$seen.Add($homePage); $queue.Enqueue($homePage)
+    while ($queue.Count -gt 0) {
+        $p = $queue.Dequeue()
+        foreach ($n in $edges[$p]) { if ($seen.Add($n)) { $queue.Enqueue($n) } }
+    }
+    foreach ($rel in ($pageInfo.Keys | Sort-Object)) {
+        if (-not $seen.Contains($rel)) { Fail $rel 0 'orphan page: no link path leads to it from index.html' }
+    }
+}
+
+# ---------------------------------------------------------------------------------------
+# 3. Shared CSS
+# ---------------------------------------------------------------------------------------
+foreach ($cf in $cssFiles) {
+    $rel = Rel $cf.FullName
+    $css = Read-Text $cf.FullName
+    $noComments = [regex]::Replace($css, '/\*.*?\*/', '', 'Singleline')
+    if ($noComments.Contains('/*')) { Fail $rel 0 'unclosed /* comment: everything after it is ignored by browsers' }
+    if ($noComments.Contains('*/')) { Fail $rel 0 'stray */ (a comment closed early, so the rule right after it is silently dropped; do not put */ inside comment text)' }
+    $open = $noComments.Split('{').Count - 1
+    $close = $noComments.Split('}').Count - 1
+    if ($open -ne $close) { Fail $rel 0 "unbalanced braces: $open { vs $close }" }
+    if ($noComments -notmatch ':root\s*\{') { Fail $rel 0 'no :root{...} colour variables' }
+    if ($noComments -notmatch 'prefers-color-scheme:\s*dark') { Fail $rel 0 'no dark mode (@media (prefers-color-scheme: dark))' }
+    if ($noComments -notmatch ':root\[data-theme="dark"\]') { Fail $rel 0 'no :root[data-theme="dark"] rule' }
+    foreach ($m in [regex]::Matches($noComments, '(?:url\(\s*[''"]?|@import\s+[''"]?)(https?:)?//([^/''")\s]+)')) {
+        if ($fontHosts -notcontains $m.Groups[2].Value.ToLower()) { Fail $rel 0 "CSS loads from external host $($m.Groups[2].Value)" }
+    }
+    if ($css -match 'http://') { Fail $rel 0 'insecure http:// URL in CSS' }
+}
+
+# ---------------------------------------------------------------------------------------
+# 4. Secrets and local paths in anything that gets published
+# ---------------------------------------------------------------------------------------
+$secretPatterns = @(
+    @{ re = '[A-Za-z]:\\(Users|projects|Documents)\\'; what = 'Windows local path' },
+    @{ re = '/(Users|home)/[A-Za-z0-9._-]+/'; what = 'local home path' },
+    @{ re = '[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}'; what = 'email address' },
+    @{ re = 'AKIA[0-9A-Z]{16}'; what = 'AWS access key' },
+    @{ re = 'gh[pousr]_[A-Za-z0-9]{30,}'; what = 'GitHub token' },
+    @{ re = 'sk-[A-Za-z0-9]{20,}'; what = 'API key' },
+    @{ re = '-----BEGIN [A-Z ]*PRIVATE KEY'; what = 'private key' },
+    @{ re = '(?i)\bapi[_-]?key\s*[:=]\s*["''][^"'']{8,}'; what = 'API key assignment' }
+)
+$textExt = '.html', '.css', '.js', '.json', '.yml', '.yaml', '.svg', '.txt', '.xml'
+foreach ($f in $allFiles) {
+    if ($textExt -notcontains $f.Extension.ToLower()) { continue }
+    $rel = Rel $f.FullName
+    $text = Read-Text $f.FullName
+    foreach ($p in $secretPatterns) {
+        $m = [regex]::Match($text, $p.re)
+        if ($m.Success) { Fail $rel (Line-Of $text $m.Index) "$($p.what) in a published file ($($m.Value))" }
+    }
+}
+
+# ---------------------------------------------------------------------------------------
+# Summary
+# ---------------------------------------------------------------------------------------
+Write-Host ""
+Write-Host ("Checked {0} pages, {1} stylesheets: {2} error(s), {3} warning(s)." -f $pages.Count, $cssFiles.Count, $script:errors, $script:warnings)
+if ($script:errors -gt 0) { exit 1 }
+Write-Host 'All checks passed.'
