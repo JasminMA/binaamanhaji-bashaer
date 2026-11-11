@@ -1,4 +1,6 @@
 {
+  "baseUrl": "https://jasminma.github.io/binaamanhaji-bashaer/",
+  "siteName": "البناء المنهجي · دفعة البشائر",
   "ancestors": [
     { "path": "",             "label": "البناء المنهجي" },
     { "path": "level2",       "label": "المستوى الثاني" },

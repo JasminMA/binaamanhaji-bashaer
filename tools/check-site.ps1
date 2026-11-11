@@ -140,6 +140,18 @@ function Test-ScriptCode([string]$rel, [string]$code, [int]$line) {
     if ($code -match $untrustedSources) { Warn $rel $line "script reads $($Matches[0]); make sure the value is never used as HTML, a URL or a class name, and storage access is in try/catch" }
 }
 
+# Share previews: the public address of the site (src/site.json) decides what og:url and og:image must look like.
+$siteJson = Join-Path $root 'src/site.json'
+$baseUrl = ''
+if (Test-Path -LiteralPath $siteJson) { $baseUrl = [string]((Read-Text $siteJson) | ConvertFrom-Json).baseUrl }
+$ogImages = @{}          # og:image path (relative to the repo) -> first page that uses it
+
+function Get-Meta([string]$html, [string]$attr, [string]$name) {
+    $m = [regex]::Match($html, "<meta\s+$attr=""$([regex]::Escape($name))""\s+content=""([^""]*)""", 'IgnoreCase')
+    if ($m.Success) { return $m.Groups[1].Value }
+    return $null
+}
+
 foreach ($pf in $pages) {
     $rel = Rel $pf.FullName
     $dir = ''
@@ -167,6 +179,31 @@ foreach ($pf in $pages) {
     if ($raw -notmatch '<meta\s+name="viewport"[^>]*width=device-width') { Fail $rel 0 'missing viewport meta (width=device-width)' }
     $t = [regex]::Match($raw, '<title>(.*?)</title>', 'Singleline')
     if (-not $t.Success -or $t.Groups[1].Value.Trim() -eq '') { Fail $rel 0 'missing or empty <title>' }
+
+    # search and share previews (WhatsApp, Telegram...): description, Open Graph block, icons
+    $desc = Get-Meta $raw 'name' 'description'
+    if ($null -eq $desc -or $desc.Trim().Length -lt 20) { Fail $rel 0 'missing or too short <meta name="description"> (at least 20 characters)' }
+    elseif ($desc.Length -gt 300) { Warn $rel 0 "meta description is $($desc.Length) characters; search and chat apps cut it, keep it under about 300" }
+    foreach ($prop in 'og:title', 'og:description', 'og:type', 'og:url', 'og:image', 'og:site_name') {
+        if ($null -eq (Get-Meta $raw 'property' $prop)) { Fail $rel 0 "missing <meta property=""$prop""> (share preview)" }
+    }
+    if ($raw -notmatch '<link\s+rel="icon"') { Fail $rel 0 'missing <link rel="icon"> (favicon)' }
+    if ($raw -notmatch '<link\s+rel="apple-touch-icon"') { Fail $rel 0 'missing <link rel="apple-touch-icon">' }
+    if ($baseUrl -ne '') {
+        $expectedUrl = $baseUrl + $rel
+        if ($rel -eq 'index.html') { $expectedUrl = $baseUrl }
+        elseif ($rel.EndsWith('/index.html')) { $expectedUrl = $baseUrl + $rel.Substring(0, $rel.Length - 'index.html'.Length) }
+        $ogUrl = Get-Meta $raw 'property' 'og:url'
+        if ($null -ne $ogUrl -and $ogUrl -ne $expectedUrl) { Fail $rel 0 "og:url is $ogUrl but this page lives at $expectedUrl" }
+        $ogImg = Get-Meta $raw 'property' 'og:image'
+        if ($null -ne $ogImg) {
+            if (-not $ogImg.StartsWith($baseUrl)) { Fail $rel 0 "og:image must be an absolute address under $baseUrl (chat apps cannot read relative ones)" }
+            else {
+                $imgRel = $ogImg.Substring($baseUrl.Length)
+                if (-not $ogImages.ContainsKey($imgRel)) { $ogImages[$imgRel] = $rel }
+            }
+        }
+    }
 
     $cur = [regex]::Matches($body, 'aria-current="page"').Count
     if ($cur -ne 1) { Fail $rel 0 "expected exactly one aria-current=""page"" (the current breadcrumb item), found $cur" }
@@ -346,6 +383,19 @@ if (-not $pageInfo.ContainsKey($homePage)) {
     foreach ($rel in ($pageInfo.Keys | Sort-Object)) {
         if (-not $seen.Contains($rel)) { Fail $rel 0 'orphan page: no link path leads to it from index.html' }
     }
+}
+
+# share-preview images must exist and be 1200x630 PNGs (read from the PNG header, no image library needed)
+foreach ($k in $ogImages.Keys) {
+    $imgPath = Join-Path $root $k
+    if (-not (Test-Path -LiteralPath $imgPath)) { Fail $ogImages[$k] 0 "og:image points to $k, which does not exist in the repository"; continue }
+    $bytes = [System.IO.File]::ReadAllBytes($imgPath)
+    $isPng = ($bytes.Length -gt 24 -and $bytes[0] -eq 0x89 -and $bytes[1] -eq 0x50 -and $bytes[2] -eq 0x4E -and $bytes[3] -eq 0x47)
+    if (-not $isPng) { Fail $k 0 'share-preview image must be a PNG'; continue }
+    $w = ($bytes[16] * 16777216) + ($bytes[17] * 65536) + ($bytes[18] * 256) + $bytes[19]
+    $h = ($bytes[20] * 16777216) + ($bytes[21] * 65536) + ($bytes[22] * 256) + $bytes[23]
+    if ($w -ne 1200 -or $h -ne 630) { Fail $k 0 "share-preview image is ${w}x${h}; the og:image tags declare 1200x630" }
+    if ($bytes.Length -gt 5MB) { Warn $k 0 'share-preview image is over 5 MB; WhatsApp may skip it' }
 }
 
 # ---------------------------------------------------------------------------------------

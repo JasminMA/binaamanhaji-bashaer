@@ -105,3 +105,22 @@ Three kinds of diagram exist, and each follows dark mode in its own way:
 
 `tools/check-site.ps1` warns about an SVG that uses hex colours outside a `.dia` panel, because it would stay bright in dark mode.
 The dark-mode rules are kept identical in the two stylesheets (the index pages use `site.css`).
+
+## Share previews, descriptions and icons
+
+When a page link is pasted into WhatsApp or Telegram (or shown in a search result), the app reads a few tags in the page head:
+the description, an image and a title. Every page now carries them.
+
+- **Lecture pages** get them from the template. Each lesson in `course.json` needs a `"description"` (one or two sentences,
+  the build refuses a lesson without one); reuse the lesson card text from the course page. The address of the site lives in
+  `src/site.json` (`baseUrl`); preview images must be absolute addresses under it.
+- **Hand-written pages** (home, level, stage, course pages, glossary) carry the same block by hand: copy it from a sibling and change
+  the description, `og:title` (same as the page title) and `og:url` (the page's real public address, ending in `/` for an `index.html`).
+- **Images:** `assets/og-card.png` (1200x630, the card chat apps show), `assets/favicon.svg` (tab icon) and `assets/apple-touch-icon.png`.
+  They are made from `src/social/card.html` and `assets/favicon.svg` by `tools/make-social-images.ps1` (needs Microsoft Edge).
+  Run it only when the look changes.
+- `tools/check-site.ps1` checks all of it: description present, the whole Open Graph block, `og:url` matches the page, `og:image` is an
+  absolute address whose file exists and is 1200x630, and the icon links resolve.
+
+Chat apps keep a copy of the preview for a while. After changing a title, description or image, a link already shared may keep showing the old
+preview until the app refreshes it.

@@ -78,6 +78,11 @@ function ConvertTo-ArabicDigits([int]$n) {
 # ---------------------------------------------------------------------------------------
 
 $site = Read-Json (Join-Path $srcDir 'site.json')
+foreach ($field in 'baseUrl', 'siteName', 'ancestors') {
+    if ($null -eq $site.PSObject.Properties[$field]) { throw "src/site.json is missing '$field'" }
+}
+$baseUrl = [string]$site.baseUrl
+if (-not $baseUrl.StartsWith('https://') -or -not $baseUrl.EndsWith('/')) { throw "src/site.json baseUrl must start with https:// and end with /" }
 $ancestorLabel = @{}
 foreach ($a in $site.ancestors) { $ancestorLabel[[string]$a.path] = [string]$a.label }
 
@@ -157,9 +162,17 @@ foreach ($cf in $courseFiles) {
         }
         $pager = Render $tpl['pager'] @{ all = (Esc ([string]$course.labels.all)); links = $links } 'pager'
 
+        if ($null -eq $lesson.PSObject.Properties['description'] -or ([string]$lesson.description).Trim() -eq '') {
+            throw "$rel/course.json: lesson $($lesson.n) needs a non-empty description (used for search and share previews)"
+        }
+
         $page = Render $tpl['lecture'] @{
-            source     = $srcRel
-            title      = (Esc ([string]$lesson.title + [string]$course.titleSuffix))
+            source      = $srcRel
+            title       = (Esc ([string]$lesson.title + [string]$course.titleSuffix))
+            description = (Esc ([string]$lesson.description))
+            siteName    = (Esc ([string]$site.siteName))
+            pageUrl     = ($baseUrl + "$rel/$file")
+            imageUrl    = ($baseUrl + 'assets/og-card.png')
             root       = $up
             breadcrumb = $breadcrumb
             pager      = $pager
