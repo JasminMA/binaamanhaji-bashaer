@@ -80,3 +80,17 @@ Markup rules (the site check enforces them, because the score depends on them):
 Lecture pages get the script from `src/templates/lecture.html`. The two course "tests" on index pages link it by hand:
 `<script src="../../../assets/quiz.js" defer></script>`. The score styles live in both `assets/lecture.css` and
 `assets/site.css`; keep them identical.
+
+## Comparative glossary
+
+`level2/stage3/glossary/index.html` compares how the two stage-3 courses (نظم المعين and لغة المحدث) present the
+same hadith terms. It is a hand-written index-style page (it uses `assets/site.css`, not the generator), linked from
+the stage page and from the "خريطة المصطلحات" section of both course pages.
+
+- Every card is built only from what the lesson summaries say; keep it that way (check the source lesson, never memory).
+- Tags: `same` (agreement), `comp` (the lessons complement each other), `count` (a different count or grouping, same substance).
+  Only claim a real disagreement if both lessons clearly say opposite things.
+- The overview map is plain SVG: one row per term, one circle per lesson (filled = taught there, empty = mentioned).
+  To add a term, copy a row (rows are 40 units apart), add the card with `id="t-..."` and the chip in the `.toc`,
+  and raise the SVG `viewBox` height.
+- When a new lesson explains a term that is already here, add its link to that term's card and a dot to the map.
