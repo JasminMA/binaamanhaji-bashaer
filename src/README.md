@@ -62,3 +62,21 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/check-site.ps1
 
 GitHub runs it on every push to `main` and on every pull request (`.github/workflows/checks.yml`); a red cross on
 the commit means a problem to fix. It only reads the repository, it never edits pages or changes how the site is published.
+
+## Quiz scores
+
+Every multiple-choice quiz (`<form class="quiz">` with `.mcq` questions) gets a score bar from `assets/quiz.js`:
+one dot per question (green right, red wrong) and a line such as "نتيجتك: ٦ من ٨". The first answer to a question
+counts (the other options lock) and the existing reset button starts over. Without JavaScript the quiz still
+reveals answers and explanations, since that part is plain CSS. Nothing is stored or sent anywhere.
+
+Markup rules (the site check enforces them, because the score depends on them):
+
+- each question is a `<div class="mcq">` with at least 2 `<input type="radio">` options sharing one `name`;
+- the `name` is unique on the page (two questions with the same name would interfere);
+- exactly one option is the right one: `<label class="opt ok">`;
+- add `<p class="exp">` with the explanation (a warning if missing).
+
+Lecture pages get the script from `src/templates/lecture.html`. The two course "tests" on index pages link it by hand:
+`<script src="../../../assets/quiz.js" defer></script>`. The score styles live in both `assets/lecture.css` and
+`assets/site.css`; keep them identical.

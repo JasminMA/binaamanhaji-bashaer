@@ -165,6 +165,17 @@ svg text{font-family:var(--body)}
 .quiz .rst:hover{border-color:var(--accent)}
 @media print{.mcq .exp,.mcq:has(input) .exp{display:block}.quiz .rst{display:none}}
 
+/* quiz score: assets/quiz.js adds a .score bar to form.quiz (kept identical in site.css for the index-page tests) */
+.quiz .score{position:sticky;bottom:10px;z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:6px 0 0;padding:10px 14px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.14);font-weight:600;color:var(--ink)}
+.quiz .score[hidden]{display:none}
+.quiz .score .dots{display:flex;gap:5px;flex-wrap:wrap}
+.quiz .score .dot{width:13px;height:13px;border-radius:50%;border:2px solid var(--line);background:var(--bg)}
+.quiz .score .dot.ok{background:var(--accent);border-color:var(--accent)}
+.quiz .score .dot.bad{background:var(--red);border-color:var(--red)}
+.quiz .score .txt{flex:1 1 auto}
+.quiz .score[data-state="done"],.quiz .score[data-state="perfect"]{background:var(--accent-soft);border-color:var(--accent)}
+@media print{.quiz .score{display:none}}
+
 /* ---- additions for لغة المحدث study sheets ---- */
 /* isnad chain: narrators as pills joined by arrows; .x = dropped narrator, .on = highlighted */
 .chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.9rem}

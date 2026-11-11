@@ -130,6 +130,15 @@ $fontHosts = 'fonts.googleapis.com', 'fonts.gstatic.com'
 $trackers = 'google-analytics|googletagmanager|gtag\(|doubleclick|facebook\.net|connect\.facebook|hotjar|clarity\.ms|mixpanel|segment\.(io|com)|plausible\.io|matomo|fullstory|sentry\.io|statcounter|yandex\.ru/metrika'
 $sinks = 'innerHTML|outerHTML|insertAdjacentHTML|document\.write|\beval\s*\(|new\s+Function|\bsrcdoc\b|javascript:|setTimeout\s*\(\s*[''"`]|setInterval\s*\(\s*[''"`]'
 $untrustedSources = 'location\.(search|hash)|document\.referrer|localStorage|sessionStorage'
+$network = '\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|new\s+Image\s*\('
+
+# Rules for JavaScript, whether inline in a page or a file under assets/.
+function Test-ScriptCode([string]$rel, [string]$code, [int]$line) {
+    if ($code -match $sinks) { Fail $rel $line "HTML-injection sink in script ($($Matches[0])); use textContent/classList/dataset instead" }
+    if ($code -match $network) { Fail $rel $line "network call in script ($($Matches[0])); this static site must not send or load data from scripts" }
+    if ($code -match 'addEventListener\(\s*[''"]message[''"]|postMessage') { Fail $rel $line 'postMessage/message listener needs a manual security review (event.origin check)' }
+    if ($code -match $untrustedSources) { Warn $rel $line "script reads $($Matches[0]); make sure the value is never used as HTML, a URL or a class name, and storage access is in try/catch" }
+}
 
 foreach ($pf in $pages) {
     $rel = Rel $pf.FullName
@@ -179,6 +188,20 @@ foreach ($pf in $pages) {
         $hidden = ($tag -match 'aria-hidden="true"')
         $labelled = ($tag -match 'role="img"') -and ($tag -match 'aria-label="[^"]+"')
         if (-not $hidden -and -not $labelled) { Fail $rel (Line-Of $body $m.Index) '<svg> needs role="img" + aria-label, or aria-hidden="true" if decorative' }
+    }
+
+    # quizzes: assets/quiz.js scores them, so every question needs exactly one marked right answer
+    $quizNames = New-Object 'System.Collections.Generic.HashSet[string]'
+    foreach ($q in [regex]::Matches($body, '<div class="mcq">(.*?)(?=<div class="mcq">|</form>|</section>|\z)', 'Singleline')) {
+        $qLine = Line-Of $body $q.Index
+        $okCount = [regex]::Matches($q.Groups[1].Value, 'class="opt ok"').Count
+        if ($okCount -ne 1) { Fail $rel $qLine "quiz question must have exactly one right answer (class=""opt ok""), found $okCount" }
+        $names = @([regex]::Matches($q.Groups[1].Value, '<input\b[^>]*type="radio"[^>]*\bname="([^"]+)"') | ForEach-Object { $_.Groups[1].Value } | Select-Object -Unique)
+        $radioCount = [regex]::Matches($q.Groups[1].Value, 'type="radio"').Count
+        if ($radioCount -lt 2) { Fail $rel $qLine "quiz question needs at least 2 radio options, found $radioCount" }
+        if ($names.Count -ne 1) { Fail $rel $qLine 'all options of one quiz question must share one radio name' }
+        elseif (-not $quizNames.Add($names[0])) { Fail $rel $qLine "radio name ""$($names[0])"" is used by two questions, so they would interfere" }
+        if ($q.Groups[1].Value -notmatch 'class="exp"') { Warn $rel $qLine 'quiz question has no explanation (class="exp")' }
     }
 
     # --- stylesheet --------------------------------------------------------------
@@ -250,9 +273,13 @@ foreach ($pf in $pages) {
         $line = Line-Of $raw $s.Index
         $srcM = [regex]::Match($attrs, '\bsrc\s*=\s*"([^"]*)"')
         if ($srcM.Success -and $srcM.Groups[1].Value -match '^(https?:)?//') { Fail $rel $line "external script ($($srcM.Groups[1].Value)); scripts must be inline or a local file under assets/" }
-        if ($code -match $sinks) { Fail $rel $line "HTML-injection sink in script ($($Matches[0])); use textContent/classList/dataset instead" }
-        if ($code -match 'addEventListener\(\s*[''"]message[''"]|postMessage') { Fail $rel $line 'postMessage/message listener needs a manual security review (event.origin check)' }
-        if ($code -match $untrustedSources) { Warn $rel $line "script reads $($Matches[0]); make sure the value is never used as HTML, a URL or a class name, and storage access is in try/catch" }
+        elseif ($srcM.Success -and $srcM.Groups[1].Value.Trim() -ne '') {
+            # a local script file must exist (scripts are blanked out of $body, so the link loop never saw this src)
+            $sp = $srcM.Groups[1].Value.Trim()
+            if ($sp.StartsWith('/')) { Fail $rel $line "root-absolute script path ($sp); use a relative path" }
+            else { $links.Add(@{ line = $line; path = $sp.Split('?')[0]; frag = ''; attr = 'src'; tag = 'script'; href = $sp }) }
+        }
+        Test-ScriptCode $rel $code $line
     }
 
     # --- trackers ----------------------------------------------------------------
@@ -332,6 +359,14 @@ foreach ($cf in $cssFiles) {
 }
 
 # ---------------------------------------------------------------------------------------
+# 3b. Shared scripts (assets/*.js)
+# ---------------------------------------------------------------------------------------
+$jsFiles = @($allFiles | Where-Object { $_.Extension -eq '.js' })
+foreach ($jf in $jsFiles) {
+    Test-ScriptCode (Rel $jf.FullName) (Read-Text $jf.FullName) 0
+}
+
+# ---------------------------------------------------------------------------------------
 # 4. Secrets and local paths in anything that gets published
 # ---------------------------------------------------------------------------------------
 $secretPatterns = @(
@@ -359,6 +394,6 @@ foreach ($f in $allFiles) {
 # Summary
 # ---------------------------------------------------------------------------------------
 Write-Host ""
-Write-Host ("Checked {0} pages, {1} stylesheets: {2} error(s), {3} warning(s)." -f $pages.Count, $cssFiles.Count, $script:errors, $script:warnings)
+Write-Host ("Checked {0} pages, {1} stylesheets, {2} script file(s): {3} error(s), {4} warning(s)." -f $pages.Count, $cssFiles.Count, $jsFiles.Count, $script:errors, $script:warnings)
 if ($script:errors -gt 0) { exit 1 }
 Write-Host 'All checks passed.'
