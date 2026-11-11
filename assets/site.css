@@ -127,3 +127,13 @@ a.tile:hover{transform:translateY(-2px);border-color:var(--accent)}
 .quiz .score .txt{flex:1 1 auto}
 .quiz .score[data-state="done"],.quiz .score[data-state="perfect"]{background:var(--accent-soft);border-color:var(--accent)}
 @media print{.quiz .score{display:none}}
+
+/* diagrams (.dia): fixed light colours, inverted in dark mode (kept identical in lecture.css; the index pages used to carry their own copy) */
+.dia{background:#FFFFFF;border:1px solid #D5DBE3;border-radius:12px;padding:14px 10px 8px;overflow-x:auto}
+.dia svg{display:block;margin:0 auto;max-width:100%;height:auto}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dia{filter:invert(.9) hue-rotate(180deg)}}
+:root[data-theme="dark"] .dia{filter:invert(.9) hue-rotate(180deg)}
+@media print{.dia{filter:none!important}}
+/* dark mode: badges filled with --accent/--gold/--red turn light, so their white labels (fill="#fff") turn dark; .dia diagrams are inverted as a whole instead */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) :not(.dia)>svg text[fill="#fff"]{fill:var(--bg)}}
+:root[data-theme="dark"] :not(.dia)>svg text[fill="#fff"]{fill:var(--bg)}

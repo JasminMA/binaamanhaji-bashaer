@@ -94,3 +94,14 @@ the stage page and from the "خريطة المصطلحات" section of both cour
   To add a term, copy a row (rows are 40 units apart), add the card with `id="t-..."` and the chip in the `.toc`,
   and raise the SVG `viewBox` height.
 - When a new lesson explains a term that is already here, add its link to that term's card and a dot to the map.
+
+## Diagrams and dark mode
+
+Three kinds of diagram exist, and each follows dark mode in its own way:
+
+- **Theme colours** (`style="fill:var(--accent)"` and friends): the preferred way for new diagrams. They follow the theme by themselves.
+- **White badge labels** (`<text fill="#fff">` on a `--accent`/`--gold`/`--red` badge): allowed. In dark mode those badges turn light, so `assets/lecture.css` and `assets/site.css` turn the labels dark.
+- **Fixed-colour diagrams** (hex colours such as `fill="#8c2f39"`): wrap them in `<div class="dia">`. That panel is white in light mode and inverted (`filter: invert(.9) hue-rotate(180deg)`) in dark mode, which flips the surface and text and keeps the hues.
+
+`tools/check-site.ps1` warns about an SVG that uses hex colours outside a `.dia` panel, because it would stay bright in dark mode.
+The dark-mode rules are kept identical in the two stylesheets (the index pages use `site.css`).

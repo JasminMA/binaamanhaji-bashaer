@@ -204,6 +204,17 @@ foreach ($pf in $pages) {
         if ($q.Groups[1].Value -notmatch 'class="exp"') { Warn $rel $qLine 'quiz question has no explanation (class="exp")' }
     }
 
+    # diagrams drawn with fixed hex colours only follow dark mode inside a .dia panel (the CSS re-tones that panel)
+    $outsideDia = Blank-Out $body '<div class="dia">.*?</svg>'
+    foreach ($m in [regex]::Matches($outsideDia, '<svg\b[^>]*>.*?</svg>', 'IgnoreCase,Singleline')) {
+        if ($m.Value -match 'aria-hidden="true"') { continue }
+        # white labels on coloured badges (<text fill="#fff">) are handled by a dark-mode CSS rule, so they are fine
+        $withoutWhiteLabels = [regex]::Replace($m.Value, '<text\b[^>]*\bfill="#fff"[^>]*>', '')
+        if ($withoutWhiteLabels -match '(?:fill|stroke)="#[0-9A-Fa-f]{3,8}"') {
+            Warn $rel (Line-Of $outsideDia $m.Index) 'svg uses fixed hex colours outside a .dia panel, so it will not follow dark mode. Use var(--...) colours, or wrap it in <div class="dia">.'
+        }
+    }
+
     # --- stylesheet --------------------------------------------------------------
     $linkedCss = @([regex]::Matches($body, '<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"', 'IgnoreCase') | ForEach-Object { $_.Groups[1].Value })
     if ($isIndex) {

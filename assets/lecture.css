@@ -122,10 +122,17 @@ svg text{font-family:var(--body)}
 .verse .sp{color:var(--gold);padding:0 8px}
 .verse cite{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:6px}
 
-/* diagrams keep a fixed light surface so the fixed SVG palette stays legible in both themes */
+/* diagrams (.dia) are drawn with fixed light colours: a white surface in light mode, inverted in dark mode (see below) */
 .dia{background:#FFFFFF;border:1px solid #D5DBE3;border-radius:10px;padding:14px 10px 8px;overflow-x:auto}
 .dia .cap{font-family:var(--display);color:#0d3b66;font-size:.98rem;text-align:center;margin-bottom:6px;display:block}
 .dia svg{display:block;margin:0 auto;max-width:100%;height:auto}
+/* dark mode: flip the light surface and dark text but keep the hues, so no bright white panel on a dark page (kept identical in site.css) */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dia{filter:invert(.9) hue-rotate(180deg)}}
+:root[data-theme="dark"] .dia{filter:invert(.9) hue-rotate(180deg)}
+/* dark mode: badges filled with --accent/--gold/--red turn light, so their white labels (fill="#fff") turn dark; .dia diagrams are inverted as a whole instead */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) :not(.dia)>svg text[fill="#fff"]{fill:var(--bg)}}
+:root[data-theme="dark"] :not(.dia)>svg text[fill="#fff"]{fill:var(--bg)}
+@media print{.dia{filter:none!important}}
 
 /* key term + book title inline marks */
 .kw{color:var(--gold);font-weight:600}
