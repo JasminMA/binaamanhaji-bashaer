@@ -158,6 +158,16 @@ $baseUrl = ''
 if (Test-Path -LiteralPath $siteJson) { $baseUrl = [string]((Read-Text $siteJson) | ConvertFrom-Json).baseUrl }
 $ogImages = @{}          # og:image path (relative to the repo) -> first page that uses it
 
+# Focus rings: never switched off (except on tabindex="-1" targets, which only receive focus from a script or a skip link).
+function Test-NoOutlineRemoval([string]$rel, [string]$cssText) {
+    $plain = [regex]::Replace($cssText, '/\*.*?\*/', '', 'Singleline')
+    foreach ($rule in [regex]::Matches($plain, '([^{}]+)\{([^{}]*)\}')) {
+        if ($rule.Groups[2].Value -match 'outline\s*:\s*(none|0)\b' -and $rule.Groups[1].Value -notmatch 'tabindex="-1"') {
+            Fail $rel 0 "CSS rule '$($rule.Groups[1].Value.Trim())' removes the focus outline; keyboard users need to see where they are"
+        }
+    }
+}
+
 function Get-Meta([string]$html, [string]$attr, [string]$name) {
     $m = [regex]::Match($html, "<meta\s+$attr=""$([regex]::Escape($name))""\s+content=""([^""]*)""", 'IgnoreCase')
     if ($m.Success) { return $m.Groups[1].Value }
@@ -219,6 +229,17 @@ foreach ($pf in $pages) {
 
     $cur = [regex]::Matches($body, 'aria-current="page"').Count
     if ($cur -ne 1) { Fail $rel 0 "expected exactly one aria-current=""page"" (the current breadcrumb item), found $cur" }
+
+    # keyboard access: a skip link first in the body, pointing at the one element with id="main"
+    if ($body -notmatch '<body\b[^>]*>\s*<a class="skip" href="#main">') { Fail $rel 0 'the first thing in <body> must be the skip link: <a class="skip" href="#main">...</a>' }
+    $mainIds = [regex]::Matches($body, '\bid="main"').Count
+    if ($mainIds -ne 1) { Fail $rel 0 "expected exactly one id=""main"" (the skip-link target), found $mainIds" }
+    elseif ($body -notmatch '<[a-z0-9]+\b[^>]*\bid="main"[^>]*\btabindex="-1"') { Fail $rel 0 'the id="main" element needs tabindex="-1" so the browser moves keyboard focus there' }
+    if ($body -notmatch '<main\b') { Fail $rel 0 'missing a <main> landmark (screen-reader users jump to it)' }
+    foreach ($sm in $styles) { Test-NoOutlineRemoval $rel $sm.Groups[1].Value }
+    foreach ($am in [regex]::Matches($body, '\bstyle="([^"]*)"')) {
+        if ($am.Groups[1].Value -match 'outline\s*:\s*(none|0)\b') { Fail $rel (Line-Of $body $am.Index) 'inline style removes the focus outline; keyboard users need to see where they are' }
+    }
     if ($isLecture) {
         $h1 = [regex]::Matches($body, '<h1\b').Count
         if ($h1 -ne 1) { Fail $rel 0 "lecture page needs exactly one <h1>, found $h1" }
@@ -430,6 +451,9 @@ foreach ($cf in $cssFiles) {
     if ($noComments -notmatch ':root\s*\{') { Fail $rel 0 'no :root{...} colour variables' }
     if ($noComments -notmatch 'prefers-color-scheme:\s*dark') { Fail $rel 0 'no dark mode (@media (prefers-color-scheme: dark))' }
     if ($noComments -notmatch ':root\[data-theme="dark"\]') { Fail $rel 0 'no :root[data-theme="dark"] rule' }
+    if ($noComments -notmatch '(?m)^\s*:focus-visible\s*\{') { Fail $rel 0 'no global :focus-visible rule (visible focus ring for keyboard users)' }
+    if ($noComments -notmatch '\.skip:focus\s*\{') { Fail $rel 0 'no .skip / .skip:focus rules (skip-to-content link)' }
+    Test-NoOutlineRemoval $rel $css
     foreach ($m in [regex]::Matches($noComments, '(?:url\(\s*[''"]?|@import\s+[''"]?)(https?:)?//([^/''")\s]+)')) {
         if ($fontHosts -notcontains $m.Groups[2].Value.ToLower()) { Fail $rel 0 "CSS loads from external host $($m.Groups[2].Value)" }
     }

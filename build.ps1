@@ -140,7 +140,7 @@ foreach ($cf in $courseFiles) {
         if ($content -match '(?i)<!doctype|<html[\s>]|<head[\s>]|<body[\s>]|</body>|</html>') {
             throw "$srcRel must contain only the lesson body (no doctype/html/head/body); the template adds those."
         }
-        if ($content -notmatch '^<header>') { throw "$srcRel should start with <header>" }
+        if ($content -notmatch '^<header id="main" tabindex="-1">') { throw "$srcRel should start with <header id=""main"" tabindex=""-1""> (the skip-link target)" }
 
         # Breadcrumb
         $items = New-Object System.Collections.Generic.List[string]

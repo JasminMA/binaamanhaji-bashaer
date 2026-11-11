@@ -9,7 +9,7 @@ src/
   templates/                      the shared markup: page shell, breadcrumb, previous/next bar
   level2/stage3/<course>/
     course.json                   course name, wording ("الدرس"/"المحاضرة"…) and the ordered lessons
-    lectureN.html                 ONLY the lesson body, from <header> to the end of the last <section>
+    lectureN.html                 ONLY the lesson body, from <header id="main" tabindex="-1"> to the end of the last <section>
 build.ps1                         the generator (repo root)
 ```
 
@@ -28,7 +28,8 @@ and they also open straight from disk. `-Check` is for catching a forgotten rebu
 
 ## Add a lesson
 
-1. Create `src/level2/stage3/<course>/lectureN.html` with just the body (copy the structure of a sibling).
+1. Create `src/level2/stage3/<course>/lectureN.html` with just the body (copy the structure of a sibling). It must start with
+   `<header id="main" tabindex="-1">`: that is where the "skip to content" link lands (the build refuses a lesson without it).
 2. Add `{ "n": N, "title": "…" }` to `lessons` in that course's `course.json`.
    The title becomes the `<title>` (plus the course's `titleSuffix`).
 3. Run the build. The breadcrumb, the previous/next links of the neighbouring lessons and the new page appear by themselves.
@@ -139,3 +140,16 @@ preview until the app refreshes it.
 - Progress lives in one browser only (no account), so it does not follow the student to another device.
 - The script carries a `security-reviewed:storage` comment marker. `tools/check-site.ps1` only accepts that marker when the code really uses
   `try/catch`, and it still warns about any `location.search/hash` or `document.referrer` reads and fails on injection code or network calls.
+
+## Keyboard access: skip link and focus ring
+
+- **Skip link.** The first thing in every page's `<body>` is `<a class="skip" href="#main">تخطَّ إلى المحتوى</a>`. It stays off-screen until a keyboard user
+  presses Tab, then appears at the top and jumps past the breadcrumb (and the hero on index pages) to the content. Lesson pages get it from
+  `src/templates/lecture.html`; hand-written index pages carry it themselves. The target is the one element with `id="main" tabindex="-1"`: the `<main>` on
+  index pages, the lesson's first `<header>` on lesson pages (the lesson wrapper is now a `<main>` landmark too).
+- **Focus ring.** `assets/site.css` and `assets/lecture.css` both define `:focus-visible{outline:3px solid var(--accent);outline-offset:3px}`, so every link, button,
+  card and radio shows where the keyboard is, in light and dark mode. Mouse clicks do not show it. Never remove an outline; style it instead.
+- **Reduced motion.** With "reduce motion" switched on in the system, the cards stop lifting on hover/focus.
+- **Checks.** `tools/check-site.ps1` fails when a page lacks the skip link, the single `id="main"` (with `tabindex="-1"`) or a `<main>`, when the shared CSS
+  lacks the skip/focus rules, or when any CSS or inline style removes an outline (`outline:none` / `outline:0`; only `[tabindex="-1"]` targets are exempt).
+  A new hand-written index page: copy the skip link and `<main id="main" tabindex="-1">` from a sibling.

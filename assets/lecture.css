@@ -26,6 +26,11 @@ h2{font-size:1.5rem;display:flex;gap:10px;align-items:baseline}
 h2 .tag{font-family:var(--body);font-size:.8rem;color:var(--accent);background:var(--accent-soft);padding:2px 10px;border-radius:99px;font-weight:600}
 h3{font-size:1.1rem}
 p{margin:0}
+/* Keyboard users: a visible focus ring on everything focusable, and a "skip to content" link that appears on the first Tab. */
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+[tabindex="-1"]:focus{outline:none}
+.skip{position:absolute;inset-inline-start:12px;top:-5rem;z-index:1000;padding:10px 18px;border-radius:10px;background:var(--ink);color:var(--bg);border:2px solid var(--accent);font-family:var(--body);font-weight:600;font-size:1rem;line-height:1.5;text-decoration:none}
+.skip:focus{top:12px}
 .muted{color:var(--muted)}
 header{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:18px}
 .eyebrow{font-size:.85rem;color:var(--gold);font-weight:600;letter-spacing:.02em}
