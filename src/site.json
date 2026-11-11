@@ -1,0 +1,7 @@
+{
+  "ancestors": [
+    { "path": "",             "label": "البناء المنهجي" },
+    { "path": "level2",       "label": "المستوى الثاني" },
+    { "path": "level2/stage3", "label": "المرحلة الثالثة" }
+  ]
+}
