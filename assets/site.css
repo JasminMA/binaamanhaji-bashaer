@@ -137,3 +137,19 @@ a.tile:hover{transform:translateY(-2px);border-color:var(--accent)}
 /* dark mode: badges filled with --accent/--gold/--red turn light, so their white labels (fill="#fff") turn dark; .dia diagrams are inverted as a whole instead */
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) :not(.dia)>svg text[fill="#fff"]{fill:var(--bg)}}
 :root[data-theme="dark"] :not(.dia)>svg text[fill="#fff"]{fill:var(--bg)}
+
+/* study progress: assets/progress.js adds a progress panel above the lesson cards of a course page (the lesson-page toggle is in lecture.css) */
+.pg-panel{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--paper);margin-bottom:14px}
+.pg-resume[hidden],.pg-reset[hidden],.pg-badge[hidden]{display:none}
+.pg-text{margin:0;font-weight:600}
+.pg-meter{flex:1 1 220px;min-width:160px;height:10px;appearance:none;-webkit-appearance:none;border:0;border-radius:99px;background:var(--line);overflow:hidden;accent-color:var(--accent)}
+.pg-meter::-webkit-progress-bar{background:var(--line);border-radius:99px}
+.pg-meter::-webkit-progress-value{background:var(--accent);border-radius:99px}
+.pg-meter::-moz-progress-bar{background:var(--accent);border-radius:99px}
+.pg-resume{flex:1 1 100%;color:var(--accent);font-weight:600;text-decoration:none}
+.pg-resume:hover{text-decoration:underline}
+.pg-reset{font-family:var(--body);font-size:.85rem;color:var(--muted);background:none;border:1px solid var(--line);border-radius:8px;padding:5px 12px;cursor:pointer}
+.pg-reset:hover{border-color:var(--red);color:var(--red)}
+.card.pg-done{border-color:var(--accent)}
+.card .pg-badge{position:absolute;left:16px;bottom:16px;font-size:.78rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:99px;padding:3px 10px}
+@media print{.pg-panel,.pg-badge{display:none}}

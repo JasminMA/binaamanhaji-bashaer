@@ -124,3 +124,18 @@ the description, an image and a title. Every page now carries them.
 
 Chat apps keep a copy of the preview for a while. After changing a title, description or image, a link already shared may keep showing the old
 preview until the app refreshes it.
+
+## Study progress
+
+`assets/progress.js` lets a student mark lessons as done:
+
+- **Lesson pages** get a "تم إنجاز هذا الدرس" toggle above the bottom navigation (the lecture template links the script).
+- **Course pages** (index pages with lesson cards) get a progress bar, a ✓ badge on finished cards, a link to the last lesson opened, and a
+  "clear progress" button with a two-step confirm. A new course page needs `<script src="../../../assets/progress.js" defer></script>` in its head.
+- It works out the course from the folder name in the address (`.../<course>/lectureN.html`), so no per-page setup is needed.
+- **Storage:** one `localStorage` key (`bm.progress.v1`) with lesson *numbers* per course and the last lesson opened. Nothing else is stored
+  (no quiz scores, no names) and nothing is sent anywhere. Stored data is validated as untrusted. If storage is blocked (private window), the
+  feature stays hidden and the pages work as before; without JavaScript nothing appears.
+- Progress lives in one browser only (no account), so it does not follow the student to another device.
+- The script carries a `security-reviewed:storage` comment marker. `tools/check-site.ps1` only accepts that marker when the code really uses
+  `try/catch`, and it still warns about any `location.search/hash` or `document.referrer` reads and fails on injection code or network calls.

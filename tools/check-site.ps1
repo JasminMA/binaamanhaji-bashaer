@@ -137,7 +137,19 @@ function Test-ScriptCode([string]$rel, [string]$code, [int]$line) {
     if ($code -match $sinks) { Fail $rel $line "HTML-injection sink in script ($($Matches[0])); use textContent/classList/dataset instead" }
     if ($code -match $network) { Fail $rel $line "network call in script ($($Matches[0])); this static site must not send or load data from scripts" }
     if ($code -match 'addEventListener\(\s*[''"]message[''"]|postMessage') { Fail $rel $line 'postMessage/message listener needs a manual security review (event.origin check)' }
-    if ($code -match $untrustedSources) { Warn $rel $line "script reads $($Matches[0]); make sure the value is never used as HTML, a URL or a class name, and storage access is in try/catch" }
+    # A script that was reviewed for browser storage says so with a marker (in a comment), and must really guard it
+    # with try/catch in its code (comments are stripped first, so the words in a comment do not count).
+    $codeOnly = [regex]::Replace($code, '/\*.*?\*/', '', 'Singleline')
+    $codeOnly = [regex]::Replace($codeOnly, '(?m)//[^\r\n]*', '')
+    $storageReviewed = ($code -match 'security-reviewed:storage') -and ($codeOnly -match '\btry\s*\{') -and ($codeOnly -match '\bcatch\b')
+    $reported = @{}
+    foreach ($m in [regex]::Matches($code, $untrustedSources)) {
+        $what = $m.Value
+        if ($reported.ContainsKey($what)) { continue }
+        $reported[$what] = $true
+        if (($what -match 'Storage$') -and $storageReviewed) { continue }
+        Warn $rel $line "script reads $what; make sure the value is never used as HTML, a URL or a class name, and storage access is in try/catch"
+    }
 }
 
 # Share previews: the public address of the site (src/site.json) decides what og:url and og:image must look like.
@@ -239,6 +251,11 @@ foreach ($pf in $pages) {
         if ($names.Count -ne 1) { Fail $rel $qLine 'all options of one quiz question must share one radio name' }
         elseif (-not $quizNames.Add($names[0])) { Fail $rel $qLine "radio name ""$($names[0])"" is used by two questions, so they would interfere" }
         if ($q.Groups[1].Value -notmatch 'class="exp"') { Warn $rel $qLine 'quiz question has no explanation (class="exp")' }
+    }
+
+    # a course page (it has lesson cards) needs the progress script, or the progress bar and done badges silently never appear
+    if ($body -match '<a\s+class="card"[^>]*href="lecture\d+\.html"' -and $raw -notmatch '<script\s+src="[^"]*assets/progress\.js"') {
+        Fail $rel 0 'course page has lesson cards but does not load assets/progress.js (progress bar and done badges)'
     }
 
     # diagrams drawn with fixed hex colours only follow dark mode inside a .dia panel (the CSS re-tones that panel)
