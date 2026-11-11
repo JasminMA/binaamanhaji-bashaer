@@ -1,0 +1,10 @@
+# Keep line endings the same on every machine: text files are LF in the repository and in the working copy,
+# so Windows no longer warns "LF will be replaced by CRLF" and build.ps1 -Check gives the same result everywhere.
+* text=auto eol=lf
+
+# Binary files: never touch.
+*.pdf binary
+*.png binary
+
+# Lecture transcripts in refs/ are source material: keep them byte for byte.
+*.txt -text
