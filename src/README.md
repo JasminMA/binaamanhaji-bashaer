@@ -153,3 +153,19 @@ preview until the app refreshes it.
 - **Checks.** `tools/check-site.ps1` fails when a page lacks the skip link, the single `id="main"` (with `tabindex="-1"`) or a `<main>`, when the shared CSS
   lacks the skip/focus rules, or when any CSS or inline style removes an outline (`outline:none` / `outline:0`; only `[tabindex="-1"]` targets are exempt).
   A new hand-written index page: copy the skip link and `<main id="main" tabindex="-1">` from a sibling.
+
+## Self-hosted fonts
+
+The site makes no request to Google (or any other host): the fonts are files in `assets/fonts/` and `assets/fonts.css` declares them.
+
+- **Fonts:** IBM Plex Sans Arabic (text; 400, 500, 600) and Reem Kufi (headings; one variable file for 500-700). Only the `arabic` and `latin`
+  subsets are kept, 8 `.woff2` files, about 226 KB in all; the browser downloads a subset only when a page uses it. Licences (SIL OFL 1.1) and
+  sources are in `assets/fonts/`.
+- **Pages:** every page links `assets/fonts.css` before its main stylesheet (the lecture template does it for lessons; a new hand-written index
+  page copies the line from a sibling). The Google Fonts `<link>` is gone everywhere, including the share-card source `src/social/card.html`.
+- **Fallback:** if a font file cannot load, the CSS falls back to `Tahoma` / `Segoe UI`, so text always shows (`font-display:swap`). Some browsers
+  (Firefox in particular) can refuse font files outside the page's own folder when a page is opened straight from disk; the site then simply uses
+  the fallback font there. On the published site, and in Chrome/Edge from disk, the real fonts load.
+- **Checks:** `tools/check-site.ps1` fails when a page does not link `fonts.css`, when `fonts.css` points at a missing or non-`.woff2` file, when
+  a font family the pages ask for has no `@font-face`, or when anything loads from an outside host (the old Google exception is gone).
+- **Adding or updating a font:** put the `.woff2` in `assets/fonts/`, add its `@font-face` to `assets/fonts.css`, add its licence, run the check.

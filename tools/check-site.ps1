@@ -126,7 +126,7 @@ if (Test-Path -LiteralPath $buildScript) {
 $balanceTags = 'div', 'section', 'nav', 'header', 'footer', 'main', 'svg', 'g', 'defs', 'marker', 'pattern',
                'text', 'tspan', 'details', 'summary', 'ul', 'ol', 'table', 'thead', 'tbody', 'form', 'label',
                'button', 'a', 'span', 'b', 'strong', 'em', 'h1', 'h2', 'h3', 'h4'
-$fontHosts = 'fonts.googleapis.com', 'fonts.gstatic.com'
+$fontHosts = @()                        # nothing may load from outside the site: fonts are self-hosted in assets/fonts/
 $trackers = 'google-analytics|googletagmanager|gtag\(|doubleclick|facebook\.net|connect\.facebook|hotjar|clarity\.ms|mixpanel|segment\.(io|com)|plausible\.io|matomo|fullstory|sentry\.io|statcounter|yandex\.ru/metrika'
 $sinks = 'innerHTML|outerHTML|insertAdjacentHTML|document\.write|\beval\s*\(|new\s+Function|\bsrcdoc\b|javascript:|setTimeout\s*\(\s*[''"`]|setInterval\s*\(\s*[''"`]'
 $untrustedSources = 'location\.(search|hash)|document\.referrer|localStorage|sessionStorage'
@@ -292,6 +292,7 @@ foreach ($pf in $pages) {
 
     # --- stylesheet --------------------------------------------------------------
     $linkedCss = @([regex]::Matches($body, '<link\b[^>]*\brel="stylesheet"[^>]*\bhref="([^"]+)"', 'IgnoreCase') | ForEach-Object { $_.Groups[1].Value })
+    if ($linkedCss -notcontains ($up + 'assets/fonts.css')) { Fail $rel 0 "page must link the self-hosted fonts: <link rel=""stylesheet"" href=""${up}assets/fonts.css"">" }
     if ($isIndex) {
         if ($linkedCss -notcontains ($up + 'assets/site.css')) { Fail $rel 0 "index page must link ${up}assets/site.css" }
     }
@@ -338,7 +339,7 @@ foreach ($pf in $pages) {
             if ($href -match '^//') { Fail $rel $line "protocol-relative URL ($href)"; continue }
             if ($href -match '^https://') {
                 $h = ([uri]$href).Host.ToLower()
-                if ($tagName -ne 'a' -and $fontHosts -notcontains $h) { Fail $rel $line "external resource from $h (only Google Fonts may be loaded from outside; an <a> link is fine)" }
+                if ($tagName -ne 'a' -and $fontHosts -notcontains $h) { Fail $rel $line "external resource from $h (everything is self-hosted, fonts included; an <a> link is fine)" }
                 continue
             }
             if ($href.StartsWith('/')) { Fail $rel $line "root-absolute link ($href) breaks on a GitHub Pages project site; use a relative path"; continue }
@@ -448,12 +449,27 @@ foreach ($cf in $cssFiles) {
     $open = $noComments.Split('{').Count - 1
     $close = $noComments.Split('}').Count - 1
     if ($open -ne $close) { Fail $rel 0 "unbalanced braces: $open { vs $close }" }
-    if ($noComments -notmatch ':root\s*\{') { Fail $rel 0 'no :root{...} colour variables' }
-    if ($noComments -notmatch 'prefers-color-scheme:\s*dark') { Fail $rel 0 'no dark mode (@media (prefers-color-scheme: dark))' }
-    if ($noComments -notmatch ':root\[data-theme="dark"\]') { Fail $rel 0 'no :root[data-theme="dark"] rule' }
-    if ($noComments -notmatch '(?m)^\s*:focus-visible\s*\{') { Fail $rel 0 'no global :focus-visible rule (visible focus ring for keyboard users)' }
-    if ($noComments -notmatch '\.skip:focus\s*\{') { Fail $rel 0 'no .skip / .skip:focus rules (skip-to-content link)' }
-    Test-NoOutlineRemoval $rel $css
+    if ($rel -eq 'assets/fonts.css') {
+        # fonts only: no colours, no dark mode; every font file must exist and be a woff2
+        if ($noComments -notmatch '@font-face') { Fail $rel 0 'fonts.css has no @font-face rules' }
+        foreach ($fam in 'IBM Plex Sans Arabic', 'Reem Kufi') {
+            if ($noComments -notmatch ('font-family:"' + [regex]::Escape($fam) + '"')) { Fail $rel 0 "no @font-face for $fam (the pages ask for it)" }
+        }
+        foreach ($m in [regex]::Matches($noComments, 'url\(([^)]*)\)')) {
+            $u = $m.Groups[1].Value.Trim('"', "'", ' ')
+            if ($u -match '^(https?:)?//') { continue }       # reported below
+            if (-not $u.EndsWith('.woff2')) { Fail $rel 0 "font file $u is not .woff2" }
+            if (-not $fileExists.ContainsKey('assets/' + $u)) { Fail $rel 0 "font file assets/$u does not exist" }
+        }
+    }
+    else {
+        if ($noComments -notmatch ':root\s*\{') { Fail $rel 0 'no :root{...} colour variables' }
+        if ($noComments -notmatch 'prefers-color-scheme:\s*dark') { Fail $rel 0 'no dark mode (@media (prefers-color-scheme: dark))' }
+        if ($noComments -notmatch ':root\[data-theme="dark"\]') { Fail $rel 0 'no :root[data-theme="dark"] rule' }
+        if ($noComments -notmatch '(?m)^\s*:focus-visible\s*\{') { Fail $rel 0 'no global :focus-visible rule (visible focus ring for keyboard users)' }
+        if ($noComments -notmatch '\.skip:focus\s*\{') { Fail $rel 0 'no .skip / .skip:focus rules (skip-to-content link)' }
+        Test-NoOutlineRemoval $rel $css
+    }
     foreach ($m in [regex]::Matches($noComments, '(?:url\(\s*[''"]?|@import\s+[''"]?)(https?:)?//([^/''")\s]+)')) {
         if ($fontHosts -notcontains $m.Groups[2].Value.ToLower()) { Fail $rel 0 "CSS loads from external host $($m.Groups[2].Value)" }
     }
