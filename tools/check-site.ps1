@@ -135,7 +135,16 @@ $network = '\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|new\s+I
 # Rules for JavaScript, whether inline in a page or a file under assets/.
 function Test-ScriptCode([string]$rel, [string]$code, [int]$line) {
     if ($code -match $sinks) { Fail $rel $line "HTML-injection sink in script ($($Matches[0])); use textContent/classList/dataset instead" }
-    if ($code -match $network) { Fail $rel $line "network call in script ($($Matches[0])); this static site must not send or load data from scripts" }
+    # No script may talk to the network, with one exception: the service worker (sw.js, offline support) must pass the page's own
+    # requests through. It carries the marker security-reviewed:network and may call only fetch(event.request), nothing else.
+    $netCode = $code
+    if ($rel -eq 'sw.js') {
+        if ($code -notmatch 'security-reviewed:network') { Fail $rel $line 'sw.js must carry the security-reviewed:network marker (it is the only script allowed to call fetch)' }
+        $netCode = [regex]::Replace($code, '/\*.*?\*/', '', 'Singleline')
+        $netCode = [regex]::Replace($netCode, '(?m)//[^\r\n]*', '')
+        $netCode = [regex]::Replace($netCode, '\bfetch\s*\(\s*event\.request\s*\)', '')
+    }
+    if ($netCode -match $network) { Fail $rel $line "network call in script ($($Matches[0])); this static site must not send or load data from scripts" }
     if ($code -match 'addEventListener\(\s*[''"]message[''"]|postMessage') { Fail $rel $line 'postMessage/message listener needs a manual security review (event.origin check)' }
     # A script that was reviewed for browser storage says so with a marker (in a comment), and must really guard it
     # with try/catch in its code (comments are stripped first, so the words in a comment do not count).
@@ -278,6 +287,10 @@ foreach ($pf in $pages) {
     if ($body -match '<a\s+class="card"[^>]*href="lecture\d+\.html"' -and $raw -notmatch '<script\s+src="[^"]*assets/progress\.js"') {
         Fail $rel 0 'course page has lesson cards but does not load assets/progress.js (progress bar and done badges)'
     }
+
+    # offline support: every page links the web app manifest and loads the script that registers the service worker
+    if ($raw -notmatch ('<link\s+rel="manifest"\s+href="' + [regex]::Escape($up) + 'manifest\.webmanifest">')) { Fail $rel 0 "page must link the web app manifest: <link rel=""manifest"" href=""${up}manifest.webmanifest"">" }
+    if ($raw -notmatch ('<script\s+src="' + [regex]::Escape($up) + 'assets/offline\.js"')) { Fail $rel 0 "page must load ${up}assets/offline.js (registers the offline service worker)" }
 
     # diagrams drawn with fixed hex colours only follow dark mode inside a .dia panel (the CSS re-tones that panel)
     $outsideDia = Blank-Out $body '<div class="dia">.*?</svg>'
@@ -482,6 +495,56 @@ foreach ($cf in $cssFiles) {
 $jsFiles = @($allFiles | Where-Object { $_.Extension -eq '.js' })
 foreach ($jf in $jsFiles) {
     Test-ScriptCode (Rel $jf.FullName) (Read-Text $jf.FullName) 0
+}
+
+# ---------------------------------------------------------------------------------------
+# 3c. Offline support: web app manifest, icons, service worker
+# ---------------------------------------------------------------------------------------
+function Get-PngSize([string]$path) {
+    $b = [System.IO.File]::ReadAllBytes($path)
+    if (-not ($b.Length -gt 24 -and $b[0] -eq 0x89 -and $b[1] -eq 0x50 -and $b[2] -eq 0x4E -and $b[3] -eq 0x47)) { return $null }
+    return @{ w = (($b[16] * 16777216) + ($b[17] * 65536) + ($b[18] * 256) + $b[19]); h = (($b[20] * 16777216) + ($b[21] * 65536) + ($b[22] * 256) + $b[23]) }
+}
+$manifestPath = Join-Path $root 'manifest.webmanifest'
+if (-not (Test-Path -LiteralPath $manifestPath)) { Fail 'manifest.webmanifest' 0 'missing (every page links it)' }
+else {
+    $mf = $null
+    try { $mf = (Read-Text $manifestPath) | ConvertFrom-Json } catch { Fail 'manifest.webmanifest' 0 "is not valid JSON: $($_.Exception.Message)" }
+    if ($null -ne $mf) {
+        foreach ($key in 'name', 'short_name', 'start_url', 'scope', 'display', 'lang', 'dir', 'background_color', 'theme_color', 'icons') {
+            if ($null -eq $mf.PSObject.Properties[$key]) { Fail 'manifest.webmanifest' 0 "missing ""$key""" }
+        }
+        if ($null -ne $mf.PSObject.Properties['lang'] -and $mf.lang -ne 'ar') { Fail 'manifest.webmanifest' 0 'lang must be "ar"' }
+        if ($null -ne $mf.PSObject.Properties['dir'] -and $mf.dir -ne 'rtl') { Fail 'manifest.webmanifest' 0 'dir must be "rtl"' }
+        foreach ($key in 'start_url', 'scope') {
+            if ($null -ne $mf.PSObject.Properties[$key] -and -not ([string]$mf.$key).StartsWith('.')) { Fail 'manifest.webmanifest' 0 "$key must be relative (""./""): the site lives in a sub-folder on GitHub Pages" }
+        }
+        $sizesSeen = @{}
+        if ($null -ne $mf.PSObject.Properties['icons']) {
+            foreach ($ic in @($mf.icons)) {
+                $iconPath = Join-Path $root (([string]$ic.src).Replace('/', [System.IO.Path]::DirectorySeparatorChar))
+                if (([string]$ic.src).StartsWith('/') -or -not (Test-Path -LiteralPath $iconPath)) { Fail 'manifest.webmanifest' 0 "icon $($ic.src) does not exist (use a relative path)"; continue }
+                $dim = Get-PngSize $iconPath
+                $declared = [string]$ic.sizes
+                if ($null -eq $dim) { Fail 'manifest.webmanifest' 0 "icon $($ic.src) is not a PNG" }
+                elseif ("$($dim.w)x$($dim.h)" -ne $declared) { Fail 'manifest.webmanifest' 0 "icon $($ic.src) is $($dim.w)x$($dim.h) but the manifest says $declared" }
+                $sizesSeen[$declared] = $true
+            }
+            foreach ($need in '192x192', '512x512') { if (-not $sizesSeen.ContainsKey($need)) { Fail 'manifest.webmanifest' 0 "needs a $need PNG icon (browsers require 192 and 512 to offer installing the site)" } }
+        }
+    }
+}
+if (Test-Path -LiteralPath (Join-Path $root 'src/sw.template.js')) {
+    $swPath = Join-Path $root 'sw.js'
+    if (-not (Test-Path -LiteralPath $swPath)) { Fail 'sw.js' 0 'missing: run build.ps1 (it generates the service worker)' }
+    else {
+        $swText = Read-Text $swPath
+        if ($swText -notmatch "var VERSION = '[0-9a-f]{12}';") { Fail 'sw.js' 0 'no content-hash VERSION (regenerate with build.ps1)' }
+        if ($swText -notmatch "addEventListener\('fetch'") { Fail 'sw.js' 0 'has no fetch handler, so nothing would work offline' }
+        if ($swText -notmatch "addEventListener\('activate'") { Fail 'sw.js' 0 'has no activate handler, so old caches are never deleted' }
+        if ($swText -match 'importScripts') { Fail 'sw.js' 0 'importScripts loads more code into the worker; keep it self-contained' }
+        if ($swText -match 'skipWaiting' -and $swText -notmatch 'clients\.claim') { Warn 'sw.js' 0 'skipWaiting without clients.claim leaves open pages on the old worker' }
+    }
 }
 
 # ---------------------------------------------------------------------------------------

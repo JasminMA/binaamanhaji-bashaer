@@ -169,3 +169,27 @@ The site makes no request to Google (or any other host): the fonts are files in 
 - **Checks:** `tools/check-site.ps1` fails when a page does not link `fonts.css`, when `fonts.css` points at a missing or non-`.woff2` file, when
   a font family the pages ask for has no `@font-face`, or when anything loads from an outside host (the old Google exception is gone).
 - **Adding or updating a font:** put the `.woff2` in `assets/fonts/`, add its `@font-face` to `assets/fonts.css`, add its licence, run the check.
+
+## Offline support (installable site)
+
+After one visit with internet, the whole study site opens with no connection, and phones can add it to the home screen as an app.
+
+- **`sw.js`** (site root) is the service worker. **Do not edit it:** `build.ps1` generates it from `src/sw.template.js`, filling in the list of files
+  to keep (every page, stylesheet, script, font and icon: about 52 files, 2.5 MB; not `refs/` PDFs and transcripts, not the share card) and a
+  `VERSION` that is a hash of those files' content. So the browser downloads the site again exactly when something changes, swaps to the new
+  cache and deletes the old one. `build.ps1` rewrites it on every build and `-Check` fails if it is stale, so **run the build after any change
+  to a page, style, script or font, and commit `sw.js`** (the GitHub check enforces this).
+- **How it answers:** a request for a cached file is served from the cache (instant, works offline); anything else goes to the network. If the
+  network is down and the page is not cached (for example a PDF in `refs/`), a short Arabic "not available offline" page appears instead of the
+  browser's error. It only touches same-site GET requests.
+- **`assets/offline.js`** registers the worker (every page loads it; the lecture template does it for lessons, a new hand-written page copies the
+  line from a sibling). It only runs on https or localhost; from a file on disk the site just works online as before.
+- **`manifest.webmanifest`** + `assets/icon-192.png` / `icon-512.png` make the site installable. `tools/make-social-images.ps1` regenerates the icons
+  from `assets/favicon.svg`. Every page links the manifest.
+- **Security:** `sw.js` is the only script allowed to call `fetch`, and the check accepts only `fetch(event.request)` (it passes the page's own
+  request through) plus the `security-reviewed:network` marker. It cannot reach another site, and `importScripts` is rejected.
+- **Checks:** every page links the manifest and loads `offline.js`; the manifest is valid (Arabic, RTL, relative `start_url`, real 192 and 512 PNG
+  icons of the declared size); `sw.js` exists, is current and has install-time caching, an `activate` clean-up and a `fetch` handler.
+- **Testing by hand:** service workers do not run from `file://`. Serve the folder over http (any static server on `localhost`), open a lesson,
+  reload once, stop the server, and the pages still open.
+- **Limits:** reading the PDFs and transcripts still needs internet. A page already open keeps the old version until it is reloaded after an update.

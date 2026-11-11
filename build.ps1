@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Generates the lecture pages (level2/stage3/<course>/lectureN.html) from src/.
+  Generates the lecture pages (level2/stage3/<course>/lectureN.html) from src/, and sw.js (the offline service worker) from src/sw.template.js.
 
 .DESCRIPTION
   Every course folder under src/ holds:
@@ -195,13 +195,66 @@ foreach ($cf in $courseFiles) {
     }
 }
 
+# ---------------------------------------------------------------------------------------------
+# Offline support: sw.js (the service worker) lists every file to keep in the browser cache.
+# The list is built from the files on disk and the version is a hash of their content, so the
+# browser re-downloads the site exactly when something changed. See src/README.md.
+# ---------------------------------------------------------------------------------------------
+$swTemplate = Join-Path $srcDir 'sw.template.js'
+$swGenerated = $false
+if (Test-Path -LiteralPath $swTemplate) {
+    $skipDirs = '/.git/', '/.github/', '/.claude/', '/src/', '/tools/', '/node_modules/', '/refs/'
+    $keepExt = '.html', '.css', '.js', '.svg', '.png', '.woff2', '.webmanifest'
+    $textExt = '.html', '.css', '.js', '.svg', '.webmanifest'
+    $cacheFiles = New-Object System.Collections.Generic.List[string]
+    foreach ($f in Get-ChildItem -Path $root -Recurse -File -Force) {
+        $relPath = $f.FullName.Substring($root.Length).TrimStart([char]92, [char]47).Replace([string][char]92, '/')
+        $skipIt = $false
+        foreach ($d in $skipDirs) { if (('/' + $relPath).Contains($d)) { $skipIt = $true } }
+        if ($skipIt) { continue }
+        if ($keepExt -notcontains $f.Extension.ToLower()) { continue }
+        if ($relPath -eq 'sw.js' -or $relPath -eq 'assets/og-card.png') { continue }   # the worker itself; the card is for chat apps only
+        if ($relPath -notmatch '^[A-Za-z0-9_./-]+$') { throw "${relPath}: file names that are cached for offline use must use only letters, digits and _ . / -" }
+        $cacheFiles.Add($relPath)
+    }
+    $sorted = $cacheFiles.ToArray()
+    [Array]::Sort($sorted, [System.StringComparer]::Ordinal)
+
+    $ms = New-Object System.IO.MemoryStream
+    foreach ($p in $sorted) {
+        $bytes = [System.IO.File]::ReadAllBytes((Join-Path $root $p))
+        if ($textExt -contains [System.IO.Path]::GetExtension($p).ToLower()) {
+            $bytes = $utf8.GetBytes($utf8.GetString($bytes).Replace("`r`n", "`n"))      # same hash with LF or CRLF checkouts
+        }
+        $head = $utf8.GetBytes($p + [string][char]0)
+        $ms.Write($head, 0, $head.Length)
+        $ms.Write($bytes, 0, $bytes.Length)
+    }
+    $sha = [System.Security.Cryptography.SHA256]::Create()
+    $version = (($sha.ComputeHash($ms.ToArray()) | ForEach-Object { $_.ToString('x2') }) -join '').Substring(0, 12)
+
+    $list = "[`n" + (($sorted | ForEach-Object { '  "' + $_ + '"' }) -join ",`n") + "`n]"
+    $sw = (Read-Text $swTemplate).Replace('{{version}}', $version).Replace('{{files}}', $list)
+    if (-not $sw.EndsWith("`n")) { $sw += "`n" }
+
+    $swPath = Join-Path $root 'sw.js'
+    $swCurrent = $null
+    if (Test-Path -LiteralPath $swPath) { $swCurrent = Read-Text $swPath }
+    if ($swCurrent -cne $sw) {
+        if ($Check) { $stale.Add('sw.js') }
+        else { [System.IO.File]::WriteAllText($swPath, $sw, $utf8); $swGenerated = $true }
+    }
+    Write-Host ("offline cache: {0} files, version {1}" -f $sorted.Count, $version)
+}
+
 if ($Check) {
     if ($stale.Count -gt 0) {
-        Write-Host "Out of date ($($stale.Count) of $pages pages). Run build.ps1 and commit the result:"
+        Write-Host "Out of date: $($stale.Count) generated file(s) (of $pages pages plus sw.js). Run build.ps1 and commit the result:"
         $stale | ForEach-Object { Write-Host "  $_" }
         exit 1
     }
-    Write-Host "All $pages generated pages are up to date."
+    Write-Host "All $pages generated pages and sw.js are up to date."
 } else {
-    Write-Host "$pages pages: $written written, $unchanged already up to date."
+    $swNote = ''; if ($swGenerated) { $swNote = '; sw.js rewritten' }
+    Write-Host "$pages pages: $written written, $unchanged already up to date$swNote."
 }
