@@ -11,7 +11,7 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = '1ef85aa5a943';
+var VERSION = '073c6d75ba72';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "assets/apple-touch-icon.png",
@@ -31,6 +31,8 @@ var FILES = [
   "assets/offline.js",
   "assets/progress.js",
   "assets/quiz.js",
+  "assets/search-index.js",
+  "assets/search.js",
   "assets/site.css",
   "index.html",
   "level2/index.html",
@@ -65,7 +67,8 @@ var FILES = [
   "level2/stage3/western-thought/lecture6.html",
   "level2/stage3/western-thought/lecture7.html",
   "level2/stage3/western-thought/lecture8.html",
-  "manifest.webmanifest"
+  "manifest.webmanifest",
+  "search/index.html"
 ];
 
 self.addEventListener('install', function (event) {

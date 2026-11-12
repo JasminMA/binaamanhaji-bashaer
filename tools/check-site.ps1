@@ -288,6 +288,12 @@ foreach ($pf in $pages) {
         Fail $rel 0 'course page has lesson cards but does not load assets/progress.js (progress bar and done badges)'
     }
 
+    # search: every <section> has an id (search results open the exact section), and every page links to the search page
+    foreach ($sec in [regex]::Matches($body, '<section\b([^>]*)>')) {
+        if ($sec.Groups[1].Value -notmatch '\bid="[^"]+"') { Fail $rel (Line-Of $body $sec.Index) '<section> without an id (search results link to the section; hand-written pages: add id="sec-N", lessons get it from the build)' }
+    }
+    if ($rel -ne 'search/index.html' -and $raw -notmatch ('href="' + [regex]::Escape($up) + 'search/index\.html"')) { Fail $rel 0 "page must link to the search page (${up}search/index.html) from its top bar" }
+
     # offline support: every page links the web app manifest and loads the script that registers the service worker
     if ($raw -notmatch ('<link\s+rel="manifest"\s+href="' + [regex]::Escape($up) + 'manifest\.webmanifest">')) { Fail $rel 0 "page must link the web app manifest: <link rel=""manifest"" href=""${up}manifest.webmanifest"">" }
     if ($raw -notmatch ('<script\s+src="' + [regex]::Escape($up) + 'assets/offline\.js"')) { Fail $rel 0 "page must load ${up}assets/offline.js (registers the offline service worker)" }
@@ -495,6 +501,56 @@ foreach ($cf in $cssFiles) {
 $jsFiles = @($allFiles | Where-Object { $_.Extension -eq '.js' })
 foreach ($jf in $jsFiles) {
     Test-ScriptCode (Rel $jf.FullName) (Read-Text $jf.FullName) 0
+}
+
+# ---------------------------------------------------------------------------------------
+# 3d. Search: the page, its scripts, and the generated index (every entry must open a real page and section)
+# ---------------------------------------------------------------------------------------
+$searchRel = 'search/index.html'
+if (-not $fileExists.ContainsKey($searchRel)) { Fail $searchRel 0 'missing: the search page every page links to' }
+else {
+    $sp = Read-Text (Join-Path $root $searchRel)
+    $iPos = $sp.IndexOf('assets/search-index.js')
+    $jPos = $sp.IndexOf('assets/search.js')
+    if ($iPos -lt 0 -or $jPos -lt 0) { Fail $searchRel 0 'must load assets/search-index.js and then assets/search.js' }
+    elseif ($iPos -gt $jPos) { Fail $searchRel 0 'search-index.js must be loaded before search.js' }
+    foreach ($needId in 'search-form', 'q', 'results', 'status') {
+        if ($sp -notmatch ('\bid="' + $needId + '"')) { Fail $searchRel 0 "missing id=""$needId"" (search.js needs it)" }
+    }
+}
+$indexFile = Join-Path $root 'assets/search-index.js'
+if (-not (Test-Path -LiteralPath $indexFile)) { Fail 'assets/search-index.js' 0 'missing: run build.ps1 (it generates the search index)' }
+else {
+    $indexText = Read-Text $indexFile
+    $jsonText = $null
+    $im = [regex]::Match($indexText, '(?s)window\.BM_SEARCH=(\[.*\]);\s*$')
+    if ($im.Success) { $jsonText = $im.Groups[1].Value }
+    else { Fail 'assets/search-index.js' 0 'does not look like window.BM_SEARCH=[...]; (regenerate with build.ps1)' }
+    if ($null -ne $jsonText) {
+        $entries = $null
+        try { $parsed = ConvertFrom-Json -InputObject $jsonText; $entries = @($parsed | ForEach-Object { $_ }) } catch { Fail 'assets/search-index.js' 0 "is not valid JSON data: $($_.Exception.Message)" }
+        if ($null -ne $entries) {
+            if ($entries.Count -lt 50) { Fail 'assets/search-index.js' 0 "only $($entries.Count) entries; expected the text of every page" }
+            $seenAnchors = @{}
+            foreach ($en in $entries) {
+                $ep = [string]$en.p
+                if (-not $pageInfo.ContainsKey($ep)) { Fail 'assets/search-index.js' 0 "entry points to $ep, which is not a page of the site"; continue }
+                if ($ep -eq $searchRel) { Fail 'assets/search-index.js' 0 'the search page must not index itself' }
+                $ea = [string]$en.a
+                if ($ea -ne '' -and -not $pageInfo[$ep].ids.Contains($ea)) { Fail 'assets/search-index.js' 0 "entry points to $ep#$ea, but that page has no such id" }
+                if ($ea -ne '') {
+                    $key = $ep + '#' + $ea
+                    if ($seenAnchors.ContainsKey($key)) { Fail 'assets/search-index.js' 0 "two entries for $key" } else { $seenAnchors[$key] = $true }
+                }
+                if ([string]$en.x -match '<[a-zA-Z]') { Fail 'assets/search-index.js' 0 "entry for $ep still contains HTML tags" }
+            }
+            # every real page must be searchable
+            foreach ($rp in $pageInfo.Keys) {
+                if ($rp -eq $searchRel) { continue }
+                if (-not (@($entries | Where-Object { $_.p -eq $rp }).Count)) { Fail $rp 0 'has no entry in assets/search-index.js (regenerate with build.ps1)' }
+            }
+        }
+    }
 }
 
 # ---------------------------------------------------------------------------------------

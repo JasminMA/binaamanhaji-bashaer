@@ -193,3 +193,39 @@ After one visit with internet, the whole study site opens with no connection, an
 - **Testing by hand:** service workers do not run from `file://`. Serve the folder over http (any static server on `localhost`), open a lesson,
   reload once, stop the server, and the pages still open.
 - **Limits:** reading the PDFs and transcripts still needs internet. A page already open keeps the old version until it is reloaded after an update.
+
+## Site search
+
+`search/index.html` searches the text of every lesson, course page and the glossary at once, entirely in the browser (works offline).
+
+- **Index:** `assets/search-index.js` is **generated** by `build.ps1` (do not edit): one entry per page *section* (page, page title, section
+  heading, section id, plain text), about 300 entries, 850 KB (served compressed; only the search page loads it). Quizzes (multiple choice and the
+  open `<details>` Q&A) are left out. `build.ps1 -Check` fails when it is stale, so after any change to page text run the build and commit it
+  (the build also regenerates `sw.js`, which caches the index for offline use).
+- **Section ids:** results open the exact section, so every `<section>` has an id. Lesson pages get `sec-1`, `sec-2`... from the build (lesson sources
+  keep a bare `<section>`); hand-written pages carry `id="sec-N"` (or a descriptive id) themselves. The site check fails on a `<section>` without an id.
+- **Matching (`assets/search.js`):** ignores diacritics, tatweel, hamza forms, ta marbuta/ha, alef maqsura/ya and digit shapes, and matches inside
+  words ("منكر" finds "المنكر"). Several words must all appear in a section; sections with the words together, or in the heading, rank higher.
+  Words under 2 letters are ignored. Results show the page, the section heading and a snippet with the words highlighted (built with `textContent`
+  and `<mark>`; nothing from the index is ever inserted as HTML, and the page path and section id are pattern-checked before they become a link).
+- **Entry points:** every page has a "بحث" link in its top bar (lesson pages get it from `src/templates/crumb-search.html`; hand-written pages carry
+  `<a class="tab search" ...>`; a new page copies it from a sibling). The check requires the link on every page.
+- **Checks:** the search page and its scripts (index before `search.js`), the index parses, every entry points at a real page and an id that exists
+  in it, every page has at least one entry, no entry still holds HTML tags.
+- **Adding a page:** hand-written pages need the search link and ids on their sections; the build picks the page up by itself.
+
+## Re-checking quiz answers
+
+The site check only verifies that quizzes are well formed. Whether each marked answer is *true* is a judgement against the sources, done with the
+`quiz-answer-check` skill (`.claude/skills/quiz-answer-check/SKILL.md`) and its helper:
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Summary
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path level2/stage3/nazm-almuaeen/lecture2.html
+```
+
+- `tools/list-quizzes.ps1` lists every multiple-choice question with its options, the `[CORRECT]` one and the explanation, plus the open Q&A
+  (`<details>`) with answers, and prints red flags (not exactly one marked answer, duplicate options, the marked text repeated in another option,
+  missing explanation) and bias statistics (position of the marked answer; how often it is also the longest option). It only reads files.
+- The skill then compares each marked answer with the lesson, then the transcript in `refs/`, checks every wrong option is really wrong, checks the
+  explanation, and reports (never edits on its own).

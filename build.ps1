@@ -87,7 +87,7 @@ $ancestorLabel = @{}
 foreach ($a in $site.ancestors) { $ancestorLabel[[string]$a.path] = [string]$a.label }
 
 $tpl = @{}
-foreach ($name in 'lecture', 'breadcrumb', 'crumb-link', 'crumb-sep', 'crumb-current', 'pager', 'pager-prev', 'pager-next') {
+foreach ($name in 'lecture', 'breadcrumb', 'crumb-link', 'crumb-sep', 'crumb-current', 'crumb-search', 'pager', 'pager-prev', 'pager-next') {
     $tpl[$name] = Get-Template $name
 }
 
@@ -137,6 +137,10 @@ foreach ($cf in $courseFiles) {
         $srcRel = "src/$rel/$file"
 
         $content = (Read-Text (Join-Path $cf.DirectoryName $file)).Trim("`n")
+        # Every section gets an id (sec-1, sec-2...) so search results can open the exact section.
+        $secParts = $content -split '<section>'
+        $content = $secParts[0]
+        for ($si = 1; $si -lt $secParts.Count; $si++) { $content += ('<section id="sec-' + $si + '">') + $secParts[$si] }
         if ($content -match '(?i)<!doctype|<html[\s>]|<head[\s>]|<body[\s>]|</body>|</html>') {
             throw "$srcRel must contain only the lesson body (no doctype/html/head/body); the template adds those."
         }
@@ -150,6 +154,7 @@ foreach ($cf in $courseFiles) {
         }
         $currentLabel = [string]$course.labels.lesson + ' ' + (ConvertTo-ArabicDigits ([int]$lesson.n))
         $items.Add((Render $tpl['crumb-current'] @{ label = (Esc $currentLabel) } 'crumb-current'))
+        $items.Add((Render $tpl['crumb-search'] @{ href = ($up + 'search/index.html') } 'crumb-search'))
         $breadcrumb = Render $tpl['breadcrumb'] @{ items = ($items -join '') } 'breadcrumb'
 
         # Previous / next bar (printed above and below the lesson)
@@ -193,6 +198,100 @@ foreach ($cf in $courseFiles) {
             $written++
         }
     }
+}
+
+# ---------------------------------------------------------------------------------------------
+# Site search: assets/search-index.js holds the text of every page, one entry per section, for
+# search/index.html + assets/search.js to match in the browser (no server, works offline).
+# Quizzes are left out (they repeat the lesson). Everything is derived from the pages on disk.
+# ---------------------------------------------------------------------------------------------
+function Json-Str([string]$s) {
+    $sb = New-Object System.Text.StringBuilder
+    [void]$sb.Append('"')
+    foreach ($ch in $s.ToCharArray()) {
+        $c = [int]$ch
+        if ($ch -eq [char]34) { [void]$sb.Append('\"') }
+        elseif ($ch -eq [char]92) { [void]$sb.Append('\') }
+        elseif ($c -lt 32 -or $c -eq 8232 -or $c -eq 8233) { [void]$sb.Append(('\u{0:x4}' -f $c)) }
+        else { [void]$sb.Append($ch) }
+    }
+    [void]$sb.Append('"')
+    return $sb.ToString()
+}
+
+function Html-Text([string]$html) {
+    $t = [regex]::Replace($html, '<[^>]*>', ' ')
+    $t = [System.Net.WebUtility]::HtmlDecode($t)
+    return ([regex]::Replace($t, '\s+', ' ')).Trim()
+}
+
+$searchDir = Join-Path $root 'search'
+$searchPage = Join-Path $searchDir 'index.html'
+$searchGenerated = $false
+if (Test-Path -LiteralPath $searchPage) {
+    $skipSearch = '/.git/', '/.github/', '/.claude/', '/src/', '/tools/', '/node_modules/', '/refs/'
+    $htmlPages = New-Object System.Collections.Generic.List[string]
+    foreach ($f in Get-ChildItem -Path $root -Recurse -File -Force -Filter '*.html') {
+        $relPath = $f.FullName.Substring($root.Length).TrimStart([char]92, [char]47).Replace([string][char]92, '/')
+        $skipIt = $false
+        foreach ($d in $skipSearch) { if (('/' + $relPath).Contains($d)) { $skipIt = $true } }
+        if ($skipIt -or $relPath -eq 'search/index.html') { continue }
+        $htmlPages.Add($relPath)
+    }
+    $pageList = $htmlPages.ToArray()
+    [Array]::Sort($pageList, [System.StringComparer]::Ordinal)
+
+    $lines = New-Object System.Collections.Generic.List[string]
+    $entryCount = 0
+    foreach ($p in $pageList) {
+        $html = Read-Text (Join-Path $root $p)
+        $html = [regex]::Replace($html, '<!--.*?-->', '', 'Singleline')
+        $html = [regex]::Replace($html, '<script\b[^>]*>.*?</script>', '', 'Singleline')
+        $html = [regex]::Replace($html, '<style\b[^>]*>.*?</style>', '', 'Singleline')
+        $html = [regex]::Replace($html, '<form\b[^>]*class="quiz".*?</form>', '', 'Singleline')
+        $html = [regex]::Replace($html, '<div class="quiz"[^>]*>.*?</div>', '', 'Singleline')     # open Q&A (details): no nested div inside
+        $titleMatch = [regex]::Match($html, '<title>(.*?)</title>', 'Singleline')
+        if (-not $titleMatch.Success) { throw "$p has no <title>; the search index needs it" }
+        $pageTitle = Html-Text $titleMatch.Groups[1].Value
+        $bodyStart = $html.IndexOf('<body')
+        if ($bodyStart -lt 0) { throw "$p has no <body>" }
+        $body = $html.Substring($bodyStart)
+
+        # the page's own header (title, subtitle, chips) first, then every <section>
+        $hm = [regex]::Match($body, '<header\b.*?</header>', 'Singleline')
+        $chunks = New-Object System.Collections.Generic.List[object]
+        if ($hm.Success) { $chunks.Add(@{ heading = ''; anchor = ''; html = $hm.Value }) }
+        foreach ($sm in [regex]::Matches($body, '<section\b([^>]*)>(.*?)</section>', 'Singleline')) {
+            $inner = $sm.Groups[2].Value
+            if ($inner.Contains('<section')) { throw "$p has nested <section> elements; the search index needs them flat" }
+            $anchor = ''
+            $im = [regex]::Match($sm.Groups[1].Value, '\bid="([^"]+)"')
+            if ($im.Success) { $anchor = $im.Groups[1].Value }
+            $heading = ''
+            $h2 = [regex]::Match($inner, '<h2\b[^>]*>(.*?)</h2>', 'Singleline')
+            if ($h2.Success) {
+                $heading = Html-Text ([regex]::Replace($h2.Groups[1].Value, '<span class="tag">.*?</span>', '', 'Singleline'))
+                $inner = $inner.Remove($h2.Index, $h2.Length)
+            }
+            $chunks.Add(@{ heading = $heading; anchor = $anchor; html = $inner })
+        }
+        foreach ($ch in $chunks) {
+            $text = Html-Text $ch.html
+            if ($text.Length -lt 3) { continue }
+            $lines.Add('{"p":' + (Json-Str $p) + ',"t":' + (Json-Str $pageTitle) + ',"s":' + (Json-Str $ch.heading) + ',"a":' + (Json-Str $ch.anchor) + ',"x":' + (Json-Str $text) + '}')
+            $entryCount++
+        }
+    }
+    $indexJs = "/* Generated by build.ps1 - do not edit this file. Search index: one entry per page section (p = page, t = page title, s = section heading, a = section id, x = text). */`n" +
+        'window.BM_SEARCH=[' + "`n" + ($lines -join ",`n") + "`n" + '];' + "`n"
+    $indexPath = Join-Path $root 'assets/search-index.js'
+    $indexCurrent = $null
+    if (Test-Path -LiteralPath $indexPath) { $indexCurrent = Read-Text $indexPath }
+    if ($indexCurrent -cne $indexJs) {
+        if ($Check) { $stale.Add('assets/search-index.js') }
+        else { [System.IO.File]::WriteAllText($indexPath, $indexJs, $utf8); $searchGenerated = $true }
+    }
+    Write-Host ("search index: {0} entries from {1} pages ({2} KB)" -f $entryCount, $pageList.Count, [int]($utf8.GetByteCount($indexJs) / 1024))
 }
 
 # ---------------------------------------------------------------------------------------------
@@ -249,12 +348,12 @@ if (Test-Path -LiteralPath $swTemplate) {
 
 if ($Check) {
     if ($stale.Count -gt 0) {
-        Write-Host "Out of date: $($stale.Count) generated file(s) (of $pages pages plus sw.js). Run build.ps1 and commit the result:"
+        Write-Host "Out of date: $($stale.Count) generated file(s) (of $pages pages plus the search index and sw.js). Run build.ps1 and commit the result:"
         $stale | ForEach-Object { Write-Host "  $_" }
         exit 1
     }
-    Write-Host "All $pages generated pages and sw.js are up to date."
+    Write-Host "All $pages generated pages, the search index and sw.js are up to date."
 } else {
-    $swNote = ''; if ($swGenerated) { $swNote = '; sw.js rewritten' }
+    $swNote = ''; if ($searchGenerated) { $swNote += '; search index rewritten' }; if ($swGenerated) { $swNote += '; sw.js rewritten' }
     Write-Host "$pages pages: $written written, $unchanged already up to date$swNote."
 }
