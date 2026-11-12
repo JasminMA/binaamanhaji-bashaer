@@ -87,7 +87,7 @@ $ancestorLabel = @{}
 foreach ($a in $site.ancestors) { $ancestorLabel[[string]$a.path] = [string]$a.label }
 
 $tpl = @{}
-foreach ($name in 'lecture', 'breadcrumb', 'crumb-link', 'crumb-sep', 'crumb-current', 'crumb-search', 'pager', 'pager-prev', 'pager-next') {
+foreach ($name in 'lecture', 'breadcrumb', 'crumb-link', 'crumb-sep', 'crumb-current', 'crumb-review', 'crumb-search', 'pager', 'pager-prev', 'pager-next') {
     $tpl[$name] = Get-Template $name
 }
 
@@ -98,6 +98,7 @@ $stale = New-Object System.Collections.Generic.List[string]
 $written = 0
 $unchanged = 0
 $pages = 0
+$deckLessons = New-Object System.Collections.Generic.List[object]   # lesson bodies kept for the flashcard deck
 
 foreach ($cf in $courseFiles) {
     $rel = $cf.DirectoryName.Substring($srcDir.Length).Trim('\', '/').Replace('\', '/')   # level2/stage3/<course>
@@ -141,6 +142,7 @@ foreach ($cf in $courseFiles) {
         $secParts = $content -split '<section>'
         $content = $secParts[0]
         for ($si = 1; $si -lt $secParts.Count; $si++) { $content += ('<section id="sec-' + $si + '">') + $secParts[$si] }
+        $deckLessons.Add(@{ course = $segments[$segments.Count - 1]; courseName = [string]$course.name; n = [int]$lesson.n; title = [string]$lesson.title; path = "$rel/$file"; content = $content })
         if ($content -match '(?i)<!doctype|<html[\s>]|<head[\s>]|<body[\s>]|</body>|</html>') {
             throw "$srcRel must contain only the lesson body (no doctype/html/head/body); the template adds those."
         }
@@ -154,6 +156,7 @@ foreach ($cf in $courseFiles) {
         }
         $currentLabel = [string]$course.labels.lesson + ' ' + (ConvertTo-ArabicDigits ([int]$lesson.n))
         $items.Add((Render $tpl['crumb-current'] @{ label = (Esc $currentLabel) } 'crumb-current'))
+        $items.Add((Render $tpl['crumb-review'] @{ href = ($up + 'review/index.html') } 'crumb-review'))
         $items.Add((Render $tpl['crumb-search'] @{ href = ($up + 'search/index.html') } 'crumb-search'))
         $breadcrumb = Render $tpl['breadcrumb'] @{ items = ($items -join '') } 'breadcrumb'
 
@@ -295,6 +298,100 @@ if (Test-Path -LiteralPath $searchPage) {
 }
 
 # ---------------------------------------------------------------------------------------------
+# Flashcards: assets/cards-data.js holds the review deck of every lesson, for review/index.html +
+# assets/review.js. Cards are cut from what the lesson pages already say:
+#   q = a multiple-choice review question  -> front: the question, back: the marked answer (+ explanation)
+#   o = an open review question (details)  -> front: the question, back: the answer
+#   s = a bold-led summary point           -> front: the bold heading, back: the rest of the point
+#   z = any other summary point with bold  -> front: the sentence with the bold words blanked, back: those words
+# A card id is a short hash of course, lesson, kind and front text, so a card keeps its review
+# history when the lessons around it change (and starts fresh when its own question changes).
+# ---------------------------------------------------------------------------------------------
+$cardLessonSets = New-Object System.Collections.Generic.List[object]
+$cardTotal = 0
+$cardSeen = @{}
+$sha1 = [System.Security.Cryptography.SHA1]::Create()
+$khulasa = -join ([char]0x062E, [char]0x0644, [char]0x0627, [char]0x0635)   # the root of the Arabic word for "summary" (this file stays ASCII-only)
+foreach ($dl in $deckLessons) {
+    $cards = New-Object System.Collections.Generic.List[object]
+    function Add-Card([string]$kind, [string]$front, [string]$back, [string]$extra, [string]$anchor) {
+        if ($front.Length -lt 2 -or $back.Length -lt 1) { throw "$($dl.path): empty flashcard ($kind) near section $anchor" }
+        $hashBytes = $sha1.ComputeHash($utf8.GetBytes($dl.course + '|' + $dl.n + '|' + $kind + '|' + $front + '|' + $back))
+        $cid = (($hashBytes | ForEach-Object { $_.ToString('x2') }) -join '').Substring(0, 8)
+        if ($cardSeen.ContainsKey($cid)) { throw "$($dl.path): two flashcards with the same text (id $cid): $front | $back" }
+        $cardSeen[$cid] = $true
+        $cards.Add(@{ i = $cid; k = $kind; f = $front; b = $back; x = $extra; a = $anchor })
+    }
+    foreach ($sm in [regex]::Matches($dl.content, '<section id="(sec-\d+)">(.*?)</section>', 'Singleline')) {
+        $anchor = $sm.Groups[1].Value
+        $inner = $sm.Groups[2].Value
+        foreach ($mm in [regex]::Matches($inner, '<div class="mcq">(.*?)</div>', 'Singleline')) {
+            $mb = $mm.Groups[1].Value
+            $qm = [regex]::Match($mb, '<p class="q">(.*?)</p>', 'Singleline')
+            $em = [regex]::Match($mb, '<p class="exp">(.*?)</p>', 'Singleline')
+            $oks = [regex]::Matches($mb, '<label class="opt ok">.*?<span class="t">(.*?)</span>', 'Singleline')
+            if (-not $qm.Success -or $oks.Count -ne 1) { throw "$($dl.path): a multiple-choice question needs a <p class=""q""> and exactly one 'opt ok' option (section $anchor)" }
+            $extra = ''; if ($em.Success) { $extra = Html-Text $em.Groups[1].Value }
+            Add-Card 'q' (Html-Text $qm.Groups[1].Value) (Html-Text $oks[0].Groups[1].Value) $extra $anchor
+        }
+        foreach ($qb in [regex]::Matches($inner, '<div class="quiz"[^>]*>(.*?)</div>', 'Singleline')) {
+            foreach ($dm in [regex]::Matches($qb.Groups[1].Value, '<details>\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>\s*</details>', 'Singleline')) {
+                Add-Card 'o' (Html-Text $dm.Groups[1].Value) (Html-Text $dm.Groups[2].Value) '' $anchor
+            }
+        }
+        $h2 = [regex]::Match($inner, '<h2\b[^>]*>(.*?)</h2>', 'Singleline')
+        if ($h2.Success -and ((Html-Text $h2.Groups[1].Value) -match $khulasa)) {
+            foreach ($lm in [regex]::Matches($inner, '<li>(.*?)</li>', 'Singleline')) {
+                $li = $lm.Groups[1].Value.Trim()
+                $bolds = @([regex]::Matches($li, '<b>(.*?)</b>', 'Singleline'))
+                if ($bolds.Count -eq 0) { continue }
+                $full = Html-Text $li
+                if ($li.StartsWith('<b>')) {
+                    $label = (Html-Text $bolds[0].Groups[1].Value).TrimEnd(':', [char]0x061B, ' ')
+                    $rest = (Html-Text $li.Substring($bolds[0].Length)).TrimStart(':', ' ')
+                    if ($label.Length -ge 2 -and $rest.Length -ge 12) { Add-Card 's' $label $rest '' $anchor; continue }
+                }
+                $blanked = $li
+                $answers = New-Object System.Collections.Generic.List[string]
+                foreach ($bm in $bolds) { $answers.Add((Html-Text $bm.Groups[1].Value)) }
+                $blanked = [regex]::Replace($li, '<b>.*?</b>', '[ ... ]', 'Singleline')
+                $front = Html-Text $blanked
+                if ($front.Length -lt 25) { continue }
+                Add-Card 'z' $front ($answers -join ' / ') $full $anchor
+            }
+        }
+    }
+    if ($cards.Count -eq 0) { throw "$($dl.path): no flashcards could be cut from this lesson" }
+    $cardTotal += $cards.Count
+    $cardLessonSets.Add(@{ dl = $dl; cards = $cards })
+}
+
+$cardJson = New-Object System.Collections.Generic.List[string]
+foreach ($courseId in @($cardLessonSets | ForEach-Object { $_.dl.path } | ForEach-Object { $_.Substring(0, $_.LastIndexOf('/')) } | Select-Object -Unique | Sort-Object { $_ } )) {
+    $mine = @($cardLessonSets | Where-Object { $_.dl.path.StartsWith($courseId + '/') } | Sort-Object { $_.dl.n })
+    $lessonJson = New-Object System.Collections.Generic.List[string]
+    foreach ($ls in $mine) {
+        $cj = New-Object System.Collections.Generic.List[string]
+        foreach ($c in $ls.cards) {
+            $cj.Add('{"i":' + (Json-Str $c.i) + ',"k":' + (Json-Str $c.k) + ',"f":' + (Json-Str $c.f) + ',"b":' + (Json-Str $c.b) + ',"x":' + (Json-Str $c.x) + ',"a":' + (Json-Str $c.a) + '}')
+        }
+        $lessonJson.Add('{"n":' + $ls.dl.n + ',"t":' + (Json-Str $ls.dl.title) + ',"p":' + (Json-Str $ls.dl.path) + ',"c":[' + "`n" + ($cj -join ",`n") + "`n" + ']}')
+    }
+    $cardJson.Add('{"id":' + (Json-Str $mine[0].dl.course) + ',"name":' + (Json-Str $mine[0].dl.courseName) + ',"lessons":[' + "`n" + ($lessonJson -join ",`n") + "`n" + ']}')
+}
+$cardsJs = "/* Generated by build.ps1 - do not edit this file. Flashcards cut from the lessons (i = id, k = kind q/o/s/z, f = front, b = back, x = extra, a = section id). */`n" +
+    'window.BM_CARDS={"courses":[' + "`n" + ($cardJson -join ",`n") + "`n" + ']};' + "`n"
+$cardsPath = Join-Path $root 'assets/cards-data.js'
+$cardsCurrent = $null
+if (Test-Path -LiteralPath $cardsPath) { $cardsCurrent = Read-Text $cardsPath }
+$cardsGenerated = $false
+if ($cardsCurrent -cne $cardsJs) {
+    if ($Check) { $stale.Add('assets/cards-data.js') }
+    else { [System.IO.File]::WriteAllText($cardsPath, $cardsJs, $utf8); $cardsGenerated = $true }
+}
+Write-Host ("flashcards: {0} cards from {1} lessons ({2} KB)" -f $cardTotal, $deckLessons.Count, [int]($utf8.GetByteCount($cardsJs) / 1024))
+
+# ---------------------------------------------------------------------------------------------
 # Offline support: sw.js (the service worker) lists every file to keep in the browser cache.
 # The list is built from the files on disk and the version is a hash of their content, so the
 # browser re-downloads the site exactly when something changed. See src/README.md.
@@ -348,12 +445,12 @@ if (Test-Path -LiteralPath $swTemplate) {
 
 if ($Check) {
     if ($stale.Count -gt 0) {
-        Write-Host "Out of date: $($stale.Count) generated file(s) (of $pages pages plus the search index and sw.js). Run build.ps1 and commit the result:"
+        Write-Host "Out of date: $($stale.Count) generated file(s) (of $pages pages plus the search index, the flashcard deck and sw.js). Run build.ps1 and commit the result:"
         $stale | ForEach-Object { Write-Host "  $_" }
         exit 1
     }
-    Write-Host "All $pages generated pages, the search index and sw.js are up to date."
+    Write-Host "All $pages generated pages, the search index, the flashcard deck and sw.js are up to date."
 } else {
-    $swNote = ''; if ($searchGenerated) { $swNote += '; search index rewritten' }; if ($swGenerated) { $swNote += '; sw.js rewritten' }
+    $swNote = ''; if ($searchGenerated) { $swNote += '; search index rewritten' }; if ($cardsGenerated) { $swNote += '; flashcard deck rewritten' }; if ($swGenerated) { $swNote += '; sw.js rewritten' }
     Write-Host "$pages pages: $written written, $unchanged already up to date$swNote."
 }

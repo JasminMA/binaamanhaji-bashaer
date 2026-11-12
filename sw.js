@@ -11,10 +11,11 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = 'a989d47fb067';
+var VERSION = '4a94f1cfb3d9';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "assets/apple-touch-icon.png",
+  "assets/cards-data.js",
   "assets/favicon.svg",
   "assets/fonts.css",
   "assets/fonts/ibm-plex-sans-arabic-400-arabic.woff2",
@@ -31,6 +32,7 @@ var FILES = [
   "assets/offline.js",
   "assets/progress.js",
   "assets/quiz.js",
+  "assets/review.js",
   "assets/search-index.js",
   "assets/search.js",
   "assets/site.css",
@@ -73,6 +75,7 @@ var FILES = [
   "level2/stage3/western-thought/lecture7.html",
   "level2/stage3/western-thought/lecture8.html",
   "manifest.webmanifest",
+  "review/index.html",
   "search/index.html"
 ];
 

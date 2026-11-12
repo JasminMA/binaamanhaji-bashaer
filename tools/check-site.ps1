@@ -293,6 +293,7 @@ foreach ($pf in $pages) {
         if ($sec.Groups[1].Value -notmatch '\bid="[^"]+"') { Fail $rel (Line-Of $body $sec.Index) '<section> without an id (search results link to the section; hand-written pages: add id="sec-N", lessons get it from the build)' }
     }
     if ($rel -ne 'search/index.html' -and $raw -notmatch ('href="' + [regex]::Escape($up) + 'search/index\.html"')) { Fail $rel 0 "page must link to the search page (${up}search/index.html) from its top bar" }
+    if ($rel -ne 'review/index.html' -and $raw -notmatch ('href="' + [regex]::Escape($up) + 'review/index\.html"')) { Fail $rel 0 "page must link to the flashcard review page (${up}review/index.html) from its top bar" }
 
     # offline support: every page links the web app manifest and loads the script that registers the service worker
     if ($raw -notmatch ('<link\s+rel="manifest"\s+href="' + [regex]::Escape($up) + 'manifest\.webmanifest">')) { Fail $rel 0 "page must link the web app manifest: <link rel=""manifest"" href=""${up}manifest.webmanifest"">" }
@@ -553,6 +554,71 @@ else {
     }
 }
 
+
+# ---------------------------------------------------------------------------------------
+# 3e. Flashcards: the review page, its scripts, and the generated deck (every card must lead back to a real lesson section)
+# ---------------------------------------------------------------------------------------
+$reviewRel = 'review/index.html'
+if (-not $fileExists.ContainsKey($reviewRel)) { Fail $reviewRel 0 'missing: the flashcard review page every page links to' }
+else {
+    $rp0 = Read-Text (Join-Path $root $reviewRel)
+    $dPos = $rp0.IndexOf('assets/cards-data.js')
+    $rPos = $rp0.IndexOf('assets/review.js')
+    if ($dPos -lt 0 -or $rPos -lt 0) { Fail $reviewRel 0 'must load assets/cards-data.js and then assets/review.js' }
+    elseif ($dPos -gt $rPos) { Fail $reviewRel 0 'cards-data.js must be loaded before review.js' }
+    foreach ($needId in 'rv-setup', 'rv-course', 'rv-lesson', 'rv-all', 'rv-stats', 'rv-clear', 'rv-nostore', 'rv-start', 'rv-study', 'rv-progress', 'rv-kind', 'rv-front', 'rv-answer', 'rv-back', 'rv-extra', 'rv-open', 'rv-show', 'rv-yes', 'rv-no', 'rv-stop', 'rv-done', 'rv-summary', 'rv-again') {
+        if ($rp0 -notmatch ('\bid="' + $needId + '"')) { Fail $reviewRel 0 "missing id=""$needId"" (review.js needs it)" }
+    }
+}
+$reviewJs = Join-Path $root 'assets/review.js'
+if (-not (Test-Path -LiteralPath $reviewJs)) { Fail 'assets/review.js' 0 'missing: the script of the flashcard review page' }
+else {
+    $rjs = Read-Text $reviewJs
+    if ($rjs -notmatch 'security-reviewed:storage') { Fail 'assets/review.js' 0 'stores data in the browser, so it must carry the security-reviewed:storage marker' }
+    if ($rjs -notmatch "bm\.review\.v1") { Fail 'assets/review.js' 0 'storage key bm.review.v1 not found (a different key would silently drop everyone''s review history)' }
+}
+$cardsFile = Join-Path $root 'assets/cards-data.js'
+if (-not (Test-Path -LiteralPath $cardsFile)) { Fail 'assets/cards-data.js' 0 'missing: run build.ps1 (it generates the flashcard deck)' }
+else {
+    $cardsText = Read-Text $cardsFile
+    $cm = [regex]::Match($cardsText, '(?s)window\.BM_CARDS=(\{.*\});\s*$')
+    if (-not $cm.Success) { Fail 'assets/cards-data.js' 0 'does not look like window.BM_CARDS={...}; (regenerate with build.ps1)' }
+    else {
+        $deckObj = $null
+        try { $deckObj = ConvertFrom-Json -InputObject $cm.Groups[1].Value } catch { Fail 'assets/cards-data.js' 0 "is not valid JSON data: $($_.Exception.Message)" }
+        if ($null -ne $deckObj) {
+            $seenCardIds = @{}
+            $lessonsWithCards = @{}
+            $cardCount = 0
+            foreach ($dc in @($deckObj.courses)) {
+                foreach ($dlsn in @($dc.lessons)) {
+                    $lp = [string]$dlsn.p
+                    if (-not $pageInfo.ContainsKey($lp)) { Fail 'assets/cards-data.js' 0 "lesson points to $lp, which is not a page of the site"; continue }
+                    $lessonsWithCards[$lp] = 0
+                    foreach ($dcard in @($dlsn.c)) {
+                        $cardCount++
+                        $lessonsWithCards[$lp]++
+                        $cid = [string]$dcard.i
+                        if ($cid -notmatch '^[0-9a-f]{8}$') { Fail 'assets/cards-data.js' 0 "card id '$cid' is not 8 hex digits (review.js only accepts those)" }
+                        if ($seenCardIds.ContainsKey($cid)) { Fail 'assets/cards-data.js' 0 "two cards share id $cid" } else { $seenCardIds[$cid] = $true }
+                        if ('q', 'o', 's', 'z' -notcontains [string]$dcard.k) { Fail 'assets/cards-data.js' 0 "card $cid has unknown kind '$($dcard.k)'" }
+                        if (([string]$dcard.f).Trim() -eq '' -or ([string]$dcard.b).Trim() -eq '') { Fail 'assets/cards-data.js' 0 "card $cid has an empty front or back ($lp)" }
+                        foreach ($part in 'f', 'b', 'x') {
+                            if ([string]$dcard.$part -match '<[a-zA-Z/]') { Fail 'assets/cards-data.js' 0 "card $cid still contains HTML in its text ($lp)" }
+                        }
+                        $ca = [string]$dcard.a
+                        if ($ca -ne '' -and -not $pageInfo[$lp].ids.Contains($ca)) { Fail 'assets/cards-data.js' 0 "card $cid points to $lp#$ca, but that page has no such id" }
+                    }
+                }
+            }
+            if ($cardCount -lt 50) { Fail 'assets/cards-data.js' 0 "only $cardCount cards; expected the review questions and summaries of every lesson" }
+            # every lesson page must have cards
+            foreach ($pk in $pageInfo.Keys) {
+                if ($pk -match '(^|/)lecture\d+\.html$' -and -not $lessonsWithCards.ContainsKey($pk)) { Fail $pk 0 'has no flashcards in assets/cards-data.js (regenerate with build.ps1)' }
+            }
+        }
+    }
+}
 # ---------------------------------------------------------------------------------------
 # 3c. Offline support: web app manifest, icons, service worker
 # ---------------------------------------------------------------------------------------

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مراجعة البطاقات · البناء المنهجي</title>
+<meta name="description" content="بطاقات مراجعة من أسئلة الدروس وخلاصاتها، تعود إليك على فترات متباعدة حتى تثبت المعلومة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="البناء المنهجي · دفعة البشائر">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="مراجعة البطاقات · البناء المنهجي">
+<meta property="og:description" content="بطاقات مراجعة من أسئلة الدروس وخلاصاتها، تعود إليك على فترات متباعدة حتى تثبت المعلومة">
+<meta property="og:url" content="https://jasminma.github.io/binaamanhaji-bashaer/review/">
+<meta property="og:image" content="https://jasminma.github.io/binaamanhaji-bashaer/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="البناء المنهجي · دفعة البشائر">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script src="../assets/offline.js" defer></script>
+<script src="../assets/cards-data.js" defer></script>
+<script src="../assets/review.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../index.html">البناء المنهجي</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">المراجعة</a><a class="tab search" href="../search/index.html">بحث ⌕</a></div></nav>
+<header class="hero small"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg><div class="in"><span class="badge">البناء المنهجي · دفعة البشائر</span><h1>مراجعة البطاقات</h1><p class="sub">بطاقاتٌ من أسئلة الدروس وخلاصاتها؛ ما تتذكّره يتباعد ظهوره، وما نسيتَه يعود إليك قريبًا</p></div></header>
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>ابدأ جلسة مراجعة</h2></div>
+  <noscript><p class="search-note">بطاقات المراجعة تحتاج إلى تشغيل JavaScript في المتصفح.</p></noscript>
+  <form id="rv-setup" class="rv-setup" hidden>
+    <div class="rv-field">
+      <label for="rv-course">المادة</label>
+      <select id="rv-course"></select>
+    </div>
+    <div class="rv-field">
+      <label for="rv-lesson">الدرس</label>
+      <select id="rv-lesson"></select>
+    </div>
+    <label class="rv-check"><input type="checkbox" id="rv-all"> <span>راجع كل البطاقات ولو لم يحِن موعدها</span></label>
+    <p id="rv-stats" class="muted" role="status" aria-live="polite"></p>
+    <div class="rv-actions">
+      <button type="submit" id="rv-start" class="rv-btn rv-primary">ابدأ الجلسة</button>
+      <button type="button" id="rv-clear" class="pg-reset" hidden>مسح بيانات المراجعة</button>
+    </div>
+  </form>
+  <p id="rv-nostore" class="search-note" hidden>المتصفح يمنع حفظ البيانات (ربما بسبب التصفّح الخاص)، فيمكنك المراجعة لكن لن يُحفظ ما تتذكّره بين الجلسات.</p>
+
+  <div id="rv-study" class="rv-study" hidden>
+    <p id="rv-progress" class="rv-progress" role="status" aria-live="polite"></p>
+    <div class="rv-card" id="rv-card">
+      <p id="rv-kind" class="rv-kind"></p>
+      <p id="rv-front" class="rv-front" tabindex="-1"></p>
+      <div id="rv-answer" class="rv-answer" hidden>
+        <p id="rv-back" class="rv-back"></p>
+        <p id="rv-extra" class="rv-extra"></p>
+        <a id="rv-open" class="rv-open" href="../index.html">افتح موضعها في الدرس ←</a>
+      </div>
+    </div>
+    <div class="rv-actions">
+      <button type="button" id="rv-show" class="rv-btn rv-primary">أظهر الجواب</button>
+      <button type="button" id="rv-yes" class="rv-btn rv-good" hidden>تذكّرتها</button>
+      <button type="button" id="rv-no" class="rv-btn rv-bad" hidden>لم أتذكّرها</button>
+      <button type="button" id="rv-stop" class="pg-reset">إنهاء الجلسة</button>
+    </div>
+  </div>
+
+  <div id="rv-done" class="rv-done" hidden>
+    <p id="rv-summary" class="rv-summary" tabindex="-1" role="status"></p>
+    <div class="rv-actions">
+      <button type="button" id="rv-again" class="rv-btn rv-primary">جلسة جديدة</button>
+    </div>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>كيف تعمل المراجعة</h2></div>
+  <ul class="tips">
+    <li>البطاقات مأخوذةٌ مما في الدروس نفسها: أسئلة المراجعة بأجوبتها المعتمدة، ونقاط «خلاصة الدرس».</li>
+    <li>اقرأ السؤال وحاول أن تجيب في نفسك قبل أن تُظهر الجواب، ثم قل بصدقٍ: تذكّرتها أم لا.</li>
+    <li>ما تذكّرتَه يعود بعد يوم، ثم ثلاثة أيام، ثم أسبوع، ثم أسبوعين، ثم شهر؛ وما نسيتَه يعود في الجلسة نفسها ثم في الغد.</li>
+    <li>الجلسة عشرون بطاقةً على الأكثر، تبدأ بما حان موعده ثم بالبطاقات الجديدة.</li>
+    <li>ما تذكّرتَه يُحفظ في هذا المتصفح فقط (رقم البطاقة وموعدها، لا غير) ولا يُرسَل إلى أي مكان. ويعمل كل شيء دون إنترنت بعد أول زيارة.</li>
+  </ul>
+</section>
+
+</div></main>
+<footer><div class="in"><span>البناء المنهجي · دفعة البشائر</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>

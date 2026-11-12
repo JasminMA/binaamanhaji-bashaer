@@ -229,3 +229,27 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path
   missing explanation) and bias statistics (position of the marked answer; how often it is also the longest option). It only reads files.
 - The skill then compares each marked answer with the lesson, then the transcript in `refs/`, checks every wrong option is really wrong, checks the
   explanation, and reports (never edits on its own).
+
+## Flashcard review
+
+`review/index.html` turns the lessons into a spaced-repetition deck (about 430 cards, entirely in the browser, works offline).
+
+- **Cards:** `assets/cards-data.js` is **generated** by `build.ps1` (do not edit) from the lesson sources, so there is nothing extra to write when
+  a lesson is added or changed. Four kinds: `q` every multiple-choice review question (front: the question; back: the marked answer, with the
+  explanation underneath), `o` every open Q&A (`<details>`), `s` a bold-led point of «خلاصة الدرس» (front: the bold heading; back: the rest),
+  `z` any other summary point that has bold words (front: the sentence with the bold words blanked as `[ ... ]`; back: those words).
+  Summary points without any bold word are skipped. A lesson that yields no card fails the build; so does a multiple-choice question without exactly
+  one `opt ok`. The card text is plain text (no HTML) and each card keeps the lesson path and section id, for the "open its place in the lesson" link.
+- **Card ids:** the first 8 hex digits of a SHA-1 of course, lesson number, kind, front and back. A card keeps its review history while its own text
+  is unchanged; editing a question or answer starts that card fresh (old ids are dropped the next time review data is saved).
+- **Scheduling (`assets/review.js`):** Leitner boxes 0 to 5. "تذكّرتها" moves a card up one box and it returns after 1, 3, 7, 14 and 30 days;
+  "لم أتذكّرها" sends it to box 0, due tomorrow, and it comes back once at the end of the same session. A session is at most 20 cards: due cards
+  first (oldest first), then new ones. A tick box reviews everything, due or not. The picker narrows by course and lesson.
+- **Storage:** one `localStorage` key, `bm.review.v1`: `{"v":1,"c":{"<card id>":[box,dueDay]}}`, nothing else (no text, no names, nothing is sent
+  anywhere). Whatever is read back is validated (known ids, small integers). If storage is blocked the review still works for the session and says
+  that nothing is remembered. "مسح بيانات المراجعة" asks twice. The script carries the `security-reviewed:storage` marker.
+- **Entry points:** every page has a "مراجعة" link in its top bar next to "بحث" (lesson pages from `src/templates/crumb-review.html`; hand-written pages
+  carry `<a class="tab review" ...>`); the check requires it on every page except the review page itself.
+- **Checks:** the page's ids and script order (cards before `review.js`), the deck parses, every card id is unique 8-hex, every card points at a real
+  lesson page and an id that exists in it, no card text holds HTML, every lesson has cards, `review.js` has the storage marker and key; the deck is
+  also covered by `build.ps1 -Check` (stale when a lesson's questions or summary change).
