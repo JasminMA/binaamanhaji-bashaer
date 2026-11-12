@@ -70,7 +70,8 @@ foreach ($f in $files) {
     $rel = $f.FullName.Substring($root.Length).TrimStart([char]92, [char]47).Replace([string][char]92, '/')
     $html = [System.IO.File]::ReadAllText($f.FullName, $utf8)
     $html = [regex]::Replace($html, '<!--.*?-->', '', 'Singleline')
-    $questions = [regex]::Matches($html, '<div class="mcq">(.*?)</div>\s*(?=<div class="mcq">|</form>)', 'Singleline')
+    # The last question is followed by the reset button (or by </form> when a quiz has none).
+    $questions = [regex]::Matches($html, '<div class="mcq">(.*?)</div>\s*(?=<div class="mcq">|<button\b|</form>)', 'Singleline')
     if ($questions.Count -eq 0) {
         # open-ended review questions: <div class="quiz"><details><summary>question</summary><p>answer</p></details>...
         $qaBlock = [regex]::Match($html, '<div class="quiz"[^>]*>(.*?)</div>', 'Singleline')
