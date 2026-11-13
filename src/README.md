@@ -180,7 +180,7 @@ After one visit with internet, the whole study site opens with no connection, an
   cache and deletes the old one. `build.ps1` rewrites it on every build and `-Check` fails if it is stale, so **run the build after any change
   to a page, style, script or font, and commit `sw.js`** (the GitHub check enforces this).
 - **How it answers:** a request for a cached file is served from the cache (instant, works offline); anything else goes to the network. If the
-  network is down and the page is not cached (for example a PDF in `refs/`), a short Arabic "not available offline" page appears instead of the
+  network is down and the page is not cached, a short Arabic "not available offline" page appears instead of the
   browser's error. It only touches same-site GET requests.
 - **`assets/offline.js`** registers the worker (every page loads it; the lecture template does it for lessons, a new hand-written page copies the
   line from a sibling). It only runs on https or localhost; from a file on disk the site just works online as before.
@@ -192,7 +192,7 @@ After one visit with internet, the whole study site opens with no connection, an
   icons of the declared size); `sw.js` exists, is current and has install-time caching, an `activate` clean-up and a `fetch` handler.
 - **Testing by hand:** service workers do not run from `file://`. Serve the folder over http (any static server on `localhost`), open a lesson,
   reload once, stop the server, and the pages still open.
-- **Limits:** reading the PDFs and transcripts still needs internet. A page already open keeps the old version until it is reloaded after an update.
+- **Limits:** a page already open keeps the old version until it is reloaded after an update.
 
 ## Site search
 
@@ -253,3 +253,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path
 - **Checks:** the page's ids and script order (cards before `review.js`), the deck parses, every card id is unique 8-hex, every card points at a real
   lesson page and an id that exists in it, no card text holds HTML, every lesson has cards, `review.js` has the storage marker and key; the deck is
   also covered by `build.ps1 -Check` (stale when a lesson's questions or summary change).
+
+## Source files in `refs/` are private
+
+Each course's `refs/` folder holds the books, summaries and transcripts the lessons were written from. They stay in the repository only so the
+authors (and the `quiz-answer-check` and `add-new-material` skills) can read them. **The site must never link to or serve them:**
+
+- Course pages name the sources in «مراجع المادة» as plain text (`<strong class="ref-title">`), never as a link.
+- GitHub Pages skips them through `exclude` in `_config.yml`; Cloudflare Pages deletes them in its build command (see `DEPLOY.md`).
+- `tools/check-site.ps1` fails if any page links into `refs/`.

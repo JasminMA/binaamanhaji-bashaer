@@ -364,6 +364,7 @@ foreach ($pf in $pages) {
             }
             if ($href.StartsWith('/')) { Fail $rel $line "root-absolute link ($href) breaks on a GitHub Pages project site; use a relative path"; continue }
             if ($href -match '^[a-zA-Z][a-zA-Z0-9+.-]*:') { Fail $rel $line "unexpected URL scheme ($href)"; continue }
+            if ($href -match '(^|/)refs(/|$)') { Fail $rel $line "link into refs/ ($href): source PDFs and transcripts are for the authors only and must not be offered for download; name the source as plain text instead"; continue }
 
             $frag = ''
             $pathPart = $href

@@ -11,7 +11,7 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = '4a94f1cfb3d9';
+var VERSION = '16262c5902df';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "assets/apple-touch-icon.png",
