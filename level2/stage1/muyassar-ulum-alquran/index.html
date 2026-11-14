@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الميسر في علوم القرآن · البناء المنهجي</title>
+<meta name="description" content="الميسر في علوم القرآن لمعهد الإمام الشاطبي: ملخص الكتاب في ستة أقسام على فصوله، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="البناء المنهجي · دفعة البشائر">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="الميسر في علوم القرآن · البناء المنهجي">
+<meta property="og:description" content="الميسر في علوم القرآن لمعهد الإمام الشاطبي: ملخص الكتاب في ستة أقسام على فصوله، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta property="og:url" content="https://jasminma.github.io/binaamanhaji-bashaer/level2/stage1/muyassar-ulum-alquran/">
+<meta property="og:image" content="https://jasminma.github.io/binaamanhaji-bashaer/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="البناء المنهجي · دفعة البشائر">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../../assets/fonts.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+<script src="../../../assets/offline.js" defer></script>
+<script src="../../../assets/progress.js" defer></script>
+<script src="../../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+table.tbl a{color:var(--accent);font-weight:600}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../../index.html">البناء المنهجي</a><span class="sep">‹</span><a class="tab" href="../../index.html">المستوى الثاني</a><span class="sep">‹</span><a class="tab" href="../index.html">المرحلة الأولى</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">الميسر في علوم القرآن</a><a class="tab review" href="../../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">البناء المنهجي · المستوى الثاني · المرحلة الأولى</span>
+  <h1>الميسر في علوم القرآن</h1>
+  <p class="sub">مقرر مركز الدراسات والمعلومات القرآنية بمعهد الإمام الشاطبي، ملخَّصًا في ستة أقسام على فصول الكتاب</p>
+  <div class="meta">
+    <span class="chip">إعداد <b>معهد الإمام الشاطبي</b></span>
+    <span class="chip">تمهيد و<b>٦</b> فصول</span>
+    <span class="chip"><b>٦</b> أقسام</span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن الكتاب</h2></div>
+  <div class="prose">
+    <p><b>«الميسر في علوم القرآن»</b> مقررٌ دراسي في مباحث علوم القرآن للمبتدئين من طلاب العلم، أعدّه مركز الدراسات والمعلومات القرآنية بمعهد الإمام الشاطبي، وراجعه الأستاذان الدكتوران غانم قدوري الحمد ومساعد بن سليمان الطيار.</p>
+    <p>ومن أهم ما يميّزه: <b>تصنيف مباحث علوم القرآن تصنيفًا موضوعيًّا</b> بردّها إلى موضوعاتٍ كبرى هي فصول الكتاب، ثم ترتيبها ترتيبًا زمنيًّا متسلسلًا من نزول القرآن إلى علوم لغته؛ وذكر المبادئ التأصيلية لكل نوعٍ مع أمثلةٍ موضِّحة، والاقتصار على القول الصحيح والراجح في المسائل الخلافية.</p>
+    <p class="src">قُسّمت المادة على فصول الكتاب نفسه، وضُمّ التمهيد إلى الفصل الأول. ولكل قسمٍ صفحةٌ فيها خريطةٌ ذهنية، ثم المباحث بالرسوم والجداول، ثم خلاصةٌ وأسئلة مراجعة.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>خريطة الكتاب</h2><span class="muted">علوم القرآن كلها في نظرة واحدة</span></div>
+  <div class="panel scroll"><svg viewBox="0 0 940 670" width="100%" style="min-width:820px;display:block" role="img" aria-label="خريطة كتاب الميسر في علوم القرآن في ستة أقسام: التمهيد وعلوم نزول القرآن، وعلوم جمعه، وعلوم خصائصه وحقوقه، وعلوم قراءته، وعلوم تفسيره، وعلوم لغته وأساليبه">
+<path d="M750 328 C715 328 715 185 680 185 M450 185 C415 185 415 151 380 151 M450 185 C415 185 415 185 380 185 M450 185 C415 185 415 219 380 219 M750 328 C715 328 715 286 680 286 M450 286 C415 286 415 269 380 269 M450 286 C415 286 415 303 380 303" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--accent)"/>
+<path d="M750 328 C715 328 715 67 680 67 M450 67 C415 67 415 33 380 33 M450 67 C415 67 415 67 380 67 M450 67 C415 67 415 101 380 101 M750 328 C715 328 715 589 680 589 M450 589 C415 589 415 555 380 555 M450 589 C415 589 415 589 380 589 M450 589 C415 589 415 623 380 623" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--gold)"/>
+<path d="M750 328 C715 328 715 370 680 370 M450 370 C415 370 415 353 380 353 M450 370 C415 370 415 387 380 387 M750 328 C715 328 715 471 680 471 M450 471 C415 471 415 437 380 437 M450 471 C415 471 415 471 380 471 M450 471 C415 471 415 505 380 505" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--red)"/>
+<rect x="750" y="306" width="170" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="835" y="333" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--bg)">علوم القرآن</text>
+<rect x="450" y="51" width="230" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="565" y="72" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">١. التمهيد وعلوم النزول</text>
+<rect x="20" y="20" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="200" y="38" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">مفهوم علوم القرآن ونشأتها</text>
+<rect x="20" y="54" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="200" y="72" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الوحي · النزول الجملي والمفرَّق</text>
+<rect x="20" y="88" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="200" y="106" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المكي والمدني · أسباب النزول</text>
+<rect x="450" y="169" width="230" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="565" y="190" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">٢. علوم الجمع</text>
+<rect x="20" y="138" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="200" y="156" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">جمع القرآن في ثلاث مراحل</text>
+<rect x="20" y="172" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="200" y="190" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الترتيب · العدّ · التحزيب</text>
+<rect x="20" y="206" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="200" y="224" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">رسم المصحف وضبطه</text>
+<rect x="450" y="270" width="230" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="565" y="291" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">٣. الخصائص والحقوق</text>
+<rect x="20" y="256" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="200" y="274" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الأسماء · الفضائل · الإعجاز</text>
+<rect x="20" y="290" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="200" y="308" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">التدبر · الانتصار للقرآن</text>
+<rect x="450" y="354" width="230" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="565" y="375" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">٤. علوم القراءة</text>
+<rect x="20" y="340" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="200" y="358" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الأحرف السبعة · القراءات العشر</text>
+<rect x="20" y="374" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="200" y="392" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">التجويد · الوقف والابتداء · الآداب</text>
+<rect x="450" y="455" width="230" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="565" y="476" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">٥. علوم التفسير</text>
+<rect x="20" y="424" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="200" y="442" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">التفسير وأصوله ومناهج المفسرين</text>
+<rect x="20" y="458" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="200" y="476" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">أحكام القرآن · الناسخ والمنسوخ</text>
+<rect x="20" y="492" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="200" y="510" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المتشابه والمشكل · المبهمات · المناسبات · الترجمة</text>
+<rect x="450" y="573" width="230" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="565" y="594" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">٦. علوم اللغة والأساليب</text>
+<rect x="20" y="542" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="200" y="560" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الغريب · الوجوه والنظائر · المعرَّب · الإعراب</text>
+<rect x="20" y="576" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="200" y="594" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">البلاغة · دلالات الألفاظ</text>
+<rect x="20" y="610" width="360" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="200" y="628" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الأقسام · الأمثال · القصص · الجدل</text>
+</svg></div>
+<p class="hint">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الأقسام</h2><span class="muted">اضغط على القسم لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">التمهيد والفصل الأول</span></div>
+      <h3>علوم نزول القرآن</h3>
+      <p>تعريف القرآن وعلوم القرآن وأقسامها الستة، ونشأتها ومراحل تدوينها، ثم الوحي وأنواعه، ونزول القرآن جملةً ومفرَّقًا، وأول ما نزل وآخره، والمكي والمدني وضوابطهما، وأسباب النزول وصيغها وفوائدها.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f2">الفصل الثاني</span></div>
+      <h3>علوم جمع القرآن</h3>
+      <p>جمع القرآن في الصدور والسطور ومراحله الثلاث في عهد النبي ﷺ وأبي بكر وعثمان، وترتيب السور والآيات، وعدد السور وعدّ الآي، وتحزيب القرآن وتجزئته، ورسم المصحف وقواعده، وضبط المصحف ونقطه.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture3.html">
+      <div class="top"><span class="num">٣</span><span class="era f3">الفصل الثالث</span></div>
+      <h3>علوم خصائص القرآن وحقوقه</h3>
+      <p>أسماء القرآن وأسماء سوره وأسباب تسميتها، وفضائل القرآن ومصدرها، وإعجاز القرآن ووجوهه وضوابط التفسير المعاصر، وتدبر القرآن ومراحله وشروطه، والانتصار للقرآن وأصول الشبهات.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture4.html">
+      <div class="top"><span class="num">٤</span><span class="era f1">الفصل الرابع</span></div>
+      <h3>علوم قراءة القرآن</h3>
+      <p>الأحرف السبعة وحكمتها، وعلم القراءات وتاريخه والقرّاء العشرة ورواتهم وشروط القراءة الصحيحة، وعلم التجويد ونشأته، والوقف والابتداء وأقسامه ورموزه، وآداب التلاوة وسجداتها.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture5.html">
+      <div class="top"><span class="num">٥</span><span class="era f2">الفصل الخامس</span></div>
+      <h3>علوم تفسير القرآن</h3>
+      <p>التفسير والتأويل والاستنباط والتدبر، ونشأة التفسير وتدوينه وأهم كتبه، وأصول التفسير، ومناهج المفسرين وأساليبهم واتجاهاتهم، وأحكام القرآن، والناسخ والمنسوخ، والمتشابه والمشكل، والمبهمات، والمناسبات، وترجمة القرآن.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture6.html">
+      <div class="top"><span class="num">٦</span><span class="era f3">الفصل السادس</span></div>
+      <h3>علوم لغة القرآن وأساليبه</h3>
+      <p>غريب القرآن، والوجوه والنظائر، والمعرَّب، وإعراب القرآن، وبلاغة القرآن وعلومها الثلاثة، ودلالات الألفاظ من عامٍّ وخاص ومطلق ومقيَّد ومنطوق ومفهوم، وأقسام القرآن وأمثاله وقصصه وجدله.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>مفاتيح الكتاب</h2><span class="muted">أهم المصطلحات وأين تجدها</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>معناه في الكتاب</th><th>القسم</th></tr></thead>
+      <tbody>
+        <tr><td>علوم القرآن</td><td>العلم الذي يتناول القرآن من حيث نزوله، وجمعه، وخصائصه، وحقوقه، وقراءته، وتفسيره، على جهة التأصيل</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>المكي والمدني</td><td>المكي: ما نزل قبل الهجرة ولو كان خارج مكة؛ والمدني: ما نزل بعدها ولو كان خارج المدينة</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>سبب النزول</td><td>كل قولٍ أو فعلٍ ممن عاصر التنزيل نزل بشأنه قرآنٌ عند وقوعه</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>العرضة الأخيرة</td><td>آخر ما عرضه النبي ﷺ من القرآن على جبريل في آخر رمضان قبل وفاته</td><td><a href="lecture2.html">٢</a>، <a href="lecture4.html">٤</a></td></tr>
+        <tr><td>الرسم العثماني</td><td>كتابة المصحف بالطريقة التي كتب بها الصحابة رضي الله عنهم المصاحف</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>إعجاز القرآن</td><td>إثبات عجز البشر عن الإتيان بمثل القرآن أو معارضته</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>تدبر القرآن</td><td>النظر إلى ما وراء الألفاظ من المعاني والعبر والمقاصد، الذي يثمر العلوم النافعة والأعمال الزاكية</td><td><a href="lecture3.html">٣</a>، <a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الأحرف السبعة</td><td>وجوهٌ قرائية منزَّلة متغايرة، أقصاها سبعة أوجه في الكلمة القرآنية الواحدة</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>علم القراءات</td><td>علمٌ بكيفية أداء كلمات القرآن واختلافها، معزوًّا لناقله</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>التفسير</td><td>بيان معاني القرآن الكريم</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>النسخ</td><td>عند المتأخرين: رفع حكم دليلٍ شرعي أو لفظه بدليلٍ من الكتاب أو السنة؛ وهو عند المتقدمين أوسع</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>مشكل القرآن</td><td>الآيات التي التبس معناها واشتبه فلم يُعرف المراد منها عند الكثير؛ وهو المتشابه النسبي</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الوجوه والنظائر</td><td>الوجوه: المعاني المختلفة للفظة القرآنية؛ والنظائر: المواضع المتعددة للوجه الواحد</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>المنطوق والمفهوم</td><td>المنطوق: المعنى المستفاد من اللفظ من حيث النطق به؛ والمفهوم: المستفاد منه في غير محلّ النطق</td><td><a href="lecture6.html">٦</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على الكتاب</h2><span class="muted">٨ أسئلة تعبُر الأقسام</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين أقسام الكتاب؛ فاختر إجابتك ليظهر الشرح. ولكل قسمٍ أسئلته الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">علم «أسباب النزول» (القسم ١): إلى أيّ أقسام علوم القرآن الكبرى ينتمي؟</p>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">إلى علوم النزول وحدها.</span></label>
+    <label class="opt ok"><input type="radio" name="gq1"><span class="t">إلى علوم النزول، وكذلك إلى علوم التفسير.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">إلى علوم الجمع والتدوين.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">إلى علوم خصائص القرآن.</span></label>
+    <p class="exp">نبّه الكتاب على أن بعض الأنواع يتعلق بأكثر من قسم؛ ومن فوائد أسباب النزول معرفة المعنى المراد بالآية.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">على أيّ شيءٍ وحّد عثمان رضي الله عنه الناس في القراءة (القسمان ٢ و٤)؟</p>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">على قراءة أهل المدينة وحدهم.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">على حرفٍ واحد من الأحرف السبعة.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">على القراءات السبع التي جمعها ابن مجاهد.</span></label>
+    <label class="opt ok"><input type="radio" name="gq2"><span class="t">على ما اشتملت عليه العرضة الأخيرة.</span></label>
+    <p class="exp">فالمصاحف العثمانية في مجموعها تشتمل على ما ثبت في العرضة الأخيرة من الأحرف السبعة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما صلة رسم المصحف (القسم ٢) بشروط القراءة الصحيحة (القسم ٤)؟</p>
+    <label class="opt ok"><input type="radio" name="gq3"><span class="t">من شروطها موافقة خط المصحف ولو احتمالًا.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">لا صلة بينهما؛ فالقراءة سماعٌ محض.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">الرسم يُغيَّر ليوافق كل قراءة.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">القراءة الصحيحة ما وافق الرسم الإملائي الحديث.</span></label>
+    <p class="exp">ومن قواعد الرسم: ما فيه قراءتان وكُتب على إحداهما، فيحتمل الرسم القراءتين.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">كيف تخدم معرفة المكي والمدني (القسم ١) علم الناسخ والمنسوخ (القسم ٥)؟</p>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">المكي ينسخ المدني لأنه الأصل.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">لا علاقة بينهما.</span></label>
+    <label class="opt ok"><input type="radio" name="gq4"><span class="t">يُعرف بها المتقدّم من المتأخر؛ والمدني ينسخ المكي لا العكس.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">كل آيةٍ مكية منسوخةٌ بآيةٍ مدنية.</span></label>
+    <p class="exp">ومن طرق معرفة النسخ: أن يُعرف المتقدّم من المتأخر في التاريخ.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما موقع التدبر (القسم ٣) من التفسير (القسم ٥)؟</p>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">هما شيءٌ واحد.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">التدبر يسبق التفسير ويغني عنه.</span></label>
+    <label class="opt ok"><input type="radio" name="gq5"><span class="t">التدبر مرحلةٌ تأتي بعد الفهم والتفسير.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">التدبر خاصٌّ بالعلماء، والتفسير لعموم الناس.</span></label>
+    <p class="exp">لأنه نظرٌ إلى ما وراء الألفاظ، وذلك يستلزم معرفة معانيها ابتداءً.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">أيّ علمٍ من علوم لغة القرآن (القسم ٦) تظهر أهميته في توجيه القراءات والوقف والابتداء (القسم ٤)؟</p>
+    <label class="opt ok"><input type="radio" name="gq6"><span class="t">إعراب القرآن.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">أمثال القرآن.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">المعرَّب في القرآن.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">قصص القرآن.</span></label>
+    <p class="exp">لأن الإعراب يميّز المعاني؛ والوقف التام والكافي والحسن يُعرَّف بتعلّق ما بعده به لفظًا (إعرابًا) ومعنى.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">اتهام القرآن بتناقض آياته (القسم ٣): أيّ علمٍ من علوم التفسير (القسم ٥) نشأ في جوابه؟</p>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">علم المناسبات.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">علم مبهمات القرآن.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">علم أحكام القرآن.</span></label>
+    <label class="opt ok"><input type="radio" name="gq7"><span class="t">علم مشكل القرآن، أو موهم الاختلاف والتناقض.</span></label>
+    <p class="exp">ومن أشهر كتبه «تأويل مشكل القرآن» لابن قتيبة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">من فوائد معرفة عدّ الآي (القسم ٢) ما يتصل بأدب الوقف في التلاوة (القسم ٤). ما هو؟</p>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">معرفة عدد الأجزاء والأحزاب.</span></label>
+    <label class="opt ok"><input type="radio" name="gq8"><span class="t">اتباع السنة في الوقف على رؤوس الآي.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">معرفة السور المكية والمدنية.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">ترجيح قراءةٍ على أخرى.</span></label>
+    <p class="exp">ولا تتأتى معرفة رؤوس الآي إلا من خلال هذا العلم.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">ملخص كتاب «الميسر في علوم القرآن»</strong>
+      <p>ملخصٌ للكتاب في ١٢٢ صفحة، وهو المصدر الأساسي الذي بُنيت عليه الصفحات وترتيب مباحثها.</p>
+    </div>
+    <div class="extra">
+      <strong class="ref-title">الميسر في علوم القرآن — الكتاب كاملًا</strong>
+      <p>إعداد مركز الدراسات والمعلومات القرآنية بمعهد الإمام الشاطبي. نسخته المصوّرة لا تحتوي نصًّا قابلًا للبحث، ويُرجع إليها للتوسع وللحواشي والتخريج.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بخريطة الكتاب أعلاه لترى علوم القرآن كلها، ثم مفاتيح الكتاب.</li>
+        <li>ادرس الأقسام بالترتيب: الخريطة الذهنية لكل قسم أولًا، ثم مباحثه ورسومه وجداوله.</li>
+        <li>اختم كل قسمٍ بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على النصوص والتقسيم</span>
+    <p>تقسيم الصفحات على فصول الكتاب نفسه (التمهيد مع الفصل الأول). والآيات منقولةٌ بلفظها من المصحف مع ذكر السورة ورقم الآية، والأحاديث والأقوال بلفظ الملخص. ولم تُذكر في الصفحات أسماء الكتب والأعلام كلها؛ فالمصنفات مستوفاةٌ في الملخص.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>البناء المنهجي · دفعة البشائر</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>
