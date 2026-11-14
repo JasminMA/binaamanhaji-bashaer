@@ -21,6 +21,10 @@ conversation of the step before it: everything it needs is in the repository.
 | **5. Fix** | Fable or Opus | Apply the review's HIGH and MEDIUM findings and the sensible NOTEs in `src/`. Short step. | fixed sources, "resolved" marks in `REVIEW.md` |
 | **6. Ship** | Sonnet | Rebuild, rerun all checks, one commit for the course, push, update the table below. | commit on `add-courses`, updated table |
 
+Fable limit rule (Yasmin): if Fable reports a usage-limit error, stop using Fable. Rerun the
+unfinished work of that step on Opus (use `model: "opus"`), do not wait for the reset and do not retry
+Fable. Work already saved in the repository stays; the Opus writer continues from it.
+
 Rule for the cheap steps (1, 3, 6): if something needs a judgement about the content, stop and
 write the question in `NOTES.md` for the next strong-model step. Do not decide it.
 

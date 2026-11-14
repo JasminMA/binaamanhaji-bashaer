@@ -11,7 +11,7 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = '627423ebe17e';
+var VERSION = '89c504a7fa05';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "assets/apple-touch-icon.png",
@@ -38,6 +38,14 @@ var FILES = [
   "assets/site.css",
   "index.html",
   "level2/index.html",
+  "level2/stage1/bawsalat-almuslih/index.html",
+  "level2/stage1/bawsalat-almuslih/lecture1.html",
+  "level2/stage1/bawsalat-almuslih/lecture2.html",
+  "level2/stage1/bawsalat-almuslih/lecture3.html",
+  "level2/stage1/bawsalat-almuslih/lecture4.html",
+  "level2/stage1/bawsalat-almuslih/lecture5.html",
+  "level2/stage1/bawsalat-almuslih/lecture6.html",
+  "level2/stage1/bawsalat-almuslih/lecture7.html",
   "level2/stage1/index.html",
   "level2/stage1/muyassar-ulum-alquran/index.html",
   "level2/stage1/muyassar-ulum-alquran/lecture1.html",
