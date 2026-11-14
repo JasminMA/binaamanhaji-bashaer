@@ -3,7 +3,13 @@
   "siteName": "البناء المنهجي · دفعة البشائر",
   "ancestors": [
     { "path": "",             "label": "البناء المنهجي" },
+    { "path": "level1",       "label": "المستوى الأول" },
+    { "path": "level1/stage2", "label": "المرحلة الثانية" },
+    { "path": "level1/stage3", "label": "المرحلة الثالثة" },
+    { "path": "level1/stage4", "label": "المرحلة الرابعة" },
     { "path": "level2",       "label": "المستوى الثاني" },
+    { "path": "level2/stage1", "label": "المرحلة الأولى" },
+    { "path": "level2/stage2", "label": "المرحلة الثانية" },
     { "path": "level2/stage3", "label": "المرحلة الثالثة" }
   ]
 }
