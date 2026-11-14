@@ -25,4 +25,7 @@ Slug: `bawsalat-almuslih` · Level 2 · stage 1 · labels: القسم / كل ا�
 
 ## Source issues (filled by the writing step)
 
+- p. 240: «وقد سبق تفصيل القول في هذه المشكلة … في القسم الأول من الكتاب» — despair is treated in القسم الثاني «جدوى الإصلاح» (pp. 39–76, see the book's contents). Lesson 7 says القسم الثاني.
+- p. 258: «تم تناول هذا النوع من التساؤلات في القسم الثاني من الكتاب، تحت عنوان «أسئلة الإصلاح»» — no such heading; جدوى questions are in القسم الثاني, direction/trends/projects questions in القسم الثالث «بوصلة الإصلاح». Lesson 7 names both parts.
+
 ## Check results (filled by the assembly step)

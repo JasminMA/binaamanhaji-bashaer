@@ -71,7 +71,7 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | Course | Slug | Status |
 |---|---|---|
 | الميسر في علوم القرآن | `muyassar-ulum-alquran` | done |
-| بوصلة المصلح | | - |
+| بوصلة المصلح | `bawsalat-almuslih` | done |
 | الغزو الباطني | | - |
 | فصول في أصول التفسير | | - |
 | تثبيت حجية السنة | | - |
