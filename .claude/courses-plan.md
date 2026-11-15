@@ -58,7 +58,7 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | Course | Slug | Status |
 |---|---|---|
 | شرح متن الورقات | `sharh-alwaraqat` | done (c0a39a7) |
-| المدخل إلى علم أصول الفقه ١–٧ | | - |
+| المدخل إلى علم أصول الفقه ١–٧ | `madkhal-usul-alfiqh` | done |
 | شرح لمعة الاعتقاد | `sharh-lumat-alitiqad` | done |
 | طالب العلم والقراءة الأدبية | | dropped (Yasmin) |
 | دلائل أصول الإسلام | | - |
