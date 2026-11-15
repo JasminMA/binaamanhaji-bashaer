@@ -63,8 +63,8 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | طالب العلم والقراءة الأدبية | | dropped (Yasmin) |
 | دلائل أصول الإسلام | | - |
 | منهج الاستدلال | `manhaj-alistidlal` | done |
-| شرح منظومة أصول الفقه | | - |
-| مركزيات الإصلاح | | - |
+| شرح منظومة أصول الفقه | `sharh-manzumat-usul-alfiqh` | done |
+| مركزيات الإصلاح | | dropped (Yasmin) |
 | جراحات المسلمين (scanned) | | - |
 
 ### Level 2 · stage 1
