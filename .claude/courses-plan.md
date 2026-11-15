@@ -62,7 +62,7 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | شرح لمعة الاعتقاد | `sharh-lumat-alitiqad` | done |
 | طالب العلم والقراءة الأدبية | | dropped (Yasmin) |
 | دلائل أصول الإسلام | | - |
-| منهج الاستدلال | | - |
+| منهج الاستدلال | `manhaj-alistidlal` | done |
 | شرح منظومة أصول الفقه | | - |
 | مركزيات الإصلاح | | - |
 | جراحات المسلمين (scanned) | | - |
