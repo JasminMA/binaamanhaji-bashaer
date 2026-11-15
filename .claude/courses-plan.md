@@ -60,7 +60,7 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | شرح متن الورقات | `sharh-alwaraqat` | done (c0a39a7) |
 | المدخل إلى علم أصول الفقه ١–٧ | | - |
 | شرح لمعة الاعتقاد | | - |
-| طالب العلم والقراءة الأدبية | | - |
+| طالب العلم والقراءة الأدبية | | dropped (Yasmin) |
 | دلائل أصول الإسلام | | - |
 | منهج الاستدلال | | - |
 | شرح منظومة أصول الفقه | | - |
@@ -74,7 +74,7 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | بوصلة المصلح | `bawsalat-almuslih` | done |
 | الغزو الباطني | | dropped (Yasmin) |
 | فصول في أصول التفسير | `fusul-usul-altafsir` | done |
-| تثبيت حجية السنة | | - |
+| تثبيت حجية السنة | `thabit-hujjiyat-alsunna` | done |
 | إعجاز القرآن (scanned) | | - |
 
 ### Level 1 · stages 2, 3, 4
