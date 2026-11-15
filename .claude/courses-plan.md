@@ -59,7 +59,7 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 |---|---|---|
 | شرح متن الورقات | `sharh-alwaraqat` | done (c0a39a7) |
 | المدخل إلى علم أصول الفقه ١–٧ | | - |
-| شرح لمعة الاعتقاد | | - |
+| شرح لمعة الاعتقاد | `sharh-lumat-alitiqad` | done |
 | طالب العلم والقراءة الأدبية | | dropped (Yasmin) |
 | دلائل أصول الإسلام | | - |
 | منهج الاستدلال | | - |
