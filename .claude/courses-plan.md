@@ -72,8 +72,8 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 |---|---|---|
 | الميسر في علوم القرآن | `muyassar-ulum-alquran` | done |
 | بوصلة المصلح | `bawsalat-almuslih` | done |
-| الغزو الباطني | | - |
-| فصول في أصول التفسير | | - |
+| الغزو الباطني | | dropped (Yasmin) |
+| فصول في أصول التفسير | `fusul-usul-altafsir` | done |
 | تثبيت حجية السنة | | - |
 | إعجاز القرآن (scanned) | | - |
 
