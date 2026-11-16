@@ -77,8 +77,14 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | تثبيت حجية السنة | `thabit-hujjiyat-alsunna` | done |
 | إعجاز القرآن (scanned) | | - |
 
-### Level 1 · stages 2, 3, 4
-Not started. Course lists are in the approved plan; add a table per stage when its step 1 batch is done.
+### Level 1 · stage 4
+| Course | Slug | Status |
+|---|---|---|
+| شرح الأجرومية | `sharh-alajrumiyya` | done |
+| فقه العبادات (6 lectures) | | - |
+| التأهيل الفقهي (Shafi'i fiqh qualification, القواعد الفقهية) | | - |
+
+Source folders: `D:\البناء المنهجي\المستوى الاول\المرحلة الرابعه\`. Level 1 pages (`level1/index.html`, `level1/stage4/index.html`) were created with the Ajrumiyya course. Stages 2 and 3 of Level 1: not started.
 
 ## Open questions for Yasmin
 - «الورقات»: five places where the summary itself looks wrong (pp. 6, 10, 18, 27, 32) were left out or quoted as the summary's wording. Confirm or correct.
