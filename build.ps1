@@ -1,16 +1,16 @@
 <#
 .SYNOPSIS
-  Generates the lecture pages (level2/stage3/<course>/lectureN.html) from src/, and sw.js (the offline service worker) from src/sw.template.js.
+  Generates the lecture pages (<specialty>/<course>/lectureN.html) from src/, and sw.js (the offline service worker) from src/sw.template.js.
 
 .DESCRIPTION
   Every course folder under src/ holds:
     course.json      course name, wording, and the ordered list of lessons (number + title)
     lectureN.html    ONLY the lesson body: from <header> to the end of the last <section>
   The shared page shell, breadcrumb and previous/next bars live once in src/templates/.
-  src/site.json names the folders above a course (level / stage) for the breadcrumb.
+  src/site.json names the folders above a course (specialty) for the breadcrumb.
 
-  Output goes to the same path outside src/ (src/level2/stage3/x/lecture1.html ->
-  level2/stage3/x/lecture1.html). The generated pages are committed, so GitHub Pages and
+  Output goes to the same path outside src/ (src/hadith-sciences/x/lecture1.html ->
+  hadith-sciences/x/lecture1.html). The generated pages are committed, so GitHub Pages and
   opening a file straight from disk keep working with no build step on the server.
 
   Run from the repository root (no installs needed, Windows PowerShell 5.1 or PowerShell 7):
@@ -101,7 +101,7 @@ $pages = 0
 $deckLessons = New-Object System.Collections.Generic.List[object]   # lesson bodies kept for the flashcard deck
 
 foreach ($cf in $courseFiles) {
-    $rel = $cf.DirectoryName.Substring($srcDir.Length).Trim('\', '/').Replace('\', '/')   # level2/stage3/<course>
+    $rel = $cf.DirectoryName.Substring($srcDir.Length).Trim('\', '/').Replace('\', '/')   # <specialty>/<course>
     $segments = @($rel.Split('/'))
     $depth = $segments.Count
     $up = '../' * $depth                                                                   # path back to the repo root
@@ -114,7 +114,7 @@ foreach ($cf in $courseFiles) {
         if ($null -eq $course.labels.PSObject.Properties[$field]) { throw "$rel/course.json is missing labels.$field" }
     }
 
-    # Breadcrumb trail above the lesson: site root, level, stage, then this course's index page.
+    # Breadcrumb trail above the lesson: site root, specialty, then this course's index page.
     $trail = New-Object System.Collections.Generic.List[object]
     for ($i = 0; $i -lt $depth; $i++) {
         $prefix = ''                                                                       # folder path of this ancestor

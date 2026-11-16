@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>شرح لمعة الاعتقاد · مُدارسات</title>
+<meta name="description" content="شرح لمعة الاعتقاد للشيخ يوسف الغفيص: ملخص الشرح في ستة أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُدارسات">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="شرح لمعة الاعتقاد · مُدارسات">
+<meta property="og:description" content="شرح لمعة الاعتقاد للشيخ يوسف الغفيص: ملخص الشرح في ستة أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta property="og:url" content="https://mudarasat.pages.dev/aqeeda/sharh-lumat-alitiqad/">
+<meta property="og:image" content="https://mudarasat.pages.dev/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مُدارسات">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/offline.js" defer></script>
+<script src="../../assets/progress.js" defer></script>
+<script src="../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+table.tbl a{color:var(--accent);font-weight:600}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../index.html">مُدارسات</a><span class="sep">‹</span><a class="tab" href="../index.html">العقيدة</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">شرح لمعة الاعتقاد</a><a class="tab review" href="../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">العقيدة</span>
+  <h1>شرح لمعة الاعتقاد</h1>
+  <p class="sub">للشيخ يوسف الغفيص، ملخَّصًا في ستة أقسام على مباحث الشرح</p>
+  <div class="meta">
+    <span class="chip">تأليف <b>أحمد بن يوسف السيد</b></span>
+    <span class="chip">شرح <b>الشيخ يوسف الغفيص</b></span>
+    <span class="chip"><b>٦</b> أقسام</span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن الكتاب</h2></div>
+  <div class="prose">
+    <p><b>«شرح لمعة الاعتقاد»</b> شرحٌ للشيخ يوسف الغفيص على «لمعة الاعتقاد»، وهذه الصفحات ملخَّصةٌ من ملخص الشرح المرفق بالمادة. يبدأ بمقدمةٍ في التعريف بالرسالة ومواضع الاتفاق والافتراق، ثم صفات الباري عند أهل السنة، ثم القدر والإيمان، ثم الإيمان باليوم الآخر والنبوة، ثم فضائل الأمة والصحابة وأحكام التكفير وطاعة الأئمة، ويختمه بخاتمة.</p>
+    <p class="src">قُسّمت المادة على ست صفحات على مباحث الملخص نفسه. ولكل صفحةٍ خريطةٌ ذهنية، ثم المباحث بالرسوم والجداول، ثم الخلاصة وأسئلة المراجعة.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>خريطة الكتاب</h2><span class="muted">أقسام الكتاب في نظرة واحدة</span></div>
+  <div class="panel scroll"><div class="panel scroll"><svg viewBox="0 0 830 330" width="100%" style="min-width:820px;display:block" role="img" aria-label="خريطة كتاب شرح لمعة الاعتقاد في ستة أقسام: مدخل وتاريخ النزاع، الصفات ومنهج السلف، الاستواء والكلام والرؤية، القدر والإيمان، اليوم الآخر والشفاعة، الصحابة والإمامة والبدع">
+<path d="M640 158 C605 158 605 33 570 33 M420 33 C385 33 385 33 350 33 M640 158 C605 158 605 183 570 183 M420 183 C385 183 385 183 350 183" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--accent)"/>
+<path d="M640 158 C605 158 605 83 570 83 M420 83 C385 83 385 83 350 83 M640 158 C605 158 605 233 570 233 M420 233 C385 233 385 233 350 233" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--gold)"/>
+<path d="M640 158 C605 158 605 133 570 133 M420 133 C385 133 385 133 350 133 M640 158 C605 158 605 283 570 283 M420 283 C385 283 385 283 350 283" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--red)"/>
+<rect x="640" y="136" width="170" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="725" y="163" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--bg)">شرح لمعة الاعتقاد</text>
+<rect x="420" y="17" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="38" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ١</text>
+<rect x="20" y="20" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="38" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">مدخل وتاريخ النزاع</text>
+<rect x="420" y="67" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="88" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٢</text>
+<rect x="20" y="70" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="88" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الصفات ومنهج السلف</text>
+<rect x="420" y="117" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="138" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٣</text>
+<rect x="20" y="120" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="138" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الاستواء والكلام والرؤية</text>
+<rect x="420" y="167" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="188" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٤</text>
+<rect x="20" y="170" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="188" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">القدر والإيمان</text>
+<rect x="420" y="217" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="238" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٥</text>
+<rect x="20" y="220" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="238" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">اليوم الآخر والشفاعة</text>
+<rect x="420" y="267" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="288" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٦</text>
+<rect x="20" y="270" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="288" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الصحابة والإمامة والبدع</text>
+</svg></div>
+<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p></div>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الأقسام</h2><span class="muted">اضغط على القسم لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">مدخل وتاريخ النزاع</span></div>
+      <h3>مقدمة الشرح والتعريف بالرسالة</h3>
+      <p>طبقات أتباع الأئمة الأربعة في مسائل الأصول، والتعريف برسالة «لمعة الاعتقاد» ومكانتها ومنهج مؤلفها، ومواضع الاتفاق والافتراق في التوحيد، ثم التسلسل التاريخي لحصول النزاع في أصول الدين.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f1">الصفات ومنهج السلف</span></div>
+      <h3>عقيدة أهل السنة في صفات الباري: الإثبات والتفويض والتأويل ومنهج السلف</h3>
+      <p>قواعد الإثبات والنفي في الصفات، وإبطال التأويل الكلامي والمجاز، والتفويض وتبرئة المصنف منه، والمحكم والمتشابه، وعقيدة الإمام أحمد والمصنف، ثم تحقيق مذهب السلف وطرق معرفته والاعتبار بأقوال المتقدمين.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture3.html">
+      <div class="top"><span class="num">٣</span><span class="era f2">الاستواء والكلام والرؤية</span></div>
+      <h3>بقية الصفات: مناظرة السلف وأهل البدع، والاستواء والعلو والكلام، ورؤية المؤمنين لربهم</h3>
+      <p>مناظرة الأذرمي وقاعدة «كل صاحب بدعة مخصوم بالإجماع»، وآيات الصفات وأحاديثها، والتعطيل والتمثيل، وإثبات الاستواء والعلو وأثر مالك، وصفة الكلام والقرآن كلام الله، ثم رؤية المؤمنين لربهم والرد على المعتزلة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture4.html">
+      <div class="top"><span class="num">٤</span><span class="era f2">القدر والإيمان</span></div>
+      <h3>القضاء والقدر، والإيمان: حقيقته وزيادته ونقصانه وشعبه</h3>
+      <p>أصول أهل السنة السبعة في القدر، والخير والشر، وبطلان الاحتجاج بالقدر وإقامة الحجة والعذر بالجهل، ومسائل الوعيد وتكفير الكبائر، ثم مسمى الإيمان وزيادته ونقصانه، والمخالفون فيه، وشعبه، والاستثناء فيه، والفرق بين الإسلام والإيمان.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture5.html">
+      <div class="top"><span class="num">٥</span><span class="era f3">اليوم الآخر والشفاعة</span></div>
+      <h3>الإيمان باليوم الآخر والنبوة: أشراط الساعة والقبر والبعث والشفاعة والجنة والنار</h3>
+      <p>منهج التلقي في الغيبيات وأنه لا يدخلها الاجتهاد، والإسراء والمعراج وقاعدة العقل والنقل، وأشراط الساعة، وعذاب القبر وفتنته، ومشاهد القيامة من الموازين والحوض والصراط، وأنواع الشفاعة، والجنة والنار، والإيمان بنبوة محمد ﷺ والشهادتين.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture6.html">
+      <div class="top"><span class="num">٦</span><span class="era f3">الصحابة والإمامة والبدع</span></div>
+      <h3>فضائل الأمة والصحابة، وأحكام التكفير وطاعة الأئمة وهجران أهل البدع، والخاتمة</h3>
+      <p>خصائص النبي ﷺ وفضل أمته وأصحابه وترتيب الخلفاء الراشدين، والشهادة بالجنة، وضابط تكفير أهل القبلة وحكم تارك الصلاة والزكاة، والحج والجهاد والجمعة مع الأئمة، وتولي الصحابة، والسمع والطاعة، وهجران أهل البدع، والانتساب للمذاهب، وخاتمة الرسالة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>مفاتيح الكتاب</h2><span class="muted">أهم المصطلحات وأين تجدها</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>معناه في الكتاب</th><th>القسم</th></tr></thead>
+      <tbody>
+        <tr><td>أصل باب الأسماء والصفات</td><td>أن الله سبحانه مستحق للكمال منزه عن النقص، وهو مجمع عليه لا يعارضه إلا كافر</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الاختلاف في تحقيق المناط (في الصفات)</td><td>اختلاف الطوائف في تعيين ما هو الكمال وما هو النقص</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>علم الكلام</td><td>علم مولَّد من الفلسفة، انتحله قوم في المئة الثانية وأظهروا به تعطيل الصفات</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>التأويل عند المتكلمين</td><td>صرف اللفظ عن الحقيقة إلى المجاز لقرينة</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>المفوضة</td><td>من زعموا أن النصوص يُعمل بألفاظها، وأما معانيها فيفوَّض العلم بها إلى الله</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الإيمان</td><td>التصديق والقبول المستلزم للعمل، وليس مجرد المعرفة</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>المتشابه</td><td>ما أشكل معناه؛ وآيات الصفات من المحكم لا من المتشابه</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>السلفي</td><td>من اقتدى بالسنة النبوية بوجهها العام، وبإجماعات السلف، واختار ما بان له أقرب إلى الحق في خلافهم</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الاستواء على العرش</td><td>العلو؛ وهو المعنى الصواب المعروف عند جمهور السلف</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الصفات المقيدة</td><td>ما جاء مقيدًا في القرآن كالمكر، لا يثبت لله إطلاقًا لأنه إذا انفك عن سياقه لم يكن مدحًا</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الحروف المقطعة</td><td>يُردّ أمر العلم والحكمة بها إلى الله؛ لأنه لا يُستطاع تفسيرها من جهة مفاد كلمات العرب</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الإدراك</td><td>قدرٌ زائدٌ على أصل الرؤية، وهو المنفي في ﴿لَّا تُدْرِكُهُ الْأَبْصَارُ﴾</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>القدر</td><td>فعل الله سبحانه وقضاؤه في سائر ما يقع في ملكوت السماوات والأرض</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>مقام الجمع بين الشرع والقدر</td><td>أن العباد مأمورون منهيون، ولا حجة لأحد على الله، والقدر ليس حجة على إسقاط الأمر والنهي</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>مرجئة الفقهاء</td><td>قوم من علماء السنة من أهل الكوفة أخرجوا الأعمال الظاهرة عن مسمى الإيمان</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>أصل الإيمان</td><td>ما يقع به الدخول في الدين</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>اليوم الآخر</td><td>ما يقع بعد الموت في القبر من الفتنة والسؤال والعذاب والنعيم</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>فتنة القبر</td><td>ابتلاء الإنسان في قبره بالسؤال عن ربه ودينه ونبيه ﷺ</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الشفاعة العظمى</td><td>شفاعته ﷺ في أهل الموقف أن يُفصل بينهم، ثابتة بالكتاب والسنة والإجماع</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الأجداث</td><td>القبور، أو مكان موت الناس ورفاتهم</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>المباينة</td><td>عدم موالاة أهل البدع، وإظهار السنة والجماعة، والانتصار والاعتصام بها</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>المرجئة</td><td>من يُخرج العمل عن مسمى الإيمان، وهم درجات</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>الكلابية</td><td>أتباع عبد الله بن سعيد بن كلاب، من المتكلمين الذين اختلطت عندهم السنة بالبدعة</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>الخليفة بعد الراشدين</td><td>من استُخلف على المسلمين سلطانًا وملكًا، لا بمعنى خلافة الرسول ﷺ في أمته</td><td><a href="lecture6.html">٦</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على الكتاب</h2><span class="muted">٨ أسئلة تعبُر الأقسام</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين أقسام الكتاب؛ فاختر إجابتك ليظهر الشرح. ولكل قسمٍ أسئلته الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+  <p class="q">الشارح يقول إن «لمعة الاعتقاد» ليس فيها غلطٌ صريح، فكيف وصف عبارة التفويض فيها «وما أشكل من ذلك…»؟</p>
+  <label class="opt"><input type="radio" name="gq1"><span class="t">تقريرٌ صريحٌ لمذهب المفوّضة في جميع الصفات.</span></label>
+  <label class="opt"><input type="radio" name="gq1"><span class="t">عبارةٌ مدسوسةٌ على الرسالة لم يقلها الموفق ولم تثبت عنه.</span></label>
+  <label class="opt ok"><input type="radio" name="gq1"><span class="t">من الأحرف المحتملة، والأظهر أنه لا يوافق المفوّضة.</span></label>
+  <label class="opt"><input type="radio" name="gq1"><span class="t">موافقةٌ لقول المعتزلة في نفي الصفات.</span></label>
+  <p class="exp">فرسالته ليس فيها غلطٌ محضٌ بيّن، إنما فيها قدرٌ من الإجمال والتردد في بعض المواضع، وقد علّق التفويض العام بالكيف لا بالمعنى.</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما الجامع بين قول الشارح «الانتساب وحده لا يكفي» وقوله في الانتساب للمذاهب الأربعة؟</p>
+  <label class="opt"><input type="radio" name="gq2"><span class="t">أن الانتساب للمذاهب الأربعة بدعةٌ يجب تركها.</span></label>
+  <label class="opt"><input type="radio" name="gq2"><span class="t">أن المنتسب لمذهبٍ في سلفيته نقص.</span></label>
+  <label class="opt"><input type="radio" name="gq2"><span class="t">أن مذهب السلف هو الآحاد الفقهية لأئمة المذاهب.</span></label>
+  <label class="opt ok"><input type="radio" name="gq2"><span class="t">أن الانتساب ترتيبٌ علمي لا يُعاب، والمعتبر تحقيق المسائل دون تعصب.</span></label>
+  <p class="exp">يُشترط بالانتساب ألا يتعصب له ولا يترك الحق لقوله؛ ومذهب السلف الواجب اتباعه ما انضبط بالإجماع أو استفاض نقله.</p>
+</div>
+  <div class="mcq">
+  <p class="q">قرر الشارح في السمعيات أن العقل لا يعارض النقل؛ فما القاعدة التي قررها قبل ذلك في باب القدر؟</p>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">ما من أصلٍ تقرر ثبوته إلا وثبوته بأقوال المتأخرين من أتباع المذاهب.</span></label>
+  <label class="opt ok"><input type="radio" name="gq3"><span class="t">ما من أصلٍ تقرر ثبوته إلا وثبوته بالشرع والعقل.</span></label>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">ما من أصلٍ تقرر ثبوته إلا وثبوته بالحس المعيّن.</span></label>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">ما من أصلٍ تقرر ثبوته إلا وثبوته بالعقل وحده دون النقل.</span></label>
+  <p class="exp">قالها بعد أن بيّن أنه من المتعذر عقلًا أن يكون القدر حجةً لأحدٍ من العباد على الله، ومعها: وما من معنًى تقرر نفيه بالضرورة الشرعية إلا ويُعلم نفيه بالعقل. وقرر في السمعيات أن الضرورة العقلية لا تخالف النقل.</p>
+</div>
+  <div class="mcq">
+  <p class="q">موقف أهل السنة وسطٌ بين طرفين في الصفات وفي مشيئة العباد؛ فما الطرفان في كلٍّ منهما؟</p>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">في الصفات: الأشاعرة والماتريدية؛ وفي المشيئة: المعتزلة والخوارج.</span></label>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">في الصفات: المفوضة والمؤولة؛ وفي المشيئة: المرجئة والوعيدية.</span></label>
+  <label class="opt ok"><input type="radio" name="gq4"><span class="t">في الصفات: المعطلة والمشبهة؛ وفي المشيئة: القدرية والجبرية.</span></label>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">في الصفات: الجهمية والمعتزلة؛ وفي المشيئة: الجهمية والأشاعرة.</span></label>
+  <p class="exp">المذاهب المعارضة للسلف في الصفات في الجملة مذهبان: التعطيل والتشبيه؛ وفي المشيئة قالت القدرية بمشيئة مستقلة، والجبرية بنفيها، وأهل السنة بمشيئة تابعة لمشيئة الله.</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما القاعدة المنهجية التي قررها الشارح في الصفات وفي الأسماء الشرعية للإيمان معًا؟</p>
+  <label class="opt ok"><input type="radio" name="gq5"><span class="t">اعتبار سياق النص، وجمع مقاماته دون أخذ مقامٍ واحد.</span></label>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">تقديم الحديث الآحاد على ظاهر القرآن.</span></label>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">الاعتماد على تقسيمات المتأخرين في ضبط المعاني.</span></label>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">تأويل ما ظاهره التعارض من أحاديث الوعد والوعيد على التغليظ.</span></label>
+  <p class="exp">فالصفات تُثبت على وجه سياقها لا على سبيل الإفراد، والاسم الواحد يثبت وينفى بحسب السياق المقارن له؛ ولا يؤخذ مقامٌ واحد لفقه الأسماء الشرعية.</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما الذي يجمع منهج الشارح في مسائل اليوم الآخر ومسألة الموازنة؟</p>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">الترجيح بين الأقوال بالنظر والقياس، والجزم بالتفصيل فيها.</span></label>
+  <label class="opt ok"><input type="radio" name="gq6"><span class="t">الوقوف على صريح النص، والتوقف فيما لم يرد به نص.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">الأخذ بقول المتأخرين في التقاسيم والتفاصيل.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">تقديم الإدراك الحسي على ظاهر النصوص.</span></label>
+  <p class="exp">فالخبريات المحضة لا يدخلها الاجتهاد؛ وردّ التفصيل في الموازنة لأنه لا أصل له، ولم يُعرف في كلام أئمة السنة المتقدمين، وقال: الصواب التوقف.</p>
+</div>
+  <div class="mcq">
+  <p class="q">وصف الشارح عددًا من عبارات المصنف بأنها «جمل مجملة»؛ فما حكمه العام على الرسالة في الخاتمة؟</p>
+  <label class="opt"><input type="radio" name="gq7"><span class="t">فيها أغلاط يجب التنبيه عليها وتركها.</span></label>
+  <label class="opt"><input type="radio" name="gq7"><span class="t">هي على طريقة الكلابية في أكثر مسائلها.</span></label>
+  <label class="opt"><input type="radio" name="gq7"><span class="t">لا يُستفاد منها إلا في أبواب الصفات.</span></label>
+  <label class="opt ok"><input type="radio" name="gq7"><span class="t">ليس فيها جملة يُجزم بأنها غلط، وإنما جمل مجملة يُفصّل فيها.</span></label>
+  <p class="exp">ومن أمثلة ذلك: «ولا نكفّر أحدًا من أهل القبلة بذنب»، و«ولا نخرجه عن الإسلام بعمل»، و«الاختلاف في الفروع رحمة».</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما الذي يجمع بين رد الشارح على من نفى الشفاعة لأهل الكبائر وبين تفصيله فيمن لم يكفّر تارك الصلاة؟</p>
+  <label class="opt ok"><input type="radio" name="gq8"><span class="t">مخالفة أصول أهل البدع: تخليد مرتكب الكبيرة عند الخوارج والمعتزلة، وإخراج العمل من الإيمان عند المرجئة.</span></label>
+  <label class="opt"><input type="radio" name="gq8"><span class="t">أن كلا القولين مجمع على بطلانه عند جميع الأئمة.</span></label>
+  <label class="opt"><input type="radio" name="gq8"><span class="t">أن الشارح يكفّر القائلين بالقولين جميعًا.</span></label>
+  <label class="opt"><input type="radio" name="gq8"><span class="t">أنهما مسألتان اجتهاديتان لا يتعلق بهما أصل عقدي.</span></label>
+  <p class="exp">فالخوارج والمعتزلة أنكروا الشفاعة بناءً على أصلهم الفاسد، ومن بنى عدم تكفير تارك الصلاة على أن العمل لا يكفر تاركه فقوله من أصول المرجئة.</p>
+</div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">ملخص كتاب «شرح لمعة الاعتقاد»</strong>
+      <p>ملخصٌ لشرح الشيخ يوسف الغفيص في ٨٤ صفحة، وهو المصدر الوحيد الذي بُنيت عليه الصفحات وترتيب مباحثها.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بخريطة الكتاب أعلاه، ثم مفاتيح الكتاب.</li>
+        <li>ادرس الأقسام بالترتيب: الخريطة الذهنية لكل قسم أولًا، ثم مباحثه ورسومه وجداوله.</li>
+        <li>اختم كل قسمٍ بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على النصوص والتقسيم</span>
+    <p>تقسيم الصفحات على مباحث الملخص نفسه. والآيات نُقلت من المصحف عند الجزم بلفظها مع ذكر السورة ورقم الآية، وإلا وُصف معناها. والأقوال منسوبةٌ إلى أصحابها كما في الملخص. وما اضطرب في الملخص أو انقطع نصُّه تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>مُدارسات</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>

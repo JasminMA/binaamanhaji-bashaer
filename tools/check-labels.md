@@ -4,7 +4,7 @@
 after building a course (step 3 of `.claude/courses-plan.md`):
 
 1. Serve the repository root over http (the `site` entry in `.claude/launch.json`, port 8765).
-2. Open the course page, for example `http://localhost:8765/level2/stage1/<course>/index.html`.
+2. Open the course page, for example `http://localhost:8765/<specialty>/<course>/index.html`.
 3. Run the snippet below in the page (set `pages` to the course's files). It loads each page in a
    hidden frame at 1200px, measures every SVG `<text>` against the `<rect>` drawn before it, and
    lists the labels that do not fit. A free caption that merely sits under a box can be a false alarm.

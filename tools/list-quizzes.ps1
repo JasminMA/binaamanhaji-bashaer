@@ -19,8 +19,8 @@
 
   Usage (from the repository root):
     powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1                       # whole site
-    powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path level2/stage3/nazm-almuaeen
-    powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path level2/stage3/nazm-almuaeen/lecture2.html
+    powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path hadith-sciences/nazm-almuaeen
+    powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path hadith-sciences/nazm-almuaeen/lecture2.html
     ... -Summary      only the per-page counts and red flags, without the questions
 
   Keep this file ASCII-only: Windows PowerShell 5.1 reads BOM-less scripts as ANSI.

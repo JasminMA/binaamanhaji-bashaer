@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منهج الاستدلال · مُدارسات</title>
+<meta name="description" content="منهج الاستدلال على مسائل الاعتقاد عند أهل السنة والجماعة: ملخص الكتاب في سبعة أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُدارسات">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="منهج الاستدلال · مُدارسات">
+<meta property="og:description" content="منهج الاستدلال على مسائل الاعتقاد عند أهل السنة والجماعة: ملخص الكتاب في سبعة أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta property="og:url" content="https://mudarasat.pages.dev/aqeeda/manhaj-alistidlal/">
+<meta property="og:image" content="https://mudarasat.pages.dev/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مُدارسات">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/offline.js" defer></script>
+<script src="../../assets/progress.js" defer></script>
+<script src="../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+table.tbl a{color:var(--accent);font-weight:600}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../index.html">مُدارسات</a><span class="sep">‹</span><a class="tab" href="../index.html">العقيدة</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">منهج الاستدلال</a><a class="tab review" href="../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">العقيدة</span>
+  <h1>منهج الاستدلال</h1>
+  <p class="sub">على مسائل الاعتقاد عند أهل السنة والجماعة، ملخَّصًا في سبعة أقسام على مباحث الكتاب</p>
+  <div class="meta">
+    <span class="chip"><b>٧</b> أقسام</span>
+    <span class="chip"><b>١٠</b> قواعد</span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن الكتاب</h2></div>
+  <div class="prose">
+    <p><b>«منهج الاستدلال»</b> كتابٌ في طريقة أهل السنة والجماعة في الاستدلال على مسائل الاعتقاد، وهذه الصفحات ملخَّصةٌ من ملخص الكتاب المرفق بالمادة. يبدأ بتمهيدٍ في أهمية المنهج والتعريف بأهل السنة، ثم الباب الأول في مصادر الاستدلال: القرآن والسنة والإجماع والعقل والفطرة، ثم الباب الثاني في قواعد الاستدلال العشر، لكلٍّ منها فقهها وأدلتها وفوائد الالتزام بها، وفي بعضها مذهب المخالفين والجواب عليه.</p>
+    <p class="src">قُسّمت المادة على سبع صفحات على مباحث الملخص نفسه. ولكل صفحةٍ خريطةٌ ذهنية، ثم المباحث بالرسوم والجداول، ثم الخلاصة وأسئلة المراجعة.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>خريطة الكتاب</h2><span class="muted">أقسام الكتاب في نظرة واحدة</span></div>
+  <div class="panel scroll"><div class="panel scroll"><svg viewBox="0 0 830 380" width="100%" style="min-width:820px;display:block" role="img" aria-label="خريطة كتاب منهج الاستدلال في سبعة أقسام: التمهيد والقرآن، السنة والإجماع، العقل والفطرة، الشمول والثبات والرد، درء التعارض، ظواهر النصوص، المحكم والمتشابه وفهم السلف">
+<path d="M640 183 C605 183 605 33 570 33 M420 33 C385 33 385 33 350 33 M640 183 C605 183 605 183 570 183 M420 183 C385 183 385 183 350 183 M640 183 C605 183 605 333 570 333 M420 333 C385 333 385 333 350 333" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--accent)"/>
+<path d="M640 183 C605 183 605 83 570 83 M420 83 C385 83 385 83 350 83 M640 183 C605 183 605 233 570 233 M420 233 C385 233 385 233 350 233" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--gold)"/>
+<path d="M640 183 C605 183 605 133 570 133 M420 133 C385 133 385 133 350 133 M640 183 C605 183 605 283 570 283 M420 283 C385 283 385 283 350 283" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--red)"/>
+<rect x="640" y="161" width="170" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="725" y="188" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--bg)">منهج الاستدلال</text>
+<rect x="420" y="17" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="38" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ١</text>
+<rect x="20" y="20" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="38" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">التمهيد والقرآن</text>
+<rect x="420" y="67" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="88" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٢</text>
+<rect x="20" y="70" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="88" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">السنة والإجماع</text>
+<rect x="420" y="117" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="138" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٣</text>
+<rect x="20" y="120" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="138" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">العقل والفطرة</text>
+<rect x="420" y="167" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="188" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٤</text>
+<rect x="20" y="170" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="188" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الشمول والثبات والرد</text>
+<rect x="420" y="217" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="238" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٥</text>
+<rect x="20" y="220" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="238" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">درء التعارض</text>
+<rect x="420" y="267" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="288" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٦</text>
+<rect x="20" y="270" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="288" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">ظواهر النصوص</text>
+<rect x="420" y="317" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="338" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٧</text>
+<rect x="20" y="320" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="338" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المحكم والمتشابه وفهم السلف</text>
+</svg></div>
+<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p></div>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الأقسام</h2><span class="muted">اضغط على القسم لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">التمهيد والقرآن</span></div>
+      <h3>التمهيد، والمصدر الأول: القرآن الكريم</h3>
+      <p>أهمية المنهج في العلوم، والتعريف بأهل السنة والجماعة وألقابهم وخصائص منهجهم في تقرير الاعتقاد، ثم القرآن الكريم مصدرًا أول: تعريفه، وأنه كلام الله، وحفظه وسلامته من التحريف وردّ شبهات الرافضة، ومنهج تفسيره.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f1">السنة والإجماع</span></div>
+      <h3>المصدران الثاني والثالث: السنة النبوية والإجماع</h3>
+      <p>السنة النبوية وحيٌ محفوظ: تعريفها وأدلة حجيتها وشبهات منكريها، ومسألة خبر الواحد في الاعتقاد؛ ثم الإجماع: تعريفه وحجيته ومستنده وحكم مخالفته، وحجيته في أبواب الاعتقاد.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture3.html">
+      <div class="top"><span class="num">٣</span><span class="era f2">العقل والفطرة</span></div>
+      <h3>المصدران الرابع والخامس: العقل والفطرة، والقاعدة الأولى</h3>
+      <p>التعريف بالعقل ومنزلته وحدوده في المعرفة الدينية، ثم الفطرة ومذاهب العلماء الستة في المراد بها ودلالتها على التوحيد، ثم القاعدة الأولى: الإيمان بجميع نصوص الكتاب والسنة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture4.html">
+      <div class="top"><span class="num">٤</span><span class="era f2">الشمول والثبات والرد</span></div>
+      <h3>القواعد الثانية والثالثة والرابعة</h3>
+      <p>اشتمال الكتاب والسنة على أصول الدين ونقد تفريق المتكلمين بين الأصول والفروع، وقاعدة لا نسخ في الأخبار ولا في أصول الدين، ورد التنازع إلى الكتاب والسنة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture5.html">
+      <div class="top"><span class="num">٥</span><span class="era f3">درء التعارض</span></div>
+      <h3>القاعدتان الخامسة والسادسة: درء التعارض</h3>
+      <p>درء التعارض بين نصوص الكتاب والسنة وأسبابه الظاهرية وطرق دفعه وأمثلته، ثم درء التعارض بين النقل والعقل، مع مذهب المخالفين وشبههم والجواب عليها، وأدلة القاعدتين وفوائدهما.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture6.html">
+      <div class="top"><span class="num">٦</span><span class="era f3">ظواهر النصوص</span></div>
+      <h3>القاعدتان السابعة والثامنة: ظواهر النصوص</h3>
+      <p>ظواهر النصوص مطابقة لمراد الشارع ومفهومة لدى المخاطَبين: المراد بالظاهر، وأقسام النصوص، وصرفها عن ظواهرها، ودعوى الباطن، ثم الرد على من نفى إفادة النقل اليقين وعلى المفوضة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture7.html">
+      <div class="top"><span class="num">٧</span><span class="era f3">المحكم والمتشابه وفهم السلف</span></div>
+      <h3>القاعدتان التاسعة والعاشرة: الإيمان بالمتشابه والعمل بالمحكم، وحجية فهم السلف</h3>
+      <p>معنى الإحكام والتشابه لغةً واصطلاحًا وأقوال العلماء فيهما، ومسألة علم الراسخين بالمتشابه وأنواعه وموقف المسلم منه ومواقف المخالفين، ثم حجية فهم السلف الصالح لنصوص الكتاب والسنة وأدلتها وفوائدها.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>مفاتيح الكتاب</h2><span class="muted">أهم المصطلحات وأين تجدها</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>معناه في الكتاب</th><th>القسم</th></tr></thead>
+      <tbody>
+        <tr><td>المنهج</td><td>الطريق المؤدي إلى التعرف على الحقيقة في العلوم بواسطة طائفةٍ من القواعد العامة التي تهيمن على سير العقل</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>السنة (عند المشتغلين بتقرير مذهب السلف)</td><td>ما كان عليه النبي ﷺ وأصحابه، اعتقادًا واقتصادًا وقولًا وعملًا</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>القرآن اصطلاحًا</td><td>اسمٌ لكتاب الله تعالى المنزّل على رسوله محمد ﷺ، ولا يُسمّى به شيءٌ غيره</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>النقل المتواتر</td><td>نقل الجماعة الكافّة المتكاثرة عن مثلها إلى غيرها، حفظًا وكتابةً، جيلًا بعد جيل</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>السنة عند الأصوليين</td><td>ما نُقل عن النبي ﷺ من قولٍ أو فعلٍ أو تقرير، من جهة كونها دليلًا</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الاعتبار</td><td>عرض الأحاديث والروايات بعضها على بعض لمعرفة ما يتواتر وما يتفرد وما يتفق وما يختلف</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الشذوذ</td><td>أن يكون المتن مخالفًا للمحفوظ المعروف</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الإجماع اصطلاحًا</td><td>اتفاق مجتهدي أمة محمد ﷺ بعد وفاته، في عصرٍ من العصور، على أمرٍ من الأمور</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>العقل لغةً</td><td>مصدر عقَل يعقِل عقلًا، وأصل معناه المنع</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>العقل عند الشارح</td><td>يقع على أربعة معانٍ: الغريزة المدركة، والعلوم الضرورية، والعلوم النظرية، والعمل بمقتضى العلم</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الفطرة اصطلاحًا</td><td>عند العلماء المحققين: الإسلام، دين الله تعالى</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>العلوم الضرورية</td><td>التي لا يمكن التشكيك فيها، كعلم الإنسان بوجوده وأن الاثنين أكثر من الواحد</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الإيمان المجمل</td><td>إيمانٌ عام بالنصوص، فرض عين، سواء فهم معناه أم لا</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>النسخ اصطلاحًا (عند المتأخرين)</td><td>رفع الحكم الشرعي بدليلٍ شرعيٍّ متأخر</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>البداء</td><td>الظهور بعد الخفاء، أو نشأة رأيٍ جديد</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>اختلاف التضاد</td><td>القولان متنافيان، فالخطب فيه أشد</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>التعارض (اصطلاحًا)</td><td>تقابل الدليلين الشرعيين على وجهٍ يقتضي كلٌّ منهما عدم مقتضى صاحبه، كليًّا أو جزئيًّا</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>التعارض الظاهري</td><td>ما يُظن من تعارضٍ بين النصوص بحسب الظاهر لا في نفس الأمر، ويقع لنقص علم الناظر أو فهمه</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>العلم الضروري</td><td>قسمٌ لا يمكن التشكيك فيه، ولا تنفك نفوس الآدميين عنه، ولا تمكن معارضته للنقل الصحيح</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>العلم الغيبي</td><td>قسمٌ لا سبيل للعقل فيه، لكن قد يدرك العقل حسن بعض مسائله، كالصفات والجزاء</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>قانون المتكلمين</td><td>إذا تعارض العقل والنقل قُدِّم العقل، والنقل إما أن يُتأوّل أو يُفوَّض</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الظاهر (في هذا الباب)</td><td>ما يتبادر إلى الذهن من المعاني، وليس لها معنى باطن يخالف ظاهرها، ويختلف بحسب السياق</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>الإشارات (عند الصوفية)</td><td>الاستدلال على معنًى صحيحٍ بألفاظٍ لا تدل عليه، ومنه جعل المعنى الصحيح من باب الاعتبار والقياس لا من باب دلالة اللفظ، وهذا ينقسم إلى صحيح وفاسد</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>المفوّضة</td><td>القائلون في نصوص الصفات والتوحيد والقدر والمعاد إنها ألفاظ لا تُعقل معانيها ولها تأويل لا يعلمه إلا الله</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>الإحكام لغةً</td><td>الفصل بين الشيئين فصلًا يمنع اختلاطهما وتداخلهما، وهو إتقان الشيء وإحسانه</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>التشابه لغةً</td><td>من الشَّبَه أو الشِّبْه؛ تشابه الشيئان إذا أشبه كلٌّ منهما صاحبه، واشتبه الأمر إذا اختلط</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المحكم (الإطلاق العام)</td><td>البيّن الواضح الذي لا يفتقر في بيان معناه إلى غيره</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المتشابه (الإطلاق العام)</td><td>كل ما غمض ودقّ فيُحتاج في فهم المراد منه إلى تفكّرٍ وتأمّل، ويُعرف بالمشكل</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>التشابه الخاص</td><td>مشابهة الشيء لغيره من وجهٍ ومخالفته له من وجهٍ آخر، بحيث يشتبه على بعض الناس أنه هو أو مثله وليس كذلك</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المتشابه الحقيقي</td><td>ما لا سبيل لإدراك حقيقته وكنهه</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المتشابه الإضافي</td><td>ما يرجع إلى الناظر لا إلى الأمر في نفسه، وهو متشابهٌ نسبي</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>التأويل</td><td>نوعان: بمعنى الحقيقة والعاقبة التي يؤول إليها الأمر، وبمعنى التفسير</td><td><a href="lecture7.html">٧</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على الكتاب</h2><span class="muted">٨ أسئلة تعبُر الأقسام</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين أقسام الكتاب؛ فاختر إجابتك ليظهر الشرح. ولكل قسمٍ أسئلته الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+  <p class="q">ما الذي يجمع بين ردّ شبهة الرافضة في تحريف القرآن وردّ شبهة منكري حفظ السنة؟</p>
+  <label class="opt"><input type="radio" name="gq1"><span class="t">أن كليهما لم يُكتب إلا في عهد عثمان.</span></label>
+  <label class="opt"><input type="radio" name="gq1"><span class="t">أن كليهما لا يُحتج به في مسائل الاعتقاد.</span></label>
+  <label class="opt ok"><input type="radio" name="gq1"><span class="t">أن الله تكفّل بحفظ الوحي، والسنة منه.</span></label>
+  <label class="opt"><input type="radio" name="gq1"><span class="t">أن حفظهما قام على الكتابة وحدها.</span></label>
+  <p class="exp">استُدل بآية الحجر على حفظ القرآن من التحريف، ورُدّ على منكري السنة بأنها من الوحي، والوحي محفوظٌ كله.</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما الأصل الذي يلتقي عليه قول بعض المتكلمين بعدم حجية الإجماع في أبواب الاعتقاد، و«قانون المتكلمين» الذي ردّته القاعدة السادسة؟</p>
+  <label class="opt ok"><input type="radio" name="gq2"><span class="t">تقديم الدليل العقلي على الشرعي عند التعارض.</span></label>
+  <label class="opt"><input type="radio" name="gq2"><span class="t">اشتراط أن يكون مستند الإجماع قطعيًّا لا ظنيًّا.</span></label>
+  <label class="opt"><input type="radio" name="gq2"><span class="t">أن الإجماع لا يصح إلا من الصحابة رضي الله عنهم.</span></label>
+  <label class="opt"><input type="radio" name="gq2"><span class="t">التشكيك في أمية النبي ﷺ.</span></label>
+  <p class="exp">القول بعدم حجية الإجماع في أبواب الاعتقاد من بدع الفلاسفة والمتكلمين، مبنيٌّ على تقسيم العلوم إلى شرعية وعقلية، وتقديم الدليل العقلي على الشرعي عند التعارض؛ وهو قانونهم: إذا تعارض العقل والنقل قدّموا العقل.</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما الموقف المشترك بين القاعدة الأولى والقاعدة الرابعة تجاه آراء الرجال؟</p>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">تقديمها على النص إذا كان قائلها من أهل الاجتهاد.</span></label>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">التوقف في النص حتى توافقه آراء الرجال.</span></label>
+  <label class="opt ok"><input type="radio" name="gq3"><span class="t">ألا يُعارض بها النص، ويُرد ما خالف الكتاب والسنة منها.</span></label>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">قبولها كلها لأن العالم بالشريعة معصوم.</span></label>
+  <p class="exp">فالقاعدة الأولى تمنع الاعتراض على أمر الرسول ﷺ بتقديم آراء الرجال، والرابعة توجب رد القواعد المؤسسة بالرأي إن لم تطابق الكتاب والسنة.</p>
+</div>
+  <div class="mcq">
+  <p class="q">أيّ أصلٍ من القاعدة الثالثة استُعمل في الرد على من زعم أن حديث الفطرة منسوخ؟</p>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">أن النسخ يدخل كليات الشريعة دون جزئياتها.</span></label>
+  <label class="opt ok"><input type="radio" name="gq4"><span class="t">أن النسخ لا يدخل الأخبار، والحديث من باب الأخبار.</span></label>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">أن النسخ عند المتقدمين يشمل الاستثناء والشرط.</span></label>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">أن البداء جائزٌ في الأخبار دون الأوامر.</span></label>
+  <p class="exp">والخبر لا نسخ فيه، ويدخل فيه الوعد والوعيد وأخبار الأمم السابقة؛ والقول بنسخ الأخبار يلزم منه البداء الممتنع على الله.</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما الذي يجمع بين القواعد الخامسة والسادسة والسابعة في حكم الشرع الصحيح؟</p>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">أن العقل حاكمٌ على الشرع عند ظهور التعارض.</span></label>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">أن ظواهر النصوص تُصرف عن ظاهرها عند أدنى احتمال.</span></label>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">أن التعارض بين الأدلة القطعية جائز في نفس الأمر.</span></label>
+  <label class="opt ok"><input type="radio" name="gq5"><span class="t">أن الوحي متفق، لا يعارضه عقلٌ صريح، وظاهره مراد.</span></label>
+  <p class="exp">الخامسة: لا تعارض بين نصوص الكتاب والسنة في نفس الأمر؛ السادسة: النقل الصحيح الصريح لا يعارضه معقول صريح؛ السابعة: ظاهرها يطابق مراد المتكلم.</p>
+</div>
+  <div class="mcq">
+  <p class="q">ما الطريقان اللذان يسلكهما المخالفون في النصوص التي تخالف أصولهم، كما ذكرهما الكتاب في القاعدتين السادسة والسابعة؟</p>
+  <label class="opt ok"><input type="radio" name="gq6"><span class="t">التأويل بصرفها عن ظواهرها، أو التفويض.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">الجمع بينها، ثم الترجيح بالراجح منها.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">قبولها اعتمادًا، ثم الاحتجاج بها احتجاجًا.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">عرضها على فهم الصحابة والتابعين.</span></label>
+  <p class="exp">في السادسة: ما خالف قانونهم ردّوه إما بالتأويل أو بالتفويض؛ وفي السابعة: إخراجها على المجازات البعيدة، فإذا غلبتهم قالوا: الواجب تفويضها.</p>
+</div>
+  <div class="mcq">
+    <p class="q">المخالفون للكتاب والسنة يجعلون أقوالهم البدعية محكمةً، ثم يجعلون ما يخالفها من النصوص متشابهًا؛ أيَّ قواعد الاستدلال يخالفون بذلك؟</p>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">قاعدة: لا نسخ في الأخبار ولا في أصول الدين.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">قاعدة: درء التعارض بين النقل والعقل.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">قاعدة: اشتمال الكتاب والسنة على أصول الدين.</span></label>
+    <label class="opt ok"><input type="radio" name="gq7"><span class="t">قاعدة: الإيمان بالمتشابه والعمل بالمحكم.</span></label>
+    <p class="exp">وطريقة السلف من الصحابة والتابعين وأئمة الحديث والفقه في هذه القاعدة هي ردّ المتشابه إلى المحكم.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الطريقة التي نسبها الكتاب إلى السلف من الصحابة والتابعين وأئمة الحديث والفقه في التعامل مع المتشابه، فتلتقي فيها القاعدتان التاسعة والعاشرة؟</p>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">تأويل المتشابه بالرأي حتى يوافق ما تقرّر بالعقل.</span></label>
+    <label class="opt ok"><input type="radio" name="gq8"><span class="t">ردّ المتشابه إلى المحكم.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">جعل المتشابه محكمًا وجعل المحكم متشابهًا.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">التوقف في المحكم والمتشابه جميعًا.</span></label>
+    <p class="exp">وموافقة هذه الطريقة من فوائد الالتزام بالقاعدة التاسعة، ومن فوائد القاعدة العاشرة حسم مادة الابتداع والضلال.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">ملخص كتاب «منهج الاستدلال»</strong>
+      <p>ملخصٌ للكتاب في ١٠١ صفحة، وهو المصدر الوحيد الذي بُنيت عليه الصفحات وترتيب مباحثها.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بخريطة الكتاب أعلاه، ثم مفاتيح الكتاب.</li>
+        <li>ادرس الأقسام بالترتيب: الخريطة الذهنية لكل قسم أولًا، ثم مباحثه ورسومه وجداوله.</li>
+        <li>اختم كل قسمٍ بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على النصوص والتقسيم</span>
+    <p>تقسيم الصفحات على مباحث الملخص نفسه. والآيات نُقلت من المصحف عند الجزم بلفظها مع ذكر السورة ورقم الآية، وإلا وُصف معناها. والأقوال منسوبةٌ إلى أصحابها كما في الملخص. وما اضطرب في الملخص أو انقطع نصُّه تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>مُدارسات</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>

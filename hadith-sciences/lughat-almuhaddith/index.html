@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>شرح لغة المحدث · مُدارسات</title>
+<meta name="description" content="شرح لغة المحدث للشيخ طارق بن عوض الله: منظومةٌ في مصطلح الحديث وشرحها، ملخَّصةً في أحد عشر درسًا بالرسوم والجداول">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُدارسات">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="شرح لغة المحدث · مُدارسات">
+<meta property="og:description" content="شرح لغة المحدث للشيخ طارق بن عوض الله: منظومةٌ في مصطلح الحديث وشرحها، ملخَّصةً في أحد عشر درسًا بالرسوم والجداول">
+<meta property="og:url" content="https://mudarasat.pages.dev/hadith-sciences/lughat-almuhaddith/">
+<meta property="og:image" content="https://mudarasat.pages.dev/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مُدارسات">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/offline.js" defer></script>
+<script src="../../assets/progress.js" defer></script>
+<script src="../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.toc{display:flex;flex-wrap:wrap;gap:8px}
+.toc a{background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:.9rem;text-decoration:none;color:var(--ink)}
+.toc a:hover{border-color:var(--accent);color:var(--accent)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../index.html">مُدارسات</a><span class="sep">‹</span><a class="tab" href="../index.html">علوم الحديث</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">شرح لغة المحدث</a><a class="tab review" href="../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">علوم الحديث</span>
+  <h1>شرح لغة المحدِّث</h1>
+  <p class="sub">منظومةٌ في مصطلح الحديث وشرحها — للشيخ طارق بن عوض الله، ملخَّصةً في أحد عشر درسًا</p>
+  <div class="meta">
+    <span class="chip">النظم والشرح لـ <b>طارق بن عوض الله</b></span>
+    <span class="chip"><b>١١</b> درسًا</span>
+    <span class="chip"><b>١٦٥</b> بيتًا من الرجز</span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن المادة</h2></div>
+  <div class="prose">
+    <p><b>«لغة المحدِّث»</b> منظومةٌ لطيفة في مصطلح الحديث، نظمها الشيخ طارق بن عوض الله اختصارًا لمنظومةٍ أكبر، لتكون في متناول المبتدئين وأيسرَ حفظًا من «البيقونية» و«قصب السكر»، ثم شرحها شرحًا مفصّلًا. واسمها يدل على غايتها: <b>بيان «لغة» المحدّثين</b>، أي معاني اصطلاحاتهم كما أرادوها هم.</p>
+    <p>والفكرة التي تسري في الكتاب كله: أن <b>المصطلح الحديثي يُفهم من أهله</b>؛ فدلالته تختلف بين المتقدمين والمتأخرين، وبين بلدٍ وبلد، بل عند الإمام الواحد — ولذلك يُكثر الشرح من المقارنة بين صنيع الأئمة المتقدمين (أحمد، والبخاري، وأبي حاتم، والترمذي…) وتعريفات المتأخرين (ابن الصلاح، وابن حجر)، مع الأمثلة التطبيقية من كتب العلل.</p>
+    <p class="src">لكل درسٍ صفحةٌ فيها خريطةٌ ذهنية، وأبياتُ المنظومة في موضعها، وشرحٌ مفصّل بالرسوم والجداول والأسانيد المرسومة، وأسئلة مراجعة في آخرها.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>الخيط الناظم للمادة</h2><span class="muted">رحلة الحديث من الإسناد إلى الحكم</span></div>
+  <div class="dia">
+    <svg viewBox="0 0 960 470" width="960" role="img" aria-label="الخريطة الكبرى للمادة: المقدمة والمبادئ، ثم السند والمتن، ثم المتواتر والآحاد، ثم الآحاد مقبول (صحيح وحسن) أو مردود؛ والمردود بسبب السقط في الإسناد (المعلق والمرسل والمنقطع والمعضل والتدليس) أو الطعن في الراوي (العدالة والضبط) أو الطعن في المروي (الاعتبار والتفرد والاختلاف والعلل)، ثم الخاتمة">
+      <defs><marker id="arx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#5A6576"/></marker></defs>
+      <rect x="700" y="20" width="240" height="56" rx="12" fill="#F6EBD3" stroke="#9A6A12" stroke-width="1.5"/>
+      <text x="820" y="44" fill="#9A6A12" font-size="15" font-weight="700" text-anchor="middle" direction="rtl">المقدمة والمبادئ</text>
+      <text x="820" y="64" fill="#5A6576" font-size="12" text-anchor="middle" direction="rtl">الدرس ١ · المصطلح يُفهم من أهله</text>
+      <path d="M700 48 L640 48" stroke="#5A6576" stroke-width="1.6" marker-end="url(#arx)"/>
+      <rect x="400" y="20" width="236" height="56" rx="12" fill="#F6EBD3" stroke="#9A6A12" stroke-width="1.5"/>
+      <text x="518" y="44" fill="#9A6A12" font-size="15" font-weight="700" text-anchor="middle" direction="rtl">السند والمتن</text>
+      <text x="518" y="64" fill="#5A6576" font-size="12" text-anchor="middle" direction="rtl">الدرس ٢ · المسلسل، العلو، المرفوع…</text>
+      <path d="M400 48 L340 48" stroke="#5A6576" stroke-width="1.6" marker-end="url(#arx)"/>
+      <rect x="100" y="20" width="236" height="56" rx="12" fill="#DDEFEE" stroke="#0E6B6B" stroke-width="1.5"/>
+      <text x="218" y="44" fill="#0E6B6B" font-size="15" font-weight="700" text-anchor="middle" direction="rtl">المتواتر والآحاد</text>
+      <text x="218" y="64" fill="#5A6576" font-size="12" text-anchor="middle" direction="rtl">الدرس ٣ · المشهور والعزيز والغريب</text>
+      <path d="M218 76 C218 110 480 100 480 128" fill="none" stroke="#5A6576" stroke-width="1.6" marker-end="url(#arx)"/>
+      <rect x="360" y="130" width="240" height="44" rx="22" fill="#18202C"/>
+      <text x="480" y="158" fill="#fff" font-size="15" font-weight="700" text-anchor="middle" direction="rtl">خبر الآحاد: مقبول أم مردود؟</text>
+      <path d="M600 152 C700 152 760 170 760 196" fill="none" stroke="#0E6B6B" stroke-width="2" marker-end="url(#arx)"/>
+      <path d="M360 152 C260 152 200 170 200 196" fill="none" stroke="#A23B3B" stroke-width="2" marker-end="url(#arx)"/>
+      <rect x="620" y="198" width="320" height="84" rx="12" fill="#DDEFEE" stroke="#0E6B6B" stroke-width="1.5"/>
+      <text x="780" y="222" fill="#0E6B6B" font-size="15" font-weight="700" text-anchor="middle" direction="rtl">المقبول — الشروط الخمسة</text>
+      <text x="780" y="246" fill="#18202C" font-size="12.5" text-anchor="middle" direction="rtl">الصحيح (الدرس ٤) · الحسن وألفاظ القبول (الدرس ٥)</text>
+      <text x="780" y="268" fill="#5A6576" font-size="12" text-anchor="middle" direction="rtl">اتصال · عدالة · ضبط · لا شذوذ · لا علة</text>
+      <rect x="20" y="198" width="360" height="84" rx="12" fill="#F5E1E1" stroke="#A23B3B" stroke-width="1.5"/>
+      <text x="200" y="222" fill="#A23B3B" font-size="15" font-weight="700" text-anchor="middle" direction="rtl">المردود — ما انحطّ عن صفة القبول</text>
+      <text x="200" y="246" fill="#18202C" font-size="12.5" text-anchor="middle" direction="rtl">وموجباته ثلاثة:</text>
+      <text x="200" y="268" fill="#5A6576" font-size="12" text-anchor="middle" direction="rtl">سقطٌ في الإسناد · طعنٌ في الراوي · طعنٌ في المروي</text>
+      <path d="M90 282 L90 312 M200 282 L200 312 M310 282 L310 312" stroke="#A23B3B" stroke-width="1.6"/>
+      <path d="M90 312 C90 330 120 330 130 346 M200 312 L380 346 M310 312 C330 330 600 330 640 346" fill="none" stroke="#A23B3B" stroke-width="1.6"/>
+      <rect x="20" y="346" width="270" height="104" rx="12" fill="#fff" stroke="#A23B3B" stroke-width="1.5"/>
+      <text x="155" y="370" fill="#A23B3B" font-size="14" font-weight="700" text-anchor="middle" direction="rtl">السقط من الإسناد</text>
+      <text x="155" y="394" fill="#18202C" font-size="12" text-anchor="middle" direction="rtl">معلّق · مرسل · منقطع · معضل (الدرس ٦)</text>
+      <text x="155" y="416" fill="#18202C" font-size="12" text-anchor="middle" direction="rtl">التدليس والإرسال الخفي (الدرس ٧)</text>
+      <rect x="310" y="346" width="270" height="104" rx="12" fill="#fff" stroke="#A23B3B" stroke-width="1.5"/>
+      <text x="445" y="370" fill="#A23B3B" font-size="14" font-weight="700" text-anchor="middle" direction="rtl">الطعن في الراوي</text>
+      <text x="445" y="394" fill="#18202C" font-size="12" text-anchor="middle" direction="rtl">عشرة أسباب: عدالةٌ وضبط</text>
+      <text x="445" y="416" fill="#18202C" font-size="12" text-anchor="middle" direction="rtl">مراتب الجرح والتعديل (الدرس ٨)</text>
+      <rect x="600" y="346" width="340" height="104" rx="12" fill="#fff" stroke="#A23B3B" stroke-width="1.5"/>
+      <text x="770" y="370" fill="#A23B3B" font-size="14" font-weight="700" text-anchor="middle" direction="rtl">الطعن في المروي (العلل)</text>
+      <text x="770" y="394" fill="#18202C" font-size="12" text-anchor="middle" direction="rtl">الاعتبار · التفرد · الاختلاف (الدرس ٩)</text>
+      <text x="770" y="416" fill="#18202C" font-size="12" text-anchor="middle" direction="rtl">القلب · الإدراج · التصحيف · المنكر · الموضوع (الدرس ١٠)</text>
+      <text x="770" y="438" fill="#5A6576" font-size="11.5" text-anchor="middle" direction="rtl">ثم الخاتمة: مهمات علم الحديث (الدرس ١١)</text>
+    </svg>
+  </div>
+  <p class="hint">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الدروس</h2><span class="muted">اضغط على الدرس لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">المقدمة</span></div>
+      <h3>المقدمة ومبادئ علم الحديث</h3>
+      <p>المصطلح يختلف بالزمان والمكان والعالم، ويُعرف بنصّ صاحبه أو بالاستقراء؛ واللغوي غير الاصطلاحي («الحسن» و«الثقة»)؛ ثم مبادئ العلم.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f1">السند والمتن</span></div>
+      <h3>السند والمتن وأنواعهما</h3>
+      <p>تعريف السند ونقد التعريف الشائع، والمسلسل، وأقسام العلو الخمسة، والمرفوع والموقوف والمقطوع، والمرفوع حكمًا، والحديث والخبر والأثر، والمسند.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture3.html">
+      <div class="top"><span class="num">٣</span><span class="era f2">المتواتر والآحاد</span></div>
+      <h3>المتواتر والآحاد</h3>
+      <p>الصدق والكذب عند المحدثين، والمتواتر اللفظي والمعنوي، ومراتب الآحاد، والرواية الواحدة تجمع الأوصاف، وإفادة العلم بالقرائن.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture4.html">
+      <div class="top"><span class="num">٤</span><span class="era f2">المقبول</span></div>
+      <h3>المقبول: شروطه والحديث الصحيح</h3>
+      <p>لماذا يُعمل بالمقبول، والشروط الخمسة وأسباب العلل، والصحة المطلقة والنسبية بمثالٍ من الترمذي، والصحيح بمعنى صحة المعنى.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture5.html">
+      <div class="top"><span class="num">٥</span><span class="era f2">المقبول</span></div>
+      <h3>الحديث الحسن وألفاظ القبول</h3>
+      <p>الحسن لذاته ولغيره، ومعانيه الخمسة عند المتقدمين، وجواب ابن رجب عن «حسن صحيح»، وألفاظ القبول، و«على شرط الشيخين» وأقسام المستدرك.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture6.html">
+      <div class="top"><span class="num">٦</span><span class="era f3">المردود</span></div>
+      <h3>المردود: السقط من الإسناد</h3>
+      <p>موجبات الرد، والمعلّق ومعلّقات البخاري، والمرسل والمنقطع والمعضل، والمتصل، وشروط الاحتجاج بالمرسل وعواضده.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture7.html">
+      <div class="top"><span class="num">٧</span><span class="era f3">المردود</span></div>
+      <h3>التدليس والإرسال الخفي</h3>
+      <p>تدليس الإسناد والتسوية والشيوخ، والسرقة، وقرائن عدم السماع، وشروط قبول التصريح بالسماع، والحكم العام والخاص.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture8.html">
+      <div class="top"><span class="num">٨</span><span class="era f3">الطعن</span></div>
+      <h3>الطعن في الراوي</h3>
+      <p>أسباب الطعن العشرة، والعدل والضبط وطريقة معرفته، ومعاني الثقة، ومراتب ألفاظ الجرح والتعديل، والصحابي والتابعي، وألقاب المحدثين.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture9.html">
+      <div class="top"><span class="num">٩</span><span class="era" style="background:#efe9f8;color:#5b3d8c">العلل</span></div>
+      <h3>الطعن في المروي: الاعتبار والتفرد والاختلاف</h3>
+      <p>الاعتبار والمتابعة والشاهد وشروط ثبوت المتابعة، وقرائن ردّ التفرد السبع، وصور الاختلاف، ومختلف الحديث، والمخرج.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture10.html">
+      <div class="top"><span class="num">١٠</span><span class="era" style="background:#efe9f8;color:#5b3d8c">العلل</span></div>
+      <h3>أنواع العلل وأسباب الخطأ</h3>
+      <p>العلة، والقلب والإدراج، والتصحيف والرواية بالمعنى، والزيادات، والمنكر والشاذ بين المتقدمين وابن حجر، وألفاظ الضعف الشديد، والموضوع.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture11.html">
+      <div class="top"><span class="num">١١</span><span class="era f1">الخاتمة</span></div>
+      <h3>الخاتمة: مهمات علم الحديث</h3>
+      <p>طرق التحمّل الثمانية والإجازة، وكتابة الحديث وآدابه، والأسماء والمؤتلف والمتفق والمتشابه، والطبقات، وشروط الأئمة ومراتبهم في التشدد.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>خريطة المصطلحات عبر الدروس</h2><span class="muted">أين تجد كل مصطلح</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>خلاصته في الكتاب</th><th>الدرس</th></tr></thead>
+      <tbody>
+        <tr><td>السند</td><td>الإخبار عن طريق المتن؛ لا «سلسلة الرواة»</td><td>٢</td></tr>
+        <tr><td>المرفوع حكمًا</td><td>موقوفٌ لفظًا لقرينةٍ لا مجال معها للاجتهاد؛ ست صور</td><td>٢</td></tr>
+        <tr><td>المسند</td><td>مرفوع صحابي بسندٍ ظاهره الاتصال؛ وعند المتقدمين في العلل: المتصل مقابل المرسل</td><td>٢</td></tr>
+        <tr><td>المتواتر والآحاد</td><td>المتواتر يفيد القطع؛ والآحاد الصحيح حجةٌ، ويفيد العلم بالقرائن</td><td>٣</td></tr>
+        <tr><td>الغريب والعزيز</td><td>العدد ليس شرطًا في العزيز؛ والرواية الواحدة قد تجمع الأوصاف</td><td>٣</td></tr>
+        <tr><td>الصحيح</td><td>الشروط الخمسة؛ والصحة مطلقةٌ ونسبية؛ وقد يُراد صحة المعنى</td><td>٤</td></tr>
+        <tr><td>الحسن</td><td>عند المتأخرين: لذاته ولغيره؛ وعند المتقدمين خمسة معانٍ منها الغريب والمنكر</td><td>١ و٥</td></tr>
+        <tr><td>على شرط الشيخين</td><td>مصطلحٌ بدأه الدارقطني؛ له خمس شرائط؛ والمستدرك ثلاثة أقسام</td><td>٥</td></tr>
+        <tr><td>المرسل</td><td>ما رفعه التابعي ولم يسمعه؛ والمتقدمون يسمّون كل انقطاعٍ مرسلًا</td><td>٦</td></tr>
+        <tr><td>التدليس</td><td>وسيلةٌ يتولد عنها السقط؛ شرّه التسوية؛ والسرقة تصريحٌ كاذب</td><td>٧</td></tr>
+        <tr><td>الثقة</td><td>عدلٌ ضابط، أو عدلٌ فقط؛ وهم طبقات؛ و«شيخ» لا تستلزم التوثيق</td><td>١ و٨</td></tr>
+        <tr><td>الاعتبار</td><td>سبر الرواية بكل ما في الباب؛ وغايته معرفة المحفوظ</td><td>٩</td></tr>
+        <tr><td>التفرد</td><td>مظنّة الخطأ، ويُعلّ إذا اقترنت به قرينة؛ سبع قرائن</td><td>٩</td></tr>
+        <tr><td>الاضطراب</td><td>أكثره من راوٍ واحد مع اتحاد المخرج؛ والترجيح لا ينفيه</td><td>٩</td></tr>
+        <tr><td>العلة</td><td>سببٌ خفيٌّ قادح؛ و«لا نعلم له علة» ليس تصحيحًا</td><td>١٠</td></tr>
+        <tr><td>المنكر والشاذ</td><td>عند المتقدمين: الخطأ مطلقًا؛ وعند ابن حجر: يفرّق بينهما بحال الراوي</td><td>١٠</td></tr>
+        <tr><td>الموضوع</td><td>المكذوب المختلق عمدًا أو وهمًا؛ خمس دلالات</td><td>١٠</td></tr>
+        <tr><td>طرق التحمل</td><td>ثمانية؛ أرفعها السماع، والإجازة تضعف بالتوسع</td><td>١١</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">للمقارنة مع شرح نظم المعين في المصطلحات نفسها: <a href="../glossary/index.html">معجم المصطلحات المقارن</a>.</p>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>لوحةٌ جامعة: المتقدمون والمتأخرون</h2><span class="muted">الفكرة المركزية للكتاب</span></div>
+  <div class="panel scroll"><svg viewBox="0 0 960 400" width="100%" style="min-width:900px;display:block" role="img" aria-label="مقارنة بين اصطلاح المتقدمين والمتأخرين في خمسة مصطلحات: الحسن، الثقة، المرسل، المنكر والشاذ، والتحمل بحدثنا وعن">
+<text x="944" y="26" text-anchor="start" direction="rtl" font-size="13.5" font-weight="700" style="font-family:var(--display);fill:var(--muted)">مصطلحٌ واحد ودلالتان: لا تُنزل كلام المتقدم على حدّ المتأخر</text>
+<g direction="rtl">
+<rect x="560" y="44" width="380" height="36" rx="8" style="fill:var(--accent-soft);stroke:var(--accent)"/><text x="750" y="68" text-anchor="middle" font-size="14" font-weight="700" style="fill:var(--accent)">المتقدمون (أحمد، البخاري، أبو حاتم، الترمذي…)</text>
+<rect x="20" y="44" width="380" height="36" rx="8" style="fill:var(--gold-soft);stroke:var(--gold)"/><text x="210" y="68" text-anchor="middle" font-size="14" font-weight="700" style="fill:var(--gold)">المتأخرون (ابن الصلاح، ابن حجر…)</text>
+<g font-size="12.5">
+<rect x="410" y="92" width="140" height="50" rx="25" style="fill:var(--ink)"/><text x="480" y="122" text-anchor="middle" font-weight="700" style="fill:var(--bg)">الحسن</text>
+<text x="940" y="112" text-anchor="start" style="fill:var(--ink)">لفظٌ لما استُحسن: قد يكون الصحيح، أو الحجة،</text><text x="940" y="132" text-anchor="start" style="fill:var(--ink)">أو المنجبر، أو الغريب والمنكر، أو حسن اللفظ</text>
+<text x="400" y="112" text-anchor="start" style="fill:var(--ink)">حجةٌ دون الصحيح: لذاته (خفّ ضبطه)</text><text x="400" y="132" text-anchor="start" style="fill:var(--ink)">أو لغيره (ضعفٌ هيّن انجبر)</text>
+<rect x="410" y="152" width="140" height="50" rx="25" style="fill:var(--ink)"/><text x="480" y="182" text-anchor="middle" font-weight="700" style="fill:var(--bg)">الثقة</text>
+<text x="940" y="172" text-anchor="start" style="fill:var(--ink)">العدل الضابط وهم طبقات، أو العدل وحده</text><text x="940" y="192" text-anchor="start" style="fill:var(--ink)">الذي لا يتعمد الكذب</text>
+<text x="400" y="172" text-anchor="start" style="fill:var(--ink)">من صحّ سماعه وحضوره، أو المستور</text><text x="400" y="192" text-anchor="start" style="fill:var(--ink)">الذي لم يُجرح وارتفعت جهالته</text>
+<rect x="410" y="212" width="140" height="50" rx="25" style="fill:var(--ink)"/><text x="480" y="242" text-anchor="middle" font-weight="700" style="fill:var(--bg)">المرسل</text>
+<text x="940" y="242" text-anchor="start" style="fill:var(--ink)">كل انقطاع: معلّقًا ومنقطعًا ومعضلًا</text>
+<text x="400" y="242" text-anchor="start" style="fill:var(--ink)">ما رفعه التابعي إلى النبي ﷺ خاصة</text>
+<rect x="410" y="272" width="140" height="50" rx="25" style="fill:var(--ink)"/><text x="480" y="302" text-anchor="middle" font-weight="700" style="fill:var(--bg)">المنكر والشاذ</text>
+<text x="940" y="292" text-anchor="start" style="fill:var(--ink)">كلاهما الخطأ في الرواية، من ثقةٍ أو ضعيف،</text><text x="940" y="312" text-anchor="start" style="fill:var(--ink)">بالتفرد أو المخالفة</text>
+<text x="400" y="292" text-anchor="start" style="fill:var(--ink)">المنكر: مخالفة الضعيف للثقات</text><text x="400" y="312" text-anchor="start" style="fill:var(--ink)">الشاذ: مخالفة الثقة لمن هو أوثق</text>
+<rect x="410" y="332" width="140" height="50" rx="25" style="fill:var(--ink)"/><text x="480" y="362" text-anchor="middle" font-weight="700" style="fill:var(--bg)">ألفاظ الأداء</text>
+<text x="940" y="352" text-anchor="start" style="fill:var(--ink)">«حدثنا» قد تُستعمل بلا سماعٍ عند بعضهم</text><text x="940" y="372" text-anchor="start" style="fill:var(--ink)">(الشاميون والمصريون)</text>
+<text x="400" y="352" text-anchor="start" style="fill:var(--ink)">«عن» قد تُستعمل في الإجازة:</text><text x="400" y="372" text-anchor="start" style="fill:var(--ink)">«قرأتُ على فلانٍ عن فلان»</text>
+</g>
+</g>
+</svg></div>
+  <p class="hint">على الجوال اسحب الرسم أفقيًا.</p>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على المادة</h2><span class="muted">١٠ أسئلة تعبُر الدروس</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين الدروس؛ فاختر إجابتك ليظهر الشرح. ولكل درسٍ أسئلتُه الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">قرأتَ في كتاب علل: «قال أبو حاتم: هذا حديثٌ حسن». ما أول ما تفعله؟</p>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">تعدّه حجةً مقبولةً مباشرةً لأن الحسن عند الجمهور حجة.</span></label>
+    <label class="opt ok"><input type="radio" name="gq1"><span class="t">تبحث عن مراد الإمام من سياقه واصطلاحه؛ فقد يريد الغرابة أو النكارة.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">تبحث عن شاهدٍ يرفعه إلى الصحيح قبل أن تحكم عليه.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">تعدّه ضعيفًا مردودًا لأن الحسن دون الصحيح في الرتبة.</span></label>
+    <p class="exp">هذه فكرة الكتاب كله (الدرس ١ و٥): المصطلح يُفهم من أهله، والمتقدمون أطلقوا الحسن على معانٍ منها الغريب والمنكر.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الجامع بين «الصحة النسبية» في كتب العلل و«معلّقات البخاري بالجزم»؟</p>
+    <label class="opt ok"><input type="radio" name="gq2"><span class="t">كلاهما حكمٌ بالصحة إلى راوٍ معيّن دون حكمٍ على ما فوقه.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما يعني أن الحديث صحيحٌ إلى النبي ﷺ نفسه.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما يدل على أن الحديث مرسلٌ لا يُحتج به.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">لا جامع بينهما فكل واحد منهما اصطلاحٌ مستقل.</span></label>
+    <p class="exp">«صحيحٌ إلى الزهري» (الدرس ٤)، و«قال قتادة عن معاذ» صحيحٌ إلى قتادة ومنقطعٌ فوقه (الدرس ٦).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">راوٍ ثقة تفرّد عن إمامٍ مكثرٍ له أصحابٌ حفّاظ لم يرووا الحديث. على أي أساسٍ يُحكم على حديثه؟</p>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">على حاله وحده: ثقةٌ ضابط فحديثه صحيح لا غرابة فيه.</span></label>
+    <label class="opt ok"><input type="radio" name="gq3"><span class="t">على حاله وحال روايته معًا: تفرّده عن المكثر قرينةٌ على خطئه، فيُحكم بنكارته وإن بقي ثقة.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">على عدد أحاديثه ومقدار ما رواه من الروايات.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">يُضعَّف الراوي مطلقًا ويُترك كل ما رواه.</span></label>
+    <p class="exp">الدروس ٥ و٩ و١٠: النكارة ترجع إلى الراوي والرواية وأهليته للتفرد بها؛ والخطأ الواحد لا يُضعّف الثقة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما العلاقة بين علم الجرح والتعديل وعلم العلل في هذا الكتاب؟</p>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">علمان منفصلان لا صلة بينهما ولكلٍّ منهج مستقل.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">علم العلل مبنيٌّ على الجرح والتعديل فقط.</span></label>
+    <label class="opt ok"><input type="radio" name="gq4"><span class="t">الجرح والتعديل مبنيٌّ على العلل: يُعرف حال الراوي باعتبار مروياته.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">لا يُحتاج إلى أيٍّ منهما مع وجود الصحيحين.</span></label>
+    <p class="exp">صنيع المتقدمين: الاستدلال على حال الراوي من حال المروي (الدرسان ٨ و٩ و١٠).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">أيُّ هذه «المتابعات» لا تنفع في دفع التفرد؟</p>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">متابعة ثقةٍ سمع من الشيخ بإسنادٍ صحيحٍ محفوظ.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">متابعةٌ قاصرة لثقة بإسنادٍ صحيح محفوظ.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">شاهدٌ صحيحٌ محفوظ بالمعنى من صحابيٍّ آخر.</span></label>
+    <label class="opt ok"><input type="radio" name="gq5"><span class="t">متابعة سارقٍ ادّعى السماع، أو مدلّسٍ لعله أسقط المتابِع نفسه.</span></label>
+    <p class="exp">السرقة متابعةٌ صورية (الدرس ٧)، وابن جريج والمثنى مثال المتابعة التي تعود لراوٍ واحد (الدرس ٩).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">قول المتقدمين «رواه فلانٌ مسندًا ورواه فلانٌ مرسلًا» يجمع مصطلحين بمعنى:</p>
+    <label class="opt ok"><input type="radio" name="gq6"><span class="t">المتصل مقابل المنقطع بأي صورة.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">المرفوع مقابل الموقوف.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">الصحيح مقابل الضعيف.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">المشهور مقابل الغريب.</span></label>
+    <p class="exp">المسند في العلل بمعنى المتصل (الدرس ٢)، والمرسل عند المتقدمين كل انقطاع (الدرس ٦).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">«إنما الأعمال بالنيات» ورد في أكثر من درس. أيُّ وصفٍ لا ينطبق عليه؟</p>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">غريبٌ في أصله.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">متواترٌ عن يحيى بن سعيد.</span></label>
+    <label class="opt ok"><input type="radio" name="gq7"><span class="t">متواترٌ في جميع طبقاته عن النبي ﷺ.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">مثالٌ لتفرّدٍ صحيح.</span></label>
+    <p class="exp">هو غريبٌ مطلقٌ في أصله (عمر ← علقمة ← التيمي ← يحيى)، متواترٌ نسبيٌّ بعد يحيى (الدروس ٣ و٩).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما المشترك بين «تدليس التسوية» و«الإدراج في الإسناد» و«التصحيف في الأسماء»؟</p>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">كلها تعمّدٌ للكذب على النبي ﷺ والتلبيس على الناس.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">كلها لا تقع إلا من الضعفاء دون الثقات والحفاظ.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">كلها خاصةٌ بالمتن ولا تقع في الأسانيد أبدًا.</span></label>
+    <label class="opt ok"><input type="radio" name="gq8"><span class="t">كلها قد تجعل الإسناد يبدو صحيحًا أو متعدّد الطرق وهو ضعيفٌ أو فرد؛ ولا يكشفها إلا الناقد الحاذق.</span></label>
+    <p class="exp">التسوية تخفي الضعيف (٧)، والإدراج يوهم اتفاق الرواة (١٠)، والتصحيف يوهم راويين (عبثر وعبيد) (١٠).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">قال الأئمة عن حديثٍ: «لا أصل له» وراويه ثقة. هل هذا تناقض؟</p>
+    <label class="opt ok"><input type="radio" name="gq9"><span class="t">لا؛ ألفاظ الضعف الشديد تُطلق بحسب الخطأ لا بحسب الراوي، كقولهم في نعيم بن حماد ولُوين.</span></label>
+    <label class="opt"><input type="radio" name="gq9"><span class="t">نعم، لأن الثقة لا يروي ما لا أصل له ولا يخطئ في الأحاديث.</span></label>
+    <label class="opt"><input type="radio" name="gq9"><span class="t">لا؛ لأن «لا أصل له» تعني أن الحديث موقوفٌ على الصحابي.</span></label>
+    <label class="opt"><input type="radio" name="gq9"><span class="t">نعم، ويُقدَّم توثيق الراوي ويُترك حكم الأئمة على الحديث.</span></label>
+    <p class="exp">الدرس ١٠: «لا أصل له» نفيٌ لمخرجٍ صحيح يُرجع إليه، لا نفيٌ لجنس الإسناد.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما دور طالب الحديث كما يختم به الكتاب؟</p>
+    <label class="opt"><input type="radio" name="gq10"><span class="t">حفظ أكبر عددٍ من الأسانيد وجمعها وروايتها بالعلو.</span></label>
+    <label class="opt"><input type="radio" name="gq10"><span class="t">الاكتفاء بأحكام المتأخرين دون الرجوع إلى كلام المتقدمين.</span></label>
+    <label class="opt ok"><input type="radio" name="gq10"><span class="t">إدراك مناهج الأئمة والعلم بمصطلحاتهم وتمييز مذاهبهم ليفهم ألفاظهم كما قصدوها.</span></label>
+    <label class="opt"><input type="radio" name="gq10"><span class="t">جمع الغرائب والفوائد والإكثار منها لذاتها.</span></label>
+    <p class="exp">وهذا يعود إلى أول المنظومة: «فكلُّ علمٍ وله اصطلاحه» (الدرسان ١ و١١).</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-6">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">شرح لغة المحدث — الكتاب كاملًا</strong>
+      <p>الشرح الأصل للشيخ طارق بن عوض الله (نحو ٤٨٠ صفحة)، وفيه نص المنظومة كاملًا (ص ١٧–٣٦). ومنه أُخذت أبيات الدروس، وأُرجع إليه في بعض المواضع.</p>
+    </div>
+    <div class="extra">
+      <strong class="ref-title">تلخيص شرح لغة المحدث</strong>
+      <p>تلخيص أكاديمية الحديث الإلكترونية (١٢٨ صفحة)، وهو المصدر الأساسي الذي بُنيت عليه الصفحات وترتيب موضوعاتها.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بالخيط الناظم أعلاه لترى المادة كلها، ثم لوحة المتقدمين والمتأخرين.</li>
+        <li>ادرس الدروس بالترتيب: الخريطة الذهنية لكل درس أولًا، ثم شرحها ورسومها.</li>
+        <li>احفظ أبيات المنظومة من مواضعها في كل درس؛ فهي مرتّبة بترتيب النظم.</li>
+        <li>اختم كل درس بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على الأبيات والتقسيم</span>
+    <p>الأبيات منقولة من نص المنظومة في الكتاب المطبوع (ص ١٧–٣٦)؛ وتقسيم المادة إلى أحد عشر درسًا تقسيمٌ موضوعيٌّ لهذا الملخص بحسب أبواب المنظومة، وليس تقسيمَ مجالسَ مسجّلة.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>مُدارسات</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>شرح منظومة أصول الفقه · مُدارسات</title>
+<meta name="description" content="شرح الشيخ محمد بن صالح العثيمين لمنظومة أصول الفقه وقواعده: ملخص الشرح في ثمانية أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُدارسات">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="شرح منظومة أصول الفقه · مُدارسات">
+<meta property="og:description" content="شرح الشيخ محمد بن صالح العثيمين لمنظومة أصول الفقه وقواعده: ملخص الشرح في ثمانية أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta property="og:url" content="https://mudarasat.pages.dev/usul-alfiqh/sharh-manzumat-usul-alfiqh/">
+<meta property="og:image" content="https://mudarasat.pages.dev/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مُدارسات">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/offline.js" defer></script>
+<script src="../../assets/progress.js" defer></script>
+<script src="../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+table.tbl a{color:var(--accent);font-weight:600}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../index.html">مُدارسات</a><span class="sep">‹</span><a class="tab" href="../index.html">أصول الفقه</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">شرح منظومة أصول الفقه</a><a class="tab review" href="../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">أصول الفقه</span>
+  <h1>شرح منظومة أصول الفقه</h1>
+  <p class="sub">للشيخ محمد بن صالح العثيمين، ملخَّصًا في ثمانية أقسام على مباحث الشرح</p>
+  <div class="meta">
+    <span class="chip">شرح <b>الشيخ محمد بن صالح العثيمين</b></span>
+    <span class="chip"><b>٨</b> أقسام</span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن الكتاب</h2></div>
+  <div class="prose">
+    <p><b>«شرح منظومة أصول الفقه وقواعده»</b> شرحٌ للشيخ محمد بن صالح العثيمين على منظومته في أصول الفقه وقواعده، وهذه الصفحات ملخَّصةٌ من تلخيص الشرح الصادر عن «عطاء». يمضي الشرح على ترتيب أبيات المنظومة: مقدمتها ومقاصد الشريعة، ثم الأمر والنهي والأدلة والقياس، ثم النية والضمان والعقود والعرف، ثم الدعاوى والبينات، ثم قواعد فقهية عامة ودلالات الألفاظ.</p>
+    <p class="src">قُسّمت المادة على ثماني صفحات على مباحث الملخص نفسه. ولكل صفحةٍ خريطةٌ ذهنية، ثم المباحث بالرسوم والجداول، ثم الخلاصة وأسئلة المراجعة.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>خريطة الكتاب</h2><span class="muted">أقسام الكتاب في نظرة واحدة</span></div>
+  <div class="panel scroll"><div class="panel scroll"><svg viewBox="0 0 830 430" width="100%" style="min-width:820px;display:block" role="img" aria-label="خريطة شرح منظومة أصول الفقه في ثمانية أقسام: المقدمة والتيسير، النهي والأصل في الأشياء، الأمر والتزاحم والعلة، الشروط والظن والفروض، الأدلة والنية والفاسد، الضمان والعقود والعرف، الدعاوى والأمانات، القواعد ودلالات الألفاظ">
+<path d="M640 208 C605 208 605 33 570 33 M420 33 C385 33 385 33 350 33 M640 208 C605 208 605 183 570 183 M420 183 C385 183 385 183 350 183 M640 208 C605 208 605 333 570 333 M420 333 C385 333 385 333 350 333" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--accent)"/>
+<path d="M640 208 C605 208 605 83 570 83 M420 83 C385 83 385 83 350 83 M640 208 C605 208 605 233 570 233 M420 233 C385 233 385 233 350 233 M640 208 C605 208 605 383 570 383 M420 383 C385 383 385 383 350 383" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--gold)"/>
+<path d="M640 208 C605 208 605 133 570 133 M420 133 C385 133 385 133 350 133 M640 208 C605 208 605 283 570 283 M420 283 C385 283 385 283 350 283" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--red)"/>
+<rect x="640" y="186" width="170" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="725" y="213" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--bg)">شرح منظومة أصول الفقه</text>
+<rect x="420" y="17" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="38" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ١</text>
+<rect x="20" y="20" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="38" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المقدمة والتيسير</text>
+<rect x="420" y="67" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="88" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٢</text>
+<rect x="20" y="70" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="88" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">النهي والأصل في الأشياء</text>
+<rect x="420" y="117" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="138" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٣</text>
+<rect x="20" y="120" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="138" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الأمر والتزاحم والعلة</text>
+<rect x="420" y="167" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="188" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٤</text>
+<rect x="20" y="170" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="188" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الشروط والظن والفروض</text>
+<rect x="420" y="217" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="238" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٥</text>
+<rect x="20" y="220" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="238" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الأدلة والنية والفاسد</text>
+<rect x="420" y="267" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="288" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٦</text>
+<rect x="20" y="270" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="288" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الضمان والعقود والعرف</text>
+<rect x="420" y="317" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="338" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٧</text>
+<rect x="20" y="320" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="338" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الدعاوى والأمانات</text>
+<rect x="420" y="367" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="388" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٨</text>
+<rect x="20" y="370" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="388" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">القواعد ودلالات الألفاظ</text>
+</svg></div>
+<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p></div>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الأقسام</h2><span class="muted">اضغط على القسم لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">المقدمة والتيسير</span></div>
+      <h3>مقدمة المنظومة، ومقاصد الشريعة، وقاعدة التيسير والضرورة</h3>
+      <p>أبيات مقدمة المنظومة وشرحها، والفرق بين أصول الفقه وقواعده، وأن الدين جاء لسعادة البشر ودفع الضرر، ثم قاعدة التيسير: إتيان المأمور قدر المستطاع، وأن الشرائع لا تلزم قبل العلم، وأن الممنوع يباح للضرورة بشرطين.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f1">النهي والأصل في الأشياء</span></div>
+      <h3>الحاجة والذريعة، وحكم المنهي عنه وأقسامه، والأصل في الأشياء والعبادات</h3>
+      <p>إباحة المكروه والمحرم للذريعة عند الحاجة ومثاله العرية، وفساد المنهي عنه وأقسام النهي وفوائد فهم العلل، ثم أن الأصل في الأشياء الحل وفي العبادات المنع، وشروط العبادة المشروعة الستة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture3.html">
+      <div class="top"><span class="num">٣</span><span class="era f2">الأمر والتزاحم والعلة</span></div>
+      <h3>الأمر والنهي، وفعل النبي ﷺ، وتزاحم المصالح والمفاسد، والعلة</h3>
+      <p>الرجوع للأصل عند الشك، وأن الأصل في الأمر الوجوب وفي النهي التحريم وفيهما الفورية إلا بقرينة، ثم أقسام فعل النبي ﷺ، وتقديم الأعلى في المصالح والأدنى في المفاسد والحظر على الإباحة، وأقسام العلة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture4.html">
+      <div class="top"><span class="num">٤</span><span class="era f2">الشروط والظن والفروض</span></div>
+      <h3>الشروط والأسباب، والظن والشك، والأوامر والفروض، وقول الصحابي</h3>
+      <p>الفرق بين السبب والشرط، وحكم الظن والشك وحديث النفس، وفورية الأمر المطلق، والفروض العينية والكفائية، والأمر بعد النهي، وتنوع وجوه العبادة، ومن يُحتج بفعلهم وقولهم.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture5.html">
+      <div class="top"><span class="num">٥</span><span class="era f3">الأدلة والنية والفاسد</span></div>
+      <h3>الأدلة الأربعة والقياس، والنية والحيلة، والمضي في الفاسد، وما يسقط الإثم والضمان</h3>
+      <p>حجة التكليف وأدلتها الأربعة، وتعريف القياس وأركانه وأدلة حجيته، ثم النية والحيلة، وحكم المضي في الفاسد وقطع النفل، وأثر الجهل والإكراه والنسيان في إسقاط الإثم والضمان.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture6.html">
+      <div class="top"><span class="num">٦</span><span class="era f3">الضمان والعقود والعرف</span></div>
+      <h3>الضمان، والعقود، والعرف، وشرط الملك في العقد</h3>
+      <p>قاعدة ضمان المتلَف وحالاته وكيفيته في المثلي والمتقوَّم، ثم أقسام العقود والغرر، وتحديد المطلق بالعرف، وشرط الملك والولاية، والرضا والعلم، وتنازع المتعاقدين في صحة العقد.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture7.html">
+      <div class="top"><span class="num">٧</span><span class="era f3">الدعاوى والأمانات</span></div>
+      <h3>الدعاوى والبينات، ودعاوى الأمناء، والشروط في العقود</h3>
+      <p>البيّنة وأنواعها واليمين على المنكر والقضاء بالنكول، ودعاوى الأمناء في الردّ والتلف، ووجوب أداء الأمانة وأخذ الحق الشرعي سرًّا، وما يثبت تبعًا، والشرط المفسد للعقد وحكم الشروط بين المتعاقدين، ثم أول القواعد الفقهية العامة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture8.html">
+      <div class="top"><span class="num">٨</span><span class="era f3">القواعد ودلالات الألفاظ</span></div>
+      <h3>قواعد فقهية عامة، ودلالات الألفاظ</h3>
+      <p>بقية القواعد الفقهية العامة: الاستدامة، واليقين والشك، ورتب النفي، والقيد، وغلبة الظن، والقرعة، وتعجّل الشيء، ومضاعفة الغُرم، وما أُبين من الحي؛ ثم دلالات الألفاظ: «كان»، وصيغ العموم، والإطلاق، والعبرة بعموم اللفظ، والتخصيص والتقييد.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>مفاتيح الكتاب</h2><span class="muted">أهم المصطلحات وأين تجدها</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>معناه في الكتاب</th><th>القسم</th></tr></thead>
+      <tbody>
+        <tr><td>أصول الفقه</td><td>موضوع البحث فيها الأدلة من الكتاب والسنة والإجماع والقياس وما يتعلق بذلك</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>قواعد الفقه</td><td>موضوعها البحث في الفقه الذي هو العلم بالأحكام الشرعية الفرعية؛ فهي قواعد للفقه لا لأصوله</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>أصول الأحكام</td><td>أدلتها، وسُمِّيت أصولًا لأن الأحكام تُبنى عليها</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الحمد</td><td>وصف المحمود بالكمال، فإن كُرِّر سُمِّي ثناءً</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الحاجة</td><td>أدنى من الضرورة: يكون الإنسان محتاجًا للشيء لكن لو فقده لم يتضرر</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>العَرِيَّة</td><td>بيع الرطب على رؤوس النخل بالتمر</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>انفكاك الجهة</td><td>أن يكون تحريم الشيء لأجل شيء آخر</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الأصل في العبادات</td><td>المنع؛ لا تُجاز عبادة إلا بإذن الشارع</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الأوامر التأديبية</td><td>ما قُصد به التأدب، فيُحمل على الاستحباب ما لم توجد قرينة تدل على الوجوب</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الفعل المجرد</td><td>فعل النبي ﷺ الذي لم يقترن بأمر، ولا يدل على الوجوب</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>العلة المنصوصة</td><td>العلة التي يتبعها الحكم وجودًا وعدمًا</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>السبب</td><td>موجبٌ للحكم، والفعل قبله لا يصح</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>الشك</td><td>في القسم الرابع: التردد بين شيئين، ويقابله اليقين؛ وفي القسم الثامن: ما تساوى فيه الأمران، فيرجع إلى اليقين ويبني على الأقل</td><td><a href="lecture4.html">٤</a>، <a href="lecture8.html">٨</a></td></tr>
+        <tr><td>الوهم</td><td>الشك المرجوح، وهو ضدّ الظن، لا يُلتفت إليه ولا يُعمل به</td><td><a href="lecture4.html">٤</a>، <a href="lecture8.html">٨</a></td></tr>
+        <tr><td>فرض العين</td><td>ما يُطلب من كل شخص بعينه، وهو أكثر المأمورات</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>فرض الكفاية</td><td>ما يُقصد به حصول الشيء بغض النظر عن الفاعل</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>حجة التكليف</td><td>الأدلة التي يحصل بها تكليف العباد وتثبت بها الأحكام العقدية والعملية</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>القياس</td><td>إلحاق فرعٍ بأصلٍ في حكمٍ لعلةٍ جامعة</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الحيلة</td><td>عملُ ما ظاهره الإباحة لانتهاك محرّم أو إسقاط واجب</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الفاسد</td><td>ما لا تترتب عليه أحكام</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الإكراه</td><td>الإلجاء إلى الشيء بحيث يفعله الإنسان غير مختارٍ له</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>المثلي</td><td>على الصحيح: ما له مماثل، مطابقٌ تمامًا أو مقارب</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>الحرز</td><td>كل ما تُحفظ به الأموال</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>الهبة</td><td>التبرّع بمالٍ بلا عوض</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>البيّنة</td><td>كل ما أبان الحق وأظهره، من شهود أو قرائن أو عادات أو غيرها (على القول الراجح)</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>النكول</td><td>الامتناع عن اليمين، ويُقضى به في المال وما يُقصد به المال</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المدّعي</td><td>من يدّعي خلاف الأصل؛ والمنكر من يُثبت الأصل</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>الأمين</td><td>كل من حصلت العين بيده بإذن من الشرع أو بإذن من المالك</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المشغول (في القاعدة)</td><td>عقد لا يصح أن يُعقد عليه عقد يُبطل العقد</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المطلق والعام</td><td>المطلق يتناول جميع أفراده بالبدل، والعام يتناولها بالشمول</td><td><a href="lecture8.html">٨</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على الكتاب</h2><span class="muted">٨ أسئلة تعبُر الأقسام</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين أقسام الكتاب؛ فاختر إجابتك ليظهر الشرح. ولكل قسمٍ أسئلته الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">قال الناظم: «اغتنم القواعد الأصولا فمن تفته يحرم الوصولا»؛ فما فائدة القواعد لطالب العلم بحسب الشرح؟</p>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">أنها تغنيه عن معرفة الأدلة من الكتاب والسنة.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">أنها تجعل كل المسائل الفقهية مسألة واحدة.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">أنها خاصة بالمسائل التي لا دليل عليها.</span></label>
+    <label class="opt ok"><input type="radio" name="gq1"><span class="t">أنه يرد بها جزئيات المسائل إلى أصولها.</span></label>
+    <p class="exp">أما من يحفظ المسائل دون القواعد فإذا جاءته مسألة خارجة عما يحفظ توقف؛ ومن أمثلة ذلك أن من عرف قاعدة «الأصل في الأشياء الحل» عرف أن من ادعى خلاف الأصل فعليه الدليل.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الفرق في الأصل بين المعاملات والعبادات كما قرره الناظم؟</p>
+    <label class="opt ok"><input type="radio" name="gq2"><span class="t">المعاملات على الحل، والعبادات على المنع إلا بإذن.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما الأصل فيه المنع حتى يقوم دليل على الحل.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما الأصل فيه الحل حتى يقوم دليل على المنع.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">المعاملات الأصل فيها المنع، والعبادات الأصل فيها الحل.</span></label>
+    <p class="exp">وفي البيت: «والأصل في الأشياء حل وامنع عبادة إلا بإذن الشارع»؛ ولا بد أن توافق العبادة الشرع في سببها وجنسها وقدرها وكيفيتها وزمانها ومكانها.</p>
+  </div>
+  <div class="mcq">
+  <p class="q">ما الذي يجمع قاعدة «الرجوع للأصل عند الشك» في القسم الثالث وعدم اعتبار الشك بعد الفعل في القسم الرابع؟</p>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">أن الشك يوجب إعادة العبادة احتياطًا في الحالين.</span></label>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">أن العبرة في الحالين بما في نفس الأمر لا بظن المكلف.</span></label>
+  <label class="opt ok"><input type="radio" name="gq3"><span class="t">أنهما مأخوذان من حديث «حتى يسمع صوتًا أو يجد ريحًا».</span></label>
+  <label class="opt"><input type="radio" name="gq3"><span class="t">أنهما خاصّان بالطهارة دون سائر الأبواب.</span></label>
+  <p class="exp">فالأصل بقاء ما كان على ما كان؛ ولذا عُدّ هذا الحديث قاعدةً تنفع في العبادات والمعاملات والأنكحة والطلاق وغيرها.</p>
+</div>
+  <div class="mcq">
+  <p class="q">في القسمين قاعدتان عن «الأمر بعد النهي»؛ فما القول الذي رجّحه الناظم فيه؟</p>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">أنه للوجوب كسائر الأوامر.</span></label>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">أنه للاستحباب في كل حال.</span></label>
+  <label class="opt"><input type="radio" name="gq4"><span class="t">أنه للإباحة دائمًا، وهو قول أكثر الأصوليين.</span></label>
+  <label class="opt ok"><input type="radio" name="gq4"><span class="t">أنه لرفع النهي، فيعود الحكم إلى ما كان.</span></label>
+  <p class="exp">قال: «خُذ به تَفِي» أي: هذا أقرب؛ وفي القسم الثالث: الأمر بالاصطياد بعد الحِلّ يفيد رفع النهي، وقد يكون الصيد واجبًا أو مستحبًّا بحسب ما يقترن به.</p>
+</div>
+  <div class="mcq">
+    <p class="q">محرمٌ قتل صيدًا يظنه مما يُباح قتله، ورجلٌ ذبح شاةً لغيره يظنها شاته؛ لماذا لم يضمن الأول وضمن الثاني؟</p>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">لأن الأول ناسٍ معذور، والثاني جاهلٌ غير معذور بجهله.</span></label>
+    <label class="opt ok"><input type="radio" name="gq5"><span class="t">لأن حق الله مبنيٌّ على المسامحة، وحق المخلوق على المشاحّة.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">لأن الصيد ليس متلَفًا مضمونًا في أصله.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">لأن الثاني آثمٌ والأول غير آثم.</span></label>
+    <p class="exp">فقاعدة «كل مُتلَفٍ مضمون» يُستثنى منها في حق الله ما أُتلف جهلًا أو نسيانًا أو إكراهًا؛ أما في حق المخلوق فيسقط الإثم ولا يسقط الضمان.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">بمَ استدل الشارح على صحة تصرّف الفضولي إذا أجازه المالك؟</p>
+    <label class="opt ok"><input type="radio" name="gq6"><span class="t">بالأثر قياسًا على حديث أبي هريرة، وبالنظر تعليلًا.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">بالإجماع على صحة كل عقدٍ أجازه المالك.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">بالاستحسان؛ لأن في بيعه غبطةً ظاهرةً ومصلحةً للمالك.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">باستصحاب الحال، لأن الأصل جواز التصرف.</span></label>
+    <p class="exp">فالمنع لحق المالك، فإذا أذن فقد أسقط حقه؛ وهذا تطبيقٌ لما في القسم الخامس من أن القياس والنظر الصحيح من أدلة الحجة، وأن الاستحسان ليس بدليل.</p>
+  </div>
+  <div class="mcq">
+  <p class="q">ما الذي يجمع بين تعريف المدّعي في الخصومات وقاعدة «اليقين لا يزول بالشك»؟</p>
+  <label class="opt"><input type="radio" name="gq7"><span class="t">كلاهما مبنيّ على غلبة الظن عند تعذّر اليقين.</span></label>
+  <label class="opt ok"><input type="radio" name="gq7"><span class="t">كلاهما مبنيّ على اعتبار الأصل.</span></label>
+  <label class="opt"><input type="radio" name="gq7"><span class="t">كلاهما مبنيّ على القرعة عند الاشتباه.</span></label>
+  <label class="opt"><input type="radio" name="gq7"><span class="t">كلاهما مبنيّ على العرف والعادة.</span></label>
+  <p class="exp">فالمدّعي من يدّعي خلاف الأصل والمنكر من يُثبته، والأصل بقاء ما كان على ما كان حتى يأتي يقين يرفعه.</p>
+</div>
+  <div class="mcq">
+  <p class="q">أيّ الأمثلة يجمع قاعدتي «يثبت تبعًا ما لا يثبت استقلالًا» و«الاستدامة أقوى من الابتداء»؟</p>
+  <label class="opt"><input type="radio" name="gq8"><span class="t">بيع الحمل وحده، وعقد المحرم النكاح ابتداءً.</span></label>
+  <label class="opt"><input type="radio" name="gq8"><span class="t">بيع اللبن في الضرع، وتطيّب المحرم بعد الإحرام.</span></label>
+  <label class="opt ok"><input type="radio" name="gq8"><span class="t">بيع الشاة الحامل، وبقاء طيبٍ تطيّبه قبل الإحرام.</span></label>
+  <label class="opt"><input type="radio" name="gq8"><span class="t">رهن البيت المرهون لآخر، ومراجعة المطلقة بعد العدة.</span></label>
+  <p class="exp">في كلتا القاعدتين ما يُمنع مستقلًّا أو ابتداءً يجوز في حال أخرى: الحمل تبعًا لأمه، والطيب استدامةً.</p>
+</div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">ملخص «شرح منظومة أصول الفقه»</strong>
+      <p>ملخصٌ لشرح الشيخ العثيمين في ١٦٩ صفحة (٢٧ كراسة)، وهو المصدر الوحيد الذي بُنيت عليه الصفحات وترتيب مباحثها.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بخريطة الكتاب أعلاه، ثم مفاتيح الكتاب.</li>
+        <li>ادرس الأقسام بالترتيب: الخريطة الذهنية لكل قسم أولًا، ثم مباحثه ورسومه وجداوله.</li>
+        <li>اختم كل قسمٍ بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على النصوص والتقسيم</span>
+    <p>تقسيم الصفحات على مباحث الملخص نفسه. والآيات نُقلت من المصحف عند الجزم بلفظها مع ذكر السورة ورقم الآية، وإلا وُصف معناها. والأقوال منسوبةٌ إلى أصحابها كما في الملخص. وما اضطرب في الملخص أو انقطع نصُّه تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>مُدارسات</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>

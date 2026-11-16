@@ -1,15 +1,14 @@
 {
-  "baseUrl": "https://jasminma.github.io/binaamanhaji-bashaer/",
-  "siteName": "البناء المنهجي · دفعة البشائر",
+  "baseUrl": "https://mudarasat.pages.dev/",
+  "siteName": "مُدارسات",
   "ancestors": [
-    { "path": "",             "label": "البناء المنهجي" },
-    { "path": "level1",       "label": "المستوى الأول" },
-    { "path": "level1/stage2", "label": "المرحلة الثانية" },
-    { "path": "level1/stage3", "label": "المرحلة الثالثة" },
-    { "path": "level1/stage4", "label": "المرحلة الرابعة" },
-    { "path": "level2",       "label": "المستوى الثاني" },
-    { "path": "level2/stage1", "label": "المرحلة الأولى" },
-    { "path": "level2/stage2", "label": "المرحلة الثانية" },
-    { "path": "level2/stage3", "label": "المرحلة الثالثة" }
+    { "path": "",                "label": "مُدارسات" },
+    { "path": "quran-sciences",  "label": "علوم القرآن" },
+    { "path": "hadith-sciences", "label": "علوم الحديث" },
+    { "path": "usul-alfiqh",     "label": "أصول الفقه" },
+    { "path": "fiqh",            "label": "الفقه" },
+    { "path": "aqeeda",          "label": "العقيدة" },
+    { "path": "nahw",            "label": "النحو" },
+    { "path": "islamic-culture", "label": "الثقافة الإسلامية" }
   ]
 }

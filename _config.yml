@@ -2,4 +2,4 @@
 # The refs/ folders hold the source PDFs and transcripts used to write the lessons.
 # They stay in the repository for the authors but must never be served by the site.
 exclude:
-  - "level*/refs"
+  - "*/refs"

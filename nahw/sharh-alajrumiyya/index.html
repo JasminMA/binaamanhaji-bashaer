@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>شرح الأجرومية · مُدارسات</title>
+<meta name="description" content="شرح المقدمة الآجرومية لابن آجروم: ملخص سلسلة اللجنة العلمية في ثمانية أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُدارسات">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="شرح الأجرومية · مُدارسات">
+<meta property="og:description" content="شرح المقدمة الآجرومية لابن آجروم: ملخص سلسلة اللجنة العلمية في ثمانية أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta property="og:url" content="https://mudarasat.pages.dev/nahw/sharh-alajrumiyya/">
+<meta property="og:image" content="https://mudarasat.pages.dev/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مُدارسات">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/offline.js" defer></script>
+<script src="../../assets/progress.js" defer></script>
+<script src="../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+table.tbl a{color:var(--accent);font-weight:600}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../index.html">مُدارسات</a><span class="sep">‹</span><a class="tab" href="../index.html">النحو</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">شرح الأجرومية</a><a class="tab review" href="../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">النحو</span>
+  <h1>شرح الأجرومية</h1>
+  <p class="sub">على متن الآجرومية، ملخَّصًا في ثمانية أقسام على مجالس السلسلة</p>
+  <div class="meta">
+    <span class="chip">متن <b>ابن آجروم</b></span>
+    <span class="chip"><b>٨</b> أقسام</span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن الكتاب</h2></div>
+  <div class="prose">
+    <p><b>«شرح الأجرومية»</b> شرحٌ لمتن «المقدمة الآجرومية» لأبي عبد الله محمد بن محمد الصنهاجي المعروف بابن آجروم، وهذه الصفحات ملخَّصةٌ من تفريغ ملخَّص لسلسلة من ثمانية مجالس أعدّته لجنة علمية، مع الرجوع إلى نص المتن نفسه وإلى تشجيره. يبدأ بمقدمات دراسة النحو والخريطة العامة وباب الكلام، ثم الإعراب والبناء وعلاماته، ثم الأفعال ونواصبها وجوازمها، ثم الأسماء مرفوعاتها ومنصوباتها ومخفوضاتها، ويُختم بتطبيقات ونصائح.</p>
+    <p class="src">قُسّمت المادة على ثماني صفحات على مجالس السلسلة. ولكل صفحةٍ خريطةٌ ذهنية، ثم المباحث بالرسوم والجداول، ثم الخلاصة وأسئلة المراجعة. وحيث اختلف الملخص عن لفظ المتن اعتُمد لفظ المتن، وما بدا خطأً في الملخص أو التشجير تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>خريطة الكتاب</h2><span class="muted">أقسام الكتاب في نظرة واحدة</span></div>
+  <div class="panel scroll"><div class="panel scroll"><svg viewBox="0 0 830 430" width="100%" style="min-width:820px;display:block" role="img" aria-label="خريطة شرح الأجرومية في ثمانية أقسام: المدخل والكلام والكلمة، الإعراب والبناء، الأفعال ونواصبها، الجوازم وأدوات الشرط، المرفوعات (١)، النواسخ والتوابع، المفاعيل والحال والتمييز، الاستثناء والمنادى والمخفوضات">
+<path d="M640 208 C605 208 605 33 570 33 M420 33 C385 33 385 33 350 33 M640 208 C605 208 605 183 570 183 M420 183 C385 183 385 183 350 183 M640 208 C605 208 605 333 570 333 M420 333 C385 333 385 333 350 333" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--accent)"/>
+<path d="M640 208 C605 208 605 83 570 83 M420 83 C385 83 385 83 350 83 M640 208 C605 208 605 233 570 233 M420 233 C385 233 385 233 350 233 M640 208 C605 208 605 383 570 383 M420 383 C385 383 385 383 350 383" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--gold)"/>
+<path d="M640 208 C605 208 605 133 570 133 M420 133 C385 133 385 133 350 133 M640 208 C605 208 605 283 570 283 M420 283 C385 283 385 283 350 283" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--red)"/>
+<rect x="640" y="186" width="170" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="725" y="213" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--bg)">شرح الأجرومية</text>
+<rect x="420" y="17" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="38" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ١</text>
+<rect x="20" y="20" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="38" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المدخل والكلام والكلمة</text>
+<rect x="420" y="67" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="88" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٢</text>
+<rect x="20" y="70" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="88" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الإعراب والبناء</text>
+<rect x="420" y="117" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="138" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٣</text>
+<rect x="20" y="120" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="138" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الأفعال ونواصبها</text>
+<rect x="420" y="167" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="188" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٤</text>
+<rect x="20" y="170" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="188" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الجوازم وأدوات الشرط</text>
+<rect x="420" y="217" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="238" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٥</text>
+<rect x="20" y="220" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="238" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المرفوعات (١)</text>
+<rect x="420" y="267" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="288" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٦</text>
+<rect x="20" y="270" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="288" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">النواسخ والتوابع</text>
+<rect x="420" y="317" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="338" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٧</text>
+<rect x="20" y="320" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="338" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المفاعيل والحال والتمييز</text>
+<rect x="420" y="367" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="388" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٨</text>
+<rect x="20" y="370" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="388" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الاستثناء والمنادى والمخفوضات</text>
+</svg></div>
+<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p></div>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الأقسام</h2><span class="muted">اضغط على القسم لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">المدخل والكلام والكلمة</span></div>
+      <h3>مقدمات دراسة النحو، والخريطة العامة، وباب الكلام والكلمة</h3>
+      <p>لماذا نستصعب النحو وكيف نكسر الحاجز معه من تجربة «مدارج النحو»، وتنبيهات قبل دراسته، ثم الخريطة العامة لأبوابه الأربعة، وتعريف الكلام وأقسامه وعلامات الاسم والفعل والحرف.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f1">الإعراب والبناء</span></div>
+      <h3>الإعراب والبناء وعلامات الإعراب والمعربات</h3>
+      <p>المعرب والمبني في الحروف والأفعال والأسماء، والأسماء المبنية، والإعراب الظاهر والتقديري، ثم علامات الإعراب في المتن وجدول المعربات وأنواع الجملة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture3.html">
+      <div class="top"><span class="num">٣</span><span class="era f2">الأفعال ونواصبها</span></div>
+      <h3>باب الأفعال: الماضي والأمر والمضارع ونواصبه</h3>
+      <p>علامة كل فعل من الأفعال الثلاثة وحكمه، وبناء المضارع وحالات إعرابه، ثم نواصب المضارع العشرة بأمثلتها المعربة، والفرق بين لام التعليل ولام الجحود، وفاء السببية وواو المعية و«أو».</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture4.html">
+      <div class="top"><span class="num">٤</span><span class="era f2">الجوازم وأدوات الشرط</span></div>
+      <h3>جوازم المضارع: ما يجزم فعلًا وما يجزم فعلين</h3>
+      <p>علامات جزم المضارع الثلاث، وأدوات الجزم بقسميها في المتن ونظم ابن أُبّ، مع أمثلة معربة لكل أداة، والفرق بين لا الناهية والنافية، ومحل الضمير المتصل، وجواب الشرط إذا كان جملة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture5.html">
+      <div class="top"><span class="num">٥</span><span class="era f3">المرفوعات (١)</span></div>
+      <h3>باب الأسماء، والمرفوعات: الفاعل ونائبه والمبتدأ والخبر</h3>
+      <p>أنواع الأسماء الثلاثة في الخريطة العامة، ثم أول المرفوعات: الفاعل وتعريفه في الشرح والمتن، ونائب الفاعل وطريقة التفريق بينهما ببناء الفعل، والمبتدأ والخبر وأنواع الخبر، بجداول إعراب الأمثلة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture6.html">
+      <div class="top"><span class="num">٦</span><span class="era f3">النواسخ والتوابع</span></div>
+      <h3>النواسخ (كان وإنّ وظنّ) والتوابع الأربعة</h3>
+      <p>العوامل الداخلة على المبتدأ والخبر: كان وأخواتها، وإنّ وأخواتها ومعانيها، وظنّ وأخواتها، ثم التوابع: النعت الحقيقي والسببي، والعطف، والتوكيد اللفظي والمعنوي، وأقسام البدل.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture7.html">
+      <div class="top"><span class="num">٧</span><span class="era f3">المفاعيل والحال والتمييز</span></div>
+      <h3>المنصوبات (١): المفاعيل الخمسة، والحال، والتمييز</h3>
+      <p>أقسام المنصوبات في المتن والشرح، ثم المفاعيل الخمسة: المفعول به وضمائره، والظرف، والمفعول لأجله، والمفعول معه وأقسامه، والمفعول المطلق، ثم الحال والتمييز وشروطهما، مع أمثلة معربة من القرآن والحديث.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture8.html">
+      <div class="top"><span class="num">٨</span><span class="era f3">الاستثناء والمنادى والمخفوضات</span></div>
+      <h3>المنصوبات (٢): الاستثناء ولا والمنادى، ثم المخفوضات والتطبيقات</h3>
+      <p>أدوات الاستثناء وأحكام المستثنى بإلّا وغيرها، واسم لا النافية للجنس، وأنواع المنادى، ثم أقسام المخفوضات، وتطبيقات معربة على أبواب الآجرومية، ونصائح ختامية.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>مفاتيح الكتاب</h2><span class="muted">أهم المصطلحات وأين تجدها</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>معناه في الكتاب</th><th>القسم</th></tr></thead>
+      <tbody>
+        <tr><td>الكلام</td><td>اللفظ المركّب المفيد بالوضع (المتن)</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>اللفظ</td><td>صوتٌ مشتمل على بعض الحروف الهجائية</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>المفيد</td><td>ما يفيد فائدةً ومعنًى يحسن السكوت عليها، ولا ينتظر المستمع شيئًا آخر</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الحرف</td><td>ما لا يصلح معه دليل الاسم ولا دليل الفعل (المتن)؛ فعلامته عدمية</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الإعراب</td><td>تغيير أواخر الكلم لاختلاف العوامل الداخلة عليها لفظًا أو تقديرًا (المتن)</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>المبني</td><td>الذي لا يتغيّر آخره مهما تغيّرت العوامل الداخلة عليه</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الإعراب التقديري</td><td>إعرابٌ لا نرى علامته، ويكون في الألف للتعذّر وفي الواو والياء للثقل</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>جمع المؤنث السالم</td><td>ما سلم فيه بناء المفرد ويدلّ على أكثر من اثنتين بزيادة ألفٍ وتاء</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الفعل الماضي</td><td>ما يقبل التاء ساكنةً أو متحركةً في آخره، وهو مبنيٌّ على الفتح دائمًا</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>فعل الأمر</td><td>ما دلّ على الطلب مع قبول ياء المخاطبة، ويُبنى على ما يُجزم به مضارعه</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الفعل المضارع</td><td>ما يقبل دخول السين وسوف ولم؛ وفي المتن: ما كان في أوله إحدى الزوائد الأربع «أنيت»</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الأفعال الخمسة</td><td>كل فعل مضارع اتصلت به ألف الاثنين أو واو الجماعة أو ياء المخاطبة</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>لام الجحود</td><td>اللام المسبوقة بكونٍ منفي مثل «ما كان» و«لم يكن»</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>لام التعليل</td><td>اللام التي تعلّل حصول الفعل، مثل: ذهبت إلى مكة لأحجَّ</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>لا النافية</td><td>لا تعمل شيئًا في الفعل، وإنما تضيف معنى النفي</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>فعل الشرط وجوابه</td><td>الفعل الأول بعد أداة الشرط فعل الشرط، والثاني جواب الشرط</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>الفاعل</td><td>من قام بالفعل أو اتصف به وأُسند إليه (وفي المتن: الاسم المرفوع المذكور قبله فعله)</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>نائب الفاعل</td><td>أن يقوم المفعول به مقام الفاعل وينوب عنه، فيأخذ حكمه</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>المبتدأ</td><td>اسم مرفوع عارٍ عن العوامل اللفظية، أي اسم جاء في ابتداء الكلام</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الخبر</td><td>المتمّم لمعنى المبتدأ، أي الذي يكمّل معنى الجملة</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الناسخ</td><td>ما يدخل على المبتدأ والخبر فيغيّرهما، ككان وأخواتها</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>التوابع</td><td>النعت والعطف والتوكيد والبدل، وإعرابها بحسب إعراب ما قبلها</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>النعت</td><td>التابع الذي يكمّل متبوعه بدلالته على معنى فيه أو فيما يتعلق به</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>البدل</td><td>التابع المقصود بالحكم بلا واسطة</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>المفعول به</td><td>الاسم المنصوب الذي يقع عليه الفعل (المتن)</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المفعول فيه (الظرف)</td><td>اسمٌ منصوبٌ يدلّ على زمانِ أو مكانِ حدوث الفعل، على تقدير معنى «في»</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المفعول لأجله</td><td>الاسم المنصوب الذي يُذكر بيانًا لسبب وقوع الفعل، ويُسأل عنه بـ«لماذا»</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المفعول معه</td><td>الاسم الفضلة المنصوب المسبوق بواوٍ بمعنى «مع»</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>المفعول المطلق (المصدر)</td><td>المصدر المنصوب المؤكِّد للعامل، الذي يجيء ثالثًا في تصريف الفعل</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>الحال</td><td>الاسم المنصوب المفسّر لما انبهم من الهيئات (المتن)</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>التمييز</td><td>الاسم المنصوب المفسّر لما انبهم من الذوات (المتن)</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>الاستثناء المفرَّغ</td><td>الكلام الناقص المنفي الذي لا يوجد فيه المستثنى منه، فيُعرب ما بعد «إلّا» بحسب العوامل</td><td><a href="lecture8.html">٨</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على الكتاب</h2><span class="muted">٨ أسئلة تعبُر الأقسام</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين أقسام الكتاب؛ فاختر إجابتك ليظهر الشرح. ولكل قسمٍ أسئلته الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">مهارة التفكيك تفكّ العبارة إلى اسمٍ وفعلٍ وحرف؛ فما مهارة التحليل التي تليها؟</p>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">تحويل الجملة الاسمية إلى جملةٍ فعلية.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">حفظ حروف الجرّ وحروف القسم.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">رسم الخريطة العامة لعلم النحو.</span></label>
+    <label class="opt ok"><input type="radio" name="gq1"><span class="t">تحليل الكلمات إلى معرباتٍ ومبنيّات.</span></label>
+    <p class="exp">وهي موضوع الباب الثاني؛ وطبّقها الشرح بواجبين: التفكيك على سورة الضحى، والتحليل على سورة الفاتحة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">أيّ هذه العلامات تختصّ بالاسم ولا تدخل الفعل، بحسب علامات الاسم وأقسام الإعراب في المتن؟</p>
+    <label class="opt ok"><input type="radio" name="gq2"><span class="t">الخفض.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">الجزم.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">النصب.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">الرفع.</span></label>
+    <p class="exp">الخفض أول علامات الاسم في المتن، وفي باب الإعراب: للأفعال الرفع والنصب والجزم «وَلَا خَفْضَ فِيهَا»، وللأسماء الرفع والنصب والخفض «وَلَا جَزْمَ فِيهَا».</p>
+  </div>
+  <div class="mcq">
+    <p class="q">على أيّ شيءٍ يُبنى فعل الأمر «اُدْعُ» عند الشارح؟</p>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">على السكون لأنه صحيح الآخر.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">على حذف النون لأنه من الأفعال الخمسة.</span></label>
+    <label class="opt ok"><input type="radio" name="gq3"><span class="t">على حذف حرف العلة، كما يُجزم المعتلّ في «لم يقضِ».</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">على الفتح المقدّر لتوالي المتحركات.</span></label>
+    <p class="exp">لأن الأمر عند الشارح يُبنى على ما يُجزم به مضارعه، والمحذوف هنا الواو، وبقيت الضمة دليلًا عليها.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">متى يُبنى الفعل المضارع بعد أن قرّر المتن أنه «مَرْفُوعٌ أَبَدًا، حَتَّى يَدْخُلَ عَلَيْهِ نَاصِبٌ أَوْ جَازِمٌ»؟</p>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">إذا سبقه ناصبٌ أو جازم.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">إذا كان معتلّ الآخر بالألف أو الواو أو الياء.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">إذا وقع جوابًا للشرط.</span></label>
+    <label class="opt ok"><input type="radio" name="gq4"><span class="t">إذا اتصلت به نونُ النسوة أو التوكيد.</span></label>
+    <p class="exp">فيُبنى على السكون مع نون النسوة، وعلى الفتح مع نون التوكيد؛ وفي غير ذلك هو معرب: مرفوعٌ أو منصوبٌ أو مجزوم.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا تُذكر التوابع في أنواع الأسماء الثلاثة: المرفوعات والمنصوبات والمجرورات؟</p>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">لأنها أسماء مبنية لا يتغيّر آخرها.</span></label>
+    <label class="opt ok"><input type="radio" name="gq5"><span class="t">لأن إعرابها بحسب إعراب ما قبلها.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">لأنها لا تأتي إلا بعد الأفعال الناسخة.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">لأن لكل نوع منها توابع خاصة به لا تدخل غيره.</span></label>
+    <p class="exp">فإن كان ما قبلها مرفوعًا رُفعت، أو منصوبًا نُصبت، أو مجرورًا جُرّت؛ ولذلك عُدّت في المرفوعات السبعة، وفي المنصوبات، وفي المجرورات الثلاثة.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الذي يُنظر إليه للتفريق بين الفاعل ونائب الفاعل؟</p>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">علامة رفع الاسم: ضمة أو حرف.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">موقع الاسم: أول الجملة أو آخرها.</span></label>
+    <label class="opt ok"><input type="radio" name="gq6"><span class="t">بناء الفعل: للمعلوم أو للمجهول.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">نوع الاسم: ظاهر أو مضمر.</span></label>
+    <p class="exp">فالمبني للمعلوم يحتاج إلى فاعل، والمبني للمجهول يحتاج إلى نائب فاعل؛ فيُضمّ أول الماضي ويُكسر ما قبل آخره، ويُضمّ أول المضارع ويُفتح ما قبل آخره.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما إعراب «أَخَانَا» في قوله تعالى: ﴿وَنَحْفَظُ أَخَانَا﴾ كما في تطبيقات الشرح؟</p>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">مفعولٌ به منصوبٌ وعلامة نصبه الفتحة الظاهرة على آخره.</span></label>
+    <label class="opt ok"><input type="radio" name="gq7"><span class="t">مفعولٌ به منصوبٌ بالألف؛ لأنه من الأسماء الخمسة.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">فاعلٌ مرفوعٌ وعلامة رفعه الألف؛ لأنه مثنّى.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">حالٌ منصوبٌ وعلامة نصبه الألف.</span></label>
+    <p class="exp">فيجتمع باب المفعول به من المنصوبات مع علامات الإعراب الفرعية؛ والفاعل في الآية ضميرٌ مستترٌ تقديره نحن.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا جاء آخر «يشرحِ» مكسورًا في (لم يشرحِ المعلِّمُ الدرسَ) مع أنه مجزوم؟</p>
+    <label class="opt ok"><input type="radio" name="gq8"><span class="t">علامة جزمه السكون، واستُبدل بالكسرة لمنع التقاء ساكنين.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">لأن «لم» تجرّ الفعل المضارع بالكسرة.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">لأنه من الأفعال الخمسة فيُجزم بالكسرة.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">لأنه مضافٌ إلى «المعلِّم» فهو مجرور.</span></label>
+    <p class="exp">«لم» أداة جزم، والمضارع بعدها مجزوم؛ وفي (لن يشرحَ) منصوبٌ بالفتحة، وفي (يشرحُ) مرفوعٌ بالضمة.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">ملخص سلسلة «شرح الأجرومية»</strong>
+      <p>ملخصٌ للسلسلة في ثمانية مجالس (٤٦ صفحة)، وهو المصدر الأساسي للصفحات وترتيب مباحثها، مع نص المتن المشكول للاستشهاد بلفظه، وتشجيرٍ للأبواب.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بخريطة الكتاب أعلاه، ثم مفاتيح الكتاب.</li>
+        <li>ادرس الأقسام بالترتيب: الخريطة الذهنية لكل قسم أولًا، ثم مباحثه ورسومه وجداوله.</li>
+        <li>اختم كل قسمٍ بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على النصوص والتقسيم</span>
+    <p>تقسيم الصفحات على مباحث الملخص نفسه. والآيات نُقلت من المصحف عند الجزم بلفظها مع ذكر السورة ورقم الآية، وإلا وُصف معناها. والأقوال منسوبةٌ إلى أصحابها كما في الملخص. وما اضطرب في الملخص أو انقطع نصُّه تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>مُدارسات</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>

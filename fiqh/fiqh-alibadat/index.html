@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>فقه العبادات · مُدارسات</title>
+<meta name="description" content="فقه العبادات على المذهب الشافعي للشيخ الدكتور لبيب نجيب عبد الله: ملخص السلسلة في تسعة أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُدارسات">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="فقه العبادات · مُدارسات">
+<meta property="og:description" content="فقه العبادات على المذهب الشافعي للشيخ الدكتور لبيب نجيب عبد الله: ملخص السلسلة في تسعة أقسام على مباحثه، بالخرائط الذهنية والرسوم والجداول وأسئلة المراجعة">
+<meta property="og:url" content="https://mudarasat.pages.dev/fiqh/fiqh-alibadat/">
+<meta property="og:image" content="https://mudarasat.pages.dev/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مُدارسات">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/offline.js" defer></script>
+<script src="../../assets/progress.js" defer></script>
+<script src="../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+table.tbl a{color:var(--accent);font-weight:600}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../index.html">مُدارسات</a><span class="sep">‹</span><a class="tab" href="../index.html">الفقه</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">فقه العبادات</a><a class="tab review" href="../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">الفقه</span>
+  <h1>فقه العبادات</h1>
+  <p class="sub">على المذهب الشافعي للشيخ الدكتور لبيب نجيب عبد الله، ملخَّصًا في تسعة أقسام على محاضرات السلسلة</p>
+  <div class="meta">
+    <span class="chip">على <b>المذهب الشافعي</b></span>
+    <span class="chip"><b>٨</b> أقسام</span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن الكتاب</h2></div>
+  <div class="prose">
+    <p><b>«فقه العبادات على المذهب الشافعي»</b> سلسلة للشيخ الدكتور لبيب نجيب عبد الله، يشرح فيها «حقيبة الفقه الشافعي» الصادرة عن مكتب فقهاء للتدريب والاستشارات، وهذه الصفحات ملخَّصةٌ من تفريغها الملخَّص في تسع محاضرات. تبدأ بمدخلٍ في فقه العبادات وشروط الصلاة والطهارة، ثم صفة الصلاة وأنواعها، ثم الجنائز والزكاة، ثم الصيام والاعتكاف، وتنتهي بالحج إلى محظورات الإحرام.</p>
+    <p class="src">قُسّمت المادة على تسع صفحات على محاضرات السلسلة، وبعض الأبواب يمتد على أكثر من محاضرة فتُنبِّه كل صفحةٍ إلى موضع تتمّته. ولكل صفحةٍ خريطةٌ ذهنية، ثم المباحث بالرسوم والجداول، ثم الخلاصة وأسئلة المراجعة. والأحكام على المذهب الشافعي كما قررتها المحاضرات، وما نُسب فيها إلى غيره أو إلى بعض أئمة المذهب فهو منسوبٌ إلى أصحابه، وما بدا خطأً في المحاضرات تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>خريطة الكتاب</h2><span class="muted">أقسام الكتاب في نظرة واحدة</span></div>
+  <div class="panel scroll"><div class="panel scroll"><svg viewBox="0 0 830 480" width="100%" style="min-width:820px;display:block" role="img" aria-label="خريطة فقه العبادات في تسعة أقسام: الصلاة والمياه والنواقض، الوضوء والغسل، التيمم والنجاسات والمواقيت، صفة الصلاة والسهو، الجماعة والجمعة، المسافر والجنائز والزكاة، الأنصبة والمصارف، الصيام والاعتكاف، أركان الحج وواجباته">
+<path d="M640 233 C605 233 605 33 570 33 M420 33 C385 33 385 33 350 33 M640 233 C605 233 605 183 570 183 M420 183 C385 183 385 183 350 183 M640 233 C605 233 605 333 570 333 M420 333 C385 333 385 333 350 333" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--accent)"/>
+<path d="M640 233 C605 233 605 83 570 83 M420 83 C385 83 385 83 350 83 M640 233 C605 233 605 233 570 233 M420 233 C385 233 385 233 350 233 M640 233 C605 233 605 383 570 383 M420 383 C385 383 385 383 350 383" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--gold)"/>
+<path d="M640 233 C605 233 605 133 570 133 M420 133 C385 133 385 133 350 133 M640 233 C605 233 605 283 570 283 M420 283 C385 283 385 283 350 283 M640 233 C605 233 605 433 570 433 M420 433 C385 433 385 433 350 433" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--red)"/>
+<rect x="640" y="211" width="170" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="725" y="238" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--bg)">فقه العبادات</text>
+<rect x="420" y="17" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="38" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ١</text>
+<rect x="20" y="20" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="38" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الصلاة والمياه والنواقض</text>
+<rect x="420" y="67" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="88" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٢</text>
+<rect x="20" y="70" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="88" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الوضوء والغسل</text>
+<rect x="420" y="117" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="138" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٣</text>
+<rect x="20" y="120" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="138" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">التيمم والنجاسات والمواقيت</text>
+<rect x="420" y="167" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="188" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٤</text>
+<rect x="20" y="170" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="188" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">صفة الصلاة والسهو</text>
+<rect x="420" y="217" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="238" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٥</text>
+<rect x="20" y="220" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="238" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الجماعة والجمعة</text>
+<rect x="420" y="267" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="288" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٦</text>
+<rect x="20" y="270" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="288" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المسافر والجنائز والزكاة</text>
+<rect x="420" y="317" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="338" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ٧</text>
+<rect x="20" y="320" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="338" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الأنصبة والمصارف</text>
+<rect x="420" y="367" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="388" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٨</text>
+<rect x="20" y="370" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="388" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">الصيام والاعتكاف</text>
+<rect x="420" y="417" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--red-soft);stroke:var(--red)"/>
+<text x="495" y="438" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--red)">القسم ٩</text>
+<rect x="20" y="420" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--red)"/>
+<text x="185" y="438" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">أركان الحج وواجباته</text>
+</svg></div>
+<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p></div>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الأقسام</h2><span class="muted">اضغط على القسم لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">الصلاة والمياه والنواقض</span></div>
+      <h3>مدخل إلى فقه العبادات، وشروط الصلاة، والمياه ونواقض الوضوء</h3>
+      <p>أرباع الفقه الأربعة وأبواب فقه العبادات، وتعريف الصلاة ومتعلقاتها وشروط وجوبها وصحتها، ثم الطهارة وأقسام المياه، ونواقض الوضوء وما يحرم على المحدث.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f1">الوضوء والغسل</span></div>
+      <h3>آداب قضاء الحاجة، والوضوء، والمسح على الخفين، والغسل</h3>
+      <p>مستحبات قضاء الحاجة ومكروهاته ومحرماته والاستنجاء، ثم شروط الوضوء وفروضه وسننه، وأحكام المسح على الخفين، وموجبات الغسل وفروضه وسننه وما يحرم بالجنابة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture3.html">
+      <div class="top"><span class="num">٣</span><span class="era f2">التيمم والنجاسات والمواقيت</span></div>
+      <h3>التيمم والحيض والنجاسات، ومواقيت الصلاة والأذان</h3>
+      <p>يختم باب الطهارة بالتيمم وشروطه وأركانه ومبطلاته، والدماء الخارجة من المرأة (الحيض والنفاس والاستحاضة)، والنجاسات وتطهيرها، ثم يستأنف أحكام الصلاة بمواقيت الصلوات الخمس وأحكام الأذان والإقامة.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture4.html">
+      <div class="top"><span class="num">٤</span><span class="era f2">صفة الصلاة والسهو</span></div>
+      <h3>صفة الصلاة: أركانها وسننها ومبطلاتها، وسجود السهو وصلاة النفل</h3>
+      <p>يبيّن شرطي استقبال القبلة وستر العورة، وأركان الصلاة الثلاثة عشر، والأبعاض والهيئات، والمبطلات والمكروهات، وأحكام سجود السهو، ثم صلاة النفل من الرواتب إلى العيدين والكسوف والاستسقاء.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture5.html">
+      <div class="top"><span class="num">٥</span><span class="era f3">الجماعة والجمعة</span></div>
+      <h3>صلاة الجماعة وأحكام القدوة، وصلاة الجمعة</h3>
+      <p>حكم صلاة الجماعة وإدراكها وأعذار تركها والأحق بالإمامة وشروطها، ثم موقف المأموم ومكان الاقتداء وأحوال المأموم مع الإمام، ثم شروط الجمعة وسننها وشروط خطبتيها وأركانهما.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture6.html">
+      <div class="top"><span class="num">٦</span><span class="era f3">المسافر والجنائز والزكاة</span></div>
+      <h3>صلاة المسافر والجنائز، ومدخل إلى الزكاة</h3>
+      <p>قصر الصلاة وجمعها للمسافر وشروطهما، ثم صلاة الجنازة وما يشرع تجاه الميت والمريض، ثم تعريف الزكاة وشروط وجوبها والأموال التي تجب فيها وشروط زكاة الأثمان.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture7.html">
+      <div class="top"><span class="num">٧</span><span class="era f3">الأنصبة والمصارف</span></div>
+      <h3>أنصبة الزكاة، وزكاة الفطر، ومصارف الزكاة</h3>
+      <p>تتمة باب الزكاة: أنصبة الإبل والبقر والغنم، وزكاة الحبوب والثمار والمعدن والركاز وعروض التجارة، ثم زكاة الفطر وأوقاتها، وأحكام إخراج الزكاة، والأصناف الثمانية وصدقة التطوع.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture8.html">
+      <div class="top"><span class="num">٨</span><span class="era f3">الصيام والاعتكاف</span></div>
+      <h3>الصيام والاعتكاف</h3>
+      <p>شروط وجوب الصيام وأقسامه وأركانه، وثبوت دخول رمضان وخروجه، والمفطرات وكفارة الجماع، وما يستحب ويباح ويكره ويحرم في الصيام، ثم الاعتكاف: حكمه وأركانه ومبطلاته.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture9.html">
+      <div class="top"><span class="num">٩</span><span class="era f3">أركان الحج وواجباته</span></div>
+      <h3>الحج: شروطه وأركانه وواجباته ومحرمات الإحرام</h3>
+      <p>منزلة الحج ومعناه، وشروط وجوبه وصحته وإجزائه، والفرق بين أركانه وواجباته، والمواقيت، ودم ترك الواجب، ومحرمات الإحرام وفدية الأذى، والجماع وعقد النكاح وقتل الصيد.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>مفاتيح الكتاب</h2><span class="muted">أهم المصطلحات وأين تجدها</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>معناه في الكتاب</th><th>القسم</th></tr></thead>
+      <tbody>
+        <tr><td>الصلاة</td><td>أقوال وأفعال مخصوصة، مفتتحة بالتكبير، مختتمة بالتسليم غالبًا</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الطهارة</td><td>رفع الحدث وإزالة الخبث أو ما في معناهما أو على صورتهما (تعريف النووي)</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الماء الطهور</td><td>كل ماء نزل من السماء أو نبع من الأرض وبقي على أصل خلقته</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الماء المستعمل</td><td>ما استُعمل في رفع حدث أو إزالة خبث في طهارة واجبة وكان دون القلتين وانفصل عن العضو</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>المحارم</td><td>من حرم نكاحهن تأبيدًا بنسب أو رضاع أو مصاهرة</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>النية</td><td>قصد الشيء مقترنًا بفعله</td><td><a href="lecture2.html">٢</a>، <a href="lecture4.html">٤</a></td></tr>
+        <tr><td>الموالاة</td><td>المتابعة في غسل الأعضاء عضوًا بعد عضو بألا يؤخّر التالي حتى يجف الأول</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>النفاس</td><td>اسم للدم الخارج من المرأة بعد الولادة</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>التيمم</td><td>إيصال التراب الطهور إلى الوجه واليدين بنية مخصوصة</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>دم الاستحاضة</td><td>الدم الذي يخرج من المرأة في غير أيام الحيض وأيام النفاس</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الاستحالة</td><td>انقلاب الشيء من صفة إلى صفة أخرى</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>الأذان</td><td>الإعلام بالصلاة بألفاظ مخصوصة</td><td><a href="lecture3.html">٣</a></td></tr>
+        <tr><td>أبعاض الصلاة</td><td>سنن الصلاة المؤكدة التي يشرع للمصلي إذا تركها عمدًا أو سهوًا أن يسجد للسهو</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>هيئات الصلاة</td><td>سنن الصلاة غير المؤكدة، ولا يشرع سجود السهو إذا تركت</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>الاستسقاء</td><td>طلب السقيا من الله تعالى عند الحاجة، كانقطاع المطر وجفاف الأرض</td><td><a href="lecture4.html">٤</a></td></tr>
+        <tr><td>فرض الكفاية</td><td>الذي إذا قام به البعض سقط الإثم والحرج عن الباقي</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>القارئ</td><td>الذي يحسن قراءة الفاتحة بجميع حروفها وتشديداتها، حتى وإن كان لا يحسن سواها</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>الأمي</td><td>الذي لا يحسن الفاتحة</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>المتابعة</td><td>أن يبدأ المأموم في الفعل بعد أن يبدأ الإمام فيه، وقبل أن يفرغ الإمام منه</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>المستوطن</td><td>من اتخذ المكان وطنًا فلا يرحل عنه صيفًا ولا شتاءً</td><td><a href="lecture5.html">٥</a></td></tr>
+        <tr><td>القصر</td><td>أن يصلّي المسافر الصلاة الرباعية المؤدّاة ركعتين</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>المرحلة</td><td>مسيرة يوم ذهابًا</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>الزكاة (اصطلاحًا)</td><td>اسم لما يخرج عن مال أو بدن على وجه مخصوص</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>النصاب</td><td>مقدار محدد في الشرع إذا بلغه المال الزكوي وجبت الزكاة</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>السوم</td><td>أن بهيمة الأنعام ترعى في الكلأ المباح مجانًا، أو بمال قليل لا يُعدّ كلفة مقابل نمائها</td><td><a href="lecture6.html">٦</a></td></tr>
+        <tr><td>السائمة</td><td>التي ترعى في عشبٍ مباحٍ مجانًا أو مملوكٍ قيمته يسيرة، بحيث لا تُعدّ كلفةً في مقابل نمائها</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>الركاز</td><td>ما كان من دفين الجاهلية، أو من قومٍ أدركوا الإسلام ولم تبلغهم الدعوة</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>التجارة</td><td>تقليب المال لغرض الربح</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>الفقير</td><td>الذي لا مال له ولا كسب يقع موقعًا من كفايته</td><td><a href="lecture7.html">٧</a></td></tr>
+        <tr><td>الصيام (اصطلاحًا)</td><td>الإمساك عن المفطرات من طلوع الفجر إلى غروب الشمس</td><td><a href="lecture8.html">٨</a></td></tr>
+        <tr><td>الاعتكاف (اصطلاحًا)</td><td>لبثٌ مخصوص من شخصٍ مخصوص بنيةٍ مخصوصة</td><td><a href="lecture8.html">٨</a></td></tr>
+        <tr><td>الحج (اصطلاحًا)</td><td>قصد بيت الله الحرام للنسك مع الإتيان بالنسك</td><td><a href="lecture9.html">٩</a></td></tr>
+        <tr><td>الإحرام</td><td>نية الدخول في النسك</td><td><a href="lecture9.html">٩</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على الكتاب</h2><span class="muted">٨ أسئلة تعبُر الأقسام</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين أقسام الكتاب؛ فاختر إجابتك ليظهر الشرح. ولكل قسمٍ أسئلته الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">ما الأشياء الستة التي تحرم بسبب الجنابة؟</p>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">الصلاة والطواف ومس المصحف وحمله فقط.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">الصلاة والطواف والصوم والمكث في المسجد والعبور فيه وقراءة القرآن بقصد القراءة.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">الصلاة والصوم والطواف ومس المصحف والقراءة والأذان.</span></label>
+    <label class="opt ok"><input type="radio" name="gq1"><span class="t">ما يحرم بالحدث الأصغر، والمكث في المسجد، والقراءة بقصد القراءة.</span></label>
+    <p class="exp">الأربعة المحرمة على المحدث حدثًا أصغر (القسم الأول) تحرم بالجنابة أيضًا، ويزيد عليها اثنان (القسم الثاني)؛ أما مجرد العبور في المسجد فليس حرامًا.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الذي يجمع بين الماء المستعمل في طهارة واجبة والماء المتغيّر بمخالط طاهر تغيرًا كثيرًا؟</p>
+    <label class="opt ok"><input type="radio" name="gq2"><span class="t">كلاهما طاهر غير مطهِّر، فلا يصح به الوضوء ولا الغسل.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما نجس إذا كان دون القلتين.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما طهور مكروه كالماء المشمَّس.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">كلاهما يصح به رفع الحدث بالوضوء والغسل، دون إزالة الخبث عن البدن والثوب.</span></label>
+    <p class="exp">شرط الطهارة أن تكون بالماء المطلق (القسم الأول)، ومن شروط الوضوء التي هي شروط الغسل ألا يكون على العضو ما يغيّر الماء ويسلبه الطهورية (القسم الثاني).</p>
+  </div>
+  <div class="mcq">
+    <p class="q">جمعت شروط الصلاة بين الطهارة ودخول الوقت واستقبال القبلة وستر العورة؛ فأيّ هذه الشروط يسقط في نافلة السفر وشدة الخوف؟</p>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">الطهارة من الحدث.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">ستر العورة.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">دخول الوقت.</span></label>
+    <label class="opt ok"><input type="radio" name="gq3"><span class="t">استقبال القبلة.</span></label>
+    <p class="exp">ويسقط كذلك عند العجز عنه، لكن العاجز يعيد الصلاة، بخلاف نافلة السفر وشدة الخوف.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">الردة تبطل التيمم ولا تبطل الوضوء، والتيمم لا يصح قبل دخول الوقت؛ فما العلة التي ذكرتها السلسلة لذلك؟</p>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">أن التراب ليس من وسائل الطهارة.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">أن التيمم لا تشترط له النية.</span></label>
+    <label class="opt ok"><input type="radio" name="gq4"><span class="t">أن التيمم طهارة ضعيفة، طهارة ضرورة.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">أن التيمم يرفع الحدث رفعًا مؤقتًا إلى أن يجد الماء.</span></label>
+    <p class="exp">في القسم الثالث: الردة تبطل التيمم ولا تبطل الوضوء «لأن التيمم طهارة ضعيفة»، ولا يصح قبل دخول الوقت «لأن التيمم طهارة ضرورة، ولا ضرورة للتيمم قبل دخول الوقت». والتيمم لا يرفع الحدث وإنما يبيح الصلاة، فينوي به استباحة الصلاة، بخلاف الوضوء (القسم الثاني).</p>
+  </div>
+  <div class="mcq">
+  <p class="q">ما الوصف الذي يجمع حكم صلاة الجماعة (على معتمد المذهب) وحكم تغسيل الميت وتكفينه والصلاة عليه ودفنه؟</p>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">كلاهما سنة مؤكدة يُكره تركها.</span></label>
+  <label class="opt ok"><input type="radio" name="gq5"><span class="t">كلاهما واجب كفائي يسقط الإثم بقيام البعض به.</span></label>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">كلاهما فرض عين على كل مكلّف.</span></label>
+  <label class="opt"><input type="radio" name="gq5"><span class="t">الجماعة فرض عين، وأمور الميت سنة.</span></label>
+  <p class="exp">فالجماعة فرض كفاية في المكتوبات المؤدّاة للرجال البالغين الأحرار المقيمين (معتمد النووي والمذهب)، وما يُشرع تجاه الميت وجوبه كفائي.</p>
+</div>
+  <div class="mcq">
+  <p class="q">علامَ يدل أن السفر يبيح القصر والجمع والفطر، وأن المطر الشديد عذر في ترك الجماعة ويبيح جمع التقديم؟</p>
+  <label class="opt ok"><input type="radio" name="gq6"><span class="t">أن الشريعة جاءت بتيسير بعض الأحكام التي فيها مشقة.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">أن الرخص تُناط بكل سفر ولو كان معصية.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">أن الرخصة تبقى للمسافر بعد زوال العذر، كمن وصلت سفينته إلى بلده في أثناء الصلاة.</span></label>
+  <label class="opt"><input type="radio" name="gq6"><span class="t">أن الجماعة والجمع لا يتعلقان بالوقت.</span></label>
+  <p class="exp">لمّا كان السفر مظنة المشقة جاءت الشريعة بتيسير بعض الأحكام؛ ومن قواعد الباب: «إن الرخص لا تناط بالمعاصي» و«ما جاز لعذر بطل بزواله».</p>
+</div>
+  <div class="mcq">
+    <p class="q">أيّ هذه الكفارات أو الفديات جعلتها السلسلة على التخيير لا على الترتيب؟</p>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">كفارة الجماع في نهار رمضان.</span></label>
+    <label class="opt ok"><input type="radio" name="gq7"><span class="t">فدية الأذى لمن ارتكب محظورًا من محظورات الإحرام.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">دم ترك واجبٍ من واجبات الحج.</span></label>
+    <label class="opt"><input type="radio" name="gq7"><span class="t">فدية العاجز عن الصوم عجزًا دائمًا.</span></label>
+    <p class="exp">فدية الأذى: صوم ثلاثة أيام أو صدقة أو شاة (القسم التاسع)؛ أما الكفارة المغلظة فعتقٌ ثم صيامٌ ثم إطعام (القسم الثامن)، ودم ترك الواجب شاةٌ فإن لم يجد صام عشرة أيام.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">المدّ عند السلسلة نحو ٦٠٠ جرام، والصاع أربعة أمداد. ففي أيّ هذه المواضع يكون الواجب مدّين لكل مسكين؟</p>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">فدية العاجز عن الصوم عن كل يوم.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">إطعام ستين مسكينًا في الكفارة المغلظة.</span></label>
+    <label class="opt ok"><input type="radio" name="gq8"><span class="t">الصدقة في فدية الأذى في الحج.</span></label>
+    <label class="opt"><input type="radio" name="gq8"><span class="t">زكاة الفطر عن الشخص الواحد.</span></label>
+    <p class="exp">كل كفارةٍ عند فقهاء الشافعية مقدارها مدّ إلا فدية الأذى فمدّان (نصف صاع) (القسم التاسع)؛ وفدية العاجز والكفارة المغلظة مدٌّ (القسم الثامن)، وزكاة الفطر صاعٌ كامل (القسم السابع).</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">ملخص سلسلة «فقه العبادات على المذهب الشافعي»</strong>
+      <p>تفريغٌ ملخَّصٌ للسلسلة في تسع محاضرات، ٩٨ صفحة، وهو المصدر الوحيد الذي بُنيت عليه الصفحات وترتيب مباحثها.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بخريطة الكتاب أعلاه، ثم مفاتيح الكتاب.</li>
+        <li>ادرس الأقسام بالترتيب: الخريطة الذهنية لكل قسم أولًا، ثم مباحثه ورسومه وجداوله.</li>
+        <li>اختم كل قسمٍ بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على النصوص والتقسيم</span>
+    <p>تقسيم الصفحات على مباحث الملخص نفسه. والآيات نُقلت من المصحف عند الجزم بلفظها مع ذكر السورة ورقم الآية، وإلا وُصف معناها. والأقوال منسوبةٌ إلى أصحابها كما في الملخص. وما اضطرب في الملخص أو انقطع نصُّه تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>مُدارسات</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>

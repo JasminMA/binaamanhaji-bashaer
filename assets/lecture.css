@@ -1,4 +1,4 @@
-/* Shared styles for every lecture/lesson page under level2/stage3 (one folder per course).
+/* Shared styles for every lecture/lesson page (one folder per course under each specialty).
    Linked from each lecture page instead of an inline <style> copy.
    Base layout + نظم المعين additions + لغة المحدث additions; later sections only add new, scoped classes. */
 

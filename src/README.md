@@ -1,13 +1,13 @@
 # Lecture page sources
 
-The lecture pages (`level2/stage3/<course>/lectureN.html`) are **generated** from the files in this folder.
+The lecture pages (`<specialty>/<course>/lectureN.html`) are **generated** from the files in this folder.
 Do not edit the generated pages: the next build overwrites them. Edit the source, then build.
 
 ```
 src/
-  site.json                       names of the folders above a course (level, stage) for the breadcrumb
+  site.json                       names of the folders above a course (the specialty) for the breadcrumb
   templates/                      the shared markup: page shell, breadcrumb, previous/next bar
-  level2/stage3/<course>/
+  <specialty>/<course>/
     course.json                   course name, wording ("الدرس"/"المحاضرة"…) and the ordered lessons
     lectureN.html                 ONLY the lesson body, from <header id="main" tabindex="-1"> to the end of the last <section>
 build.ps1                         the generator (repo root)
@@ -28,18 +28,18 @@ and they also open straight from disk. `-Check` is for catching a forgotten rebu
 
 ## Add a lesson
 
-1. Create `src/level2/stage3/<course>/lectureN.html` with just the body (copy the structure of a sibling). It must start with
+1. Create `src/<specialty>/<course>/lectureN.html` with just the body (copy the structure of a sibling). It must start with
    `<header id="main" tabindex="-1">`: that is where the "skip to content" link lands (the build refuses a lesson without it).
 2. Add `{ "n": N, "title": "…" }` to `lessons` in that course's `course.json`.
    The title becomes the `<title>` (plus the course's `titleSuffix`).
 3. Run the build. The breadcrumb, the previous/next links of the neighbouring lessons and the new page appear by themselves.
-4. The course's `index.html` card and the counts on the stage/level pages are still written by hand
+4. The course's `index.html` card and the counts on the specialty and home pages are still written by hand
    (see the `site-index-sync` skill).
 
 ## Add a course
 
-Create `src/level2/stage3/<new-course>/` with a `course.json` (copy a sibling's) and its lesson files.
-A course under a different level or stage needs its folders added to `site.json`.
+Create `src/<specialty>/<new-course>/` with a `course.json` (copy a sibling's) and its lesson files.
+A course under a new specialty needs its folders added to `site.json`.
 
 ## Change the design
 
@@ -84,9 +84,9 @@ Lecture pages get the script from `src/templates/lecture.html`. The two course "
 
 ## Comparative glossary
 
-`level2/stage3/glossary/index.html` compares how the two stage-3 courses (نظم المعين and لغة المحدث) present the
+`hadith-sciences/glossary/index.html` compares how the two hadith-terminology courses (نظم المعين and لغة المحدث) present the
 same hadith terms. It is a hand-written index-style page (it uses `assets/site.css`, not the generator), linked from
-the stage page and from the "خريطة المصطلحات" section of both course pages.
+the specialty page and from the "خريطة المصطلحات" section of both course pages.
 
 - Every card is built only from what the lesson summaries say; keep it that way (check the source lesson, never memory).
 - Tags: `same` (agreement), `comp` (the lessons complement each other), `count` (a different count or grouping, same substance).
@@ -115,7 +115,7 @@ the description, an image and a title. Every page now carries them.
 - **Lecture pages** get them from the template. Each lesson in `course.json` needs a `"description"` (one or two sentences,
   the build refuses a lesson without one); reuse the lesson card text from the course page. The address of the site lives in
   `src/site.json` (`baseUrl`); preview images must be absolute addresses under it.
-- **Hand-written pages** (home, level, stage, course pages, glossary) carry the same block by hand: copy it from a sibling and change
+- **Hand-written pages** (home, specialty, course pages, glossary) carry the same block by hand: copy it from a sibling and change
   the description, `og:title` (same as the page title) and `og:url` (the page's real public address, ending in `/` for an `index.html`).
 - **Images:** `assets/og-card.png` (1200x630, the card chat apps show), `assets/favicon.svg` (tab icon) and `assets/apple-touch-icon.png`.
   They are made from `src/social/card.html` and `assets/favicon.svg` by `tools/make-social-images.ps1` (needs Microsoft Edge).
@@ -221,7 +221,7 @@ The site check only verifies that quizzes are well formed. Whether each marked a
 
 ```
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Summary
-powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path level2/stage3/nazm-almuaeen/lecture2.html
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path hadith-sciences/nazm-almuaeen/lecture2.html
 ```
 
 - `tools/list-quizzes.ps1` lists every multiple-choice question with its options, the `[CORRECT]` one and the explanation, plus the open Q&A
