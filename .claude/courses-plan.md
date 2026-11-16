@@ -81,7 +81,7 @@ Status: `-` not started · `1`…`5` last finished step · `done` committed and 
 | Course | Slug | Status |
 |---|---|---|
 | شرح الأجرومية | `sharh-alajrumiyya` | done |
-| فقه العبادات (6 lectures) | | - |
+| فقه العبادات (9 lectures) | `fiqh-alibadat` | done |
 | التأهيل الفقهي (Shafi'i fiqh qualification, القواعد الفقهية) | | - |
 
 Source folders: `D:\البناء المنهجي\المستوى الاول\المرحلة الرابعه\`. Level 1 pages (`level1/index.html`, `level1/stage4/index.html`) were created with the Ajrumiyya course. Stages 2 and 3 of Level 1: not started.
