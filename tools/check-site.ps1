@@ -15,6 +15,8 @@
     css        right shared stylesheet linked with the right ../ depth, no copied <style> in lecture
                pages, shared CSS has dark mode and closed comments (a stray */ silently drops a rule)
     ids        no duplicate ids; #fragment links and url(#x) references resolve
+    hierarchy  home links every specialty page, each specialty page links every course page of its folder,
+               no level/stage folders, no mention of the old program or cohort name
     links      every internal link points to a real file (and a real #fragment); no root-absolute links;
                no page that cannot be reached from the home page (orphans)
     security   no external scripts or http://, no inline handlers, no HTML-injection sinks in scripts,
@@ -426,6 +428,28 @@ foreach ($rel in $pageInfo.Keys) {
             }
         }
     }
+}
+
+# hierarchy: home -> specialty page -> course page (the site has no level/stage folders)
+$specialtyDirs = @($pageInfo.Keys | Where-Object { $_ -match '^[^/]+/index\.html$' } | ForEach-Object { $_.Substring(0, $_.IndexOf('/')) })
+foreach ($rel in ($pageInfo.Keys | Sort-Object)) {
+    if ($rel -match '^(level|stage)\d*/') { Fail $rel 0 'level/stage folders no longer exist: courses live under <specialty>/<course>/' }
+    if ($rel -match '^([^/]+)/([^/]+)/index\.html$') {
+        $spec = $Matches[1] + '/index.html'
+        if (-not $pageInfo.ContainsKey($spec)) { Fail $rel 0 "specialty page $spec is missing" }
+        elseif (-not $edges[$spec].Contains($rel)) { Fail $spec 0 "does not link to the course page $rel (add its card)" }
+    }
+}
+foreach ($d in $specialtyDirs) {
+    if ($pageInfo.ContainsKey('index.html') -and -not $edges['index.html'].Contains("$d/index.html")) { Fail 'index.html' 0 "home page does not link to the specialty page $d/index.html" }
+}
+
+# the site is general: no trace of the program or cohort it was first made for
+$brandRe = '\u0627\u0644\u0628\u0646\u0627\u0621 \u0627\u0644\u0645\u0646\u0647\u062C\u064A|\u0627\u0644\u0628\u0634\u0627\u0626\u0631'
+foreach ($rel in ($pageInfo.Keys | Sort-Object)) {
+    if ($rel -match '(^|/)refs/') { continue }
+    $txt = Read-Text (Join-Path $root $rel)
+    if ($txt -match $brandRe) { Fail $rel 0 'mentions the old program/cohort name; the site is branded only with its own name (src/site.json siteName)' }
 }
 
 # orphans: everything must be reachable from the home page

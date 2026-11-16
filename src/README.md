@@ -39,7 +39,9 @@ and they also open straight from disk. `-Check` is for catching a forgotten rebu
 ## Add a course
 
 Create `src/<specialty>/<new-course>/` with a `course.json` (copy a sibling's) and its lesson files.
-A course under a new specialty needs its folders added to `site.json`.
+A course under a new specialty needs the specialty added to `ancestors` in `site.json` (path = folder name, label = its Arabic name),
+an `index.html` for it (copy a sibling specialty page), and a card for it on the home page.
+`tools/check-site.ps1` fails if the home page misses a specialty or a specialty page misses one of its courses.
 
 ## Change the design
 

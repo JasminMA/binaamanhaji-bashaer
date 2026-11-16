@@ -3,7 +3,7 @@
 This file is the hand-over point between sessions and models. Any session starts by reading it,
 does the next open step for its model, and updates the progress table at the end.
 
-Standing decisions (Yasmin): Level 2 first; books are split on their own chapters; scanned-only
+Standing decisions (Yasmin): books are split on their own chapters; scanned-only
 sources are read from page images and done last; `refs/` holds the text extract and small summary
 PDFs only; commit and push after each course is complete; no Claude attribution in commits.
 
@@ -16,7 +16,7 @@ conversation of the step before it: everything it needs is in the repository.
 |---|---|---|---|
 | **1. Prepare** | Sonnet | Extract the PDF text, clean it, test whether it is scanned, list the chapter headings with page ranges, propose the slug and the page split. No summarising. | `refs/<name>_pdf.txt`, `refs/NOTES.md` (outline, page ranges, split, extraction problems) |
 | **2. Write** | Fable or Opus | Read the whole source. Write `course.json`, every `lectureN.html` (text, mind map, quiz, and a `<!--SVG:name-->` marker where a drawn diagram goes), the diagram definitions, and the course page body. Record anything in the source that looks wrong. | lesson sources, `refs/diagrams.py`, `refs/index-body.html`, "source issues" section in `NOTES.md` |
-| **3. Assemble** | Sonnet | Run the diagram script, build, `check-site`, `build -Check`, `list-quizzes`, the label-fit check in the browser. Create the stage page if new, update level and home pages. Fix mechanical faults only (markup, a label too long for its box, quiz position balance). Never change what a sentence says. | built pages, check results appended to `NOTES.md` |
+| **3. Assemble** | Sonnet | Run the diagram script, build, `check-site`, `build -Check`, `list-quizzes`, the label-fit check in the browser. Create the specialty page if new, update the specialty and home pages. Fix mechanical faults only (markup, a label too long for its box, quiz position balance). Never change what a sentence says. | built pages, check results appended to `NOTES.md` |
 | **4. Review** | Opus | Independent check of every fact, diagram label, verse reference and wording, and quiz answer against the source. Reads only the pages and `refs/`. Edits nothing. | `refs/REVIEW.md` (findings by severity) |
 | **5. Fix** | Fable or Opus | Apply the review's HIGH and MEDIUM findings and the sensible NOTEs in `src/`. Short step. | fixed sources, "resolved" marks in `REVIEW.md` |
 | **6. Ship** | Sonnet | Rebuild, rerun all checks, one commit for the course, push, update the table below. | commit on `add-courses`, updated table |
@@ -35,7 +35,7 @@ and hands step 2 and step 5 to a subagent on `fable` (or `opus`), and step 4 to 
 `opus`. No manual switching; the strong models are used only where the content is written or judged.
 
 **B. Manual switching.** Work in batches so the model changes rarely:
-1. Sonnet: step 1 for every course of a stage.
+1. Sonnet: step 1 for every course of a batch.
 2. Fable/Opus: step 2, one course per session.
 3. Sonnet: step 3 for the courses written.
 4. Opus: step 4, one course per session.
@@ -54,37 +54,65 @@ Still waiting on Yasmin: OK to download a mushaf text file for an automatic vers
 
 Status: `-` not started · `1`…`5` last finished step · `done` committed and pushed.
 
-### Level 2 · stage 2
-| Course | Slug | Status |
-|---|---|---|
-| شرح متن الورقات | `sharh-alwaraqat` | done (c0a39a7) |
-| المدخل إلى علم أصول الفقه ١–٧ | `madkhal-usul-alfiqh` | done |
-| شرح لمعة الاعتقاد | `sharh-lumat-alitiqad` | done |
-| طالب العلم والقراءة الأدبية | | dropped (Yasmin) |
-| دلائل أصول الإسلام | | - |
-| منهج الاستدلال | `manhaj-alistidlal` | done |
-| شرح منظومة أصول الفقه | `sharh-manzumat-usul-alfiqh` | done |
-| مركزيات الإصلاح | | dropped (Yasmin) |
-| جراحات المسلمين (scanned) | | - |
+The site is organised by specialty, not by level or stage (the site is now called مُدارسات and carries no
+program branding). A course lives at `<specialty>/<slug>/`, with its source in `src/<specialty>/<slug>/`.
+Specialties: `quran-sciences`, `hadith-sciences`, `usul-alfiqh`, `fiqh`, `aqeeda`, `nahw`,
+`islamic-culture` (general topics). A new specialty needs a folder entry in `src/site.json` and an
+index page. The "Source" column is only where the file sits under `D:\البناء المنهجي`; it does not
+appear on the site.
 
-### Level 2 · stage 1
-| Course | Slug | Status |
-|---|---|---|
-| الميسر في علوم القرآن | `muyassar-ulum-alquran` | done |
-| بوصلة المصلح | `bawsalat-almuslih` | done |
-| الغزو الباطني | | dropped (Yasmin) |
-| فصول في أصول التفسير | `fusul-usul-altafsir` | done |
-| تثبيت حجية السنة | `thabit-hujjiyat-alsunna` | done |
-| إعجاز القرآن (scanned) | | - |
+### quran-sciences
+| Course | Slug | Source | Status |
+|---|---|---|---|
+| الميسر في علوم القرآن | `muyassar-ulum-alquran` | L2 · stage 1 | done |
+| فصول في أصول التفسير | `fusul-usul-altafsir` | L2 · stage 1 | done |
+| إعجاز القرآن (scanned) | | L2 · stage 1 | - |
 
-### Level 1 · stage 4
-| Course | Slug | Status |
-|---|---|---|
-| شرح الأجرومية | `sharh-alajrumiyya` | done |
-| فقه العبادات (9 lectures) | `fiqh-alibadat` | done |
-| التأهيل الفقهي (Shafi'i fiqh qualification, القواعد الفقهية) | | - |
+### hadith-sciences
+| Course | Slug | Source | Status |
+|---|---|---|---|
+| شرح نظم المعين | `nazm-almuaeen` | L2 · stage 3 | done |
+| شرح لغة المحدث | `lughat-almuhaddith` | L2 · stage 3 | done |
+| تثبيت حجية السنة | `thabit-hujjiyat-alsunna` | L2 · stage 1 | done |
+| معجم المصطلحات المقارن (`glossary`, hand-written) | `glossary` | | done |
 
-Source folders: `D:\البناء المنهجي\المستوى الاول\المرحلة الرابعه\`. Level 1 pages (`level1/index.html`, `level1/stage4/index.html`) were created with the Ajrumiyya course. Stages 2 and 3 of Level 1: not started.
+### usul-alfiqh
+| Course | Slug | Source | Status |
+|---|---|---|---|
+| شرح متن الورقات | `sharh-alwaraqat` | L2 · stage 2 | done (c0a39a7) |
+| المدخل إلى علم أصول الفقه ١–٧ | `madkhal-usul-alfiqh` | L2 · stage 2 | done |
+| شرح منظومة أصول الفقه | `sharh-manzumat-usul-alfiqh` | L2 · stage 2 | done |
+
+### fiqh
+| Course | Slug | Source | Status |
+|---|---|---|---|
+| فقه العبادات (9 lectures) | `fiqh-alibadat` | L1 · stage 4 | done |
+| التأهيل الفقهي (Shafi'i fiqh qualification, القواعد الفقهية) | | L1 · stage 4 | - |
+
+### aqeeda
+| Course | Slug | Source | Status |
+|---|---|---|---|
+| شرح لمعة الاعتقاد | `sharh-lumat-alitiqad` | L2 · stage 2 | done |
+| منهج الاستدلال | `manhaj-alistidlal` | L2 · stage 2 | done |
+| دلائل أصول الإسلام | | L2 · stage 2 | - (specialty to decide) |
+
+### nahw
+| Course | Slug | Source | Status |
+|---|---|---|---|
+| شرح الأجرومية | `sharh-alajrumiyya` | L1 · stage 4 | done |
+
+### islamic-culture
+| Course | Slug | Source | Status |
+|---|---|---|---|
+| بوصلة المصلح | `bawsalat-almuslih` | L2 · stage 1 | done |
+| مآلات الخطاب المدني | `maalat-alkhitab-almadani` | L2 · stage 3 | done |
+| تاريخ الفكر الغربي الحديث | `western-thought` | L2 · stage 3 | done |
+| جراحات المسلمين (scanned) | | L2 · stage 2 | - |
+
+### Dropped by Yasmin
+طالب العلم والقراءة الأدبية، ومركزيات الإصلاح، والغزو الباطني.
+
+Source folders: `D:\البناء المنهجي\المستوى الاول\المرحلة الرابعه\` and its siblings. Level 1 stages 2 and 3: not started (decide each course's specialty when it is added).
 
 ## Open questions for Yasmin
 - «الورقات»: five places where the summary itself looks wrong (pp. 6, 10, 18, 27, 32) were left out or quoted as the summary's wording. Confirm or correct.
