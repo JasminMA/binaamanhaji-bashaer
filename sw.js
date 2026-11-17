@@ -11,7 +11,7 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = '7a8a070a438b';
+var VERSION = '84e26bca8ff0';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "aqeeda/index.html",
@@ -164,7 +164,14 @@ var FILES = [
   "usul-alfiqh/sharh-manzumat-usul-alfiqh/lecture5.html",
   "usul-alfiqh/sharh-manzumat-usul-alfiqh/lecture6.html",
   "usul-alfiqh/sharh-manzumat-usul-alfiqh/lecture7.html",
-  "usul-alfiqh/sharh-manzumat-usul-alfiqh/lecture8.html"
+  "usul-alfiqh/sharh-manzumat-usul-alfiqh/lecture8.html",
+  "usul-alfiqh/taahil-alfiqhi/index.html",
+  "usul-alfiqh/taahil-alfiqhi/lecture1.html",
+  "usul-alfiqh/taahil-alfiqhi/lecture2.html",
+  "usul-alfiqh/taahil-alfiqhi/lecture3.html",
+  "usul-alfiqh/taahil-alfiqhi/lecture4.html",
+  "usul-alfiqh/taahil-alfiqhi/lecture5.html",
+  "usul-alfiqh/taahil-alfiqhi/lecture6.html"
 ];
 
 self.addEventListener('install', function (event) {

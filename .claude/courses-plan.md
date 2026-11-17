@@ -81,13 +81,13 @@ appear on the site.
 |---|---|---|---|
 | شرح متن الورقات | `sharh-alwaraqat` | L2 · stage 2 | done (c0a39a7) |
 | المدخل إلى علم أصول الفقه ١–٧ | `madkhal-usul-alfiqh` | L2 · stage 2 | done |
+| التأهيل الفقهي (8 lectures; usul, follows the Waraqat verses of al-'Imriti) | `taahil-alfiqhi` | L1 · stage 4 | done |
 | شرح منظومة أصول الفقه | `sharh-manzumat-usul-alfiqh` | L2 · stage 2 | done |
 
 ### fiqh
 | Course | Slug | Source | Status |
 |---|---|---|---|
 | فقه العبادات (9 lectures) | `fiqh-alibadat` | L1 · stage 4 | done |
-| التأهيل الفقهي (Shafi'i fiqh qualification, القواعد الفقهية) | | L1 · stage 4 | - |
 
 ### aqeeda
 | Course | Slug | Source | Status |
@@ -108,6 +108,11 @@ appear on the site.
 | مآلات الخطاب المدني | `maalat-alkhitab-almadani` | L2 · stage 3 | done |
 | تاريخ الفكر الغربي الحديث | `western-thought` | L2 · stage 3 | done |
 | جراحات المسلمين (scanned) | | L2 · stage 2 | - |
+
+### Pending decision
+| Course | Source | Status |
+|---|---|---|
+| القواعد الفقهية (Dr. Lubayb Najib, 26 pp, a separate series from التأهيل الفقهي; `shamil-qawaid` file in the same source folder) | L1 · stage 4 | - (specialty to decide: fiqh) |
 
 ### Dropped by Yasmin
 طالب العلم والقراءة الأدبية، ومركزيات الإصلاح، والغزو الباطني.
