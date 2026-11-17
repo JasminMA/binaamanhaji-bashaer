@@ -77,7 +77,7 @@ appear on the site.
 | معجم المصطلحات المقارن (`glossary`, hand-written) | `glossary` | | done |
 | المدخل إلى علم الحديث (الشيخ طارق عوض الله) | `madkhal-ilm-alhadith` | L1 · stage 3 | - |
 | الفكر المنهجي عند المحدثين (د. همام عبد الرحيم) | `alfikr-almanhaji-almuhaddithin` | L1 · stage 3 | - |
-| المداخل الأولية إلى علم الحديث (د. تركي الغميز) | `almadakhil-alawwaliyya` | L1 · stage 3 | - |
+| المداخل الأولية إلى علم الحديث (د. تركي الغميز) | `almadakhil-alawwaliyya` | L1 · stage 3 | done |
 
 ### usul-alfiqh
 | Course | Slug | Source | Status |

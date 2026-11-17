@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>المداخل الأولية إلى علم الحديث · مُدارسات</title>
+<meta name="description" content="المداخل الأولية إلى علم الحديث للدكتور تركي الغميز: ملخص المحاضرة في قسمين، من نشأة علم الحديث وكتبه إلى مراحله ومدرستي المتقدمين والمتأخرين، بالخرائط الذهنية والرسوم وأسئلة المراجعة">
+<meta name="theme-color" content="#F3F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12171E" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُدارسات">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="المداخل الأولية إلى علم الحديث · مُدارسات">
+<meta property="og:description" content="المداخل الأولية إلى علم الحديث للدكتور تركي الغميز: ملخص المحاضرة في قسمين، من نشأة علم الحديث وكتبه إلى مراحله ومدرستي المتقدمين والمتأخرين، بالخرائط الذهنية والرسوم وأسئلة المراجعة">
+<meta property="og:url" content="https://mudarasat.pages.dev/hadith-sciences/almadakhil-alawwaliyya/">
+<meta property="og:image" content="https://mudarasat.pages.dev/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="مُدارسات">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/fonts.css">
+<link rel="stylesheet" href="../../assets/site.css">
+<script src="../../assets/offline.js" defer></script>
+<script src="../../assets/progress.js" defer></script>
+<script src="../../assets/quiz.js" defer></script>
+<style>
+main .in{gap:48px}
+main .in>*,section>*{min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.note{background:var(--gold-soft);border-inline-start:4px solid var(--gold);padding:12px 16px;border-radius:8px}
+.sum{background:var(--accent-soft);border-inline-start:4px solid var(--accent);padding:12px 16px;border-radius:8px}
+.cal-t{font-family:var(--display);font-size:1.05rem;display:block;margin-bottom:4px}
+.note .cal-t{color:var(--gold)} .sum .cal-t{color:var(--accent)}
+.hint{color:var(--muted);font-size:.88rem;text-align:center}
+svg{direction:ltr} svg text{font-family:var(--body)}
+.card .era.f1{background:var(--gold-soft);color:var(--gold)}
+.card .era.f2{background:var(--accent-soft);color:var(--accent)}
+.card .era.f3{background:var(--red-soft);color:var(--red)}
+table.tbl{border-collapse:collapse;width:100%;font-size:.92rem;min-width:620px}
+table.tbl th,table.tbl td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:start;vertical-align:top}
+table.tbl th{font-weight:600;color:var(--muted);font-size:.85rem;background:var(--bg)}
+table.tbl td:first-child{font-weight:600;white-space:nowrap}
+table.tbl a{color:var(--accent);font-weight:600}
+/* ===== أسئلة الاختيار من متعدد (بلا JavaScript) ===== */
+.quiz{display:flex;flex-direction:column;gap:10px}
+.mcq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.mcq .q{font-weight:600;margin:0 0 2px}
+.mcq .q::before{content:"؟ ";color:var(--accent);font-family:var(--display)}
+.mcq .opt{display:flex;gap:9px;align-items:flex-start;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--bg);color:var(--muted);line-height:1.7}
+.mcq .opt:hover{border-color:var(--accent)}
+.mcq .opt input{margin:.5em 0 0;accent-color:var(--accent);flex:0 0 auto}
+.mcq .opt .t{flex:1 1 auto}
+.mcq .opt input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mcq:has(input:checked) .opt{cursor:default}
+.mcq:has(input:checked) .ok{background:var(--accent-soft);border-color:var(--accent);color:var(--ink);font-weight:500}
+.mcq:has(input:checked) .ok .t::after{content:" ✓ الإجابة الصحيحة";color:var(--accent);font-weight:700;font-size:.85rem;white-space:nowrap}
+.mcq .opt:not(.ok):has(input:checked){background:var(--red-soft);border-color:var(--red);color:var(--ink)}
+.mcq .opt:not(.ok):has(input:checked) .t::after{content:" ✗";color:var(--red);font-weight:700}
+.mcq .exp{display:none;margin:4px 0 0;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:.95rem}
+.mcq:has(input:checked) .exp{display:block}
+.mcq .exp::before{content:"الشرح: ";font-family:var(--display);color:var(--gold);font-weight:700}
+.quiz .rst{align-self:flex-start;font-family:var(--body);font-size:.9rem;color:var(--accent);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+.quiz .rst:hover{border-color:var(--accent)}
+@media print{.mcq .exp{display:block}.quiz .rst{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
+<nav class="tabs" aria-label="التنقل"><div class="in"><a class="tab" href="../../index.html">مُدارسات</a><span class="sep">‹</span><a class="tab" href="../index.html">علوم الحديث</a><span class="sep">‹</span><a class="tab cur" href="index.html" aria-current="page">المداخل الأولية إلى علم الحديث</a><a class="tab review" href="../../review/index.html">مراجعة ▣</a><a class="tab search" href="../../search/index.html">بحث ⌕</a></div></nav>
+
+<header class="hero"><svg class="pattern" aria-hidden="true" width="100%" height="100%"><defs><pattern id="p" width="56" height="56" patternUnits="userSpaceOnUse"><path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#F2EFE6" stroke-width="1.2"/><circle cx="28" cy="28" r="6" fill="none" stroke="#F2EFE6" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#p)"/></svg>
+<div class="in">
+  <span class="badge">علوم الحديث</span>
+  <h1>المداخل الأولية إلى علم الحديث</h1>
+  <p class="sub">للدكتور تركي الغميز، ملخَّصًا في قسمين على نشأة علم الحديث وكتبه ومراحله ومدرستيه</p>
+  <div class="meta">
+    <span class="chip">محاضرة <b>الدكتور تركي الغميز</b></span>
+    <span class="chip"><b>قسمان</b></span>
+  </div>
+</div></header>
+
+<main id="main" tabindex="-1"><div class="in">
+
+<section id="sec-1">
+  <div class="sec-head"><h2>عن الكتاب</h2></div>
+  <div class="prose">
+    <p><b>«المداخل الأولية إلى علم الحديث»</b> محاضرةٌ للدكتور تركي الغميز، وهذه الصفحات ملخَّصةٌ من تفريغها الملخَّص في جزأين وتسعة محاور. تبدأ بنشأة علم الحديث وكتبه وصلته بالعلوم الأخرى، ثم مراحله ومدرستا المتقدمين والمتأخرين وأبواب كتبه.</p>
+    <p class="src">قُسّمت المادة على قسمين على جزأي المحاضرة. ولكل قسمٍ خريطةٌ ذهنية، ثم المباحث بالرسوم والجداول، ثم الخلاصة وأسئلة المراجعة. والأقوال منسوبةٌ إلى أصحابها كما في المحاضرة، وما بدا مشكلًا فيها من نسبة كتابٍ أو اسمٍ أو لفظٍ تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+<section id="sec-2">
+  <div class="sec-head"><h2>خريطة الكتاب</h2><span class="muted">أقسام الكتاب في نظرة واحدة</span></div>
+  <div class="panel scroll"><div class="panel scroll"><svg viewBox="0 0 909 130" width="100%" style="min-width:820px;display:block" role="img" aria-label="خريطة المداخل الأولية إلى علم الحديث في قسمين: النشأة والكتب والقواعد، المراحل والمدارس والأبواب">
+<path d="M640 58 C605 58 605 33 570 33 M420 33 C385 33 385 33 350 33" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--accent)"/>
+<path d="M640 58 C605 58 605 83 570 83 M420 83 C385 83 385 83 350 83" fill="none" stroke-width="1.6" opacity=".8" style="stroke:var(--gold)"/>
+<rect x="640" y="36" width="249" height="44" rx="22" style="fill:var(--ink)"/>
+<text x="764" y="63" text-anchor="middle" direction="rtl" font-size="15" font-weight="700" style="font-family:var(--display);fill:var(--bg)">المداخل الأولية إلى علم الحديث</text>
+<rect x="420" y="17" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--accent-soft);stroke:var(--accent)"/>
+<text x="495" y="38" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--accent)">القسم ١</text>
+<rect x="20" y="20" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--accent)"/>
+<text x="185" y="38" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">النشأة والكتب والقواعد</text>
+<rect x="420" y="67" width="150" height="32" rx="8" stroke-width="1.5" style="fill:var(--gold-soft);stroke:var(--gold)"/>
+<text x="495" y="88" text-anchor="middle" direction="rtl" font-size="13.5" font-weight="700" style="fill:var(--gold)">القسم ٢</text>
+<rect x="20" y="70" width="330" height="26" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--gold)"/>
+<text x="185" y="88" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">المراحل والمدارس والأبواب</text>
+</svg></div>
+<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p></div>
+</section>
+
+<section id="lectures">
+  <div class="sec-head"><h2>الأقسام</h2><span class="muted">اضغط على القسم لفتح صفحته</span></div>
+  <div class="grid">
+    <a class="card" href="lecture1.html">
+      <div class="top"><span class="num">١</span><span class="era f1">النشأة والكتب والقواعد</span></div>
+      <h3>نشأة علم الحديث وكتبه وصلته بالعلوم الأخرى</h3>
+      <p>نشأة علم الحديث ببعثة النبي ﷺ وأهمية دراسته، وأهم كتبه وكيفية التدرج فيها مع تنبيهات في الطلب، ثم ارتباطه بالعلوم الأخرى وكيفية استمداد قواعده من النقل والعقل وتصرفات السلف.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+    <a class="card" href="lecture2.html">
+      <div class="top"><span class="num">٢</span><span class="era f2">المراحل والمدارس والأبواب</span></div>
+      <h3>مراحل علم الحديث ومدرستا المتقدمين والمتأخرين وأبواب كتبه</h3>
+      <p>المراحل التي مرّ بها الحديث من السماع المباشر إلى النقد بعد زمن الصحابة، والفرق بين منهج المتقدمين والمتأخرين وأثره في الفقه، ثم سعة فنون علم الحديث وطرق ترتيب كتبه على الأبواب.</p>
+      <span class="go">افتح الصفحة ←</span>
+    </a>
+  </div>
+</section>
+
+<section id="sec-3">
+  <div class="sec-head"><h2>مفاتيح الكتاب</h2><span class="muted">أهم المصطلحات وأين تجدها</span></div>
+  <div class="panel scroll">
+    <table class="tbl">
+      <thead><tr><th>المصطلح</th><th>معناه في الكتاب</th><th>القسم</th></tr></thead>
+      <tbody>
+        <tr><td>الحديث</td><td>أقوال النبي ﷺ، وأفعاله، وتقريراته، وأوصافه الخَلْقية والخُلُقية</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>كتب الحديث</td><td>الكتب التي أُلّفت في جمع أحاديث النبي ﷺ، وأهمها الكتب الستة</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الصحيحان</td><td>صحيحا البخاري ومسلم، أهم الكتب الستة، وأفضلهما صحيح البخاري</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الموطأ</td><td>كتاب الإمام مالك، أصل الكتب الستة، وعليه بنى من جاء بعده</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>الشَّرَه في طلب العلم</td><td>أن يريد الطالب أن يبتلع العلم دفعةً واحدة</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>فقهاء المحدّثين</td><td>أفذاذٌ اجتمع لهم الحذق بقوةٍ وعمقٍ في فنّين، منهم أحمد والبخاري وأبو داود</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>عملية الموازنة</td><td>ضرب الأخبار ومقارنتها بعضها ببعض عند سماعها من أطرافٍ مختلفة حتى نصل للطرف الذي ضبط حكايتها</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>القواعد المتعلقة بالمتن</td><td>منها قواعد مختلف الحديث، ومقارنة الألفاظ لمعرفة من أخطأ ومن أصاب ومن عبّر بالمعنى ومن اختصر ومن زاد ومن نقص</td><td><a href="lecture1.html">١</a></td></tr>
+        <tr><td>المتقدمون</td><td>نقّاد الحديث: الأئمة الذين عُنوا بنقد الحديث والتفتيش فيه، ويُلحق بهم من كان على منهجهم ممن جاء بعدهم</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>المتأخرون</td><td>الذين جاؤوا بعد عصر الرواية وخالفوا أهل الحديث في منهج النقد، ويُسمّى منهجهم منهج الفقهاء أو الأصوليين</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>علم الرجال</td><td>أحد فنون علم الحديث، أصله معرفة الثقات من الضعفاء ومعرفة ما بُني عليه التوثيق والتضعيف</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>علم الاتصال</td><td>أحد فنون علم الحديث، من مسائله معرفة الرواة المدلّسين والرواة الذين سمعوا والذين لم يسمعوا</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>علم العلل</td><td>أحد فنون علم الحديث، وهو علمٌ مستقل له مؤلفاته الخاصة وبحوثه الكثيرة، ومنه «علل الدارقطني»</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>الجوامع</td><td>كتبٌ تجمع أبواب الدين، مثل الصحيحين</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>السنن</td><td>كتبٌ تختصّ بالحلال والحرام وما يتبعهما، مثل السنن الأربعة</td><td><a href="lecture2.html">٢</a></td></tr>
+        <tr><td>المصنّفات</td><td>كتبٌ مرتّبة على الأبواب تشمل المرفوع والموقوف</td><td><a href="lecture2.html">٢</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="sec-4">
+  <div class="sec-head"><h2>اختبارٌ جامعٌ على الكتاب</h2><span class="muted">٦ أسئلة على الكتاب كله</span></div>
+  <div class="prose">
+    <p class="src">أسئلةٌ تربط بين أقسام الكتاب؛ فاختر إجابتك ليظهر الشرح. ولكل قسمٍ أسئلته الخاصة في صفحته.</p>
+  </div>
+<form class="quiz" dir="rtl">
+  <div class="mcq">
+    <p class="q">من أيّ مصادر استمداد قواعد علم الحديث يُعدّ تثبّت عمر في خبر أبي موسى وإنكار عائشة حديث «إن الميت ليعذَّب ببكاء الحي»؟</p>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">من كتب أحاديث الأحكام عند المتأخرين.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">من القواعد الأصولية التي جمعها الشافعي.</span></label>
+    <label class="opt ok"><input type="radio" name="gq1"><span class="t">من تصرفات السلف وأئمة الحديث.</span></label>
+    <label class="opt"><input type="radio" name="gq1"><span class="t">من اصطلاحات المتأخرين في كتب المصطلح.</span></label>
+    <p class="exp">فالقواعد مبنية على النقل والعقل وتصرفات السلف، وقد استعمل المحدّثون بعد ذلك ما صنعه الصحابة من التثبّت وعرض الروايات على القرآن والنصوص الأخرى.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">ما الذي يجمع بين خبري عمر بن الخطاب (خبر عمار وخبر أبي موسى) في الجزء الأول من المحاضرة؟</p>
+    <label class="opt ok"><input type="radio" name="gq2"><span class="t">أنهما شاهدان على أن أحاديث الأفراد فيها ما يُردّ وما لا يُردّ.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">أنهما شاهدان على ردّ كل خبرٍ تفرّد به صحابي.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">أنهما شاهدان على عرض الروايات على القرآن.</span></label>
+    <label class="opt"><input type="radio" name="gq2"><span class="t">أنهما شاهدان على أن الصحابة لم يكونوا يسألون عن الإسناد.</span></label>
+    <p class="exp">وهو المعيار الدقيق الذي استعمله المحدّثون بعد ذلك؛ ولذا لم يقبل عمر خبر أبي موسى حتى أتاه بشاهدٍ معه.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">لماذا لا يمكن للفقيه أو المفسّر أن يكون مجتهدًا في فنّه دون علم الحديث؟</p>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">لأن علم الحديث نشأ قبل الفقه والتفسير.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">لأن كتب الفقه والتفسير خاليةٌ من الروايات.</span></label>
+    <label class="opt"><input type="radio" name="gq3"><span class="t">لأن العلوم الشرعية يمكن فصلها فصلًا تامًّا.</span></label>
+    <label class="opt ok"><input type="radio" name="gq3"><span class="t">لأنه لا يملك آلة تمييز الصحيح من الضعيف.</span></label>
+    <p class="exp">فمن كان مجرد ناقلٍ لصحة الحديث أو ضعفه فليس له آلة، والاختلاف في صحة الحديث ينبني عليه الاختلاف في مسائل الفنون الأخرى.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">خبر عمر بن الخطاب مع أبي موسى الأشعري في الاستئذان: كيف جاء في قسمي المادة؟</p>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">شاهدًا على السماع المباشر من النبي ﷺ في القسمين.</span></label>
+    <label class="opt ok"><input type="radio" name="gq4"><span class="t">شاهدًا من تصرفات السلف على القواعد، ثم شاهدًا على التثبت بعد وفاة النبي ﷺ.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">مثالًا على الترتيب على الأبواب في كتب السنن.</span></label>
+    <label class="opt"><input type="radio" name="gq4"><span class="t">مثالًا على اختلاف المتقدمين والمتأخرين في التصحيح.</span></label>
+    <p class="exp">ولذا أعاده الشيخ في الجزء الثاني شاهدًا على التثبت بعد الوفاة، وموطن الشاهد فيه قول عمر: «ومن يعلم هذا؟».</p>
+  </div>
+  <div class="mcq">
+    <p class="q">نقل القسم الأول قول أحمد: «لولا الشافعي ما عرفنا فقه الحديث». فإلى أيّ مدرسة يُحسب الشافعي وأحمد في القسم الثاني؟</p>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">مدرسة الفقهاء المتأخرين «الأصوليين».</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">مدرسة المتكلمين في نقد الحديث.</span></label>
+    <label class="opt"><input type="radio" name="gq5"><span class="t">مدرسةٍ مستقلة كمدرسة ابن حزم.</span></label>
+    <label class="opt ok"><input type="radio" name="gq5"><span class="t">مدرسة فقهاء المحدّثين «الأثر».</span></label>
+    <p class="exp">ومعهما مالك؛ فالتعلّق بالأثر والاستدلال وكثرة الرواية عندهم واضحٌ جدًّا، وإن كان أحمد أوسعهم رواية.</p>
+  </div>
+  <div class="mcq">
+    <p class="q">قرّر القسم الأول أن الاختلاف في صحة الحديث يُبنى عليه اختلاف الفروع. فبمَ مثّل القسم الثاني لذلك داخل المذهب الشافعي؟</p>
+    <label class="opt ok"><input type="radio" name="gq6"><span class="t">بالشافعي الذي توقّف في أحاديث معلولة، والنووي الذي صحّح أحاديث ليست صحيحة عند أهل الحديث.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">بابن حجر والعيني في شرحيهما على صحيح البخاري.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">بابن خزيمة وابن حبان في اشتراط الشروط الثلاثة الأولى.</span></label>
+    <label class="opt"><input type="radio" name="gq6"><span class="t">بالبخاري ومسلم في ترتيب كتابي الحج والصيام.</span></label>
+    <p class="exp">لأن النووي خالف في أصل منهج النظر، فتجد فرقًا شاسعًا بين فقهاء الشافعية المتقدمين والمتأخرين.</p>
+  </div>
+  <button type="reset" class="rst">أعد المحاولة من البداية ↺</button>
+</form>
+</section>
+
+<section id="sec-5">
+  <div class="sec-head"><h2>مراجع المادة</h2></div>
+  <div class="extras">
+    <div class="extra">
+      <strong class="ref-title">ملخص محاضرة «المداخل الأولية إلى علم الحديث»</strong>
+      <p>تفريغٌ ملخَّصٌ للمحاضرة في جزأين، ١٥ صفحة، وهو المصدر الوحيد الذي بُنيت عليه الصفحات وترتيب مباحثها.</p>
+    </div>
+    <div class="how">
+      <strong>طريقة المذاكرة المقترحة</strong>
+      <ol>
+        <li>ابدأ بخريطة الكتاب أعلاه، ثم مفاتيح الكتاب.</li>
+        <li>ادرس الأقسام بالترتيب: الخريطة الذهنية لكل قسمٍ أولًا، ثم مباحثه ورسومه وجداوله.</li>
+        <li>اختم كل قسمٍ بأسئلته، ثم اختبر نفسك في الاختبار الجامع هنا.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="note">
+    <span class="cal-t">ملاحظة على النصوص والتقسيم</span>
+    <p>تقسيم الصفحات على مباحث الملخص نفسه. والآيات نُقلت من المصحف عند الجزم بلفظها مع ذكر السورة ورقم الآية، وإلا وُصف معناها. والأقوال منسوبةٌ إلى أصحابها كما في الملخص. وما اضطرب في الملخص أو انقطع نصُّه تُرك ولم يُنقل.</p>
+  </div>
+</section>
+
+</div></main>
+<footer><div class="in"><span>مُدارسات</span><span>ملخصات للمذاكرة، والمرجع الأساسي هو المحاضرات نفسها</span></div></footer>
+</body>
+</html>
