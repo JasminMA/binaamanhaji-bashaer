@@ -11,7 +11,7 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = '84e26bca8ff0';
+var VERSION = '7d3e68c53dbd';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "aqeeda/index.html",
@@ -52,6 +52,10 @@ var FILES = [
   "assets/search-index.js",
   "assets/search.js",
   "assets/site.css",
+  "fiqh/alqawaid-alfiqhiyya/index.html",
+  "fiqh/alqawaid-alfiqhiyya/lecture1.html",
+  "fiqh/alqawaid-alfiqhiyya/lecture2.html",
+  "fiqh/alqawaid-alfiqhiyya/lecture3.html",
   "fiqh/fiqh-alibadat/index.html",
   "fiqh/fiqh-alibadat/lecture1.html",
   "fiqh/fiqh-alibadat/lecture2.html",

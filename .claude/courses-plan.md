@@ -75,6 +75,9 @@ appear on the site.
 | شرح لغة المحدث | `lughat-almuhaddith` | L2 · stage 3 | done |
 | تثبيت حجية السنة | `thabit-hujjiyat-alsunna` | L2 · stage 1 | done |
 | معجم المصطلحات المقارن (`glossary`, hand-written) | `glossary` | | done |
+| المدخل إلى علم الحديث (الشيخ طارق عوض الله) | `madkhal-ilm-alhadith` | L1 · stage 3 | - |
+| الفكر المنهجي عند المحدثين (د. همام عبد الرحيم) | `alfikr-almanhaji-almuhaddithin` | L1 · stage 3 | - |
+| المداخل الأولية إلى علم الحديث (د. تركي الغميز) | `almadakhil-alawwaliyya` | L1 · stage 3 | - |
 
 ### usul-alfiqh
 | Course | Slug | Source | Status |
@@ -88,6 +91,7 @@ appear on the site.
 | Course | Slug | Source | Status |
 |---|---|---|---|
 | فقه العبادات (9 lectures) | `fiqh-alibadat` | L1 · stage 4 | done |
+| القواعد الفقهية (د. لبيب نجيب) | `alqawaid-alfiqhiyya` | L1 · stage 4 | done |
 
 ### aqeeda
 | Course | Slug | Source | Status |
@@ -108,11 +112,6 @@ appear on the site.
 | مآلات الخطاب المدني | `maalat-alkhitab-almadani` | L2 · stage 3 | done |
 | تاريخ الفكر الغربي الحديث | `western-thought` | L2 · stage 3 | done |
 | جراحات المسلمين (scanned) | | L2 · stage 2 | - |
-
-### Pending decision
-| Course | Source | Status |
-|---|---|---|
-| القواعد الفقهية (Dr. Lubayb Najib, 26 pp, a separate series from التأهيل الفقهي; `shamil-qawaid` file in the same source folder) | L1 · stage 4 | - (specialty to decide: fiqh) |
 
 ### Dropped by Yasmin
 طالب العلم والقراءة الأدبية، ومركزيات الإصلاح، والغزو الباطني.
