@@ -11,7 +11,7 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = 'd9f70b9a728a';
+var VERSION = 'f9dda0051f5b';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "aqeeda/index.html",
