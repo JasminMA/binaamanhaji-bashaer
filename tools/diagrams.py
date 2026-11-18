@@ -58,7 +58,6 @@ def tree(label, root, branches, leaf_w=330, branch_w=190, root_w=170, min_width=
             out.append('<rect x="%d" y="%.0f" width="%d" height="%d" rx="12" stroke-width="1.2" style="fill:var(--paper);stroke:var(--%s)"/>' % (leaf_x, ly - box_h / 2, leaf_w, box_h, color))
             out.append('<text x="%.0f" y="%.0f" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">%s</text>' % (leaf_x + leaf_w / 2, ly + 4.5, esc(leaf)))
     out.append('</svg></div>')
-    out.append('<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p>')
     return '\n'.join(out)
 
 
@@ -108,5 +107,4 @@ def grid(label, headers, rows, widths, first_color='accent', min_width=640, row_
                 out.append('<rect x="%d" y="%d" width="%d" height="%d" rx="8" stroke-width="1.2" style="fill:var(--%s);stroke:var(--%s)"/>' % (xs[i] + 3, y, widths[i] - 6, row_h - 8, fill, stroke))
                 out.append('<text x="%.0f" y="%.0f" text-anchor="middle" direction="rtl" font-size="12.5" style="fill:var(--ink)">%s</text>' % (cx, y + (row_h - 8) / 2 + 4.5, esc(cell)))
     out.append('</svg></div>')
-    out.append('<p class="muted">على الجوال اسحب الرسم أفقيًا لرؤيته كاملًا.</p>')
     return '\n'.join(out)

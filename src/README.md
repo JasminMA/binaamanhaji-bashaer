@@ -261,6 +261,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools/list-quizzes.ps1 -Path
 Each course's `refs/` folder holds the books, summaries and transcripts the lessons were written from. They stay in the repository only so the
 authors (and the `quiz-answer-check` and `add-new-material` skills) can read them. **The site must never link to or serve them:**
 
-- Course pages name the sources in «مراجع المادة» as plain text (`<strong class="ref-title">`), never as a link.
+- Course pages do not describe or name the source files, and never link to them.
 - GitHub Pages skips them through `exclude` in `_config.yml`; Cloudflare Pages deletes them in its build command (see `DEPLOY.md`).
 - `tools/check-site.ps1` fails if any page links into `refs/`.
