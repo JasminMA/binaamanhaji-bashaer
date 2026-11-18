@@ -1,0 +1,152 @@
+# OUTLINE — الفكر المنهجي عند المحدثين (refs)
+
+Source: `refs/source.pdf` (76 pages; PDF 1 is the cover; **printed number = PDF number**: PDF 2 is printed «- 2 -», PDF 76 is «- 76 -»). Word export with NO usable text layer: read page images. Page refs below are PDF pages (= printed pages).
+
+## Cover (as printed, PDF 1)
+- «مُلخص كتاب:» / «"الفكرُ المنهجيُّ عندَ المحدِّثين"» / «للدكتور» / «همام عبد الرحيم سعيد» / «-حفظه الله وفك أسره-».
+- Full author name on the cover is **همام عبد الرحيم سعيد** (not just «همام عبد الرحيم»).
+- The book belongs to the «سلسلة كتاب الأمة» (PDF 7 mentions «خطة سلسلة (الأمة)»); the foreword is by **عمر عبيد حسنة** (PDF 2). The author says the book grew out of his lecture «منهجية علماء الحديث» (PDF 6).
+
+## Headings per page
+- 1 — cover
+- 2 — **تقديمٌ بقلم: عمر عبيد حسنة**: حفظ الكتاب والسنة؛ النقل (الرواية) والفقه (الدراية)؛ «وبعد»: أهمية الكتاب في التأصيل للفكر المنهجي
+- 3 — غياب المنهج والفوضى الفكرية؛ «علماء الحديث اعتبروا الذين يكذبون للرسول ﷺ كالذين يكذبون عليه»؛ قول مالك «إن من شيوخي من أستسقي بهم…»؛ منهج المحدثين «منطق المنقول وميزان تصحيح الأخبار»؛ أهل الأثر سدّ أمام الخرافة والبدعة
+- 4 — تجميد العلوم المنهجية؛ ضرورة الإفادة من منهج المحدثين في إعادة كتابة التاريخ؛ محاولة د. يوسف العش؛ جهود د. عماد الدين خليل
+- 5 — منهج ابن خلدون في نقد المروي؛ إشاعة علوم المنهج؛ «وبعد»: مزية الكتاب والمؤلف؛ [تنبيه الناقل]
+- 6 — **مقدّمة** (المؤلف): المنهجية والتقدم؛ المنهجية القرآنية من «اقرأ» إلى «واتقوا يومًا»؛ **وصفٌ لأفكارِ وموضوعاتِ الكتاب**
+- 7 — (تتمة الوصف): كتابة الحديث، الفتنة، الإسناد، الرواية والدراية، ثلث الكتاب لمناهج أشهر المحدثين
+- 8 — **منهجيةٌ قرآنيةٌ عامّة**: تحرير العقل من الأساطير والتقليد؛ التثبت وخبر الفاسق والبرهان
+- 9 — الحاجة إلى تنقية الحديث؛ الكلام في الرجال ليس غيبة (ابن المبارك، يحيى بن سعيد)؛ مقدمة «التمييز» لمسلم؛ المستور؛ منهج المحدثين منهج تاريخي نقدي (شارل جنيبير)
+- 10 — **مفهومُ السُّنّةِ والحديث**؛ **السُّنّة في اللغة والاصطلاح**: أمّا في اللغة (ابن فارس، ابن الأعرابي، لسان العرب، بيت ذي الرمة)
+- 11 — وأمّا في الاصطلاح: السنة؛ مفهوم الحديث؛ التفريق بينهما (ابن مهدي: الثوري/الأوزاعي/مالك)؛ مثال «الوضوء مما مست النار»؛ **الخلاصة**
+- 12 — **مصدريةُ السُّنّة للأحكام والاحتجاجِ بها**: ترتيب المصادر؛ الخطيب (الكفاية)؛ حديث المقدام «ألا إني أوتيت القرآن ومثله»؛ «القرآن أحوج إلى السنة» (مكحول)؛ عمران بن حصين؛ محمد بن نصر المروزي: أوجه تصرف السنة
+- 13 — الأوجه الثلاثة للسنة الواجبة (تفسير، اختُلف فيها: ناسخة/مبيّنة، زيادة)؛ **حصرُ أحاديثِ النبيّ ﷺ** (ابن الجوزي، تلقيح فهوم أهل الأثر)
+- 14 — **تفاوتُ الصحابةِ في روايةِ الأحاديث** (4 أسباب)؛ **نماذجُ مِنَ الصحابةِ المكثرين والمُقلين من رواية الحديث**: المكثرون (أبو هريرة وعائشة)
+- 15 — (تتمة المكثرين)؛ المقلّون (أبو بكر وعثمان)؛ أصحاب الألوف؛ **مسؤوليةُ المنهج**؛ **كتابةُ الحديثِ بين النهيِ عنها والإذنِ بها** (رأي د. صبحي الصالح وردّ المؤلف)
+- 16 — حديث «لا تكتبوا عني» وحديث عبد الله بن عمرو «اكتب»؛ التوفيق: 1- حفظ القرآن من الاختلاط (القراءات الشاذة)؛ الخطابي (معالم السنن)
+- 17 — 2- الإذن بعد السنة السابعة؛ 3- النسخ؛ 4- لو قُدّر للسنة أن تُجمع؛ 5- الصحبة والممارسة؛ **الخلاصة**؛ حديث «اكتبوا لأبي شاه»
+- 18 — (تتمة)؛ **المنهجُ في زمنِ الصحابة**: حديث الزبير «من كذب عليّ»؛ أنس؛ ابن حجر (فتح الباري)
+- 19 — ورع الصحابة (ابن مسعود، أبو هريرة، ابن عمر، زيد بن أرقم، السائب بن يزيد)؛ طلب البيّنة: ميراث الجدة (أبو بكر)؛ حديث الاستئذان (عمر وأبو موسى)
+- 20 — (تتمة)؛ إملاص المرأة؛ **الصحابةُ لم يعرفوا الكذب**: «كذب» بمعنى أخطأ
+- 21 — (تتمة): «كذب نوف»؛ قصة ابن عُديس ونقد سندها؛ **نقدُ المتنِ في زمنِ الصحابة**: حديث «إن الميت ليعذب ببكاء أهله»
+- 22 — (تتمة): عائشة على عمر وابن عمر؛ حديث القليب؛ موقف الجمهور وتوجيه البخاري
+- 23 — **أثرُ الفتنِ على الحديثِ في عصرِ الصحابة**: الأثر الإيجابي (مقارنة باللحن)؛ ابن عباس وبُشير العدوي؛ ابن سيرين «لم يكونوا يسألون عن الإسناد»
+- 24 — **الاهتمامُ بالإسنادِ في زمنِ الصحابةِ والتابعين**: الرد على شاخت وروبسون؛ المراسيل
+- 25 — (تتمة)؛ **أقسامُ علمِ الحديث**؛ **علمُ الحديثِ روايةً**: التعريف والهدف؛ **الروايةُ من الصدرِ أو من الكتاب**: أ- من الصدر
+- 26 — التصحيف والتحريف (العسكري)؛ ب- من الكتاب: صحف الصحابة والتابعين (الصادقة، همام بن منبه…)
+- 27 — **التدوين** (الدافعان: صيانة الحديث، الخوف عليه)؛ عمر بن عبد العزيز وأبو بكر بن حزم؛ **الخلاصة**؛ التصنيف: الأصناف (أول من صنف…)
+- 28 — (تتمة) خصائص كتب الرواية الأولى؛ **الجوامعُ والمسانيدُ والمعاجم**
+- 29 — **الروايةُ باللفظِ والروايةُ بالمعنى** (ابن عمر، الأعمش، واثلة، الحسن، ابن مهدي، الخطيب)
+- 30 — (تتمة)؛ **طُرقُ تحمّل الروايةِ وأدائها**: 1 السماع؛ 2 العرض؛ 3 المكاتبة
+- 31 — (تتمة المكاتبة؛ مناظرة إسحاق والشافعي في جلود الميتة)؛ 4 الإجازة (ابن عبد البر)
+- 32 — صيغة الإجازة؛ 5 المناولة؛ 6 الوجادة (عمرو بن شعيب)؛ 7 الإعلام
+- 33 — (تتمة الإعلام)؛ **الخلاصة**؛ **علمُ الحديثِ درايةً**؛ **الجرحُ والتعديل**: نص الشافعي في الرسالة
+- 34 — (تتمة)؛ خبر العامة وخبر الخاصة؛ مثال: حديث «ويل للأعقاب من النار» عند البخاري
+- 35 — (تتمة)؛ **شروطُ قبولِ الخبر**: 1- العدالة: أ- الإسلام، ب- العقل (محمود بن الربيع؛ المغفل)
+- 36 — ج- البلوغ؛ د- السلامة من أسباب الفسق؛ هـ- السلامة من خوارم المروءة؛ الصالحون غير الضابطين
+- 37 — (تتمة؛ يحيى القطان، مسلم، ابن مهدي، ابن رجب)؛ الضبط: حفظ الصدر (الزهري، قتادة، عمرو بن دينار)
+- 38 — ضبط الكتاب (القواعد الشكلية والموضوعية)؛ **كيف تُعرف العدالة؟** الأول: الاشتهار (مالك وابن إسحاق؛ تاج الدين السبكي)
+- 39 — الثاني: التزكية؛ «حدثني الثقة»؛ لا تثبت العدالة بالبراءة الأصلية؛ **كيف يعرف الضابط؟** (معيار الشافعي؛ تمثيل رياضي)
+- 40 — جدول التلاميذ (أ–هـ) × الأحاديث العشرة؛ **الخلاصة**؛ مراتب الجرح والتعديل عند ابن أبي حاتم
+- 41 — ابن أبي حاتم: ثلاث مراتب؛ مراتب ابن حجر الاثنتا عشرة؛ مقابلتها بمراتب ابن أبي حاتم
+- 42 — **علمُ العلل** (مسلم في التمييز)
+- 43 — **الخلاصة**؛ الحاكم (معرفة علوم الحديث)؛ **مصطلحُ العلّةِ ومعناه**؛ أسباب العلة؛ شعبة
+- 44 — أئمة العلل (القطان، ابن مهدي، ابن المديني، أحمد، البخاري، الترمذي)؛ **الخلاصة**؛ كتب العلل (الدارقطني، ابن أبي حاتم، ابن رجب)
+- 45 — **نقدُ المتن**: زعم المستشرقين والرد عليه (1–6)
+- 46 — (7–9؛ «وأخيرًا»)؛ **التعريفُ بأشهرِ المحدّثين ومناهجهم**
+- 47 — **الموطأ للإمامِ مالك بن أنس**: التعريف بالإمام مالك؛ زهده وورعه وإنصافه وشجاعته في الحق (هارون الرشيد)؛ الموطأ ومنهجه: 1- الثقات
+- 48 — (تتمة)؛ 2- الصحيح وفق مذهبه (البلاغات والمرسلات)؛ مثال (حديث الثوب الواحد)
+- 49 — السيوطي (تنوير الحوالك)؛ ابن عبد البر؛ 3- الموقوفات وأقوال التابعين؛ نموذج: **باب القضاء باليمين مع الشاهد**
+- 50 — (تتمة)؛ الدهلوي؛ 4- مزج الحديث بالفقه؛ **الخلاصة**؛ 5- أول كتاب منهجي (ابن العربي)
+- 51 — **الإمامُ البخاريُّ ومنهجُه في كتابِه الجامع**: التعريف بالإمام البخاري (194–256هـ)؛ **صحيحُ الإمام البخاري**: 1- رجال الطبقة الأولى
+- 52 — 2- كتاب جامع؛ 3- أول من جرّد الصحيح؛ 4- الانتقاء؛ 5- تعدد الأسانيد
+- 53 — (إسماعيل بن أبي أويس)؛ 6- التراجم: ترجمة كتاب الإيمان
+- 54 — (تتمة)؛ **أنموذجٌ من حديث الإمام البخاري**: باب من أدرك ركعة من العصر (557)
+- 55 — باب الإجارة إلى نصف النهار (2268)؛ إلى صلاة العصر (2269)؛ باب ما ذكر عن بني إسرائيل (3459)
+- 56 — باب فضل القرآن (5021)؛ **الإمامُ مسلمُ بنُ الحجاج وكتابُه الجامع**: التعريف (204–261هـ)؛ منهجُه: الأول: المقدمة (أ- سبب التصنيف)
+- 57 — ب- عزمه وطريقته؛ ج- الرواية عن الثقات؛ د- العنعنة؛ **دراسة وتحليل مقدّمة صحيح مسلم**: القسم الأول، القسم الثاني
+- 58 — القسم الثالث؛ **اعتراضٌ ومناقشته** (أبو زرعة، البرذعي)؛ فائدة: الارتفاع (العلو والنزول)
+- 59 — جواب ابن الصلاح (3 أمور)؛ الثاني من مميزات منهج مسلم: الباب الحديثي؛ مثال: باب فضل كثرة الخطا إلى المساجد (662)
+- 60 — (663–665)
+- 61 — تحليل الروايات (3 صحابة)؛ الشافعي والمرسل؛ فائدة (الترمذي)؛ الثالث: الأداء بالألفاظ
+- 62 — (حدثنا/أخبرنا؛ «يعني فلانًا»)؛ الرابع: تكامل الصورة؛ مثال: قصة وفاة أبي طالب (39–42)
+- 63 — الخامس: لم يترجم للأبواب (التراجم من النووي)؛ السادس: جامع؛ السابع: لم يستوعب الصحيح؛ الثامن: رجال الطبقة الثانية فصاعدًا؛ مثال: طبقات تلاميذ الزهري (1–3)
+- 64 — الطبقتان الرابعة والخامسة؛ **الإمامُ أبو داود ومنهجُه**: التعريف (202–275هـ)؛ منهجُ أبي داود في سُننه
+- 65 — السنن كتاب أصول المسائل الفقهية؛ منشأ التوسع عند أبي داود (صالح)؛ الضعيف في السنن؛ المرسل (شروط الشافعي)
+- 66 — دائرة أبي داود في الرجال؛ التبويب والتفريع (كتاب الأدب)؛ الزيادات اللفظية (مثال: «من استعاذكم بالله»)
+- 67 — **الإمامُ النسائيُّ ومنهجُه**: التعريف (215–303هـ)؛ منهجه في كتابه السنن
+- 68 — مثال: كتاب الاستعاذة، كتاب آداب القضاء؛ تكرار الحديث؛ منهج النسائي منهج معلّل؛ رجال السنن وأسانيده
+- 69 — (تتمة)؛ **التعريفُ بالإمامِ الترمذيّ وبكتابِه الجامع**: التعريف (209–279هـ)؛ منهجه في كتابه الجامع
+- 70 — منهج معلّل؛ الطبقة الوسطى من الرواة؛ نشأة «الحسن»
+- 71 — تعريف الترمذي للحسن؛ «حسن صحيح»: مثال «إنما الأعمال بالنيات»
+- 72 — اعتماد الترمذي لمنهج الباب؛ وصف ابن العربي لكتاب الترمذي؛ الترمذي يسجّل مذاهب الفقهاء وأصولهم؛ منزلة الجامع عند العلماء
+- 73 — نقد الذهبي (كثير بن عبد الله)؛ ابن رجب؛ **الخلاصة**؛ **التعريفُ بابن ماجه ومنهجِه في كتابِه السنن**: التعريف (209–273هـ)
+- 74 — كتابه السنن (أبو زرعة)؛ مكانة سنن ابن ماجه بين الكتب الستة؛ منهج الإمام ابن ماجه في السنن
+- 75 — تنبيه (أعداد الكتب والأحاديث بين طبعتي عبد الباقي والأعظمي)؛ مثال: باب المحافظة على الوضوء (274–276)
+- 76 — (تتمة؛ الذهبي، ابن حجر، المزي)؛ Telegram footer؛ «تم تلخيص الكتاب بفضل الله»
+
+## Non-content (never put on a page)
+- Page frame (double border), page numbers «- n -».
+- Cover decoration: grey ribbon, leaf drawing, the red pen stroke above the title, the stray cursor bar after «للدكتور». Keep the title and author name; the cover du'a «حفظه الله وفك أسره» is not lesson content.
+- PDF 5, the transcriber's red «تنبيه: من الضروري قراءة هذا التقديم قراءة متأنية…».
+- PDF 76, «لمزيد من التلخيصات تابع القناة على التيليجرام من الرابط التالي» + `t.me/swaadelaalwaai`, and «تم تلخيص الكتاب بفضل الله..».
+- No reminder boxes or hand annotations inside the body pages.
+- The coloured labels «الخلاصة» and «فائدة» and «مثالُ ذلك» ARE content (author's own), not transcriber notes.
+
+## Looks wrong / verify
+- PDF 10: «ورد ذكر السُّنّة والسُّنَن في القرآن سبع عشرة مرة». Count not checked; state it as the author's figure or verify.
+- PDF 13: «كما قال الإمام الشافعي: (القرآن وعاءٌ والسُّنّة غطاءٌ)». Unusual saying and attribution; **verify** before quoting it as al-Shafi'i's.
+- PDF 24: Robson dates the fitna to Ibn al-Zubayr's caliphate, «وكان ذلك سنة (75هـ)». Ibn al-Zubayr was killed in 73 AH; check the figure.
+- PDF 26: «كتاب (تصحيفات المحدّثين) للإمام أبي الحسن العسكري (ت382هـ)». The author is أبو أحمد الحسن بن عبد الله العسكري (his name is al-Hasan, kunya Abu Ahmad). **Verify the kunya.**
+- PDF 26: «روى الإمام أحمد أن أبا أيوب الأنصاري كتب صحيفة فيها مائة واثنا عشر حديثًا». Uncommon report; keep it attributed, don't expand it.
+- PDF 27: Ibn 'Uyayna «(ت197هـ)». Usually 198 AH. Also PDF 27 gives Ma'mar b. Rashid d. 153 and PDF 46 gives d. 154 (internal inconsistency).
+- PDF 36: «قال ابن أبي الزناد: (أدركت بالمدينة مائة كلهم مأمون…)». In Muslim's muqaddima the speaker is **أبو الزناد** (narrated by his son). Verify.
+- PDF 40: Ibn Abi Hatim's text has متروك/كذاب as «المنزلة الرابعة» of jarh; the summary says «وهي المنزلة الثالثة» and (PDF 41) reduces Ibn Abi Hatim's scale to three ranks. This is the book's simplification; don't present it as Ibn Abi Hatim's wording.
+- PDF 47: Nafi' «(ت120هـ)». More commonly 117 AH. Minor.
+- PDF 52: «ضم بين دفتيه واحدًا وتسعين كتابًا» (common count is 97 kutub), and «اختار أحاديث كتابه الأربعة آلاف -غير المكررة-» followed by «لا تزيد على ألفين وستمائة وحديثين». Two different counts in one paragraph (the old ~4000 vs Ibn Hajar's 2602 mawsul without repetition). Present carefully.
+- PDF 61: Ubayy's hadith «جاء من ست طرق», but PDF 60 shows a seventh route (سعيد بن أزهر عن وكيع). Minor.
+- PDF 67: al-Mujtaba «واحدًا وخمسين بابًا». These are 51 **kutub**, not abwab. Minor wording.
+- PDF 75: «في السند الأول: انقطاعٌ بين منصور وسالم بن أبي الجعد». The known break in this chain is between **Salim b. Abi al-Ja'd and Thawban**. **Verify.**
+- PDF 40 table: (هـ) has 7 narrations with 2 differences; (ج) also has 2 differences and a solitary narration (8th). The book's conclusions (د best, هـ most, ب most differences) still hold; no error, just check if the table is redrawn.
+
+## Views and attributions between scholars
+- PDF 3: Malik «إن من شيوخي من أستسقي بهم ولكن لا أروي عنهم الحديث».
+- PDF 4–5: the foreword praises د. يوسف العش and د. عماد الدين خليل, and Ibn Khaldun's critical method.
+- PDF 9: Ibn al-Mubarak, Yahya b. Sa'id (Shu'ba, Sufyan, Malik, Ibn 'Uyayna: «بيّن أمره للناس»); Muslim's «التمييز»; Guignebert on historical criticism vs Christian «faith» method.
+- PDF 11: Ibn Mahdi on al-Thawri (imam in hadith not sunna), al-Awza'i (sunna not hadith), Malik (both); al-Tirmidhi on abrogation of «الوضوء مما مست النار».
+- PDF 12–13: al-Khatib (الكفاية); Makhul («القرآن أحوج إلى السنة»); al-Marwazi's three ways the sunna relates to the Quran (some say it abrogates, others only explains); Ibn Mahdi; al-Shafi'i (see verify list).
+- PDF 15: the author rejects د. صبحي الصالح's explanation (scarcity of writing tools) for the lack of hadith writing («ولست مع هذا الرأي»).
+- PDF 16: «القراءات الشاذة -عندنا-» = explanatory additions; al-Khattabi on the prohibition being early/abrogated.
+- PDF 18: Ibn Hajar (فتح الباري) on why al-Zubayr narrated little.
+- PDF 20: 'Umar did not doubt Abu Musa (Malik's Muwatta' addition).
+- PDF 21: Ibn 'Udays story judged weak (inqita', Abu Thawr al-Fahmi); Ibn Abi Hatim gives Ibn 'Udays صحبة.
+- PDF 22: 'A'isha vs 'Umar and Ibn 'Umar on «الميت يعذّب ببكاء أهله»; the jumhur accept 'Umar's report; al-Bukhari's chapter heading reconciles («إذا كان النوح من سنته»).
+- PDF 24: Schacht (fitna = killing of al-Walid b. Yazid 126 AH) and Robson (Ibn al-Zubayr) both rejected; the author: search for isnad began with 'Umar.
+- PDF 29: strict wording (Ibn 'Umar, al-Zuhri, al-Qasim, Ibn Sirin, Raja', al-A'mash, Malik) vs meaning (Wathila, al-Hasan, Ibn Mahdi on al-Thawri); al-Khatib's conditions.
+- PDF 30: سماع highest «عند جماهير المحدثين»; Abu Hanifa and Malik prefer عرض; Hijaz/Kufa and al-Bukhari equate them; Ibn al-Salah prefers سماع; Muslim and the East: «أخبرنا» for عرض; al-Zuhri, Malik, Ibn 'Uyayna, al-Qattan allow «حدثنا/أخبرنا».
+- PDF 31: Ishaq b. Rahawayh vs al-Shafi'i (Ahmad present) on tanned hides (Ibn 'Ukaym); Ibn Abd al-Barr on ijaza only for a skilled scholar.
+- PDF 32: al-Awza'i («خبّرنا» for ijaza); 'Amr b. Shu'ayb: Ibn al-Madini weakens, Ibn Ma'in «ثقة», al-Dhahabi on the wijada.
+- PDF 32–33: i'lam allowed by Ibn Jurayj and others; Ibn al-Salah: «المختار… أنه لا تجوز الرواية بذلك» but acting on it is required.
+- PDF 37: Yahya al-Qattan («لم نر الصالحين في شيء أكذب منهم في الحديث») explained by Muslim; Ibn Mahdi; Ibn Rajab.
+- PDF 38: rivals' criticism not accepted (Malik vs Ibn Ishaq); Taj al-Din al-Subki's rule.
+- PDF 39: «حدثني الثقة» not accepted even from Malik or al-Shafi'i.
+- PDF 40–41: Ibn Abi Hatim's ranks vs Ibn Hajar's twelve.
+- PDF 43–44: al-Hakim; Ibn Rajab on Shu'ba; Ibn al-Madini on Ibn Mahdi; Abu Hatim on Ibn al-Madini; Muslim on al-Bukhari.
+- PDF 45: orientalists' claim that hadith critics ignored the matn, refuted (al-Zarkashi on 'A'isha's corrections, al-Shafi'i, al-Tabari, Ibn Qutayba).
+- PDF 47: Ibn Ma'in («كل من روى عنه مالك فهو ثقة إلا عبد الكريم أبا أمية»); al-Shafi'i on the Muwatta'.
+- PDF 48–49: al-Rashid's question; al-Zurqani; al-Kandahlawi; al-Suyuti (mursal is حجة for Malik); Ibn Abd al-Barr connected all but four balaghat.
+- PDF 50: al-Dihlawi on Malik's method; al-Shafi'i: Malik's «السنة عندنا» is not ijma'; Ibn al-'Arabi: the Muwatta' «الأصل الأول».
+- PDF 52: Ishaq b. Rahawayh suggested a book of sahih only.
+- PDF 53: al-Bukhari's Kitab al-Iman as a refutation of the Murji'a.
+- PDF 58–59: Abu Zur'a criticised Muslim (Asbat, Qatan, Ahmad b. 'Isa); Muslim's reply (via al-Bardha'i); Ibn al-Salah's three-point defence quoting al-Khatib.
+- PDF 61: al-Shafi'i strengthening the mursal via other routes.
+- PDF 63–64: al-Bukhari relies on the first tabaqa of al-Zuhri's students, Muslim on the second and third.
+- PDF 65: Abu Dawud on the mursal (al-Thawri, Malik, al-Awza'i, then al-Shafi'i and Ahmad); al-Shafi'i's conditions.
+- PDF 66: al-Bukhari / Muslim / Abu Dawud and the rawi tabaqat.
+- PDF 67: Ibn al-Athir (Nasa'i شافعي; al-Harith b. Miskin), al-Daraqutni, Ibn Yunus, al-Dhahabi.
+- PDF 68: Ibn Tahir (شروط الأئمة الستة): three categories of al-Mujtaba.
+- PDF 69: al-Dhahabi rejects Ibn Hazm's «مجهول» for al-Tirmidhi.
+- PDF 72: Ibn al-'Arabi (عارضة الأحوذي) on al-Tirmidhi's 14 sciences; al-Dhahabi (السير).
+- PDF 73: al-Dhahabi on al-Tirmidhi's leniency (Kathir b. 'Abd Allah: Ibn Ma'in, al-Shafi'i, Abu Dawud, Ahmad, al-Daraqutni, Abu Hatim, Ibn Hibban); al-Bukhari called it حسن; Ibn Rajab; author's conclusion.
+- PDF 74: Abu Zur'a on Ibn Majah; Ibn Tahir added Ibn Majah, Abd al-Ghani followed; Razin and Ibn al-Athir put the Muwatta' in place of Ibn Majah; Ibn Hajar.
+- PDF 76: al-Dhahabi; Ibn Hajar quoting al-Mizzi «كل ما انفرد به ابن ماجه… فهو ضعيف» and correcting it to the narrators.

@@ -11,7 +11,7 @@
    security-reviewed:network  This is the only script allowed to call fetch(); tools/check-site.ps1 accepts only fetch(event.request). */
 'use strict';
 
-var VERSION = 'b5e2d8b8e6c0';
+var VERSION = '4c0812503722';
 var CACHE = 'bm-site-' + VERSION;
 var FILES = [
   "aqeeda/index.html",
@@ -67,6 +67,14 @@ var FILES = [
   "fiqh/fiqh-alibadat/lecture8.html",
   "fiqh/fiqh-alibadat/lecture9.html",
   "fiqh/index.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/index.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/lecture1.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/lecture2.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/lecture3.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/lecture4.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/lecture5.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/lecture6.html",
+  "hadith-sciences/alfikr-almanhaji-almuhaddithin/lecture7.html",
   "hadith-sciences/almadakhil-alawwaliyya/index.html",
   "hadith-sciences/almadakhil-alawwaliyya/lecture1.html",
   "hadith-sciences/almadakhil-alawwaliyya/lecture2.html",
@@ -84,6 +92,13 @@ var FILES = [
   "hadith-sciences/lughat-almuhaddith/lecture7.html",
   "hadith-sciences/lughat-almuhaddith/lecture8.html",
   "hadith-sciences/lughat-almuhaddith/lecture9.html",
+  "hadith-sciences/madkhal-ilm-alhadith/index.html",
+  "hadith-sciences/madkhal-ilm-alhadith/lecture1.html",
+  "hadith-sciences/madkhal-ilm-alhadith/lecture2.html",
+  "hadith-sciences/madkhal-ilm-alhadith/lecture3.html",
+  "hadith-sciences/madkhal-ilm-alhadith/lecture4.html",
+  "hadith-sciences/madkhal-ilm-alhadith/lecture5.html",
+  "hadith-sciences/madkhal-ilm-alhadith/lecture6.html",
   "hadith-sciences/nazm-almuaeen/index.html",
   "hadith-sciences/nazm-almuaeen/lecture1.html",
   "hadith-sciences/nazm-almuaeen/lecture2.html",
