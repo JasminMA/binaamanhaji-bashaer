@@ -19,7 +19,7 @@ conversation of the step before it: everything it needs is in the repository.
 | **3. Assemble** | Sonnet | Run the diagram script, build, `check-site`, `build -Check`, `list-quizzes`, the label-fit check in the browser. Create the specialty page if new, update the specialty and home pages. Fix mechanical faults only (markup, a label too long for its box, quiz position balance). Never change what a sentence says. | built pages, check results appended to `NOTES.md` |
 | **4. Review** | Opus | Independent check of every fact, diagram label, verse reference and wording, and quiz answer against the source. Reads only the pages and `refs/`. Edits nothing. | `refs/REVIEW.md` (findings by severity) |
 | **5. Fix** | Fable or Opus | Apply the review's HIGH and MEDIUM findings and the sensible NOTEs in `src/`. Short step. | fixed sources, "resolved" marks in `REVIEW.md` |
-| **6. Ship** | Sonnet | Rebuild, rerun all checks, one commit for the course, push, update the table below. | commit on `add-courses`, updated table |
+| **6. Ship** | Sonnet | Rebuild, rerun all checks (including the `quran-verse-check` skill: `python -X utf8 tools/list-verses.py --changed --summary`), one commit for the course, push, update the table below. | commit on `add-courses`, updated table |
 
 Fable limit rule (Yasmin): if Fable reports a usage-limit error, stop using Fable. Rerun the
 unfinished work of that step on Opus (use `model: "opus"`), do not wait for the reset and do not retry
